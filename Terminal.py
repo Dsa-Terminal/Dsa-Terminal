@@ -126,7 +126,12 @@ try:
 except FileNotFoundError:
     print(f'Bem-vindo ao Dsa Terminal versão {__version__}!')
     print(f'Estamos configurando tudo para você usar o Bash do Terminal...'), sleep(13.1)
-    username: str = input('Username: ').strip().lower()
+    while True:
+        username: str = input('Username: ').strip().lower()
+        if username == "":
+            continue
+        else:
+            break
     files.CriarArquivo('Terminal.dll')
     files.Write('Terminal.dll', username)
     system('cls')
