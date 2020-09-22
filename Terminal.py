@@ -150,7 +150,11 @@ while True:
             del ipa, portal
         elif 'ping -nc' in cmd:
             cmd = cmd.replace('ping -nc ', '')
-            ping.nc(cmd)
+            cmd = cmd.replace('ping -nc', '')
+            if cmd == '':
+                print('Ping: É necessario fornecer uma porta!')
+            else:
+                ping.nc(int(cmd))
         elif 'python3' in cmd:
             cmd = cmd.replace('python3 ', '')
             cmd = cmd.replace('python3', '')
