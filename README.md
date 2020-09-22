@@ -1,2 +1,2 @@
 # Dsa-Terminal
-Um simulador de Linux completo para Windows 10
+Um simulador do Terminal Linux completo para Windows 10
