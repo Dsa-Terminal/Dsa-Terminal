@@ -28,14 +28,20 @@ def ProgressBar(titulo):
     for i in tqdm(range(20)):
         sleep(0.5)
         pass
-def pkg_install(command):
-    cmd = command.replace('pkg install ', '')
-    cmd = cmd.capitalize()
-    print(f'Coleção {cmd}...'), sleep(8)
-    ProgressBar('Instalando')
-    system(fr'Bin\bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}')
-    system(fr'move {cmd} Lib')
-    return True
+class packge:
+    def pkg_install(command):
+        cmd = command.replace('pkg install ', '')
+        print(f'Coleção {cmd}...'), sleep(8)
+        ProgressBar('Instalando')
+        system(fr'Bin\bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}')
+        system(fr'move {cmd} Lib')
+        return True
+    def pkg_uninstall(command):
+        cmd = command.replace('pkg install ', '')
+        print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
+        ProgressBar('Desinstalando')
+        system(fr'del Lib\{cmd}')
+        return True
 class files:
     def Write(filename, texto):
         try:
@@ -90,13 +96,6 @@ class ping:
     def nc(porta):
         print(f'Ping: Escutando Porta: [{int(porta)}] ')
         sleep('17.8')
-class https:
-    def __init__(self):
-        base = 'https://github.com/Dsa-Terminal'
-        return f'{base}/Dsa-Terminal/archive/master.zip'
-    def reset(self):
-        startfile(https.__init__())
-        system(r'start C:\Users\%username%\downloads\Dsa-Terminal-master.zip')
 # Primeiro Uso
 try:
     with open('Terminal.dll') as username:
@@ -185,20 +184,14 @@ while True:
             print('Comando:              Função:\n')
             print('about                 Mais informações sobre o Dsa Terminal')
             print('echo([mensagem]):     Escreve mensagens na tela')
-            print('pkg install [pkgname] Instala pacotes para o Dsa Terminal')
+            print('pkg [parametros]      Gerenciador de pacotes')
             print('nano [arquivo]        Dsa Terminal E-ditor')
             print('ping [parametros]     Opções de rede remota')
-            print('python3 [script]      Executa script Python3')
             print('./[shell script]      Executa shell script')
-            print('pip [parametros]      Python3-Pip')
-            print('ls                    Lista objetos e diretorios')
         elif cmd == '':
             for d in range(0, 1):
                 continue
             del d
-        elif cmd == 'ls':
-            system(r'dir files')
-            continue
         elif cmd == 'clear':
             system('cls')
             continue
