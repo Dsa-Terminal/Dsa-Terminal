@@ -31,6 +31,7 @@ from time import strftime, sleep
 from rich.console import Console
 from rich.markdown import Markdown
 from tqdm import tqdm, trange
+from rich.progress import track
 # ==========================
 system('title Dsa Terminal')
 system('pause')
@@ -128,6 +129,11 @@ class ping:
     def nc(porta):
         print(f'Ping: Escutando Porta: [{int(porta)}] ')
         sleep('17.8')
+def do_step(set):
+    sleep(0.9)
+def auto_get_ProgressBar():
+    for step in track(range(100)):
+        do_step(step)
 # Primeiro Uso
 try:
     with open('Terminal.dll') as username:
