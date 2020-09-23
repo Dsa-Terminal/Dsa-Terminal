@@ -255,7 +255,8 @@ while True:
             print('block                 Protetor de tela')
             print('git [parametros]      Versionando com Git')
             print('exit                  Sai do Dsa Terminal')
-            print('st                    Começa uma aplicação')
+            print('st                    Começa uma tarefa do Windows')
+            print('mdir                  Cria uma pasta')
         elif cmd == 'block':
             startfile('Bubbles.scr')
             continue
@@ -274,6 +275,9 @@ while True:
             continue
         elif 'st' in cmd:
             system(f'start {cmd[cmd.find("t") + 1 : ]}')
+            continue
+        elif 'mkdir' in cmd:
+            system(f'mkdir {cmd[cmd.find("r") + 1 : ]}')
             continue
         else:
             print(f'{cmd}: comando invalido!')
