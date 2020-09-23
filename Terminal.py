@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.0.4'
+__version__ = '1.0.5'
 # Importando modulos
 import socket
 from os import system, startfile, mkdir, listdir
@@ -52,6 +52,11 @@ def ProgressBar(titulo):
     for i in tqdm(range(20)):
         sleep(0.5)
         pass
+def do_step(set, time):
+    sleep(time)
+def auto_get_ProgressBar(time):
+    for step in track(range(100)):
+        do_step(step, time)
 def git_bash(cmd):
     system(f'bin\git.exe {cmd}')
     return True
@@ -62,7 +67,8 @@ class packge:
         cmd = command.replace('pkg install ', '')
         print(f'Coleção {cmd}...'), sleep(8)
         ProgressBar('Instalando')
-        system(fr'Bin\bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}')
+        auto_get_ProgressBar(0.1)
+        system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}')
         system(fr'move {cmd} Lib')
         return True
     def pkg_uninstall(command):
@@ -129,11 +135,6 @@ class ping:
     def nc(porta):
         print(f'Ping: Escutando Porta: [{int(porta)}] ')
         sleep('17.8')
-def do_step(set):
-    sleep(0.9)
-def auto_get_ProgressBar():
-    for step in track(range(100)):
-        do_step(step)
 # Primeiro Uso
 try:
     with open('Terminal.dll') as username:
@@ -196,6 +197,17 @@ while True:
             print('ping                Conectar com um servidor')
             print('ping -v             Verifica se servidor existe')
             print('ping -nc [porta]    Escuta porta serial')
+        elif cmd == 'pkg /?':
+            print('Pkg: Listagem de parametros')
+            print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
+            print('pkg install [pkgname]      Instala pacotes')
+            print('pkg uninstall [pkgname]    Desinstala pacotes')
+        elif 'pkg install ' in cmd:
+            packge.pkg_install(cmd)
+            continue
+        elif 'pkg uninstall ' in cmd:
+            packge.pkg_uninstall(cmd)
+            continue
         elif cmd == 'ping':
             ipa: str = input('IP: ')
             while True:
