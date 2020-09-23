@@ -65,7 +65,10 @@ class packge:
         pass
     def pkg_install(command):
         cmd = command.replace('pkg install ', '')
-        print(f'Lendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
+        print(f'\033[32mLendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
+        print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
+        auto_get_ProgressBar(1)
+        ProgressBar('Baixando tools')
         system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
         system(fr'move {cmd} Lib')
         return True
@@ -339,7 +342,7 @@ while True:
                 auto_get_ProgressBar(0.03)
                 continue
         elif cmd == 'ls':
-            system(r'bin\bash.exe vendor\Main.sh')
+            system(r'bin\bash.exe bin\listdir.sh')
             continue
         elif cmd == 'ipconfig':
             system('ipconfig')

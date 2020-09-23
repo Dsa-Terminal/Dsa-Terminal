@@ -20,30 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/user_profile.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/gitconfig" beforeDir="false" afterPath="$PROJECT_DIR$/etc/gitconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/package-versions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/etc/package-versions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/git-bash.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/git-cmd.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/cert.pem" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/certs/Subsystem/Terminal.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/certs/ca-bundle.crt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/certs/ca-bundle.trust.crt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/ct_log_list.cnf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/ct_log_list.cnf.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/misc/CA.pl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/misc/tsget" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/misc/tsget.pl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/openssl.cnf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usr/ssl/openssl.cnf.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/Main.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/chdir.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/user_profile.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/user_profile.sh.default" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +109,7 @@
       <workItem from="1600798345849" duration="12319000" />
       <workItem from="1600867030369" duration="2913000" />
       <workItem from="1600871430171" duration="9199000" />
-      <workItem from="1600886491557" duration="11303000" />
+      <workItem from="1600886491557" duration="13254000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
