@@ -268,6 +268,9 @@ while True:
         elif cmd == 'clear':
             system('cls')
             continue
+        elif cmd == 'cls':
+            system('cls')
+            continue
         else:
             print(f'{cmd}: comando invalido!')
             continue
