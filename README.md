@@ -10,8 +10,9 @@ Ubuntu
 ## Pré-Requisitos
 Você precisa do Python instalado, além de seus módulos `rich`e`tqdm`
 
-Você pode os instalar instantaneamente executando o arquivo setup.bat
+Você pode os instalar instantaneamente executando o arquivo setup.bat que já vai executar o Dsa Terminal
 Mais se você não quer instalar o Dsa terminal use o Terminal.exe
+
 ## Como Usar
 Clone este repositorio usando o git  através do comando `git clone https://github.com/Dsa-Terminal/Dsa-Terminal.git master` e depois abra o Cmd.exe e desative o console herdado, abra o Terminal.exe
 e digite *help* que você vera todos os comandos
@@ -32,3 +33,7 @@ e digite *help* que você vera todos os comandos
 - `touch [arquivo]`     Cria um arquivo
 _____________________________________________________________________________
 Para saber os parametros do comando digite `[comando] /?`
+
+# Importando modulos
+Sendo um recurso `Beta` a importação de modulos usando o comando: 
+- `Incluide [modulo]`
