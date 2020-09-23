@@ -25,7 +25,7 @@ SOFTWARE.
 __version__ = '1.0.4'
 # Importando modulos
 import socket
-from os import system, startfile, mkdir
+from os import system, startfile, mkdir, listdir
 from random import randint
 from time import strftime, sleep
 from rich.console import Console
@@ -135,6 +135,7 @@ try:
 except FileNotFoundError:
     print(f'Bem-vindo ao Dsa Terminal versão {__version__}!')
     print(f'Estamos configurando tudo para você usar o Bash do Terminal...'), sleep(13.1)
+    ProgressBar('Instalando tools')
     while True:
         username: str = input('Username: ').strip().lower()
         if username == "":
@@ -143,6 +144,36 @@ except FileNotFoundError:
             break
     files.CriarArquivo('Terminal.dll')
     files.Write('Terminal.dll', username)
+    system('cls')
+    print('Olá vamos te dar um tutorial rapido de como usar o Dsa Terminal')
+    print('1 - Para ver todos os comandos digite "help"')
+    print('2 - Para ver os parametros digite [comando] /?')
+    print('3 - Para sair digite "exit"')
+    system('pause')
+    print("""
+MIT License
+
+Copyright (c) 2020 Dsa-Terminal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+""")
+    system('pause')
     system('cls')
 # Set up
 ip = '0.0.0.0'
@@ -205,6 +236,11 @@ while True:
             cmd = cmd.replace(r'\t', '\t')
             print(cmd)
             continue
+        elif cmd == 'echo /?':
+            print('Echo: Listagem de parametros\n')
+            print(r'    echo([mensagem[parametros de formatação]]):')
+            print(r'\t                Tab')
+            print(r'\n                Quebra de linha')
         elif './' in cmd:
             cmd = cmd.replace('./', '')
             system(fr'bin\bash.exe {cmd}')
@@ -214,6 +250,7 @@ while True:
             print('pkg [parametros]      Gerenciador de pacotes')
             print('nano [arquivo]        Dsa Terminal E-ditor')
             print('ping [parametros]     Opções de rede remota')
+            print('help                  Exibe ajuda')
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
             print('git [parametros]      Versionando com Git')
@@ -235,4 +272,4 @@ while True:
             print(f'{cmd}: comando invalido!')
             continue
     except:
-        continu
+        continue
