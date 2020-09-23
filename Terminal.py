@@ -143,6 +143,7 @@ except FileNotFoundError:
     print(f'Bem-vindo ao Dsa Terminal versão {__version__}!')
     print(f'Estamos configurando tudo para você usar o Bash do Terminal...'), sleep(13.1)
     ProgressBar('Instalando tools')
+    auto_get_ProgressBar(1)
     while True:
         username: str = input('Username: ').strip().lower()
         if username == "":
@@ -243,9 +244,9 @@ while True:
         elif 'nano' in cmd:
             print('Dsa Terminal editor foi iniciado')
             system('title [Nano] - Dsa terminal')
-            client = cmd.replace('nano ', '')
+            cmd = cmd.replace('nano ', '')
             cmd = cmd.replace('nano', '')
-            system(rf'usr\bin\nano.exe {cmd}')
+            system(rf'usr\bin\nano.exe /files/{cmd}')
             system('title Dsa Terminal')
         elif 'echo(' in cmd:
             cmd = cmd.replace('echo(', '')
@@ -296,18 +297,21 @@ while True:
             system(f'start {cmd[cmd.find("t") + 1 : ]}')
             continue
         elif 'mkdir' in cmd:
-            system(f'mkdir {cmd[cmd.find("r") + 1 : ]}')
+            system(fr'mkdir files\{cmd[cmd.find("r") + 1 : ]}')
             continue
         elif 'touch' in cmd:
             cmd = cmd.replace('touch ', '')
             cmd = cmd.replace('touch', '')
             if cmd == '':
-                open(r'Novo arquivo.txt', 'wt+')
+                open(r'files\Novo arquivo.txt', 'wt+')
             else:
-                open(cmd, 'wt+')
-                print(f"CRIANDO ARQUIVO {f.upper()}..."), sleep(1)
+                open(f'files\cmd', 'wt+')
+                print(f"CRIANDO ARQUIVO {cmd}..."), sleep(1)
                 auto_get_ProgressBar(0.03)
                 continue
+        elif cmd == 'ls':
+            system(r'bin\bash.exe vendor\Main.sh')
+            continue
         elif cmd == 'ipconfig':
             system('ipconfig')
             continue
