@@ -29,5 +29,6 @@ e digite *help* que você vera todos os comandos
 - `exit`                Sai do Dsa Terminal
 - `st [Tarefa]`         Começa uma tarefa do Windows
 - `mkdir [pasta]`       Cria uma pasta
-- `mkf [arquivo]`       Cria um arquivo
-
+- `touch [arquivo]`     Cria um arquivo
+_____________________________________________________________________________
+Para saber os parametros do comando digite `[comando] /?`
