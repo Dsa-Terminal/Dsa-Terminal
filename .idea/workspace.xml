@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
-      <change afterPath="$PROJECT_DIR$/Update.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
     </list>
@@ -86,7 +85,7 @@
       <workItem from="1600798345849" duration="12319000" />
       <workItem from="1600867030369" duration="2913000" />
       <workItem from="1600871430171" duration="9199000" />
-      <workItem from="1600886491557" duration="3731000" />
+      <workItem from="1600886491557" duration="5085000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
