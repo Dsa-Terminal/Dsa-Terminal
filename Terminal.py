@@ -33,7 +33,7 @@ from rich.markdown import Markdown
 from tqdm import tqdm, trange
 from rich.progress import track
 # ==========================
-system('title Dsa Terminal -i --bin\init.sh')
+system('title Dsa Terminal -i --login --bin\init.sh')
 system('pause')
 system(r'bin\bash.exe bin\init.sh')
 # Funções
