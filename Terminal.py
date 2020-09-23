@@ -279,10 +279,11 @@ while True:
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
             print('git [parametros]      Versionando com Git')
-            print('exit                  Sai do Dsa Terminal')
             print('st [Tarefa]           Começa uma tarefa do Windows')
             print('mkdir [pasta]         Cria uma pasta')
             print('touch [arquivo]       Cria um arquivo')
+            print('incluide [modulo]     Importa modulo e o executa')
+            print('exit                  Sai do Dsa Terminal')
         elif cmd == 'block':
             startfile('Bubbles.scr')
             continue
@@ -321,6 +322,13 @@ while True:
         elif cmd == 'ipconfig':
             system('ipconfig')
             continue
+        elif 'incluide' in cmd:
+            cmd = cmd.replace('incluide ', '')
+            cmd = cmd.replace('incluide', '')
+            if cmd == '':
+                print('Incluide: Modulo sem nome')
+            else:
+                system(fr'Lib\{cmd}\Main.exe')
         else:
             print(f'{cmd}: comando invalido!')
             continue
