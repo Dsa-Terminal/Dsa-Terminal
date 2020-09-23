@@ -149,7 +149,7 @@ ip = '0.0.0.0'
 session = randint(0, 10364)
 console = Console()
 print(strftime('Iniciando Dsa Terminal...'))
-print(strftime(f'(C) %Y Dsa Terminal versão {__version__}  Sessão: [{session}]'))
+print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
 print(strftime('====================Dsa Terminal===================')), sleep(2.9)
 while True:
     try:
@@ -181,6 +181,9 @@ while True:
                     break
             ping.ping_ip_serverstate(ipa, portal)
             del ipa, portal
+        elif 'git' in cmd:
+            git_bash(cmd=cmd)
+            continue
         elif 'ping -nc' in cmd:
             cmd = cmd.replace('ping -nc ', '')
             cmd = cmd.replace('ping -nc', '')
@@ -207,13 +210,14 @@ while True:
             system(fr'bin\bash.exe {cmd}')
         elif cmd == 'help':
             print('Comando:              Função:\n')
-            print('about                 Mais informações sobre o Dsa Terminal')
             print('echo([mensagem]):     Escreve mensagens na tela')
             print('pkg [parametros]      Gerenciador de pacotes')
             print('nano [arquivo]        Dsa Terminal E-ditor')
             print('ping [parametros]     Opções de rede remota')
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
+            print('git [parametros]      Versionando com Git')
+            print('exit                  Sai do Dsa Terminal')
         elif cmd == 'block':
             startfile('Bubbles.scr')
             continue
@@ -231,4 +235,4 @@ while True:
             print(f'{cmd}: comando invalido!')
             continue
     except:
-        continue
+        continu
