@@ -11,9 +11,9 @@ Ubuntu
 Você precisa do Python instalado, além de seus módulos `rich`e`tqdm`
 
 Você pode os instalar instantaneamente executando o arquivo setup.bat
-
+Mais se você não quer instalar o Dsa terminal use o Terminal.exe
 ## Como Usar
-Clone este repositorio usando o git  através do comando `git pull https://github.com/Dsa-Terminal/Dsa-Terminal.git master` e depois abra o Cmd.exe e desative o console herdado, abra o Terminal.exe
+Clone este repositorio usando o git  através do comando `git clone https://github.com/Dsa-Terminal/Dsa-Terminal.git master` e depois abra o Cmd.exe e desative o console herdado, abra o Terminal.exe
 e digite *help* que você vera todos os comandos
 
 # Comandos
@@ -29,5 +29,6 @@ e digite *help* que você vera todos os comandos
 - `exit`                Sai do Dsa Terminal
 - `st [Tarefa]`         Começa uma tarefa do Windows
 - `mkdir [pasta]`       Cria uma pasta
-- `mkf [arquivo]`       Cria um arquivo
-
+- `touch [arquivo]`     Cria um arquivo
+_____________________________________________________________________________
+Para saber os parametros do comando digite `[comando] /?`
