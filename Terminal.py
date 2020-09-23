@@ -263,7 +263,7 @@ while True:
             print('exit                  Sai do Dsa Terminal')
             print('st [Tarefa]           Começa uma tarefa do Windows')
             print('mkdir [pasta]         Cria uma pasta')
-            print('mkf [arquivo]         Cria um arquivo')
+            print('touch [arquivo]       Cria um arquivo')
         elif cmd == 'block':
             startfile('Bubbles.scr')
             continue
@@ -286,11 +286,18 @@ while True:
         elif 'mkdir' in cmd:
             system(f'mkdir {cmd[cmd.find("r") + 1 : ]}')
             continue
-        elif 'mkf' in cmd:
-            f = cmd[cmd.find("f") + 1 : ]
-            o = open(f'{f}', 'a')
-            print(f"CRIANDO ARQUIVO {f.upper()}...")
-            auto_get_ProgressBar(0.03)
+        elif 'touch' in cmd:
+            cmd = cmd.replace('touch ', '')
+            cmd = cmd.replace('touch', '')
+            if cmd == '':
+                open(r'Novo arquivo.txt', 'wt+')
+            else:
+                open(cmd, 'wt+')
+                print(f"CRIANDO ARQUIVO {f.upper()}..."), sleep(1)
+                auto_get_ProgressBar(0.03)
+                continue
+        elif cmd == 'ipconfig':
+            system('ipconfig')
             continue
         else:
             print(f'{cmd}: comando invalido!')
