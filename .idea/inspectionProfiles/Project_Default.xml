@@ -17,6 +17,7 @@
           <option value="W605" />
           <option value="E301" />
           <option value="E203" />
+          <option value="E712" />
         </list>
       </option>
     </inspection_tool>
@@ -29,6 +30,7 @@
       </option>
     </inspection_tool>
     <inspection_tool class="PyShadowingNamesInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PySimplifyBooleanCheckInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PyTypeCheckerInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="processCode" value="true" />

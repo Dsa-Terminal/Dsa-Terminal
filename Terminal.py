@@ -58,17 +58,15 @@ def auto_get_ProgressBar(time):
     for step in track(range(100)):
         do_step(step, time)
 def git_bash(cmd):
-    system(f'bin\git.exe {cmd}')
+    system(f'bin\git.exe {cmd.replace("git ", "")}')
     return True
 class packge:
     def __init__(self):
         pass
     def pkg_install(command):
         cmd = command.replace('pkg install ', '')
-        print(f'Coleção {cmd}...'), sleep(8)
-        ProgressBar('Instalando')
-        auto_get_ProgressBar(0.1)
-        system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}')
+        print(f'Lendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
+        system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
         system(fr'move {cmd} Lib')
         return True
     def pkg_uninstall(command):
@@ -134,7 +132,12 @@ class ping:
             print('Servidor encontrado!')
     def nc(porta):
         print(f'Ping: Escutando Porta: [{int(porta)}] ')
-        sleep('17.8')
+        auto_get_ProgressBar(10)
+        for d in range(0, 100):
+            try:
+                sleep(17.8)
+            except KeyboardInterrupt:
+                break
 # Primeiro Uso
 try:
     with open('Terminal.dll') as username:
@@ -160,7 +163,7 @@ except FileNotFoundError:
         ProgressBar('Instalando tools')
         auto_get_ProgressBar(1)
         while True:
-            username: str = input('Username: ').strip().lower()
+            username: str = input('\033[mUsername: ').strip().lower()
             if username == "":
                 continue
             else:

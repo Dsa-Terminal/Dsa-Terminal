@@ -1,2 +1,0 @@
-cd files
-ls
