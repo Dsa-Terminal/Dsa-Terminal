@@ -347,7 +347,11 @@ while True:
             if cmd == '':
                 print('Remove: Insira um nome-de-arquivo')
             else:
-                system(f'del {cmd}')
+                system(fr'del \files\{cmd}')
+        elif 'rmdir' in cmd:
+            cmd = cmd.replace('rmdir ', '')
+            cmd = cmd.replace('rmdir', '')
+            system(fr'del \files\{cmd}')
         elif cmd == 'ls':
             system(r'bin\bash.exe bin\listdir.sh')
             continue
