@@ -290,6 +290,7 @@ while True:
             f = cmd[cmd.find("f") + 1 : ]
             o = open(f'{f}', 'a')
             print(f"CRIANDO ARQUIVO {f.upper()}...")
+            auto_get_ProgressBar(0.03)
             continue
         else:
             print(f'{cmd}: comando invalido!')
