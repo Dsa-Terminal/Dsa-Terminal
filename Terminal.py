@@ -25,7 +25,7 @@ SOFTWARE.
 __version__ = '1.0.4'
 # Importando modulos
 import socket
-from os import system, startfile, mkdir, listdir, getcwd, chdir, rename
+from os import system, startfile, mkdir, listdir
 from random import randint
 from time import strftime, sleep
 from rich.console import Console
@@ -179,13 +179,12 @@ SOFTWARE.
 ip = '0.0.0.0'
 session = randint(0, 10364)
 console = Console()
-prompt = f'{username}@mainFrame20:~$'
 print(strftime('Iniciando Dsa Terminal...'))
 print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
 print(strftime('====================Dsa Terminal===================')), sleep(2.9)
 while True:
     try:
-        cmd: str = input(f'\033[32m{prompt}\033[m ').strip()
+        cmd: str = input(f'\033[32m{username}@mainFrame20:~$\033[m ').strip()
         if cmd == 'ping /?':
             print('Ping: Listagem de parametros\n')
             print('ping                Conectar com um servidor')
@@ -271,6 +270,9 @@ while True:
             continue
         elif cmd == 'cls':
             system('cls')
+            continue
+        elif 'st' in cmd:
+            system(f'start {cmd[cmd.find("t") + 1 : ]}')
             continue
         else:
             print(f'{cmd}: comando invalido!')
