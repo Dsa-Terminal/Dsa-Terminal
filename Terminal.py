@@ -33,8 +33,8 @@ from rich.markdown import Markdown
 from tqdm import tqdm, trange
 from rich.progress import track
 # ==========================
-system('pause')
 system('title Dsa Terminal -i --bin\init.sh')
+system('pause')
 system(r'bin\bash.exe bin\init.sh')
 # Funções
 def ProgressBar(titulo):
@@ -288,7 +288,7 @@ while True:
             print(r'\n                Quebra de linha')
         elif './' in cmd:
             cmd = cmd.replace('./', '')
-            system(fr'bin\bash.exe {cmd}')
+            system(fr'bin\bash.exe /files/{cmd}')
         elif cmd == 'help':
             print('Comando:              Função:\n')
             print('echo([mensagem]):     Escreve mensagens na tela')
@@ -341,6 +341,13 @@ while True:
                 print(f"CRIANDO ARQUIVO {cmd}..."), sleep(1)
                 auto_get_ProgressBar(0.03)
                 continue
+        elif 'rm' in cmd:
+            cmd = cmd.replace('rm ', '')
+            cmd = cmd.replace('rm', '')
+            if cmd == '':
+                print('Remove: Insira um nome-de-arquivo')
+            else:
+                system(f'del {cmd}')
         elif cmd == 'ls':
             system(r'bin\bash.exe bin\listdir.sh')
             continue
