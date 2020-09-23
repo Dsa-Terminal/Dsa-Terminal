@@ -33,9 +33,9 @@ from rich.markdown import Markdown
 from tqdm import tqdm, trange
 from rich.progress import track
 # ==========================
-system('title Dsa Terminal')
 system('pause')
-system('cls')
+system('title Dsa Terminal -i --bin\init.sh')
+system(r'bin\bash.exe bin\init.sh')
 # Funções
 def ProgressBar(titulo):
     with tqdm(total=100) as progressbar:
@@ -142,9 +142,18 @@ try:
 except FileNotFoundError:
     try:
         mkdir('files')
-    except FileFoundError:
+    except:
         print('Seu Dsa Terminal foi Atualizado para a versão mais atual!!'), sleep(10)
-        pass
+        print('Por favor me diga seu nome de usuario novamente:')
+        while True:
+            username: str = input('Username: ').strip().lower()
+            if username == "":
+                continue
+            else:
+                break
+        files.CriarArquivo('Terminal.dll')
+        files.Write('Terminal.dll', username)
+        system('cls')
     else:
         print(f'Bem-vindo ao Dsa Terminal versão {__version__}!')
         print(f'Estamos configurando tudo para você usar o Bash do Terminal...'), sleep(13.1)
@@ -193,6 +202,7 @@ except FileNotFoundError:
 ip = '0.0.0.0'
 session = randint(0, 10364)
 console = Console()
+system('title Dsa Terminal')
 print(strftime('Iniciando Dsa Terminal...'))
 print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
 print(strftime('====================Dsa Terminal===================')), sleep(2.9)
@@ -252,7 +262,11 @@ while True:
             system('title [Nano] - Dsa terminal')
             cmd = cmd.replace('nano ', '')
             cmd = cmd.replace('nano', '')
-            system(rf'usr\bin\nano.exe /files/{cmd}')
+            if cmd == '':
+                system(rf'usr\bin\nano.exe')
+                system(f'move {cmd} files')
+            else:
+                system(fr'usr\bin\nano.exe /files/{cmd}')
             system('title Dsa Terminal')
         elif 'echo(' in cmd:
             cmd = cmd.replace('echo(', '')
@@ -304,7 +318,12 @@ while True:
             system(f'start {cmd[cmd.find("t") + 1 : ]}')
             continue
         elif 'mkdir' in cmd:
-            system(fr'mkdir files\{cmd[cmd.find("r") + 1 : ]}')
+            cmd = cmd.replace('mkdir ', '')
+            cmd = cmd.replace('mkdir', '')
+            if cmd == '':
+                pass
+            else:
+                system(fr'mkdir files\{cmd}')
             continue
         elif 'touch' in cmd:
             cmd = cmd.replace('touch ', '')
@@ -328,6 +347,7 @@ while True:
             if cmd == '':
                 print('Incluide: Modulo sem nome')
             else:
+                auto_get_ProgressBar(0.01)
                 system(fr'Lib\{cmd}\Main.exe')
         else:
             print(f'{cmd}: comando invalido!')
