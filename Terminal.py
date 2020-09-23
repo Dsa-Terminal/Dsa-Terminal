@@ -51,7 +51,12 @@ def ProgressBar(titulo):
     for i in tqdm(range(20)):
         sleep(0.5)
         pass
+def git_bash(cmd):
+    system(f'bin\git.exe {cmd}')
+    return True
 class packge:
+    def __init__(self):
+        pass
     def pkg_install(command):
         cmd = command.replace('pkg install ', '')
         print(f'Coleção {cmd}...'), sleep(8)
@@ -66,6 +71,8 @@ class packge:
         system(fr'del Lib\{cmd}')
         return True
 class files:
+    def __init__(self):
+        pass
     def Write(filename, texto):
         try:
             a = open(filename, 'wt')
@@ -90,6 +97,8 @@ class files:
         else:
             return True
 class ping:
+    def __init__(self):
+        pass
     def ping_connect(ip, porta):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.settimeout(0.03)
@@ -145,11 +154,7 @@ print(strftime('====================Dsa Terminal===================')), sleep(2.
 while True:
     try:
         cmd: str = input(f'\033[32m{username}@mainFrame20:~$\033[m ').strip()
-        if cmd == 'about':
-            with open('README.md') as about:
-                abouter = Markdown(about.read())
-            console.print(abouter)
-        elif cmd == 'ping /?':
+        if cmd == 'ping /?':
             print('Ping: Listagem de parametros\n')
             print('ping                Conectar com um servidor')
             print('ping -v             Verifica se servidor existe')
@@ -183,18 +188,6 @@ while True:
                 print('Ping: É necessario fornecer uma porta!')
             else:
                 ping.nc(int(cmd))
-        elif 'python3' in cmd:
-            cmd = cmd.replace('python3 ', '')
-            cmd = cmd.replace('python3', '')
-            if cmd == '':
-                system(f'Python\python.exe')
-            elif '-m' in cmd:
-                system(f'Python\python.exe {cmd}')
-            else:
-                system(f'Python\python.exe {cmd}')
-        elif 'pip' in cmd:
-            system(f'Python\python.exe -m {cmd}')
-            continue
         elif 'nano' in cmd:
             print('Dsa Terminal editor foi iniciado')
             system('title [Nano] - Dsa terminal')
@@ -228,6 +221,9 @@ while True:
             for d in range(0, 1):
                 continue
             del d
+        elif cmd == 'exit':
+            del cmd, username, session, ip, console
+            break
         elif cmd == 'clear':
             system('cls')
             continue

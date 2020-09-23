@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Versão 1.0.4 completa" />
+    <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Versão 1.0.4 completa">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,13 +40,16 @@
   </component>
   <component name="JupyterTrust" id="cde85aa9-8d87-4265-bc94-6576e198fe47" />
   <component name="ProjectId" id="1hsO02sRKDH113unGV0yNeUVC3B" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="C:/Python/python.exe" />
@@ -58,7 +64,8 @@
       <option name="presentableId" value="Default" />
       <updated>1600796129377</updated>
       <workItem from="1600796255478" duration="782000" />
-      <workItem from="1600798345849" duration="11114000" />
+      <workItem from="1600798345849" duration="12319000" />
+      <workItem from="1600867030369" duration="640000" />
     </task>
     <servers />
   </component>
@@ -75,6 +82,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Versão 1.0.4 completa" />
@@ -89,10 +97,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#Intentions/0.0.1280.680@0.0.1280.680" timestamp="1600811389440" />
-    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1600803406130">
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600813756957">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1600803406130" />
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1600813756957" />
+    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1600813447786">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1600813447786" />
     <state x="420" y="95" key="FileChooserDialogImpl" timestamp="1600799032883">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -115,7 +127,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Terminal.py</url>
-          <line>4</line>
+          <line>27</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
