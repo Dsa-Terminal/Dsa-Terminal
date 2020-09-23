@@ -272,7 +272,6 @@ while True:
         elif cmd == 'cls':
             system('cls')
             continue
-
         else:
             print(f'{cmd}: comando invalido!')
             continue

@@ -66,7 +66,7 @@
       <workItem from="1600796255478" duration="782000" />
       <workItem from="1600798345849" duration="12319000" />
       <workItem from="1600867030369" duration="2913000" />
-      <workItem from="1600871430171" duration="4485000" />
+      <workItem from="1600871430171" duration="9199000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -138,16 +138,5 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1600868427189" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Terminal.py</url>
-          <line>27</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
