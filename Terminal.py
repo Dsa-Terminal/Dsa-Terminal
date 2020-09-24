@@ -297,6 +297,9 @@ while True:
         elif cmd == 'ls':
             system(r'bin\bash.exe bin\listdir.sh')
             continue
+        elif cmd == 'ls -a':
+            system(r'bin\bash.exe bin\bashy_setup.sh')
+            continue
         elif cmd == 'ipconfig':
             system('ipconfig')
             continue
