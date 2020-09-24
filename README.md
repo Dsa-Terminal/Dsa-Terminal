@@ -34,6 +34,6 @@ e digite *help* que você vera todos os comandos
 _____________________________________________________________________________
 Para saber os parametros do comando digite `[comando] /?`
 
-# Importando modulos
+# Importando módulos
 Sendo um recurso `Beta` a importação de modulos usando o comando: 
 - `Incluide [modulo]`
