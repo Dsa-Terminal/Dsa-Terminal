@@ -214,16 +214,16 @@ while True:
             else:
                 system(fr'usr\bin\nano.exe /files/{cmd}')
             system('title Dsa Terminal')
-        elif 'echo(' in cmd:
-            cmd = cmd.replace('echo(', '')
-            cmd = cmd.replace('):', '')
+        elif 'echo' in cmd:
+            cmd = cmd.replace('echo ', '')
+            cmd = cmd.replace('echo', '')
             cmd = cmd.replace(r'\n', '\n')
             cmd = cmd.replace(r'\t', '\t')
             print(cmd)
             continue
         elif cmd == 'echo /?':
             print('Echo: Listagem de parametros\n')
-            print(r'    echo([mensagem[parametros de formatação]]):')
+            print(r'    echo [mensagem[parametros de formatação]]')
             print(r'\t                Tab')
             print(r'\n                Quebra de linha')
         elif './' in cmd:
@@ -252,7 +252,7 @@ while True:
                 continue
             del d
         elif cmd == 'exit':
-            del cmd, username, session, ip, console
+            auto_get_ProgressBar(0.01)
             break
         elif cmd == 'clear':
             system('cls')
@@ -294,10 +294,6 @@ while True:
                 print('Remove: Insira um nome-de-arquivo')
             else:
                 system(fr'del files\{cmd}')
-        elif 'rmdir' in cmd:
-            cmd = cmd.replace('rmdir ', '')
-            cmd = cmd.replace('rmdir', '')
-            system(fr'del files\{cmd}')
         elif cmd == 'ls':
             system(r'bin\bash.exe bin\listdir.sh')
             continue
