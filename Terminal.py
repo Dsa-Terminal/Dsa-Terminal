@@ -114,9 +114,8 @@ class ping:
         pass
     def ping_connect(ip, porta):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(0.03)
         try:
-            s.connect_ex(ip, porta)
+            pass
         except:
             print(f'Erro ao se conectar com {ip}')
         else:
@@ -126,6 +125,7 @@ class ping:
                     print(f'Ping ===> root@mainFrame20 (localhost)')
                     print(f'|Executando!!!')
                     print(f'Recebendo respostas do Servidor {ip}')
+                    print(f'|{porta} Conectada em serviços do win32')
                 except KeyboardInterrupt:
                     break
     def ping_ip_serverstate(ip, porta):
@@ -147,7 +147,8 @@ class ping:
             except KeyboardInterrupt:
                 break
 # Set up
-ip = '0.0.0.0'
+hostname = socket.gethostname()
+ip = socket.gethostbyname(hostname)
 session = randint(0, 10364)
 console = Console()
 system('title Dsa Terminal')
@@ -302,7 +303,8 @@ while True:
             system(r'bin\bash.exe bin\bashy_setup.sh')
             continue
         elif cmd == 'ipconfig':
-            system('ipconfig')
+            print('Configuração de IP do Dsa Terminal [conexão direta]!')
+            print(f'IP: [{ip}] Porta: [80]')
             continue
         elif 'incluide' in cmd:
             cmd = cmd.replace('incluide ', '')
