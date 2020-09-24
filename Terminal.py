@@ -167,6 +167,7 @@ while True:
             print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
             print('pkg install [pkgname]      Instala pacotes')
             print('pkg uninstall [pkgname]    Desinstala pacotes')
+            print('pkg update                 Atualiza versão instalada do Dsa Terminal')
         elif 'pkg install ' in cmd:
             packge.pkg_install(cmd)
             continue
@@ -235,6 +236,7 @@ while True:
             print('nano [arquivo]        Dsa Terminal E-ditor')
             print('ping [parametros]     Opções de rede remota')
             print('help                  Exibe ajuda')
+            print('version               Exibe versão instalada')
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
             print('st [Tarefa]           Começa uma tarefa do Windows')
