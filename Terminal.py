@@ -309,6 +309,9 @@ while True:
         elif cmd == 'cls':
             system('cls')
             continue
+        elif cmd == 'version':
+            print(__version__)
+            continue
         elif 'st' in cmd:
             system(f'start {cmd[cmd.find("t") + 1 : ]}')
             continue
