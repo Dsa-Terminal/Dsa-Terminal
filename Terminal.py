@@ -60,10 +60,11 @@ def auto_get_ProgressBar(time):
 def update():
     system('title [Update] - Dsa Terminal')
     print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(21)
-    auto_get_ProgressBar(2)
+    auto_get_ProgressBar(0.1)
     print('\033[mDecodificando Setups paea o Compilador GitBoster (info).'), sleep(1.99)
     ProgressBar('Validando Serial')
     system('bin\git.exe pull')
+    print(f'Setup de versão {__version__} Anterior <==== Update selected')
     return True
 class packge:
     def __init__(self):
@@ -87,10 +88,20 @@ class packge:
             system(fr'move {cmd} Lib')
             return True
     def pkg_uninstall(command):
-        cmd = command.replace('pkg install ', '')
+        cmd = command.replace('pkg uninstall ', '')
         print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
         ProgressBar('Desinstalando')
         system(fr'del Lib\{cmd}')
+        return True
+    def pkg_update(command):
+        cmd = command.replace('pkg uninstall ', '')
+        print(f'\033[32mLendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
+        print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
+        auto_get_ProgressBar(1)
+        ProgressBar('Baixando tools')
+        system(rf'del Lib\{cmd}')
+        system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
+        system(fr'move {cmd} Lib')
         return True
 class files:
     def __init__(self):
