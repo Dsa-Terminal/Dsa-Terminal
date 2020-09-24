@@ -283,8 +283,8 @@ while True:
             if cmd == '':
                 open(r'files\Novo arquivo.txt', 'wt+')
             else:
-                open(f'files\cmd', 'wt+')
-                print(f"CRIANDO ARQUIVO {cmd}..."), sleep(1)
+                open(fr'files\{cmd}', 'wt+')
+                print(f"Criando arquivos {cmd}..."), sleep(1)
                 auto_get_ProgressBar(0.03)
                 continue
         elif 'rm' in cmd:
@@ -293,11 +293,11 @@ while True:
             if cmd == '':
                 print('Remove: Insira um nome-de-arquivo')
             else:
-                system(fr'del \files\{cmd}')
+                system(fr'del files\{cmd}')
         elif 'rmdir' in cmd:
             cmd = cmd.replace('rmdir ', '')
             cmd = cmd.replace('rmdir', '')
-            system(fr'del \files\{cmd}')
+            system(fr'del files\{cmd}')
         elif cmd == 'ls':
             system(r'bin\bash.exe bin\listdir.sh')
             continue
