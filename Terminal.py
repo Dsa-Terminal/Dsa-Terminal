@@ -242,6 +242,9 @@ while True:
             cmd = cmd.replace(r'\t', '\t')
             print(cmd)
             continue
+        elif ';;' in cmd:
+            print()
+            continue
         elif cmd == 'echo /?':
             print('Echo: Listagem de parametros\n')
             print(r'    echo [mensagem[parametros de formatação]]')
