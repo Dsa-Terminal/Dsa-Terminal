@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.0.5'
+__version__ = '1.0.6'
 # Importando modulos
 import socket
 from os import system, startfile, mkdir, listdir
@@ -35,6 +35,7 @@ from rich.progress import track
 # ==========================
 system('title Dsa Terminal -i --login --bin\init.sh')
 system('pause')
+system(r'bin\bash.exe bin\init.sh')
 # Funções
 def ProgressBar(titulo):
     with tqdm(total=100) as progressbar:
@@ -145,58 +146,6 @@ class ping:
                 sleep(17.8)
             except KeyboardInterrupt:
                 break
-# Primeiro Uso
-try:
-    with open('Terminal.dll') as username:
-        username = username.read()
-except FileNotFoundError:
-    system('title Bem vindo ao Dsa Terminal')
-    print(f'Bem-vindo ao Dsa Terminal versão {__version__}!')
-    print(f'Estamos configurando tudo para você usar o Bash do Terminal...'), sleep(13.1)
-    ProgressBar('Instalando tools')
-    auto_get_ProgressBar(1)
-    while True:
-        username: str = input('\033[mUsername: ').strip().lower()
-        if username == "":
-            continue
-        else:
-            break
-    files.CriarArquivo('Terminal.dll')
-    files.Write('Terminal.dll', username)
-    system('cls')
-    print('Olá vamos te dar um tutorial rapido de como usar o Dsa Terminal')
-    print('1 - Para ver todos os comandos digite "help"')
-    print('2 - Para ver os parametros digite [comando] /?')
-    print('3 - Para sair digite "exit"')
-    system('pause')
-    print("""
-    MIT License
-    
-    Copyright (c) 2020 Dsa-Terminal
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
-    """)
-    system('pause')
-    system('cls')
-else:
-    system(r'bin\bash.exe bin\init.sh')
-    pass
 # Set up
 ip = '0.0.0.0'
 session = randint(0, 10364)
@@ -207,7 +156,7 @@ print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'
 print(strftime('====================Dsa Terminal===================')), sleep(2.9)
 while True:
     try:
-        cmd: str = input(f'\033[32m{username}@mainFrame20:~$\033[m ').strip()
+        cmd: str = input(f'\033[32mroot@mainFrame20:~$\033[m ').strip()
         if cmd == 'ping /?':
             print('Ping: Listagem de parametros\n')
             print('ping                Conectar com um servidor')
