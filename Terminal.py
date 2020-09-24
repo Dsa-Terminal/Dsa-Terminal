@@ -35,7 +35,6 @@ from rich.progress import track
 # ==========================
 system('title Dsa Terminal -i --login --bin\init.sh')
 system('pause')
-system(r'bin\bash.exe bin\init.sh')
 # Funções
 def ProgressBar(titulo):
     with tqdm(total=100) as progressbar:
@@ -57,9 +56,14 @@ def do_step(set, time):
 def auto_get_ProgressBar(time):
     for step in track(range(100)):
         do_step(step, time)
-def git_bash(cmd):
-    system(f'bin\git.exe {cmd.replace("git ", "")}')
-    return True
+class update:
+    def __init__(self):
+        system('title [Update] - Dsa Terminal')
+        print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(21)
+        auto_get_ProgressBar(2)
+        ProgressBar('Validando Serial')
+        system('bin\git.exe pull')
+        return True
 class packge:
     def __init__(self):
         pass
@@ -146,40 +150,25 @@ try:
     with open('Terminal.dll') as username:
         username = username.read()
 except FileNotFoundError:
-    try:
-        mkdir('files')
-    except:
-        print('Seu Dsa Terminal foi Atualizado para a versão mais atual!!'), sleep(10)
-        print('Por favor me diga seu nome de usuario novamente:')
-        while True:
-            username: str = input('Username: ').strip().lower()
-            if username == "":
-                continue
-            else:
-                break
-        files.CriarArquivo('Terminal.dll')
-        files.Write('Terminal.dll', username)
-        system('cls')
-    else:
-        print(f'Bem-vindo ao Dsa Terminal versão {__version__}!')
-        print(f'Estamos configurando tudo para você usar o Bash do Terminal...'), sleep(13.1)
-        ProgressBar('Instalando tools')
-        auto_get_ProgressBar(1)
-        while True:
-            username: str = input('\033[mUsername: ').strip().lower()
-            if username == "":
-                continue
-            else:
-                break
-        files.CriarArquivo('Terminal.dll')
-        files.Write('Terminal.dll', username)
-        system('cls')
-        print('Olá vamos te dar um tutorial rapido de como usar o Dsa Terminal')
-        print('1 - Para ver todos os comandos digite "help"')
-        print('2 - Para ver os parametros digite [comando] /?')
-        print('3 - Para sair digite "exit"')
-        system('pause')
-        print("""
+    print(f'Bem-vindo ao Dsa Terminal versão {__version__}!')
+    print(f'Estamos configurando tudo para você usar o Bash do Terminal...'), sleep(13.1)
+    ProgressBar('Instalando tools')
+    auto_get_ProgressBar(1)
+    while True:
+        username: str = input('\033[mUsername: ').strip().lower()
+        if username == "":
+            continue
+        else:
+            break
+    files.CriarArquivo('Terminal.dll')
+    files.Write('Terminal.dll', username)
+    system('cls')
+    print('Olá vamos te dar um tutorial rapido de como usar o Dsa Terminal')
+    print('1 - Para ver todos os comandos digite "help"')
+    print('2 - Para ver os parametros digite [comando] /?')
+    print('3 - Para sair digite "exit"')
+    system('pause')
+    print("""
     MIT License
     
     Copyright (c) 2020 Dsa-Terminal
@@ -202,8 +191,11 @@ except FileNotFoundError:
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
     """)
-        system('pause')
-        system('cls')
+    system('pause')
+    system('cls')
+else:
+    system(r'bin\bash.exe bin\init.sh')
+    pass
 # Set up
 ip = '0.0.0.0'
 session = randint(0, 10364)
@@ -253,9 +245,6 @@ while True:
                     break
             ping.ping_ip_serverstate(ipa, portal)
             del ipa, portal
-        elif 'git' in cmd:
-            git_bash(cmd=cmd)
-            continue
         elif 'ping -nc' in cmd:
             cmd = cmd.replace('ping -nc ', '')
             cmd = cmd.replace('ping -nc', '')
@@ -323,6 +312,9 @@ while True:
         elif 'st' in cmd:
             system(f'start {cmd[cmd.find("t") + 1 : ]}')
             continue
+        elif cmd == 'pkg update':
+            update.__init__()
+            break
         elif 'mkdir' in cmd:
             cmd = cmd.replace('mkdir ', '')
             cmd = cmd.replace('mkdir', '')
