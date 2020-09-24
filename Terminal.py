@@ -322,6 +322,12 @@ while True:
         elif cmd == 'ls -a':
             system(r'bin\bash.exe bin\bashy_setup.sh')
             continue
+        elif 'web' in cmd:
+            cmd = cmd.replace('web ', '')
+            cmd = cmd.replace('web', '')
+            system(f'start "" "https://{cmd}"')
+            auto_get_ProgressBar(0.01)
+            del http
         elif cmd == 'ipconfig':
             print('Configuração de IP do Dsa Terminal [conexão direta]!')
             print(f'IP: [{ip}] Porta: [80]')

@@ -20,7 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/run.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/run.reg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/win32/Script.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/win32/Setup.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/win32/win32.ini" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +37,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Jupyter Notebook" />
         <option value="Gherkin feature file" />
+        <option value="Python Script" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -121,7 +128,7 @@
       <workItem from="1600963783529" duration="4064000" />
       <workItem from="1600969180178" duration="248000" />
       <workItem from="1600970783760" duration="26000" />
-      <workItem from="1600979853855" duration="554000" />
+      <workItem from="1600979853855" duration="1839000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
