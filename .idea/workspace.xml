@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
-      <change afterPath="$PROJECT_DIR$/files/.bash_setup/IPCONFIG.exc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/.bash_setup/UserDataBase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/.bash_setup/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lib32/__init__.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lib32/exec.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lib32/main.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Gherkin feature file" />
       </list>
     </option>
   </component>
@@ -113,7 +114,7 @@
       <workItem from="1600886491557" duration="16524000" />
       <workItem from="1600953633482" duration="6784000" />
       <workItem from="1600960908158" duration="1565000" />
-      <workItem from="1600963783529" duration="1325000" />
+      <workItem from="1600963783529" duration="2462000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -161,14 +162,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#Intentions/0.0.1280.680@0.0.1280.680" timestamp="1600811389440" />
-    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600876001985">
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600965450495">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1600876001985" />
-    <state x="391" y="142" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600964215775">
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1600965450495" />
+    <state x="391" y="142" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600966060972">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="391" y="142" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1600964215775" />
+    <state x="391" y="142" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1600966060972" />
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1600889966399">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -189,6 +190,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1600868427189" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1600966146487">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1600966146487" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
