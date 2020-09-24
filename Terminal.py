@@ -61,6 +61,7 @@ def update():
     system('title [Update] - Dsa Terminal')
     print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(21)
     auto_get_ProgressBar(2)
+    print('\033[mDecodificando Setups paea o Compilador GitBoster (info).'), sleep(1.99)
     ProgressBar('Validando Serial')
     system('bin\git.exe pull')
     return True
