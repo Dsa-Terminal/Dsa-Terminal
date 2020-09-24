@@ -268,7 +268,8 @@ while True:
             continue
         elif cmd == 'pkg update':
             update()
-            continue
+            system('pause')
+            break
         elif 'mkdir' in cmd:
             cmd = cmd.replace('mkdir ', '')
             cmd = cmd.replace('mkdir', '')
