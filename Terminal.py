@@ -150,6 +150,7 @@ try:
     with open('Terminal.dll') as username:
         username = username.read()
 except FileNotFoundError:
+    system('title Bem vindo ao Dsa Terminal')
     print(f'Bem-vindo ao Dsa Terminal versão {__version__}!')
     print(f'Estamos configurando tudo para você usar o Bash do Terminal...'), sleep(13.1)
     ProgressBar('Instalando tools')
@@ -287,7 +288,6 @@ while True:
             print('help                  Exibe ajuda')
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
-            print('git [parametros]      Versionando com Git')
             print('st [Tarefa]           Começa uma tarefa do Windows')
             print('mkdir [pasta]         Cria uma pasta')
             print('touch [arquivo]       Cria um arquivo')
