@@ -1,0 +1,13 @@
+;; Iniciando jundo do Dsa Terminal
+{
+    Dsa Terminal -i --login --bin\init.sh
+}
+{
+    Verify {username} ;; Nome de usuario de .net framewotk
+    function (a, b): {
+        var init = "Dsa Terminal -i --login --bin\init.sh"
+        funtion self: {
+            __init__ = init.bash(cmder).ubuntu
+            }
+        }
+}

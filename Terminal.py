@@ -74,9 +74,18 @@ class packge:
         print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
         auto_get_ProgressBar(1)
         ProgressBar('Baixando tools')
-        system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
-        system(fr'move {cmd} Lib')
-        return True
+        try:
+            open(fr'Lib\cache32-82\{sudo}.main')
+            open(fr'Lib\cache32-82\{sudo}.js')
+            open(fr'Lib\cache32-82\{sudo}.pkm')
+            open(fr'Lib\cache32-82\{sudo}.rpg')
+        except:
+            print('Você já instalou este modulo antes use o "pkg update [modulo]"')
+            return None
+        else:
+            system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
+            system(fr'move {cmd} Lib')
+            return True
     def pkg_uninstall(command):
         cmd = command.replace('pkg install ', '')
         print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
