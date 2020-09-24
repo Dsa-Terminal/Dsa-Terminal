@@ -57,14 +57,13 @@ def do_step(set, time):
 def auto_get_ProgressBar(time):
     for step in track(range(100)):
         do_step(step, time)
-class update:
-    def __init__(self):
-        system('title [Update] - Dsa Terminal')
-        print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(21)
-        auto_get_ProgressBar(2)
-        ProgressBar('Validando Serial')
-        system('bin\git.exe pull')
-        return True
+def update():
+    system('title [Update] - Dsa Terminal')
+    print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(21)
+    auto_get_ProgressBar(2)
+    ProgressBar('Validando Serial')
+    system('bin\git.exe pull')
+    return True
 class packge:
     def __init__(self):
         pass
@@ -267,7 +266,7 @@ while True:
             system(f'start {cmd[cmd.find("t") + 1 : ]}')
             continue
         elif cmd == 'pkg update':
-            update.__init__()
+            update()
             break
         elif 'mkdir' in cmd:
             cmd = cmd.replace('mkdir ', '')
