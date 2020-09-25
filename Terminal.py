@@ -168,10 +168,7 @@ class ping:
                 break
 class python:
     def __init__(filename):
-        if filename == '':
-            system('run\Python3\python.exe')
-        else:
-            system(f'run\Python3\python.exe {filename}')
+        system('run\Python3\python.exe')
     def run_module(module):
         if module == '':
             print('Python: Insira um nome de modulo')

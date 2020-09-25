@@ -120,7 +120,7 @@
       <workItem from="1600970783760" duration="26000" />
       <workItem from="1600979853855" duration="5234000" />
       <workItem from="1601033513957" duration="3229000" />
-      <workItem from="1601037363698" duration="1543000" />
+      <workItem from="1601037363698" duration="2628000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -217,6 +217,11 @@
           <url>file://$PROJECT_DIR$/Terminal.py</url>
           <line>26</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Terminal.py</url>
+          <line>171</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
