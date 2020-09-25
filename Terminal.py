@@ -358,6 +358,13 @@ while True:
         elif cmd == 'ls -a':
             system(r'bin\bash.exe bin\bashy_setup.sh')
             continue
+        elif 'pkg-get' in cmd:
+            cmd = cmd.replace('pkg-get ', '')
+            cmd = cmd.replace('pkg-get', '')
+            if cmd == '':
+                pass
+            else:
+                system(f'run\Python3\Scripts\pip.exe {cmd}')
         elif 'web' in cmd:
             cmd = cmd.replace('web ', '')
             cmd = cmd.replace('web', '')
