@@ -177,10 +177,6 @@ class python:
             print('Python: Insira um nome de modulo')
         else:
             system(f'run\Python3\python.exe -m {module}')
-    def pip_packge_manager(cmd):
-        system(f'run\Python3\python.exe -m {cmd}')
-    def __truediv__(self, other='Python'):
-        pass
 # Set up
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
@@ -330,9 +326,6 @@ while True:
             cmd = cmd.replace('python3 ', '')
             cmd = cmd.replace('python3', '')
             python.__init__(cmd)
-        elif 'pip' in cmd:
-            python.pip_packge_manager(cmd)
-            continue
         elif 'python3 -m' in cmd:
             cmd = cmd.replace('python3 -m ', '')
             cmd = cmd.replace('python3 -m', '')
