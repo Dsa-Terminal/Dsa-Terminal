@@ -45,7 +45,8 @@ para a ultima versão!
 Facil digite `version` que ele mostra-ra a versão atual que já sera diferente da anterior ou 
 pode ser a mesma, mais você verá alguns bugs e novos comandos em `help`!
 Ou nem digite na inicialização ele mostra
-- `Iniciando Dsa Terminal...` 
-- `(C) 2020 Dsa Terminal [versão instalada] Sessão: [código de sessão]`
-- `=============================Dsa Terminal==========================`
-
+```
+Iniciando Dsa Terminal... 
+(C) 2020 Dsa Terminal [versão instalada] Sessão: [código de sessão]
+=============================Dsa Terminal==========================
+```
