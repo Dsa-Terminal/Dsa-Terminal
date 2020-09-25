@@ -166,14 +166,6 @@ class ping:
                 sleep(17.8)
             except KeyboardInterrupt:
                 break
-class python:
-    def __init__(filename):
-        system('run\Python3\python.exe')
-    def run_module(module):
-        if module == '':
-            print('Python: Insira um nome de modulo')
-        else:
-            system(f'run\Python3\python.exe -m {module}')
 # Set up
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
@@ -196,6 +188,7 @@ while True:
             print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
             print('pkg install [pkgname]      Instala pacotes')
             print('pkg uninstall [pkgname]    Desinstala pacotes')
+            print('pkg-get (for pip)          Suporte pip [Python for Dsa Terminal]')
             print('pkg update                 Atualiza versão instalada do Dsa Terminal')
         elif 'pkg install ' in cmd:
             packge.pkg_install(cmd)
@@ -358,13 +351,6 @@ while True:
         elif cmd == 'ls -a':
             system(r'bin\bash.exe bin\bashy_setup.sh')
             continue
-        elif 'pkg-get' in cmd:
-            cmd = cmd.replace('pkg-get ', '')
-            cmd = cmd.replace('pkg-get', '')
-            if cmd == '':
-                pass
-            else:
-                system(f'run\Python3\Scripts\pip.exe {cmd}')
         elif 'web' in cmd:
             cmd = cmd.replace('web ', '')
             cmd = cmd.replace('web', '')

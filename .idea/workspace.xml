@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/collections/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/collections/abc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/http/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/http/client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/http/cookiejar.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/http/cookies.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/http/server.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/logging/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/logging/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/Python3/AF/logging/handlers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +120,7 @@
       <workItem from="1600970783760" duration="26000" />
       <workItem from="1600979853855" duration="5234000" />
       <workItem from="1601033513957" duration="3229000" />
-      <workItem from="1601037363698" duration="3674000" />
+      <workItem from="1601037363698" duration="5439000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -225,11 +217,6 @@
           <url>file://$PROJECT_DIR$/Terminal.py</url>
           <line>26</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Terminal.py</url>
-          <line>171</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
