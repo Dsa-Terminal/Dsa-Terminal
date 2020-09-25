@@ -37,4 +37,4 @@ Versionando como contribuidor
 Se você é um novo contribuidor está parte é para você que tem os direitos de alteração,
 sugestão, poder de alterar o código-fonte e continuar tendo o direito de consumidor, etc
 
-Você deve ter meu contato 
+Você deve ter meu contato Felipe Souza Pereira Lima conversamos melhor via Whatsapp!

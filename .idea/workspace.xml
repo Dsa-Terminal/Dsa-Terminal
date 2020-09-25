@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
-      <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/Docs/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/Docs/README.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +119,7 @@
       <workItem from="1600970783760" duration="26000" />
       <workItem from="1600979853855" duration="5234000" />
       <workItem from="1601033513957" duration="3229000" />
+      <workItem from="1601037363698" duration="241000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
