@@ -166,6 +166,21 @@ class ping:
                 sleep(17.8)
             except KeyboardInterrupt:
                 break
+class python:
+    def __init__(filename):
+        if filename == '':
+            system('run\Python3\python.exe')
+        else:
+            system(f'run\Python3\python.exe {filename}')
+    def run_module(module):
+        if module == '':
+            print('Python: Insira um nome de modulo')
+        else:
+            system(f'run\Python3\python.exe -m {module}')
+    def pip_packge_manager(cmd):
+        system(f'run\Python3\python.exe -m {cmd}')
+    def __truediv__(self, other='Python'):
+        pass
 # Set up
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
@@ -311,6 +326,17 @@ while True:
             update()
             system('pause')
             break
+        elif 'python3' in cmd:
+            cmd = cmd.replace('python3 ', '')
+            cmd = cmd.replace('python3', '')
+            python.__init__(cmd)
+        elif 'pip' in cmd:
+            python.pip_packge_manager(cmd)
+            continue
+        elif 'python3 -m' in cmd:
+            cmd = cmd.replace('python3 -m ', '')
+            cmd = cmd.replace('python3 -m', '')
+            python.run_module(cmd)
         elif 'mkdir' in cmd:
             cmd = cmd.replace('mkdir ', '')
             cmd = cmd.replace('mkdir', '')
