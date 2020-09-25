@@ -312,14 +312,20 @@ while True:
             update()
             system('pause')
             break
-        elif 'python3' in cmd:
-            cmd = cmd.replace('python3 ', '')
-            cmd = cmd.replace('python3', '')
-            python.__init__(cmd)
-        elif 'python3 -m' in cmd:
-            cmd = cmd.replace('python3 -m ', '')
-            cmd = cmd.replace('python3 -m', '')
-            python.run_module(cmd)
+        elif 'lua' in cmd:
+            cmd = cmd.replace('lua ', '')
+            cmd = cmd.replace('lua', '')
+            system('title lua for Dsa Terminal')
+            system('cls')
+            if cmd == '':
+                system('var\Lua\lua54.exe')
+            else:
+                system(f'var\Lua\lua54.exe {cmd}')
+        elif cmd == 'node':
+            system('cls')
+            system('title node.js for Dsa Terminal')
+            system(r'var\node.exe')
+            continue
         elif 'mkdir' in cmd:
             cmd = cmd.replace('mkdir ', '')
             cmd = cmd.replace('mkdir', '')
