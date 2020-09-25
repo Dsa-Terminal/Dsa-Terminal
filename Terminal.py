@@ -318,13 +318,15 @@ while True:
             system('title lua for Dsa Terminal')
             system('cls')
             if cmd == '':
-                system('var\Lua\lua54.exe')
+                system('var\Lua\lua.exe')
             else:
-                system(f'var\Lua\lua54.exe {cmd}')
+                system(f'var\Lua\lua.exe {cmd}')
+            system('title Dsa terminal')
         elif cmd == 'node':
             system('cls')
             system('title node.js for Dsa Terminal')
             system(r'var\node.exe')
+            system('title Dsa terminal')
             continue
         elif 'mkdir' in cmd:
             cmd = cmd.replace('mkdir ', '')
