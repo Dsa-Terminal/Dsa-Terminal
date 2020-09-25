@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.0.6'
+__version__ = '1.0.7'
 # Importando modulos
 import socket
 from os import system, startfile, mkdir, listdir
@@ -36,6 +36,9 @@ from rich.progress import track
 system('title Dsa Terminal -i --login --bin\init.sh')
 system('pause')
 system(r'bin\bash.exe bin\init.sh')
+# Ipconfig
+hostname = socket.gethostname()
+ip = socket.gethostbyname(hostname)
 # Funções
 def ProgressBar(titulo):
     with tqdm(total=100) as progressbar:
@@ -167,8 +170,6 @@ class ping:
             except KeyboardInterrupt:
                 break
 # Set up
-hostname = socket.gethostname()
-ip = socket.gethostbyname(hostname)
 session = randint(0, 10364)
 console = Console()
 system('title Dsa Terminal')
@@ -188,7 +189,6 @@ while True:
             print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
             print('pkg install [pkgname]      Instala pacotes')
             print('pkg uninstall [pkgname]    Desinstala pacotes')
-            print('pkg-get (for pip)          Suporte pip [Python for Dsa Terminal]')
             print('pkg update                 Atualiza versão instalada do Dsa Terminal')
         elif 'pkg install ' in cmd:
             packge.pkg_install(cmd)
