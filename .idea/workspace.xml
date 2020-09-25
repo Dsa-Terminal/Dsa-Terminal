@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações" />
+    <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,11 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="cde85aa9-8d87-4265-bc94-6576e198fe47">
-    <option name="files">
-      <option value="run\win32\Setup.ipynb" />
-    </option>
-  </component>
+  <component name="JupyterTrust" id="cde85aa9-8d87-4265-bc94-6576e198fe47" />
   <component name="ProjectId" id="1hsO02sRKDH113unGV0yNeUVC3B" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -120,6 +118,7 @@
       <workItem from="1600969180178" duration="248000" />
       <workItem from="1600970783760" duration="26000" />
       <workItem from="1600979853855" duration="5234000" />
+      <workItem from="1601033513957" duration="2680000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
