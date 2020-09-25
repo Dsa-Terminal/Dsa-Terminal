@@ -246,7 +246,7 @@ while True:
             print(cmd)
             continue
         elif ';;' in cmd:
-            print()
+            auto_get_ProgressBar(0.01)
             continue
         elif cmd == 'echo /?':
             print('Echo: Listagem de parametros\n')
