@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
+      <change afterPath="$PROJECT_DIR$/run/Pkg-get/Cache.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run/Pkg-get/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run/Pkg-get/pkg-get.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +122,7 @@
       <workItem from="1600970783760" duration="26000" />
       <workItem from="1600979853855" duration="5234000" />
       <workItem from="1601033513957" duration="3229000" />
-      <workItem from="1601037363698" duration="5439000" />
+      <workItem from="1601037363698" duration="6111000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -172,10 +174,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1600975985308" />
-    <state x="391" y="142" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600978238876">
+    <state x="391" y="142" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601044130267">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="391" y="142" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1600978238876" />
+    <state x="391" y="142" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1601044130267" />
     <state x="228" y="0" width="1052" height="667" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1600975835915">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
