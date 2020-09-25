@@ -286,22 +286,12 @@ while True:
             cmd = cmd.replace(r'\t', '\t')
             cmd = cmd.replace(r'"', '')
             if cmd == '= nil':
-                system('del tmp\set.exc')
-                print('Registro deletado')
+                del myload
+                print('Registro deletado!')
                 continue
             else:
-                try:
-                    files.CriarArquivo('tmp\set.exc')
-                except:
-                    system('del tmp\set.exc')
-                    files.CriarArquivo('tmp\set.exc')
-                    files.Write('tmp\set.exc', cmd)
-                    print('Registro completo!')
-                else:
-                    files.Write('tmp\set.exc', cmd)
-                    print('Registro completo!')
-                with open('tmp\set.exc', 'r') as myload:
-                    myload = myload.read()
+                myload = cmd
+                continue
         elif cmd == 'exit':
             auto_get_ProgressBar(0.01)
             break
