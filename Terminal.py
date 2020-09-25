@@ -238,8 +238,10 @@ while True:
         elif 'echo' in cmd:
             cmd = cmd.replace('echo ', '')
             cmd = cmd.replace('echo', '')
+            cmd = cmd.replace('"', '')
             cmd = cmd.replace(r'\n', '\n')
             cmd = cmd.replace(r'\t', '\t')
+            cmd = cmd.replace(r'%myload%', myload)
             print(cmd)
             continue
         elif ';;' in cmd:
@@ -250,6 +252,7 @@ while True:
             print(r'    echo [mensagem[parametros de formatação]]')
             print(r'\t                Tab')
             print(r'\n                Quebra de linha')
+            print(r'%myload%          Valor definido')
         elif './' in cmd:
             cmd = cmd.replace('./', '')
             system(fr'bin\bash.exe /files/{cmd}')
@@ -265,6 +268,7 @@ while True:
             print('block                 Protetor de tela')
             print('st [Tarefa]           Começa uma tarefa do Windows')
             print('mkdir [pasta]         Cria uma pasta')
+            print('set [options]         Difinindo variaveis seriais')
             print('touch [arquivo]       Cria um arquivo')
             print('incluide [modulo]     Importa modulo e o executa')
             print('exit                  Sai do Dsa Terminal')
@@ -275,6 +279,29 @@ while True:
             for d in range(0, 1):
                 continue
             del d
+        elif 'set' in cmd:
+            cmd = cmd.replace('set ', '')
+            cmd = cmd.replace('set', '')
+            cmd = cmd.replace(r'\n', '\n')
+            cmd = cmd.replace(r'\t', '\t')
+            cmd = cmd.replace(r'"', '')
+            if cmd == '= nil':
+                system('del tmp\set.exc')
+                print('Registro deletado')
+                continue
+            else:
+                try:
+                    files.CriarArquivo('tmp\set.exc')
+                except:
+                    system('del tmp\set.exc')
+                    files.CriarArquivo('tmp\set.exc')
+                    files.Write('tmp\set.exc', cmd)
+                    print('Registro completo!')
+                else:
+                    files.Write('tmp\set.exc', cmd)
+                    print('Registro completo!')
+                with open('tmp\set.exc', 'r') as myload:
+                    myload = myload.read()
         elif cmd == 'exit':
             auto_get_ProgressBar(0.01)
             break
