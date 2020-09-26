@@ -346,6 +346,10 @@ while True:
                 print(f"Criando arquivos {cmd}..."), sleep(1)
                 auto_get_ProgressBar(0.03)
                 continue
+        elif cmd == 'gui':
+            auto_get_ProgressBar(0.01)
+            system(r'run\SetupUltility\PhoenixSetupGUI.exe')
+            break
         elif 'rm' in cmd:
             cmd = cmd.replace('rm ', '')
             cmd = cmd.replace('rm', '')

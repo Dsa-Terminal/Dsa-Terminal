@@ -20,10 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
-      <change afterPath="$PROJECT_DIR$/run/Docs/CHANGELOG.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run/Docs/Modulos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Terminal.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +124,7 @@
       <workItem from="1601033513957" duration="3229000" />
       <workItem from="1601037363698" duration="14449000" />
       <workItem from="1601066480932" duration="5195000" />
-      <workItem from="1601128802915" duration="1804000" />
+      <workItem from="1601128802915" duration="9490000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -204,10 +204,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1600868427189" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1600971717575">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1601136790278">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1600971717575" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1601136790278" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
