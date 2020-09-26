@@ -1,0 +1,10 @@
+GUIA PARA DESENVOLVEDOR DE MODULOS DSA-TERMINAL
+===============================================
+Para desenvolver um modulo para o Dsa-Terminal você deve falar com Felipe Souza Pereira de Lima
+para ele te mandar um convite para a organização https://github.com/Dsa-Terminal/Dsa-Terminal você
+vai criar um repositorio com o nome do pacote vai dar uma descrição e vai colocar o código-fonte
+e um Main.exe que o Dsa Terminal irá executar como o pacote!
+
+LINGUAGENS SUPORTADAS
+===============================================
+Python 2, 3, C, C++, C++++ ou CSharp ou C#
