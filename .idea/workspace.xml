@@ -20,9 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run/WebSearch/Setup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run/WebSearch/estilos.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run/WebSearch/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/SetupUltility/PhoenixSetupGUI.html" beforeDir="false" afterPath="$PROJECT_DIR$/run/SetupUltility/PhoenixSetupGUI.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +38,7 @@
         <option value="Jupyter Notebook" />
         <option value="Gherkin feature file" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -54,6 +58,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Cython" />
@@ -124,7 +129,7 @@
       <workItem from="1601037363698" duration="14449000" />
       <workItem from="1601066480932" duration="5195000" />
       <workItem from="1601128802915" duration="13051000" />
-      <workItem from="1601207986277" duration="1013000" />
+      <workItem from="1601207986277" duration="5871000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -235,8 +240,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Terminal.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="3" />
+          <line>135</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -141,7 +141,7 @@ class ping:
         print(f'|Executando!!!')
         print(f'Recebendo respostas do Servidor {ip}')
         print(f'|{porta} Conectada em serviços do win32')
-        filename = f'ping{randint(1, 10000000000000)}'
+        filename = f'tmp\ping{randint(1, 10000000000000)}'
         while True:
             try:
                 files.CriarArquivo(f'{filename}.txt')
@@ -169,7 +169,10 @@ class ping:
                 elif cmd == 'closeConnect[192.168.1.1]':
                     ProgressBar('Fechando')
                     system('cls')
+                    print(f'Log in: {filename}')
                     break
+                else:
+                    files.write(f'{filename}.txt', f'{cmd}\n')
             except KeyboardInterrupt:
                 break
     def ping_ip_serverstate(ip, porta):
