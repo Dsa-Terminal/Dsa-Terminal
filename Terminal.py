@@ -136,21 +136,42 @@ class ping:
     def __init__(self):
         pass
     def ping_connect(ip, porta):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        try:
-            pass
-        except:
-            print(f'Erro ao se conectar com {ip}')
-        else:
-            print(f'Ping: {porta} Conectado! Iniciando comunicação...'), sleep(5.9)
-            while True:
-                try:
-                    print(f'Ping ===> root@mainFrame20 (localhost)')
-                    print(f'|Executando!!!')
-                    print(f'Recebendo respostas do Servidor {ip}')
-                    print(f'|{porta} Conectada em serviços do win32')
-                except KeyboardInterrupt:
+        print(f'\033[32mPing: {porta} Conectado! Iniciando comunicação...'), sleep(5.9)
+        print(f'Ping ===> root@mainFrame20 (localhost)')
+        print(f'|Executando!!!')
+        print(f'Recebendo respostas do Servidor {ip}')
+        print(f'|{porta} Conectada em serviços do win32')
+        filename = f'ping{randint(1, 10000000000000)}'
+        while True:
+            try:
+                files.CriarArquivo(f'{filename}.txt')
+            except:
+                filename = f'ping{randint(1, 10000000000000)}'
+            else:
+                break
+        auto_get_ProgressBar(0.001)
+        system('cls')
+        while True:
+            try:
+                cmd: str = input('')
+                if cmd == 'initConnection @192.168.1.1':
+                    auto_get_ProgressBar(0.01)
+                    files.Write(f'{filename}.txt', f'{cmd}\n')
+                elif 'conn.settimeout(' in cmd:
+                    print('WavSettimeout[1] - logStatus: ', end='')
+                    cmd: str = input('')
+                    files.Write(f'{filename}.txt', f'WavDettimeout[1] - logStatus: {cmd}\n')
+                elif 'set' in cmd:
+                    print('GetNoneValue[Top Secret][1]', end='')
+                    cmd: str = input('')
+                    files.Write(f'{filename}.txt', f'GenNoneValue[Top Secret][1]{cmd}\n')
+                    auto_get_ProgressBar(0.01)
+                elif cmd == 'closeConnect[192.168.1.1]':
+                    ProgressBar('Fechando')
+                    system('cls')
                     break
+            except KeyboardInterrupt:
+                break
     def ping_ip_serverstate(ip, porta):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.settimeout(0.03)
@@ -242,7 +263,10 @@ while True:
             cmd = cmd.replace('"', '')
             cmd = cmd.replace(r'\n', '\n')
             cmd = cmd.replace(r'\t', '\t')
-            cmd = cmd.replace(r'%myload%', myload)
+            try:
+                cmd = cmd.replace(r'%myload%', myload)
+            except:
+                cmd = cmd.replace('%myload%', 'Dados não encontrados')
             print(cmd)
             continue
         elif ';;' in cmd:
@@ -259,7 +283,7 @@ while True:
             system(fr'bin\bash.exe /files/{cmd}')
         elif cmd == 'help':
             print('Comando:              Função:\n')
-            print('echo([mensagem]):     Escreve mensagens na tela')
+            print('echo [mensagem]       Escreve mensagens na tela')
             print('pkg [parametros]      Gerenciador de pacotes')
             print('nano [arquivo]        Dsa Terminal E-ditor')
             print('ping [parametros]     Opções de rede remota')

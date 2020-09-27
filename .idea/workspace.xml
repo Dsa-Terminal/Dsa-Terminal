@@ -22,7 +22,6 @@
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terminal.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +67,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Python\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -124,7 +123,8 @@
       <workItem from="1601033513957" duration="3229000" />
       <workItem from="1601037363698" duration="14449000" />
       <workItem from="1601066480932" duration="5195000" />
-      <workItem from="1601128802915" duration="9490000" />
+      <workItem from="1601128802915" duration="13051000" />
+      <workItem from="1601207986277" duration="1013000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -192,6 +192,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1600967925523" />
+    <state width="1237" height="501" key="GridCell.Tab.0.bottom" timestamp="1601149948807">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="501" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1601149948807" />
+    <state width="1237" height="501" key="GridCell.Tab.0.center" timestamp="1601149948807">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="501" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1601149948807" />
+    <state width="1237" height="501" key="GridCell.Tab.0.left" timestamp="1601149948807">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="501" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1601149948807" />
+    <state width="1237" height="501" key="GridCell.Tab.0.right" timestamp="1601149948807">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="501" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1601149948807" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1600799060901">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -224,5 +240,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Dsa_Terminal$Terminal.coverage" NAME="Terminal Coverage Results" MODIFIED="1601148117642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
