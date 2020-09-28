@@ -32,6 +32,8 @@ from rich.console import Console
 from rich.markdown import Markdown
 from tqdm import tqdm, trange
 from rich.progress import track
+from bs4 import BeautifulSoup
+from requests import get
 # ==========================
 system('title Dsa Terminal -i --login --bin\init.sh')
 system('pause')
@@ -193,6 +195,21 @@ class ping:
                 sleep(17.8)
             except KeyboardInterrupt:
                 break
+class webnews:
+    def __init__(self):
+        pass
+    def scrapping():
+        site = get("https://news.google.com/rss?need=pt_br&gl=BR&hl=pt-BR&ceid=BR:pt-419")
+        noticias = BeautifulSoup(site.text, 'html.parser')
+        for item in noticias.findAll('item')[:5]:
+            print(f'Manchete: {item.title.text}')
+    def covid_cases():
+        site = get('https://covid19-brazil-api.now.sh/api/report/v1')
+        casos = site.json()
+        caso = casos['data'][14]['cases']
+        suspeitos = casos['data'][14]['suspects']
+        mortes = casos['data'][14]['deaths']
+        print(f"Casos de covid-19: Agora existem {caso} casos de Covid em seu estado, com {suspeitos} casos \nsuspeitos e {mortes} mortes")
 # Set up
 session = randint(0, 10364)
 console = Console()
@@ -231,6 +248,16 @@ while True:
                     break
             ping.ping_connect(ipa, portal)
             del ipa, portal
+        elif cmd == 'wn /?':
+            print('WebNews: Listagem de parametros\n')
+            print('wn -g / --get       Machetes diarias')
+            print('wn -c / --covid     Casos de Coronaviros no estado')
+        elif cmd == 'wn -g' or cmd == 'wn --get':
+            webnews.scrapping()
+            continue
+        elif cmd == 'wn -c' or cmd == 'wn --covid':
+            webnews.covid_cases()
+            continue
         elif cmd == 'ping -v':
             ipa: str = input('IP: ')
             while True:
@@ -294,6 +321,7 @@ while True:
             print('version               Exibe versão instalada')
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
+            print('wn [parametros]       Noticias da web')
             print('st [Tarefa]           Começa uma tarefa do Windows')
             print('mkdir [pasta]         Cria uma pasta')
             print('set [options]         Difinindo variaveis seriais')

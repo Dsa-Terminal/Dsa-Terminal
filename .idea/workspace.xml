@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41bd7a5f-80f9-4762-9205-62ec1481746d" name="Default Changelist" comment="Atualizações">
-      <change afterPath="$PROJECT_DIR$/run/WebSearch/Setup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run/WebSearch/estilos.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run/WebSearch/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Terminal.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/SetupUltility/PhoenixSetupGUI.html" beforeDir="false" afterPath="$PROJECT_DIR$/run/SetupUltility/PhoenixSetupGUI.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Cython" />
-    <property name="last_opened_file_path" value="C:/Python/python.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Tenaya" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.Terminal">
@@ -129,7 +127,8 @@
       <workItem from="1601037363698" duration="14449000" />
       <workItem from="1601066480932" duration="5195000" />
       <workItem from="1601128802915" duration="13051000" />
-      <workItem from="1601207986277" duration="5871000" />
+      <workItem from="1601207986277" duration="7595000" />
+      <workItem from="1601297710474" duration="1330000" />
     </task>
     <task id="LOCAL-00001" summary="Atualizações">
       <created>1600867934106</created>
@@ -193,10 +192,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1600889966399" />
-    <state x="420" y="95" key="FileChooserDialogImpl" timestamp="1600967925523">
+    <state x="420" y="95" key="FileChooserDialogImpl" timestamp="1601219336420">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="420" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1600967925523" />
+    <state x="420" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1601219336420" />
     <state width="1237" height="501" key="GridCell.Tab.0.bottom" timestamp="1601149948807">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -235,12 +234,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Terminal.py</url>
-          <line>74</line>
+          <line>76</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Terminal.py</url>
-          <line>135</line>
+          <line>137</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
