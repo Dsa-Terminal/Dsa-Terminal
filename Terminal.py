@@ -35,10 +35,6 @@ from rich.progress import track
 from bs4 import BeautifulSoup
 from requests import get
 # ==========================
-system('title Dsa Terminal -i --login --bin\init.sh')
-system('pause')
-system(r'bin\bash.exe bin\init.sh')
-# Ipconfig
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 # Funções
@@ -137,11 +133,11 @@ class files:
 class ping:
     def __init__(self):
         pass
-    def ping_connect(ip, porta):
-        print(f'\033[32mPing: {porta} Conectado! Iniciando comunicação...'), sleep(5.9)
+    def ping_connect():
+        print(f'\033[32mPing: 802 Conectado! Iniciando comunicação...'), sleep(5.9)
         print(f'Ping ===> root@mainFrame20 (localhost)')
         print(f'|Executando!!!')
-        print(f'Recebendo respostas do Servidor {ip}')
+        print(f'Recebendo respostas do Servidor 192.168.1.1')
         print(f'|{porta} Conectada em serviços do win32')
         filename = f'tmp\ping{randint(1, 10000000000000)}'
         while True:
@@ -210,9 +206,15 @@ class webnews:
         suspeitos = casos['data'][14]['suspects']
         mortes = casos['data'][14]['deaths']
         print(f"Casos de covid-19: Agora existem {caso} casos de Covid em seu estado, com {suspeitos} casos \nsuspeitos e {mortes} mortes")
+def __init__():
+    system('title Dsa Terminal -i --login --bin\init.sh')
+    system('pause')
+    auto_get_ProgressBar(0.001)
+    system(r'bin\bash.exe bin\init.sh')
 # Set up
 session = randint(0, 10364)
 console = Console()
+__init__()
 system('title Dsa Terminal')
 print(strftime('Iniciando Dsa Terminal...'))
 print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
@@ -220,44 +222,45 @@ print(strftime('====================Dsa Terminal===================')), sleep(2.
 while True:
     try:
         cmd: str = input(f'\033[32mroot@mainFrame20:~$\033[m ').strip()
+        # Listagem de parametros do Ping
         if cmd == 'ping /?':
             print('Ping: Listagem de parametros\n')
             print('ping                Conectar com um servidor')
             print('ping -v             Verifica se servidor existe')
             print('ping -nc [porta]    Escuta porta serial')
+        # Listagem de parametros do Pkg
         elif cmd == 'pkg /?':
             print('Pkg: Listagem de parametros')
             print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
             print('pkg install [pkgname]      Instala pacotes')
             print('pkg uninstall [pkgname]    Desinstala pacotes')
             print('pkg update                 Atualiza versão instalada do Dsa Terminal')
-        elif 'pkg install ' in cmd:
+        # Instalando pacotes
+        elif cmd.startswith('pkg install'):
             packge.pkg_install(cmd)
             continue
-        elif 'pkg uninstall ' in cmd:
+        # Desinstalando pacotes
+        elif cmd.startswith('pkg uninstall'):
             packge.pkg_uninstall(cmd)
             continue
+        # Ping: Comando prinncipal
         elif cmd == 'ping':
-            ipa: str = input('IP: ')
-            while True:
-                try:
-                    portal = int(input('Porta: '))
-                except:
-                    continue
-                else:
-                    break
-            ping.ping_connect(ipa, portal)
-            del ipa, portal
+            ping.ping_connect()
+            continue
+        # Listagem de parametros do WebNews
         elif cmd == 'wn /?':
             print('WebNews: Listagem de parametros\n')
             print('wn -g / --get       Machetes diarias')
             print('wn -c / --covid     Casos de Coronaviros no estado')
+        # Noticias diarias
         elif cmd == 'wn -g' or cmd == 'wn --get':
             webnews.scrapping()
             continue
+        # Casos de covid
         elif cmd == 'wn -c' or cmd == 'wn --covid':
             webnews.covid_cases()
             continue
+        # Ping: Verificar se servidor existe
         elif cmd == 'ping -v':
             ipa: str = input('IP: ')
             while True:
@@ -269,6 +272,7 @@ while True:
                     break
             ping.ping_ip_serverstate(ipa, portal)
             del ipa, portal
+        # Escutar portas
         elif 'ping -nc' in cmd:
             cmd = cmd.replace('ping -nc ', '')
             cmd = cmd.replace('ping -nc', '')
@@ -276,7 +280,12 @@ while True:
                 print('Ping: É necessario fornecer uma porta!')
             else:
                 ping.nc(int(cmd))
-        elif 'nano' in cmd:
+        # Localhost Web Pages
+        elif cmd == 'localhost':
+            system('run\Main.exe')
+            continue
+        # Dsa Terminal e-ditor
+        elif cmd.startswith('nano'):
             print('Dsa Terminal editor foi iniciado')
             system('title [Nano] - Dsa terminal')
             cmd = cmd.replace('nano ', '')
@@ -287,7 +296,8 @@ while True:
             else:
                 system(fr'usr\bin\nano.exe /files/{cmd}')
             system('title Dsa Terminal')
-        elif 'echo' in cmd:
+        # Escrever na tela
+        elif cmd.startswith('echo'):
             cmd = cmd.replace('echo ', '')
             cmd = cmd.replace('echo', '')
             cmd = cmd.replace('"', '')
@@ -299,18 +309,22 @@ while True:
                 cmd = cmd.replace('%myload%', 'Dados não encontrados')
             print(cmd)
             continue
-        elif ';;' in cmd:
+        # Linha comentada
+        elif cmd.startswith(';;'):
             auto_get_ProgressBar(0.01)
             continue
+        # Listagem de parametros do "echo "
         elif cmd == 'echo /?':
             print('Echo: Listagem de parametros\n')
             print(r'    echo [mensagem[parametros de formatação]]')
             print(r'\t                Tab')
             print(r'\n                Quebra de linha')
             print(r'%myload%          Valor definido')
-        elif './' in cmd:
+        # Executar shell script
+        elif cmd.startswith('./'):
             cmd = cmd.replace('./', '')
             system(fr'bin\bash.exe /files/{cmd}')
+        # Ajuda manual
         elif cmd == 'help':
             print('Comando:              Função:\n')
             print('echo [mensagem]       Escreve mensagens na tela')
@@ -328,14 +342,17 @@ while True:
             print('touch [arquivo]       Cria um arquivo')
             print('incluide [modulo]     Importa modulo e o executa')
             print('exit                  Sai do Dsa Terminal')
+        # Protetor de tela
         elif cmd == 'block':
             startfile('Bubbles.scr')
             continue
+        # Esmaeçer
         elif cmd == '':
             for d in range(0, 1):
                 continue
             del d
-        elif 'set' in cmd:
+        # Upload de dados "string"
+        elif cmd.startswith('set'):
             cmd = cmd.replace('set ', '')
             cmd = cmd.replace('set', '')
             cmd = cmd.replace(r'\n', '\n')
@@ -348,26 +365,29 @@ while True:
             else:
                 myload = cmd
                 continue
+        # Sair do Dsa Terminal
         elif cmd == 'exit':
             auto_get_ProgressBar(0.01)
             break
+        # Limpa a tela
         elif cmd == 'clear':
             system('cls')
             continue
+        # Limpa a tela
         elif cmd == 'cls':
             system('cls')
             continue
+        # Mostra versão do Dsa Terminal
         elif cmd == 'version':
             print(__version__)
             continue
-        elif 'st' in cmd:
-            system(f'start {cmd[cmd.find("t") + 1 : ]}')
-            continue
+        # Dsa Terminal Update
         elif cmd == 'pkg update':
             update()
             system('pause')
             break
-        elif 'lua' in cmd:
+        # Lua Linguagem
+        elif cmd.startswith('lua'):
             cmd = cmd.replace('lua ', '')
             cmd = cmd.replace('lua', '')
             system('title lua for Dsa Terminal')
@@ -377,12 +397,14 @@ while True:
             else:
                 system(f'var\Lua\lua.exe {cmd}')
             system('title Dsa terminal')
+        # Node.js Server
         elif cmd == 'node':
             system('cls')
             system('title node.js for Dsa Terminal')
             system(r'var\node.exe')
             system('title Dsa terminal')
             continue
+        # Criar diretorio
         elif 'mkdir' in cmd:
             cmd = cmd.replace('mkdir ', '')
             cmd = cmd.replace('mkdir', '')
@@ -391,6 +413,7 @@ while True:
             else:
                 system(fr'mkdir files\{cmd}')
             continue
+        # Criar arquivo
         elif 'touch' in cmd:
             cmd = cmd.replace('touch ', '')
             cmd = cmd.replace('touch', '')
@@ -401,10 +424,12 @@ while True:
                 print(f"Criando arquivos {cmd}..."), sleep(1)
                 auto_get_ProgressBar(0.03)
                 continue
+        # Phoenix Setup Utility
         elif cmd == 'gui':
             auto_get_ProgressBar(0.01)
             system(r'run\SetupUltility\PhoenixSetupGUI.exe')
             break
+        # Remover...
         elif 'rm' in cmd:
             cmd = cmd.replace('rm ', '')
             cmd = cmd.replace('rm', '')
@@ -412,23 +437,30 @@ while True:
                 print('Remove: Insira um nome-de-arquivo')
             else:
                 system(fr'del files\{cmd}')
+        # Listar de diretorios e objetos
         elif cmd == 'ls':
             system(r'bin\bash.exe bin\listdir.sh')
+            print('')
             continue
+        # Listagem de diretorios, objetos e ocultos
         elif cmd == 'ls -a':
             system(r'bin\bash.exe bin\bashy_setup.sh')
+            print('')
             continue
-        elif 'web' in cmd:
+        # Abrir Paginas da Wev
+        elif cmd.startswith('web'):
             cmd = cmd.replace('web ', '')
             cmd = cmd.replace('web', '')
             system(f'start "" "https://{cmd}"')
             auto_get_ProgressBar(0.01)
             del http
+        # Configurações de IP 
         elif cmd == 'ipconfig':
             print('Configuração de IP do Dsa Terminal [conexão direta]!')
             print(f'IP: [{ip}] Porta: [80]')
             continue
-        elif 'incluide' in cmd:
+        # Incluir e executar Modulo
+        elif cmd.startswith('incluide'):
             cmd = cmd.replace('incluide ', '')
             cmd = cmd.replace('incluide', '')
             if cmd == '':
@@ -436,6 +468,7 @@ while True:
             else:
                 auto_get_ProgressBar(0.01)
                 system(fr'Lib\{cmd}\Main.exe')
+        # Comando invalido!
         else:
             print(f'{cmd}: comando invalido!')
             continue
