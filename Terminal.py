@@ -209,7 +209,6 @@ class webnews:
 def __init__():
     system('title Dsa Terminal -i --login --bin\init.sh')
     system('pause')
-    auto_get_ProgressBar(0.001)
     system(r'bin\bash.exe bin\init.sh')
 # Set up
 session = randint(0, 10364)
@@ -313,6 +312,10 @@ while True:
         elif cmd.startswith(';;'):
             auto_get_ProgressBar(0.01)
             continue
+        # Localhost WebAr Server
+        elif cmd == 'localhost':
+            system(r'run\Main.exe')
+            continue
         # Listagem de parametros do "echo "
         elif cmd == 'echo /?':
             print('Echo: Listagem de parametros\n')
@@ -335,6 +338,7 @@ while True:
             print('version               Exibe versão instalada')
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
+            print('localhost             Web Localhost')
             print('wn [parametros]       Noticias da web')
             print('st [Tarefa]           Começa uma tarefa do Windows')
             print('mkdir [pasta]         Cria uma pasta')
