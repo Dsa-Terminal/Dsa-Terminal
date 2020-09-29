@@ -1,5 +1,16 @@
 {
     "path": "/run/dpkg/.tmp"
-    "dpkg pwd": "/Lib"
-    "system dase": "/" 
+    "dpkg pwd": "/Lib/"
+    "system base": "/"
+    "Documentação": "/run/Docs/" 
+    "localhost": "/run/Main.exe"
+    "temp files": "/tmp/"
+    "templates": "/run/dpkg/"
+    "node javascript": "/var/"
+    "lua installation": "/var/Lua/"
+    "Phoenix TrustedBios(tm) CMOS Setup Utility": "/run/SetupUltility/"
+    "sudo": "/run/sudo/"
+    "fix Setup": "/usr/"
+    "git mode": "/cmd/"
+    "serverdev": "/mingw64/"
 }
