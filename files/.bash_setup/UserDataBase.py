@@ -1,26 +1,35 @@
+from time import sleep
 from os import system
-with open('IPCONFIG.exc', 'wt') as ipconfig:
-    ipconfig = ipconfig.read()
-class UserDateBase:
-    __globals__ = {}
-    __annotations__ = {}
-    __name__ = {}
+import socket
+
+hostname = socket.gethostname()
+ip = socket.gethostbyname(hostname)
+
+with open('Mydatabase.sql') as database:
+    database = database.read()
+    
+class UserDataBase:
     def __init__(self):
-        if self.startswith(UserDateBase.__globals__):
-            key = 'root@localhost://8000/_index.html'
-        for replacemint in key:
-            if replacemint == True and self == {}:
-                replacemint = replacemint.replace(True, 'Acesso permitido!')
-            else:
-                replacemint = replacemint.replace(False or None, '13: Acesso negado!')
-            return replacemint
-        return replacemint
-    def __unicode__(self):
-        acess = UserDateBase.__init__(self=ipconfig)
-        if acess == 'Acesso permitido!':
-            acess = '0110101010010101010 @localhost://8000'
+        cmd = None
+        keyboard = ['sudo', 'root', 'pkg-get', 'setup']
+        for key in keyboard:
+            if self.startswith(key):
+                cmd = self.replace(key, '')
+        return cmd
+    def route(cmd):
+        if cmd is not None:
+            return ip
         else:
-            return acess
-        return acess
-print(UserDateBase.__unicode__())
-system('pause')
+            return None
+    def run(rota, ip):
+        if rota == ip:
+            system(f'start "" "https://{rota}"')
+            return 'IP Serverdev Iniciado!'
+        else:
+            return 'Caminho invalido!'
+
+if __name__ == "__main__":
+    cmd = input('CMD: ').strip()
+    cmder = UserDataBase.__init__(cmd)
+    rota = UserDataBase.route(cmd=cmder)
+    print(UserDataBase.run(rota, ip))

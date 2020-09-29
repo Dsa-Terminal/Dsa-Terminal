@@ -77,10 +77,10 @@ class packge:
         auto_get_ProgressBar(1)
         ProgressBar('Baixando tools')
         try:
-            open(fr'Lib\cache32-82\{sudo}.main')
-            open(fr'Lib\cache32-82\{sudo}.js')
-            open(fr'Lib\cache32-82\{sudo}.pkm')
-            open(fr'Lib\cache32-82\{sudo}.rpg')
+            open(fr'Lib\cache32-82\{cmd}.main')
+            open(fr'Lib\cache32-82\{cmd}.js')
+            open(fr'Lib\cache32-82\{cmd}.pkm')
+            open(fr'Lib\cache32-82\{cmd}.rpg')
         except:
             print('Você já instalou este modulo antes use o "pkg update [modulo]"')
             return None
