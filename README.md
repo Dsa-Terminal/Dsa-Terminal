@@ -3,6 +3,8 @@
 ![](https://img.shields.io/github/repo-size/Dsa-Terminal/Dsa-Terminal)
 ![](https://img.shields.io/github/languages/top/Dsa-Terminal/Dsa-Terminal)
 
+In [English](https://github.com/Dsa-Terminal/Dsa-Terminal/blob/master/ENGLISH_README.md)
+
 O **Dsa Terminal** é um simulador do Bash do Gnu/Linux Ubuntu para usuarios do Windows 10!
 Totalmente em português e com uma excelente formatação de texto pode realizar muito mais coisa que o propio
 Ubuntu
