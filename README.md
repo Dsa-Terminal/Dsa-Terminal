@@ -63,8 +63,8 @@ Ou nem digite na inicialização ele mostra a versão!
 
 # Novidades e lançamentos
 O nucleo do Dsa Terminal funciona com o bash do Ubuntu e Linux, é como uma redistribuição 
-do Linux só que não é exatamente igual ele, por exemplo ele não tem os diretorios:
-`/boot` e `/root` pois ele não precisa de boot e ele já esta no (root user)! 
+do Linux só que não é exatamente igual ele, por exemplo ele não tem os diretorio:
+`/root` pois o usuario sempre sera (root)! 
 
 **Veja os nosso lançamentos na pagina dos lançamentos**
 
