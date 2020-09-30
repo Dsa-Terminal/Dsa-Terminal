@@ -62,17 +62,17 @@ Or don't even type it at startup it shows the version!
 # News and releases
 The core of Dsa Terminal works with Ubuntu and Linux bash, it's like a redistribution
 of Linux only that is not exactly like him, for example he does not have the directories:
-`/ boot` and` / root` as he does not need a boot and he is already at (root user)!
+`/boot` and `/root` as he does not need a boot and he is already at (root user)!
 
 ** See our launches on the launch page **
 
 # How the Dsa Terminal Nucleus works
-His Core is in Python 3 plus, he inherits bash from GNU / Linux Ubuntu and GNU / Git
+His Core is in Python 3 plus, he inherits bash from GNU/Linux Ubuntu and GNU/Git
 which are essential for the operation and interpretation of shell scripts!
 
 ## File structure
 The "File structure" has some problems for example the execution of .lua scripts
-that he doesn't find in the base in `/ var / Lua` anymore if Dsa Terminal were to move and then delete
+that he doesn't find in the base in `/var/Lua` anymore if Dsa Terminal were to move and then delete
 would give error, already tried! 1
 
 - *** Wanted contributors ***
