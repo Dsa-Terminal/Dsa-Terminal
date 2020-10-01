@@ -1,3 +1,5 @@
+<img src="https://avatars3.githubusercontent.com/u/71603854?s=200&v=4" align=right height=300px width=300px>
+
 # Dsa Terminal
 ![](https://img.shields.io/github/license/Dsa-Terminal/Dsa-Terminal)
 ![](https://img.shields.io/github/repo-size/Dsa-Terminal/Dsa-Terminal)
