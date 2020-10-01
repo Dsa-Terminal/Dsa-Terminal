@@ -15,7 +15,7 @@ Se você é um programador experiente o Python precisa de dois modulos para o `T
 
 - `python -m pip install rich, tqdm`
 
-Senão quiser instalar o Python 3 https://python.org/downloads você só precisa executar `Terminal.exe` que tera o mesmo resultado!
+Senão quiser instalar o [Python 3](https://python.org/downloads) você só precisa executar `Terminal.exe` que tera o mesmo resultado!
 
 ## Como Usar
 Clone este repositorio usando o git através do comando `git clone https://github.com/Dsa-Terminal/Dsa-Terminal.git master` e depois abra o Cmd.exe e desative o 
