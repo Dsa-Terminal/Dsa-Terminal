@@ -76,18 +76,9 @@ class packge:
         print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
         auto_get_ProgressBar(1)
         ProgressBar('Baixando tools')
-        try:
-            open(fr'Lib\cache32-82\{cmd}.main')
-            open(fr'Lib\cache32-82\{cmd}.js')
-            open(fr'Lib\cache32-82\{cmd}.pkm')
-            open(fr'Lib\cache32-82\{cmd}.rpg')
-        except:
-            print('Você já instalou este modulo antes use o "pkg update [modulo]"')
-            return None
-        else:
-            system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
-            system(fr'move {cmd} Lib')
-            return True
+        system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
+        system(fr'move {cmd} Lib')
+        return True
     def pkg_uninstall(command):
         cmd = command.replace('pkg uninstall ', '')
         print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
@@ -228,6 +219,31 @@ while True:
             print('ping                Conectar com um servidor')
             print('ping -v             Verifica se servidor existe')
             print('ping -nc [porta]    Escuta porta serial')
+        # licensa
+        elif cmd == 'license':
+            print("""
+                    MIT License
+
+                    Copyright (c) 2020 Dsa-Terminal
+
+                    Permission is hereby granted, free of charge, to any person obtaining a copy
+                    of this software and associated documentation files (the "Software"), to deal
+                    in the Software without restriction, including without limitation the rights
+                    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                    copies of the Software, and to permit persons to whom the Software is
+                    furnished to do so, subject to the following conditions:
+
+                    The above copyright notice and this permission notice shall be included in all
+                    copies or substantial portions of the Software.
+
+                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                    SOFTWARE.
+                    """)        
         # Listagem de parametros do Pkg
         elif cmd == 'pkg /?':
             print('Pkg: Listagem de parametros')
@@ -239,6 +255,23 @@ while True:
         elif cmd.startswith('pkg install'):
             packge.pkg_install(cmd)
             continue
+        # Clidev
+        elif cmd == 'cli-http':
+            while True:
+                cmd = input('\033[32m[~]\033[m ')
+                if cmd == 'exit':
+                    break
+                elif cmd.startswith('http'):
+                    cmd = cmd.replace('http ', '')
+                    cmd = cmd.replace('http', '')
+                    if cmd == '':
+                        system('run\http_cli\http.exe')
+                    else:
+                        system(f'run\http_cli\http.exe {cmd}')
+        # SciTE
+        elif cmd == 'scite':
+            system('start var\lua\SciTE\SciTE.exe')
+            print('Lua: SciTE Iniciado.')
         # Desinstalando pacotes
         elif cmd.startswith('pkg uninstall'):
             packge.pkg_uninstall(cmd)
@@ -273,21 +306,13 @@ while True:
             ping.ping_ip_serverstate(ipa, portal)
             del ipa, portal
         # Escutar portas
-        elif 'ping -nc' in cmd:
+        elif cmd.startswith('ping -nc'):
             cmd = cmd.replace('ping -nc ', '')
             cmd = cmd.replace('ping -nc', '')
             if cmd == '':
                 print('Ping: É necessario fornecer uma porta!')
             else:
                 ping.nc(int(cmd))
-        # Http cliente
-        elif cmd.startswith('http'):
-            cmd = cmd.replace('http ', '')
-            cmd = cmd.replace('http', '')
-            if cmd == '':
-                system('run\http_cli\http.exe')
-            else:
-                system(f'run\http_cli\http.exe {cmd}')
         # Localhost Web Pages
         elif cmd == 'localhost':
             system('run\Main.exe')
@@ -348,6 +373,7 @@ while True:
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
             print('localhost             Web Localhost')
+            print('cli-http              Console httpie Client')
             print('wn [parametros]       Noticias da web')
             print('st [Tarefa]           Começa uma tarefa do Windows')
             print('mkdir [pasta]         Cria uma pasta')
@@ -427,7 +453,7 @@ while True:
                 system(fr'mkdir files\{cmd}')
             continue
         # Criar arquivo
-        elif 'touch' in cmd:
+        elif cmd.startswith('touch'):
             cmd = cmd.replace('touch ', '')
             cmd = cmd.replace('touch', '')
             if cmd == '':
