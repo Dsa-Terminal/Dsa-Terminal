@@ -70,16 +70,12 @@ do Linux só que não é exatamente igual ele, por exemplo ele não tem os diret
 
 **Veja os nosso lançamentos na pagina dos lançamentos**
 
-# Como funciona o Nucleo do Dsa Terminal
-O Core dele é em Python 3 mais, ele herda o bash do GNU/Linux Ubuntu e GNU/Git
-que são esenciais para o funcionamento e a interpretação de shell script!
+# Contribuidores
+Criador e Adiministrador do Dsa Terminal
+[Felipe Souza Pereira Lima](https://github.com/Felipe-Souza-Pereira-Lima)
 
-## Estrutura de arquivos
-A "Estrutura de arquivos" tem alguns poblemas por exemplo a execução de scripts .lua
-que ele não encontra na base em `/var/Lua` mais se o Dsa Terminal fosse mover e depois excluir
-iria dar erro, já tentei!1
+Coredenador Chefe, desenvolvedor principal
+[Cauê Alves](https://github.com/caue-alves)
 
-- ***Procura-se contibuidores***
-### Procura-se contribuidores!!!
-Já diz o ditado: *Mais mentes pensam melhor*! Um projeto bom precisa
-de contribuidores para um bom desempenho!!!
+## Contribua com este Projeto!
+[Quero Fazer Parte](mailto:salve.laborator@gmail.com)

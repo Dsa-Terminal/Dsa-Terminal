@@ -268,6 +268,11 @@ while True:
                         system('run\http_cli\http.exe')
                     else:
                         system(f'run\http_cli\http.exe {cmd}')
+                elif cmd == 'clear':
+                    system('cls')
+                elif cmd == '~/bash':
+                    auto_get_ProgressBar(0.001)
+                    continue
         # SciTE
         elif cmd == 'scite':
             system('start var\lua\SciTE\SciTE.exe')
