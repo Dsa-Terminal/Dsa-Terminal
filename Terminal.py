@@ -121,15 +121,26 @@ class files:
             return False
         else:
             return True
+class opt:
+    def __init__():
+        pass
+    def opt_install(command):
+        cmd = command.replace('opt install ', '')
+        print(f'\033[32mLendo listas de [/opt/main.spec]...'), sleep(8)
+        auto_get_ProgressBar(0.001)
+        print('Inserindo mothed: "requestuser" no api.dsaterminal'), sleep(1.92)
+        system(f'bin\git.exe clone https://github.com/Felipe-Souza-Pereira-Lima/{cmd}.git')
+        system(f'move {cmd} opt\lib')
+        return True
 class ping:
     def __init__(self):
         pass
-    def ping_connect():
-        print(f'\033[32mPing: 802 Conectado! Iniciando comunicação...'), sleep(5.9)
+    def ping_connect(porta):
+        print(f'\033[32mPing: 802    Conectado! Iniciando comunicação...'), sleep(5.9)
         print(f'Ping ===> root@mainFrame20 (localhost)')
         print(f'|Executando!!!')
         print(f'Recebendo respostas do Servidor 192.168.1.1')
-        print(f'|{porta} Conectada em serviços do win32')
+        print(f'|Porta 802 Conectada em serviços do win32')
         filename = f'tmp\ping{randint(1, 10000000000000)}'
         while True:
             try:
@@ -273,6 +284,14 @@ while True:
                 elif cmd == '~/bash':
                     auto_get_ProgressBar(0.001)
                     continue
+        # Opt Greeting.opt
+        elif cmd.startswith('opt install'):
+            cmd = cmd.replace('opt install ', '')
+            cmd = cmd.replace('opt install', '')
+            if cmd == '':
+                print('Opt: Insira um Pacote Opt MSBuild.')
+            else:
+                opt.opt_install(cmd)
         # SciTE
         elif cmd == 'scite':
             system('start var\lua\SciTE\SciTE.exe')
@@ -378,6 +397,7 @@ while True:
             print('./[shell script]      Executa shell script')
             print('block                 Protetor de tela')
             print('localhost             Web Localhost')
+            print('opt install [pkgname] Instala pacotes ProDev')
             print('cli-http              Console httpie Client')
             print('wn [parametros]       Noticias da web')
             print('st [Tarefa]           Começa uma tarefa do Windows')
@@ -449,7 +469,7 @@ while True:
             system('title Dsa terminal')
             continue
         # Criar diretorio
-        elif 'mkdir' in cmd:
+        elif cmd.startswith('mkdir'):
             cmd = cmd.replace('mkdir ', '')
             cmd = cmd.replace('mkdir', '')
             if cmd == '':
