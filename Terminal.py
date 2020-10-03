@@ -132,67 +132,6 @@ class files:
         system(f'bin\git.exe clone https://github.com/Felipe-Souza-Pereira-Lima/{cmd}.git')
         system(f'move {cmd} opt\lib')
         return True
-class ping:
-    def __init__(self):
-        pass
-    def ping_connect(porta):
-        print(f'\033[32mPing: 802    Conectado! Iniciando comunicação...'), sleep(5.9)
-        print(f'Ping ===> root@mainFrame20 (localhost)')
-        print(f'|Executando!!!')
-        print(f'Recebendo respostas do Servidor 192.168.1.1')
-        print(f'|Porta 802 Conectada em serviços do win32')
-        filename = f'tmp\ping{randint(1, 10000000000000)}'
-        while True:
-            try:
-                files.CriarArquivo(f'{filename}.txt')
-            except:
-                filename = f'ping{randint(1, 10000000000000)}'
-            else:
-                break
-        auto_get_ProgressBar(0.001)
-        system('cls')
-        while True:
-            try:
-                cmd: str = input('')
-                if cmd == 'initConnection @192.168.1.1':
-                    auto_get_ProgressBar(0.01)
-                    files.Write(f'{filename}.txt', f'{cmd}\n')
-                elif 'conn.settimeout(' in cmd:
-                    print('WavSettimeout[1] - logStatus: ', end='')
-                    cmd: str = input('')
-                    files.Write(f'{filename}.txt', f'WavDettimeout[1] - logStatus: {cmd}\n')
-                elif 'set' in cmd:
-                    print('GetNoneValue[Top Secret][1]', end='')
-                    cmd: str = input('')
-                    files.Write(f'{filename}.txt', f'GenNoneValue[Top Secret][1]{cmd}\n')
-                    auto_get_ProgressBar(0.01)
-                elif cmd == 'closeConnect[192.168.1.1]':
-                    ProgressBar('Fechando')
-                    system('cls')
-                    print(f'Log in: {filename}')
-                    break
-                else:
-                    files.write(f'{filename}.txt', f'{cmd}\n')
-            except KeyboardInterrupt:
-                break
-    def ping_ip_serverstate(ip, porta):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(0.03)
-        try:
-            s.connect_ex(ip, porta)
-            s.close()
-        except:
-            print('Servidor inexistente!')
-        else:
-            print('Servidor encontrado!')
-    def nc(porta):
-        print(f'Ping: Escutando Porta: [{int(porta)}] ')
-        auto_get_ProgressBar(10)
-        for d in range(0, 100):
-            try:
-                sleep(17.8)
-            except KeyboardInterrupt:
-                break
 class webnews:
     def __init__(self):
         pass
@@ -224,13 +163,8 @@ print(strftime('====================Dsa Terminal===================')), sleep(2.
 while True:
     try:
         cmd: str = input(f'\033[32mroot@mainFrame20:~$\033[m ').strip()
-        # Listagem de parametros do Ping
-        if cmd == 'ping /?':
-            print('Ping: Listagem de parametros\n')
-            print('ping                Conectar com um servidor')
-            print('ping -v             Verifica se servidor existe')
-            print('ping -nc [porta]    Escuta porta serial')# Listagem de parametros do Pkg
-        elif cmd == 'pkg /?':
+        # Listagem de parametros do Pkg
+        if cmd == 'pkg /?':
             print('Pkg: Listagem de parametros')
             print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
             print('pkg install [pkgname]      Instala pacotes')
@@ -266,10 +200,6 @@ while True:
         elif cmd.startswith('pkg uninstall'):
             packge.pkg_uninstall(cmd)
             continue
-        # Ping: Comando prinncipal
-        elif cmd == 'ping':
-            ping.ping_connect()
-            continue
         # Listagem de parametros do WebNews
         elif cmd == 'wn /?':
             print('WebNews: Listagem de parametros\n')
@@ -283,18 +213,6 @@ while True:
         elif cmd == 'wn -c' or cmd == 'wn --covid':
             webnews.covid_cases()
             continue
-        # Ping: Verificar se servidor existe
-        elif cmd == 'ping -v':
-            ipa: str = input('IP: ')
-            while True:
-                try:
-                    portal = int(input('Porta: '))
-                except:
-                    continue
-                else:
-                    break
-            ping.ping_ip_serverstate(ipa, portal)
-            del ipa, portal
         # Escutar portas
         elif cmd.startswith('ping -nc'):
             cmd = cmd.replace('ping -nc ', '')
