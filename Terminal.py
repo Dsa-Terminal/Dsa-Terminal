@@ -121,7 +121,7 @@ class files:
             return False
         else:
             return True
-class opt:
+
     def __init__():
         pass
     def opt_install(command):
@@ -229,33 +229,7 @@ while True:
             print('Ping: Listagem de parametros\n')
             print('ping                Conectar com um servidor')
             print('ping -v             Verifica se servidor existe')
-            print('ping -nc [porta]    Escuta porta serial')
-        # licensa
-        elif cmd == 'license':
-            print("""
-                    MIT License
-
-                    Copyright (c) 2020 Dsa-Terminal
-
-                    Permission is hereby granted, free of charge, to any person obtaining a copy
-                    of this software and associated documentation files (the "Software"), to deal
-                    in the Software without restriction, including without limitation the rights
-                    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-                    copies of the Software, and to permit persons to whom the Software is
-                    furnished to do so, subject to the following conditions:
-
-                    The above copyright notice and this permission notice shall be included in all
-                    copies or substantial portions of the Software.
-
-                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-                    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-                    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-                    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-                    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-                    SOFTWARE.
-                    """)        
-        # Listagem de parametros do Pkg
+            print('ping -nc [porta]    Escuta porta serial')# Listagem de parametros do Pkg
         elif cmd == 'pkg /?':
             print('Pkg: Listagem de parametros')
             print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
@@ -284,14 +258,6 @@ while True:
                 elif cmd == '~/bash':
                     auto_get_ProgressBar(0.001)
                     continue
-        # Opt Greeting.opt
-        elif cmd.startswith('opt install'):
-            cmd = cmd.replace('opt install ', '')
-            cmd = cmd.replace('opt install', '')
-            if cmd == '':
-                print('Opt: Insira um Pacote Opt MSBuild.')
-            else:
-                opt.opt_install(cmd)
         # SciTE
         elif cmd == 'scite':
             system('start var\lua\SciTE\SciTE.exe')
