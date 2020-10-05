@@ -74,7 +74,7 @@ do Linux só que não é exatamente igual ele, por exemplo ele não tem os diret
 Criador e Adiministrador do Dsa Terminal
 [Felipe Souza Pereira Lima](https://github.com/Felipe-Souza-Pereira-Lima)
 
-Coredenador Chefe, desenvolvedor principal
+Coordenador Chefe, desenvolvedor principal
 [Cauê Alves](https://github.com/caue-alves)
 
 ## Contribua com este Projeto!
