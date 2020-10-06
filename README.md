@@ -78,4 +78,5 @@ Coordenador Chefe, desenvolvedor principal
 [Cauê Alves](https://github.com/caue-alves)
 
 ## Contribua com este Projeto!
+Para fazer parte você tem que saber pogramar, e ter uma noção basica de Git!
 [Quero Fazer Parte](https://github.com/Dsa-Software/DsaVagas/issues/new?assignees=&labels=vaga&template=request.md&title=Pergunta+por+vaga)
