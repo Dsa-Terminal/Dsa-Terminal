@@ -78,4 +78,4 @@ Coordenador Chefe, desenvolvedor principal
 [Cauê Alves](https://github.com/caue-alves)
 
 ## Contribua com este Projeto!
-[Quero Fazer Parte](mailto:dsaterminal@gmail.com)
+[Quero Fazer Parte](https://github.com/Dsa-Software/DsaVagas/issues/new)
