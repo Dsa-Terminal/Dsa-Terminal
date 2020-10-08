@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.0.7'
+__version__ = '1.0.7.1'
 # Importando modulos
 import socket
 from os import system, startfile, mkdir, listdir
