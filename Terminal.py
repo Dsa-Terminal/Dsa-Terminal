@@ -24,7 +24,7 @@ SOFTWARE.
 # Dsa Terminal codigo-fonte
 __version__ = '1.0.7.2'
 # Importando modulos
-import socket, plataform
+import socket
 from os import system, startfile, mkdir, listdir
 from random import randint
 from time import strftime, sleep
@@ -37,7 +37,6 @@ from requests import get
 # ==========================
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
-plataforma = plataform.system()
 porta = 82
 # Barra de Progresso Tradicional
 def ProgressBar(titulo):
@@ -185,17 +184,14 @@ def __init__():
     system('cls')
     system('title Dsa Terminal -i --login --bin\init.sh')
     system('pause')
-    if plataforma == 'windows':
-        if files.ArquivoExiste(fr'boot\boot.ini'):
-            if files.ArquivoExiste(rf'boot\init.sh'):
-                system(r'bin\bash.exe boot\init.sh')
-                return True
-            else:
-                return False
+    if files.ArquivoExiste(fr'boot\boot.ini'):
+        if files.ArquivoExiste(rf'boot\init.sh'):
+            system(r'bin\bash.exe boot\init.sh')
+            return True
         else:
             return False
-    else: 
-        return None
+    else:
+        return False
 # Set up
 console = Console()
 session = randint(0, 291462)
@@ -217,6 +213,14 @@ if start == True:
                 print('pkg install [pkgname]      Instala pacotes')
                 print('pkg uninstall [pkgname]    Desinstala pacotes')
                 print('pkg update                 Atualiza versão instalada do Dsa Terminal')
+            # Debug
+            elif cmd == 'debug':
+                system(r'mingw64\bin\edit_text.exe')
+                continue
+            # OpenSSL
+            elif cmd == 'ssl':
+                system(r'mingw64\bin\openssl.exe')
+                continue
             # Instalando pacotes
             elif cmd.startswith('pkg install'):
                 packge.pkg_install(cmd)
@@ -476,13 +480,6 @@ if start == True:
                 continue
         except:
             continue
-# Sistema inconpativel
-elif start == None:
-    system('clear')
-    print("Error: System Don't Have Suport")
-    print("Your Operative System Don't have a soport to execute Dsa Terminal")
-    print('Exiting iPxe Rom...'), sleep(6.26)
-    auto_get_ProgressBar(0.001)
 # Falhar Exiting Pxe Rom
 else:
     system('cls')
