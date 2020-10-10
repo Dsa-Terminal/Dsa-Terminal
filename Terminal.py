@@ -24,7 +24,7 @@ SOFTWARE.
 # Dsa Terminal codigo-fonte
 __version__ = '1.0.7.2'
 # Importando modulos
-import socket
+import socket, plataform
 from os import system, startfile, mkdir, listdir
 from random import randint
 from time import strftime, sleep
@@ -37,8 +37,9 @@ from requests import get
 # ==========================
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
+plataforma = plataform.system()
 porta = 82
-# Funções
+# Barra de Progresso Tradicional
 def ProgressBar(titulo):
     with tqdm(total=100) as progressbar:
         for i in range(10):
@@ -54,12 +55,15 @@ def ProgressBar(titulo):
     for i in tqdm(range(20)):
         sleep(0.5)
         pass
+# Configurador de Barra
 def do_step(set, time):
     sleep(time)
     pass
+# Barra de Progresso Padrão
 def auto_get_ProgressBar(time):
     for step in track(range(100)):
         do_step(step, time)
+# Atualizador do Dsa Terminal
 def update():
     system('title [Update] - Dsa Terminal')
     print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(21)
@@ -69,6 +73,7 @@ def update():
     system('bin\git.exe pull')
     print(f'Setup de versão {__version__} Anterior <==== Update selected')
     return True
+# Configuração do atualizador
 class packge:
     def __init__(self):
         pass
@@ -97,6 +102,7 @@ class packge:
         system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
         system(fr'move {cmd} Lib')
         return True
+# Controlador de arquivos
 class files:
     def __init__(self):
         pass
@@ -126,14 +132,7 @@ class files:
 
     def __init__():
         pass
-    def opt_install(command):
-        cmd = command.replace('opt install ', '')
-        print(f'\033[32mLendo listas de [/opt/main.spec]...'), sleep(8)
-        auto_get_ProgressBar(0.001)
-        print('Inserindo mothed: "requestuser" no api.dsaterminal'), sleep(1.92)
-        system(f'bin\git.exe clone https://github.com/Felipe-Souza-Pereira-Lima/{cmd}.git')
-        system(f'move {cmd} opt\lib')
-        return True
+# Ping network Servidor
 class ping:
     def __init__(self, ip_to_conect, porta_to_conect):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -165,6 +164,7 @@ class ping:
                 continue
             msg = 'Servidor: Mais um nodo recebido!'
             s.send(msg.encode('utf-8'))
+# Noticias da Web
 class webnews:
     def __init__(self):
         pass
@@ -180,22 +180,28 @@ class webnews:
         suspeitos = casos['data'][14]['suspects']
         mortes = casos['data'][14]['deaths']
         print(f"Casos de covid-19: Agora existem {caso} casos de Covid em seu estado, com {suspeitos} casos \nsuspeitos e {mortes} mortes")
+# Inicalizar
 def __init__():
     system('cls')
     system('title Dsa Terminal -i --login --bin\init.sh')
     system('pause')
-    if files.ArquivoExiste(fr'boot\boot.ini'):
-        if files.ArquivoExiste(rf'boot\init.sh'):
-            system(r'bin\bash.exe boot\init.sh')
-            return True
+    if plataforma == 'windows':
+        if files.ArquivoExiste(fr'boot\boot.ini'):
+            if files.ArquivoExiste(rf'boot\init.sh'):
+                system(r'bin\bash.exe boot\init.sh')
+                return True
+            else:
+                return False
         else:
             return False
-    else:
-        return False
+    else: 
+        return None
 # Set up
 console = Console()
 session = randint(0, 291462)
+# Configurações do iPXE Boot 
 start = __init__()
+# Inicialização normal
 if start == True:
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
@@ -470,6 +476,14 @@ if start == True:
                 continue
         except:
             continue
+# Sistema inconpativel
+elif start == None:
+    system('clear')
+    print("Error: System Don't Have Suport")
+    print("Your Operative System Don't have a soport to execute Dsa Terminal")
+    print('Exiting iPxe Rom...'), sleep(6.26)
+    auto_get_ProgressBar(0.001)
+# Falhar Exiting Pxe Rom
 else:
     system('cls')
     print('Error: No Botable Device')
