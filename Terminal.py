@@ -56,6 +56,7 @@ def ProgressBar(titulo):
         pass
 def do_step(set, time):
     sleep(time)
+    pass
 def auto_get_ProgressBar(time):
     for step in track(range(100)):
         do_step(step, time)
@@ -144,9 +145,12 @@ class ping:
         else:
             print(f'Ping: Conectado com IP: [{ip_to_conect}] Porta: [{porta_to_conect}]!'), sleep(2.08)
             while True:
-                print('Ping: Recebendo respostas do Servidor....')
-                print('Ping: Diagnosticando dados seriais recebidos')
-                print('Ping: Matendo solicitação infinita de Socket (ipv4/tcp)')
+                try:
+                    print('Ping: Recebendo respostas do Servidor....')
+                    print('Ping: Diagnosticando dados seriais recebidos')
+                    print('Ping: Matendo solicitação infinita de Socket (ipv4/tcp)')
+                except KeyboardInterrupt:
+                    break
     def __server__(self, listen):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.listen(int(listen))
@@ -168,7 +172,7 @@ class webnews:
         site = get("https://news.google.com/rss?need=pt_br&gl=BR&hl=pt-BR&ceid=BR:pt-419")
         noticias = BeautifulSoup(site.text, 'html.parser')
         for item in noticias.findAll('item')[:5]:
-            print(f'Manchete: {item.title.text}')
+            print(f'{item.title.text}')
     def covid_cases():
         site = get('https://covid19-brazil-api.now.sh/api/report/v1')
         casos = site.json()
@@ -188,7 +192,7 @@ __init__()
 system('title Dsa Terminal')
 print(strftime('Iniciando Dsa Terminal...'))
 print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
-print(strftime('====================Dsa Terminal===================')), sleep(2.9)
+print(strftime('====================Dsa Terminal========================')), sleep(2.9)
 while True:
     try:
         cmd: str = input(f'\033[32mroot@mainFrame20:~$\033[m ').strip()
@@ -293,11 +297,11 @@ while True:
             system(fr'bin\bash.exe /files/{cmd}')
         # Ajuda manual
         elif cmd == 'help':
-            print('Comando:              Função:\n')
+            print('Comando:              Funão:\n')
             print('echo [mensagem]       Escreve mensagens na tela')
             print('pkg [parametros]      Gerenciador de pacotes')
             print('nano [arquivo]        Dsa Terminal E-ditor')
-            print('ping [parametros]     Opções de rede remota')
+            print('ping [parametros]     Opçõeses de rede remota')
             print('help                  Exibe ajuda')
             print('version               Exibe versão instalada')
             print('./[shell script]      Executa shell script')
@@ -309,6 +313,7 @@ while True:
             print('mkdir [pasta]         Cria uma pasta')
             print('ifconfig              Exibe configurações de IP')
             print('set [options]         Difinindo variaveis seriais')
+            print('task                  Gerenciador de Tarefas')
             print('touch [arquivo]       Cria um arquivo')
             print('incluide [modulo]     Importa modulo e o executa')
             print('exit                  Sai do Dsa Terminal')
@@ -316,7 +321,7 @@ while True:
         elif cmd == 'block':
             startfile('Bubbles.scr')
             continue
-        # Esmaeçer
+        # EsmaeÃ§er
         elif cmd == '':
             for d in range(0, 1):
                 continue
@@ -347,7 +352,7 @@ while True:
         elif cmd == 'cls':
             system('cls')
             continue
-        # Mostra versão do Dsa Terminal
+        # Mostra versÃ£o do Dsa Terminal
         elif cmd == 'version':
             print(__version__)
             continue
@@ -383,6 +388,17 @@ while True:
             else:
                 system(fr'mkdir files\{cmd}')
             continue
+        # Tarefas
+        elif cmd == 'task':
+            print('Tarefas sendo executadas no sistema:')
+            print('Nome do Serviço:       Local:                   Status:')
+            print('Host da Janela         [Serviço do Windows]     Executando...')
+            print('Config.                /Terminal.exe            Executando...')
+            print('Bash.exe               /bin/bash.exe            Executando...')
+            print('Serviçõs do http-cli   /run/http_cli/http.exe   Executando em segundo plano...')
+            print('Github connection      /.git     <dir>          Executando...')
+            print('Linux Subsystem        /Terminal.exe            Executando em segundo plano...')
+            print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
         # Criar arquivo
         elif cmd.startswith('touch'):
             cmd = cmd.replace('touch ', '')

@@ -24,7 +24,6 @@ url: "https://github.com/Dsa-Terminal"
         requestBody: jsonObject
     }
     {
-        {api.settimeout: 191.92}
         {
             {
                 method: 'GET',
