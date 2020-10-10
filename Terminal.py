@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.0.7.1'
+__version__ = '1.0.7.2'
 # Importando modulos
 import socket
 from os import system, startfile, mkdir, listdir
@@ -184,281 +184,295 @@ def __init__():
     system('cls')
     system('title Dsa Terminal -i --login --bin\init.sh')
     system('pause')
-    system(r'bin\bash.exe bin\init.sh')
+    if files.ArquivoExiste(fr'boot\boot.ini'):
+        if files.ArquivoExiste(rf'boot\init.sh'):
+            system(r'bin\bash.exe boot\init.sh')
+            return True
+        else:
+            return False
+    else:
+        return False
 # Set up
 console = Console()
 session = randint(0, 291462)
-__init__()
-system('title Dsa Terminal')
-print(strftime('Iniciando Dsa Terminal...'))
-print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
-print(strftime('====================Dsa Terminal========================')), sleep(2.9)
-while True:
-    try:
-        cmd: str = input(f'\033[32mroot@mainFrame20:~$\033[m ').strip()
-        # Listagem de parametros do Pkg
-        if cmd == 'pkg /?':
-            print('Pkg: Listagem de parametros')
-            print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
-            print('pkg install [pkgname]      Instala pacotes')
-            print('pkg uninstall [pkgname]    Desinstala pacotes')
-            print('pkg update                 Atualiza versão instalada do Dsa Terminal')
-        # Instalando pacotes
-        elif cmd.startswith('pkg install'):
-            packge.pkg_install(cmd)
-            continue
-        # Clidev
-        elif cmd == 'cli-http':
-            while True:
-                cmd = input('\033[32m[~]\033[m ')
-                if cmd == 'exit':
-                    break
-                elif cmd.startswith('http'):
-                    cmd = cmd.replace('http ', '')
-                    cmd = cmd.replace('http', '')
-                    if cmd == '':
-                        system('run\http_cli\http.exe')
-                    else:
-                        system(f'run\http_cli\http.exe {cmd}')
-                elif cmd == 'clear':
-                    system('cls')
-        # Desinstalando pacotes
-        elif cmd.startswith('pkg uninstall'):
-            packge.pkg_uninstall(cmd)
-            continue
-        # Listagem de parametros do WebNews
-        elif cmd == 'wn /?':
-            print('WebNews: Listagem de parametros\n')
-            print('wn -g / --get       Machetes diarias')
-            print('wn -c / --covid     Casos de Coronaviros no estado')
-        # Noticias diarias
-        elif cmd == 'wn -g' or cmd == 'wn --get':
-            webnews.scrapping()
-            continue
-        # Casos de covid
-        elif cmd == 'wn -c' or cmd == 'wn --covid':
-            webnews.covid_cases()
-            continue
-        # Escutar portas
-        elif cmd.startswith('ping -nc'):
-            cmd = cmd.replace('ping -nc ', '')
-            cmd = cmd.replace('ping -nc', '')
-            if cmd == '':
-                print('Ping: É necessario fornecer uma porta!')
-            else:
-                ping.nc(int(cmd))
-        # Localhost Web Pages
-        elif cmd == 'localhost':
-            system('run\Main.exe')
-            continue
-        # Dsa Terminal e-ditor
-        elif cmd.startswith('nano'):
-            print('Dsa Terminal editor foi iniciado')
-            system('title [Nano] - Dsa terminal')
-            cmd = cmd.replace('nano ', '')
-            cmd = cmd.replace('nano', '')
-            if cmd == '':
-                system(rf'usr\bin\nano.exe')
-                system(f'move {cmd} files')
-            else:
-                system(fr'usr\bin\nano.exe /files/{cmd}')
-            system('title Dsa Terminal')
-        # Escrever na tela
-        elif cmd.startswith('echo'):
-            cmd = cmd.replace('echo ', '')
-            cmd = cmd.replace('echo', '')
-            cmd = cmd.replace('"', '')
-            cmd = cmd.replace(r'\n', '\n')
-            cmd = cmd.replace(r'\t', '\t')
-            try:
-                cmd = cmd.replace(r'%myload%', myload)
-            except:
-                cmd = cmd.replace('%myload%', 'Dados não encontrados')
-            print(cmd)
-            continue
-        # Linha comentada
-        elif cmd.startswith(';;'):
-            auto_get_ProgressBar(0.01)
-            continue
-        # Localhost WebAr Server
-        elif cmd == 'localhost':
-            system(r'run\Main.exe')
-            continue
-        # Listagem de parametros do "echo "
-        elif cmd == 'echo /?':
-            print('Echo: Listagem de parametros\n')
-            print(r'    echo [mensagem[parametros de formatação]]')
-            print(r'\t                Tab')
-            print(r'\n                Quebra de linha')
-            print(r'%myload%          Valor definido')
-        # Executar shell script
-        elif cmd.startswith('./'):
-            cmd = cmd.replace('./', '')
-            system(fr'bin\bash.exe /files/{cmd}')
-        # Ajuda manual
-        elif cmd == 'help':
-            print('Comando:              Funão:\n')
-            print('echo [mensagem]       Escreve mensagens na tela')
-            print('pkg [parametros]      Gerenciador de pacotes')
-            print('nano [arquivo]        Dsa Terminal E-ditor')
-            print('ping [parametros]     Opçõeses de rede remota')
-            print('help                  Exibe ajuda')
-            print('version               Exibe versão instalada')
-            print('./[shell script]      Executa shell script')
-            print('block                 Protetor de tela')
-            print('localhost             Web Localhost')
-            print('cli-http              Console httpie Client')
-            print('wn [parametros]       Noticias da web')
-            print('st [Tarefa]           Começa uma tarefa do Windows')
-            print('mkdir [pasta]         Cria uma pasta')
-            print('ifconfig              Exibe configurações de IP')
-            print('set [options]         Difinindo variaveis seriais')
-            print('task                  Gerenciador de Tarefas')
-            print('touch [arquivo]       Cria um arquivo')
-            print('incluide [modulo]     Importa modulo e o executa')
-            print('exit                  Sai do Dsa Terminal')
-        # Protetor de tela
-        elif cmd == 'block':
-            startfile('Bubbles.scr')
-            continue
-        # Esmaeçer
-        elif cmd == '':
-            for d in range(0, 1):
+start = __init__()
+if start == True:
+    system('title Dsa Terminal')
+    print(strftime('Iniciando Dsa Terminal...'))
+    print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
+    print(strftime('====================Dsa Terminal========================')), sleep(2.9)
+    while True:
+        try:
+            cmd: str = input(f'\033[32mroot@mainFrame20:~$\033[m ').strip()
+            # Listagem de parametros do Pkg
+            if cmd == 'pkg /?':
+                print('Pkg: Listagem de parametros')
+                print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
+                print('pkg install [pkgname]      Instala pacotes')
+                print('pkg uninstall [pkgname]    Desinstala pacotes')
+                print('pkg update                 Atualiza versão instalada do Dsa Terminal')
+            # Instalando pacotes
+            elif cmd.startswith('pkg install'):
+                packge.pkg_install(cmd)
                 continue
-            del d
-        # Upload de dados "string"
-        elif cmd.startswith('set'):
-            cmd = cmd.replace('set ', '')
-            cmd = cmd.replace('set', '')
-            cmd = cmd.replace(r'\n', '\n')
-            cmd = cmd.replace(r'\t', '\t')
-            cmd = cmd.replace(r'"', '')
-            if cmd == '= nil':
-                del myload
-                print('Registro deletado!')
+            # Clidev
+            elif cmd == 'cli-http':
+                while True:
+                    cmd = input('\033[32m[~]\033[m ')
+                    if cmd == 'exit':
+                        break
+                    elif cmd.startswith('http'):
+                        cmd = cmd.replace('http ', '')
+                        cmd = cmd.replace('http', '')
+                        if cmd == '':
+                            system('run\http_cli\http.exe')
+                        else:
+                            system(f'run\http_cli\http.exe {cmd}')
+                    elif cmd == 'clear':
+                        system('cls')
+            # Desinstalando pacotes
+            elif cmd.startswith('pkg uninstall'):
+                packge.pkg_uninstall(cmd)
                 continue
-            else:
-                myload = cmd
+            # Listagem de parametros do WebNews
+            elif cmd == 'wn /?':
+                print('WebNews: Listagem de parametros\n')
+                print('wn -g / --get       Machetes diarias')
+                print('wn -c / --covid     Casos de Coronaviros no estado')
+            # Noticias diarias
+            elif cmd == 'wn -g' or cmd == 'wn --get':
+                webnews.scrapping()
                 continue
-        # Sair do Dsa Terminal
-        elif cmd == 'exit':
-            auto_get_ProgressBar(0.01)
-            break
-        # Limpa a tela
-        elif cmd == 'clear':
-            system('cls')
-            continue
-        # Limpa a tela
-        elif cmd == 'cls':
-            system('cls')
-            continue
-        # Mostra versão do Dsa Terminal
-        elif cmd == 'version':
-            print(__version__)
-            continue
-        # Dsa Terminal Update
-        elif cmd == 'pkg update':
-            update()
-            system('pause')
-            break
-        # Lua Linguagem
-        elif cmd.startswith('lua'):
-            cmd = cmd.replace('lua ', '')
-            cmd = cmd.replace('lua', '')
-            system('title lua for Dsa Terminal')
-            system('cls')
-            if cmd == '':
-                system('var\Lua\lua.exe')
-            else:
-                system(f'var\Lua\lua.exe {cmd}')
-            system('title Dsa terminal')
-        # Node.js Server
-        elif cmd == 'node':
-            system('cls')
-            system('title node.js for Dsa Terminal')
-            system(r'var\node.exe')
-            system('title Dsa terminal')
-            continue
-        # Criar diretorio
-        elif cmd.startswith('mkdir'):
-            cmd = cmd.replace('mkdir ', '')
-            cmd = cmd.replace('mkdir', '')
-            if cmd == '':
-                pass
-            else:
-                system(fr'mkdir files\{cmd}')
-            continue
-        # Tarefas
-        elif cmd == 'task':
-            print('Tarefas sendo executadas no sistema:')
-            print('Nome do Serviço:       Local:                   Status:')
-            print('Host da Janela         [Serviço do Windows]     Executando...')
-            print('Config.                /Terminal.exe            Executando...')
-            print('Bash.exe               /bin/bash.exe            Executando...')
-            print('Serviçõs do http-cli   /run/http_cli/http.exe   Executando em segundo plano...')
-            print('Github connection      /.git     <dir>          Executando...')
-            print('Linux Subsystem        /Terminal.exe            Executando em segundo plano...')
-            print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
-            print('mingw64                /mingw64/Main.sh         Executando...')
-            print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
-        # Criar arquivo
-        elif cmd.startswith('touch'):
-            cmd = cmd.replace('touch ', '')
-            cmd = cmd.replace('touch', '')
-            if cmd == '':
-                open(r'files\Novo arquivo.txt', 'wt+')
-            else:
-                open(fr'files\{cmd}', 'wt+')
-                print(f"Criando arquivos {cmd}..."), sleep(1)
-                auto_get_ProgressBar(0.03)
+            # Casos de covid
+            elif cmd == 'wn -c' or cmd == 'wn --covid':
+                webnews.covid_cases()
                 continue
-        # Phoenix Setup Utility
-        elif cmd == 'gui':
-            auto_get_ProgressBar(0.01)
-            system(r'run\SetupUltility\PhoenixSetupGUI.exe')
-            break
-        # Remover...
-        elif 'rm' in cmd:
-            cmd = cmd.replace('rm ', '')
-            cmd = cmd.replace('rm', '')
-            if cmd == '':
-                print('Remove: Insira um nome-de-arquivo')
-            else:
-                system(fr'del files\{cmd}')
-        # Listar de diretorios e objetos
-        elif cmd == 'ls':
-            system(r'bin\bash.exe bin\listdir.sh')
-            print('')
-            continue
-        # Listagem de diretorios, objetos e ocultos
-        elif cmd == 'ls -a':                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-            system(r'bin\bash.exe bin\listall.sh')
-            print('')
-            continue
-        # Abrir Paginas da Web
-        elif cmd.startswith('web'):
-            cmd = cmd.replace('web ', '')
-            cmd = cmd.replace('web', '')
-            system(f'start "" "https://{cmd}"')
-            auto_get_ProgressBar(0.01)
-            del http
-        # Configurações de IP 
-        elif cmd == 'ifconfig':
-            print('Configuração de IP do Dsa Terminal [conexão direta]!')
-            print(f'IP: [{ip}] Porta: [80]')
-            continue
-        # Incluir e executar Modulo
-        elif cmd.startswith('incluide'):
-            cmd = cmd.replace('incluide ', '')
-            cmd = cmd.replace('incluide', '')
-            if cmd == '':
-                print('Incluide: Modulo sem nome')
-            else:
+            # Escutar portas
+            elif cmd.startswith('ping -nc'):
+                cmd = cmd.replace('ping -nc ', '')
+                cmd = cmd.replace('ping -nc', '')
+                if cmd == '':
+                    print('Ping: É necessario fornecer uma porta!')
+                else:
+                    ping.nc(int(cmd))
+            # Localhost Web Pages
+            elif cmd == 'localhost':
+                system('run\Main.exe')
+                continue
+            # Dsa Terminal e-ditor
+            elif cmd.startswith('nano'):
+                print('Dsa Terminal editor foi iniciado')
+                system('title [Nano] - Dsa terminal')
+                cmd = cmd.replace('nano ', '')
+                cmd = cmd.replace('nano', '')
+                if cmd == '':
+                    system(rf'usr\bin\nano.exe')
+                    system(f'move {cmd} files')
+                else:
+                    system(fr'usr\bin\nano.exe /files/{cmd}')
+                system('title Dsa Terminal')
+            # Escrever na tela
+            elif cmd.startswith('echo'):
+                cmd = cmd.replace('echo ', '')
+                cmd = cmd.replace('echo', '')
+                cmd = cmd.replace('"', '')
+                cmd = cmd.replace(r'\n', '\n')
+                cmd = cmd.replace(r'\t', '\t')
+                try:
+                    cmd = cmd.replace(r'%myload%', myload)
+                except:
+                    cmd = cmd.replace('%myload%', 'Dados não encontrados')
+                print(cmd)
+                continue
+            # Linha comentada
+            elif cmd.startswith(';;'):
                 auto_get_ProgressBar(0.01)
-                system(fr'Lib\{cmd}\Main.exe')
-        # Comando invalido!
-        else:
-            print(f'{cmd}: comando invalido!')
+                continue
+            # Localhost WebAr Server
+            elif cmd == 'localhost':
+                system(r'run\Main.exe')
+                continue
+            # Listagem de parametros do "echo "
+            elif cmd == 'echo /?':
+                print('Echo: Listagem de parametros\n')
+                print(r'    echo [mensagem[parametros de formatação]]')
+                print(r'\t                Tab')
+                print(r'\n                Quebra de linha')
+                print(r'%myload%          Valor definido')
+            # Executar shell script
+            elif cmd.startswith('./'):
+                cmd = cmd.replace('./', '')
+                system(fr'bin\bash.exe /files/{cmd}')
+            # Ajuda manual
+            elif cmd == 'help':
+                print('Comando:              Funão:\n')
+                print('echo [mensagem]       Escreve mensagens na tela')
+                print('pkg [parametros]      Gerenciador de pacotes')
+                print('nano [arquivo]        Dsa Terminal E-ditor')
+                print('ping [parametros]     Opçõeses de rede remota')
+                print('help                  Exibe ajuda')
+                print('version               Exibe versão instalada')
+                print('./[shell script]      Executa shell script')
+                print('block                 Protetor de tela')
+                print('localhost             Web Localhost')
+                print('cli-http              Console httpie Client')
+                print('wn [parametros]       Noticias da web')
+                print('st [Tarefa]           Começa uma tarefa do Windows')
+                print('mkdir [pasta]         Cria uma pasta')
+                print('ifconfig              Exibe configurações de IP')
+                print('set [options]         Difinindo variaveis seriais')
+                print('task                  Gerenciador de Tarefas')
+                print('touch [arquivo]       Cria um arquivo')
+                print('incluide [modulo]     Importa modulo e o executa')
+                print('exit                  Sai do Dsa Terminal')
+            # Protetor de tela
+            elif cmd == 'block':
+                startfile('Bubbles.scr')
+                continue
+            # Esmaeçer
+            elif cmd == '':
+                for d in range(0, 1):
+                    continue
+                del d
+            # Upload de dados "string"
+            elif cmd.startswith('set'):
+                cmd = cmd.replace('set ', '')
+                cmd = cmd.replace('set', '')
+                cmd = cmd.replace(r'\n', '\n')
+                cmd = cmd.replace(r'\t', '\t')
+                cmd = cmd.replace(r'"', '')
+                if cmd == '= nil':
+                    del myload
+                    print('Registro deletado!')
+                    continue
+                else:
+                    myload = cmd
+                    continue
+            # Sair do Dsa Terminal
+            elif cmd == 'exit':
+                auto_get_ProgressBar(0.01)
+                break
+            # Limpa a tela
+            elif cmd == 'clear':
+                system('cls')
+                continue
+            # Limpa a tela
+            elif cmd == 'cls':
+                system('cls')
+                continue
+            # Mostra versão do Dsa Terminal
+            elif cmd == 'version':
+                print(__version__)
+                continue
+            # Dsa Terminal Update
+            elif cmd == 'pkg update':
+                update()
+                system('pause')
+                break
+            # Lua Linguagem
+            elif cmd.startswith('lua'):
+                cmd = cmd.replace('lua ', '')
+                cmd = cmd.replace('lua', '')
+                system('title lua for Dsa Terminal')
+                system('cls')
+                if cmd == '':
+                    system('var\Lua\lua.exe')
+                else:
+                    system(f'var\Lua\lua.exe {cmd}')
+                system('title Dsa terminal')
+            # Node.js Server
+            elif cmd == 'node':
+                system('cls')
+                system('title node.js for Dsa Terminal')
+                system(r'var\node.exe')
+                system('title Dsa terminal')
+                continue
+            # Criar diretorio
+            elif cmd.startswith('mkdir'):
+                cmd = cmd.replace('mkdir ', '')
+                cmd = cmd.replace('mkdir', '')
+                if cmd == '':
+                    pass
+                else:
+                    system(fr'mkdir files\{cmd}')
+                continue
+            # Tarefas
+            elif cmd == 'task':
+                print('Tarefas sendo executadas no sistema:')
+                print('Nome do Serviço:       Local:                   Status:')
+                print('Host da Janela         [Serviço do Windows]     Executando...')
+                print('Config.                /Terminal.exe            Executando...')
+                print('Bash.exe               /bin/bash.exe            Executando...')
+                print('Serviçõs do http-cli   /run/http_cli/http.exe   Executando em segundo plano...')
+                print('Github connection      /.git     <dir>          Executando...')
+                print('Linux Subsystem        /Terminal.exe            Executando em segundo plano...')
+                print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
+                print('mingw64                /mingw64/Main.sh         Executando...')
+                print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
+            # Criar arquivo
+            elif cmd.startswith('touch'):
+                cmd = cmd.replace('touch ', '')
+                cmd = cmd.replace('touch', '')
+                if cmd == '':
+                    open(r'files\Novo arquivo.txt', 'wt+')
+                else:
+                    open(fr'files\{cmd}', 'wt+')
+                    print(f"Criando arquivos {cmd}..."), sleep(1)
+                    auto_get_ProgressBar(0.03)
+                    continue
+            # Phoenix Setup Utility
+            elif cmd == 'gui':
+                auto_get_ProgressBar(0.01)
+                system(r'run\SetupUltility\PhoenixSetupGUI.exe')
+                break
+            # Remover...
+            elif 'rm' in cmd:
+                cmd = cmd.replace('rm ', '')
+                cmd = cmd.replace('rm', '')
+                if cmd == '':
+                    print('Remove: Insira um nome-de-arquivo')
+                else:
+                    system(fr'del files\{cmd}')
+            # Listar de diretorios e objetos
+            elif cmd == 'ls':
+                system(r'bin\bash.exe bin\listdir.sh')
+                print('')
+                continue
+            # Listagem de diretorios, objetos e ocultos
+            elif cmd == 'ls -a':                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                system(r'bin\bash.exe bin\listall.sh')
+                print('')
+                continue
+            # Abrir Paginas da Web
+            elif cmd.startswith('web'):
+                cmd = cmd.replace('web ', '')
+                cmd = cmd.replace('web', '')
+                system(f'start "" "https://{cmd}"')
+                auto_get_ProgressBar(0.01)
+                del http
+            # Configurações de IP 
+            elif cmd == 'ifconfig':
+                print('Configuração de IP do Dsa Terminal [conexão direta]!')
+                print(f'IP: [{ip}] Porta: [80]')
+                continue
+            # Incluir e executar Modulo
+            elif cmd.startswith('incluide'):
+                cmd = cmd.replace('incluide ', '')
+                cmd = cmd.replace('incluide', '')
+                if cmd == '':
+                    print('Incluide: Modulo sem nome')
+                else:
+                    auto_get_ProgressBar(0.01)
+                    system(fr'Lib\{cmd}\Main.exe')
+            # Comando invalido!
+            else:
+                print(f'{cmd}: comando invalido!')
+                continue
+        except:
             continue
-    except:
-        continue
+else:
+    system('cls')
+    print('Error: No Botable Device')
+    print("Don't have a installed System on Dsa Terminal as Device Operative")
+    print('Exiting iPxe Rom...'), sleep(6.26)
+    auto_get_ProgressBar(0.001)
