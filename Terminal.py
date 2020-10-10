@@ -321,7 +321,7 @@ while True:
         elif cmd == 'block':
             startfile('Bubbles.scr')
             continue
-        # EsmaeÃ§er
+        # Esmaeçer
         elif cmd == '':
             for d in range(0, 1):
                 continue
@@ -352,7 +352,7 @@ while True:
         elif cmd == 'cls':
             system('cls')
             continue
-        # Mostra versÃ£o do Dsa Terminal
+        # Mostra versão do Dsa Terminal
         elif cmd == 'version':
             print(__version__)
             continue
@@ -399,6 +399,8 @@ while True:
             print('Github connection      /.git     <dir>          Executando...')
             print('Linux Subsystem        /Terminal.exe            Executando em segundo plano...')
             print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
+            print('mingw64                /mingw64/Main.sh         Executando...')
+            print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
         # Criar arquivo
         elif cmd.startswith('touch'):
             cmd = cmd.replace('touch ', '')
