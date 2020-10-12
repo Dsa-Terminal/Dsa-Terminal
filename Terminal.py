@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.0.7.2'
+__version__ = '1.0.9'
 # Importando modulos
 import socket
 from os import system, startfile, mkdir, listdir
@@ -128,7 +128,6 @@ class files:
             return False
         else:
             return True
-
     def __init__():
         pass
 # Ping network Servidor
@@ -163,22 +162,30 @@ class ping:
                 continue
             msg = 'Servidor: Mais um nodo recebido!'
             s.send(msg.encode('utf-8'))
-# Noticias da Web
-class webnews:
-    def __init__(self):
-        pass
-    def scrapping():
-        site = get("https://news.google.com/rss?need=pt_br&gl=BR&hl=pt-BR&ceid=BR:pt-419")
-        noticias = BeautifulSoup(site.text, 'html.parser')
-        for item in noticias.findAll('item')[:5]:
-            print(f'{item.title.text}')
-    def covid_cases():
-        site = get('https://covid19-brazil-api.now.sh/api/report/v1')
-        casos = site.json()
-        caso = casos['data'][14]['cases']
-        suspeitos = casos['data'][14]['suspects']
-        mortes = casos['data'][14]['deaths']
-        print(f"Casos de covid-19: Agora existem {caso} casos de Covid em seu estado, com {suspeitos} casos \nsuspeitos e {mortes} mortes")
+# iPXE
+def iPXE():
+    system('cls')
+    print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
+    print('Features: HTTP iSCSI DNS TFTP AoE FCoE TFTP COMBOOT ELF PXE PXEXT\n'), sleep(9.2)
+    while True:
+        cmd: str = input('iPXE> ')
+        if cmd == 'route':
+            print('net0: 10.0.0.155/255.255.255.0 gw 10.0.0.1')
+        elif cmd == 'sanboot':
+            sleep(9.1)
+            return True
+            break
+        elif cmd == '':
+            continue
+        elif cmd == 'exit':
+            sleep(11.9)
+            return False
+            break
+        elif cmd == 'ping':
+            print('iPXE: Your network Firmware connection is variable!')
+            print(f'iPXE: Network COMBOOT IP: {ip}\n')
+        else:
+            print(f'{cmd}: iPXE command not found!')
 # Inicalizar
 def __init__():
     system('cls')
@@ -206,7 +213,7 @@ if start == True:
     while True:
         try:
             system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
-            cmd = input(f'└─$ ').strip()
+            cmd: str = input(f'└─$ ').strip()
             # Listagem de parametros do Pkg
             if cmd == 'pkg /?':
                 print('Pkg: Listagem de parametros')
@@ -245,31 +252,6 @@ if start == True:
             elif cmd.startswith('pkg uninstall'):
                 packge.pkg_uninstall(cmd)
                 continue
-            # Listagem de parametros do WebNews
-            elif cmd == 'wn /?':
-                print('WebNews: Listagem de parametros\n')
-                print('wn -g / --get       Machetes diarias')
-                print('wn -c / --covid     Casos de Coronaviros no estado')
-            # Noticias diarias
-            elif cmd == 'wn -g' or cmd == 'wn --get':
-                webnews.scrapping()
-                continue
-            # Casos de covid
-            elif cmd == 'wn -c' or cmd == 'wn --covid':
-                webnews.covid_cases()
-                continue
-            # Escutar portas
-            elif cmd.startswith('ping -nc'):
-                cmd = cmd.replace('ping -nc ', '')
-                cmd = cmd.replace('ping -nc', '')
-                if cmd == '':
-                    print('Ping: É necessario fornecer uma porta!')
-                else:
-                    ping.nc(int(cmd))
-            # Localhost Web Pages
-            elif cmd == 'localhost':
-                system('run\Main.exe')
-                continue
             # Dsa Terminal e-ditor
             elif cmd.startswith('nano'):
                 print('Dsa Terminal editor foi iniciado')
@@ -302,14 +284,6 @@ if start == True:
                 else:
                     print(cmd)
                 continue
-            # Linha comentada
-            elif cmd.startswith(';;'):
-                auto_get_ProgressBar(0.01)
-                continue
-            # Localhost WebAr Server
-            elif cmd == 'localhost':
-                system(r'run\Main.exe')
-                continue
             # Executar shell script
             elif cmd.startswith('./'):
                 cmd = cmd.replace('./', '')
@@ -320,16 +294,11 @@ if start == True:
                 print('echo [mensagem]       Escreve mensagens na tela')
                 print('pkg [parametros]      Gerenciador de pacotes')
                 print('nano [arquivo]        Dsa Terminal E-ditor')
-                print('ping [parametros]     Opçõeses de rede remota')
                 print('help                  Exibe ajuda')
-                print('env                   Variaveis de ambiente')
                 print('version               Exibe versão instalada')
                 print('./[shell script]      Executa shell script')
-                print('block                 Protetor de tela')
-                print('localhost             Web Localhost')
                 print('cli-http              Console httpie Client')
                 print('wn [parametros]       Noticias da web')
-                print('st [Tarefa]           Começa uma tarefa do Windows')
                 print('mkdir [pasta]         Cria uma pasta')
                 print('ssl                   SSL Controller')
                 print('debug                 Debug system')
@@ -339,19 +308,6 @@ if start == True:
                 print('touch [arquivo]       Cria um arquivo')
                 print('incluide [modulo]     Importa modulo e o executa')
                 print('exit                  Sai do Dsa Terminal')
-            # Env Settings
-            elif cmd == 'env':
-                print('Variaveis de ambiente do Dsa Terminal')
-                print('home="/files"')
-                print('root="/"')
-                print('cmd="env"')
-                print('Botable="/boot"')
-                print('bash="/bin/bash.exe')
-                print('skins="/mingw64/bin"')
-            # Protetor de tela
-            elif cmd == 'block':
-                startfile('Bubbles.scr')
-                continue
             # Esmaeçer
             elif cmd == '':
                 for d in range(0, 1):
@@ -378,10 +334,6 @@ if start == True:
                 break
             # Limpa a tela
             elif cmd == 'clear':
-                system('cls')
-                continue
-            # Limpa a tela
-            elif cmd == 'cls':
                 system('cls')
                 continue
             # Mostra versão do Dsa Terminal
@@ -469,27 +421,12 @@ if start == True:
                 system(r'bin\bash.exe bin\listall.sh')
                 print('')
                 continue
-            # Abrir Paginas da Web
-            elif cmd.startswith('web'):
-                cmd = cmd.replace('web ', '')
-                cmd = cmd.replace('web', '')
-                system(f'start "" "htt2ps://{cmd}"')
-                auto_get_ProgressBar(0.01)
-                del http
             # Configurações de IP 
             elif cmd == 'ifconfig':
                 print('Configuração de IP do Dsa Terminal [conexão direta]!')
                 print(f'IP: [{ip}] Porta: [82]')
+                print()
                 continue
-            # Start win
-            elif cmd.startswith('st'):
-                cmd = cmd.replace('st ', '')
-                cmd = cmd.replace('st', '')
-                if cmd == '':
-                    print('')
-                else:
-                    system(f'start {cmd}')
-                    print('')
             # Incluir e executar Modulo
             elif cmd.startswith('incluide'):
                 cmd = cmd.replace('incluide ', '')
@@ -499,12 +436,23 @@ if start == True:
                 else:
                     auto_get_ProgressBar(0.01)
                     system(fr'Lib\{cmd}\Main.exe')
+            # iPXE
+            elif cmd == 'ipxe':
+                i = iPXE()
+                if i == False:
+                    break
+                else:
+                    continue
             # Comando invalido!
             else:
                 print(f'{cmd}: comando invalido!')
                 continue
         except:
-            continue
+            i = iPXE()
+            if i == False:
+                break
+            else:
+                continue
 # Falhar Exiting Pxe Rom
 else:
     system('cls')
