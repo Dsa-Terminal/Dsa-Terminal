@@ -321,6 +321,7 @@ if start == True:
                 print('nano [arquivo]        Dsa Terminal E-ditor')
                 print('ping [parametros]     Opçõeses de rede remota')
                 print('help                  Exibe ajuda')
+                print('env                   Variaveis de ambiente')
                 print('version               Exibe versão instalada')
                 print('./[shell script]      Executa shell script')
                 print('block                 Protetor de tela')
@@ -329,12 +330,23 @@ if start == True:
                 print('wn [parametros]       Noticias da web')
                 print('st [Tarefa]           Começa uma tarefa do Windows')
                 print('mkdir [pasta]         Cria uma pasta')
+                print('ssl                   SSL Controller')
+                print('debug                 Debug system')
                 print('ifconfig              Exibe configurações de IP')
                 print('set [options]         Difinindo variaveis seriais')
                 print('task                  Gerenciador de Tarefas')
                 print('touch [arquivo]       Cria um arquivo')
                 print('incluide [modulo]     Importa modulo e o executa')
                 print('exit                  Sai do Dsa Terminal')
+            # Env Settings
+            elif cmd == 'env':
+                print('Variaveis de ambiente do Dsa Terminal')
+                print('home="/files"')
+                print('root="/"')
+                print('cmd="env"')
+                print('Botable="/boot"')
+                print('bash="/bin/bash.exe')
+                print('skins="/mingw64/bin"')
             # Protetor de tela
             elif cmd == 'block':
                 startfile('Bubbles.scr')
