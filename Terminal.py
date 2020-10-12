@@ -202,10 +202,11 @@ if start == True:
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
-    print(strftime('====================Dsa Terminal========================')), sleep(2.9)
+    print(strftime('====================Dsa Terminal=====================')), sleep(2.9)
     while True:
         try:
-            cmd: str = input(f'\033[32mroot@mainFrame20:~$\033[m ').strip()
+            system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
+            cmd = input(f'└─$ ').strip()
             # Listagem de parametros do Pkg
             if cmd == 'pkg /?':
                 print('Pkg: Listagem de parametros')
@@ -292,7 +293,14 @@ if start == True:
                     cmd = cmd.replace(r'%myload%', myload)
                 except:
                     cmd = cmd.replace('%myload%', 'Dados não encontrados')
-                print(cmd)
+                if cmd == '/?':
+                    print('Echo: Listagem de parametros\n')
+                    print(r'echo [mensagem[parametros de formatação]]')
+                    print(r'\t                Tab')
+                    print(r'\n                Quebra de linha')
+                    print(r'%myload%          Valor definido')
+                else:
+                    print(cmd)
                 continue
             # Linha comentada
             elif cmd.startswith(';;'):
@@ -302,13 +310,6 @@ if start == True:
             elif cmd == 'localhost':
                 system(r'run\Main.exe')
                 continue
-            # Listagem de parametros do "echo "
-            elif cmd == 'echo /?':
-                print('Echo: Listagem de parametros\n')
-                print(r'    echo [mensagem[parametros de formatação]]')
-                print(r'\t                Tab')
-                print(r'\n                Quebra de linha')
-                print(r'%myload%          Valor definido')
             # Executar shell script
             elif cmd.startswith('./'):
                 cmd = cmd.replace('./', '')
@@ -370,6 +371,7 @@ if start == True:
                 else:
                     myload = cmd
                     continue
+                    print('')
             # Sair do Dsa Terminal
             elif cmd == 'exit':
                 auto_get_ProgressBar(0.01)
@@ -417,6 +419,7 @@ if start == True:
                     pass
                 else:
                     system(fr'mkdir files\{cmd}')
+                print('')
                 continue
             # Tarefas
             elif cmd == 'task':
@@ -455,6 +458,7 @@ if start == True:
                     print('Remove: Insira um nome-de-arquivo')
                 else:
                     system(fr'del files\{cmd}')
+                print('')
             # Listar de diretorios e objetos
             elif cmd == 'ls':
                 system(r'bin\bash.exe bin\listdir.sh')
@@ -469,14 +473,23 @@ if start == True:
             elif cmd.startswith('web'):
                 cmd = cmd.replace('web ', '')
                 cmd = cmd.replace('web', '')
-                system(f'start "" "https://{cmd}"')
+                system(f'start "" "htt2ps://{cmd}"')
                 auto_get_ProgressBar(0.01)
                 del http
             # Configurações de IP 
             elif cmd == 'ifconfig':
                 print('Configuração de IP do Dsa Terminal [conexão direta]!')
-                print(f'IP: [{ip}] Porta: [80]')
+                print(f'IP: [{ip}] Porta: [82]')
                 continue
+            # Start win
+            elif cmd.startswith('st'):
+                cmd = cmd.replace('st ', '')
+                cmd = cmd.replace('st', '')
+                if cmd == '':
+                    print('')
+                else:
+                    system(f'start {cmd}')
+                    print('')
             # Incluir e executar Modulo
             elif cmd.startswith('incluide'):
                 cmd = cmd.replace('incluide ', '')
