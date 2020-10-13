@@ -363,9 +363,9 @@ if start == True:
                 system('title lua for Dsa Terminal')
                 system('cls')
                 if cmd == '':
-                    system('var\Lua\lua.exe')
+                    system(r'var\Lua\lua.exe')
                 else:
-                    system(f'var\Lua\lua.exe {cmd}')
+                    system(fr'var\Lua\lua.exe {cmd}')
                 system('title Dsa terminal')
             # Node.js Server
             elif cmd == 'node':

@@ -14,8 +14,10 @@ bin-release/
 *.ipa
 *.apk
 *.api
+*.ini
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 $RECYCLE.BIN/S-1-5-21-1253723000-3132238658-3668602919-1001/desktop.ini
+$RECYCLE.BIN
