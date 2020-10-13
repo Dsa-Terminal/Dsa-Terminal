@@ -32,7 +32,6 @@ from rich.console import Console
 from rich.markdown import Markdown
 from tqdm import tqdm, trange
 from rich.progress import track
-from bs4 import BeautifulSoup
 from requests import get
 # ==========================
 hostname = socket.gethostname()
