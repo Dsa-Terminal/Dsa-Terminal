@@ -63,13 +63,6 @@ Facil digite `version` que ele mostra-ra a versão atual que já sera diferente 
 pode ser a mesma, mais você verá alguns bugs e novos comandos em `help`!
 Ou nem digite na inicialização ele mostra a versão!
 
-# Novidades e lançamentos
-O nucleo do Dsa Terminal funciona com o bash do Ubuntu e Linux, é como uma redistribuição 
-do Linux só que não é exatamente igual ele, por exemplo ele não tem os diretorio:
-`/root` pois o usuario sempre sera (root)! 
-
-**Veja os nosso lançamentos na pagina dos lançamentos**
-
 # Contribuidores
 Criador e Adiministrador do Dsa Terminal
 [Felipe Souza Pereira Lima](https://github.com/Felipe-Souza-Pereira-Lima)
