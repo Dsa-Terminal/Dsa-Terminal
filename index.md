@@ -63,23 +63,14 @@ Facil digite `version` que ele mostra-ra a versão atual que já sera diferente 
 pode ser a mesma, mais você verá alguns bugs e novos comandos em `help`!
 Ou nem digite na inicialização ele mostra a versão!
 
-# Novidades e lançamentos
-O nucleo do Dsa Terminal funciona com o bash do Ubuntu e Linux, é como uma redistribuição 
-do Linux só que não é exatamente igual ele, por exemplo ele não tem os diretorio:
-`/root` pois o usuario sempre sera (root)! 
+# Contribuidores
+Criador e Adiministrador do Dsa Terminal
+[Felipe Souza Pereira Lima](https://github.com/Felipe-Souza-Pereira-Lima)
 
-**Veja os nosso lançamentos na pagina dos lançamentos**
+Coordenador Chefe, desenvolvedor principal
+[Cauê Alves](https://github.com/caue-alves)
 
-# Como funciona o Nucleo do Dsa Terminal
-O Core dele é em Python 3 mais, ele herda o bash do GNU/Linux Ubuntu e GNU/Git
-que são esenciais para o funcionamento e a interpretação de shell script!
+## Contribua com este Projeto!
+Para fazer parte você tem que saber pogramar, e ter uma noção basica de Git!
+[Quero Fazer Parte](https://github.com/Dsa-Software/DsaVagas/issues/new?assignees=&labels=vaga&template=request.md&title=Pergunta+por+vaga)
 
-## Estrutura de arquivos
-A "Estrutura de arquivos" tem alguns poblemas por exemplo a execução de scripts .lua
-que ele não encontra na base em `/var/Lua` mais se o Dsa Terminal fosse mover e depois excluir
-iria dar erro, já tentei!1
-
-- ***Procura-se contibuidores***
-### Procura-se contribuidores!!!
-Já diz o ditado: *Mais mentes pensam melhor*! Um projeto bom precisa
-de contribuidores para um bom desempenho!!!
