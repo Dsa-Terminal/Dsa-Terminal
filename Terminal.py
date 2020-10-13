@@ -77,13 +77,19 @@ class packge:
         pass
     def pkg_install(command):
         cmd = command.replace('pkg install ', '')
-        print(f'\033[32mLendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
-        print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
-        auto_get_ProgressBar(1)
-        ProgressBar('Baixando tools')
-        system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
-        system(fr'move {cmd} Lib')
-        return True
+        cmd = command.replace('pkg install', '')
+        if cmd == '':
+            print('Pkg: Insira-um-nome-de-pacote-valido')
+        elif cmd == 'Dsa-Terminal':
+            print('Pkg: Para atualizar o Dsa Terminal você deve usar o comando "pkg update"')
+        else:
+            print(f'\033[32mLendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
+            print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
+            auto_get_ProgressBar(1)
+            ProgressBar('Baixando tools')
+            system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
+            system(fr'move {cmd} Lib')
+            return True
     def pkg_uninstall(command):
         cmd = command.replace('pkg uninstall ', '')
         print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
@@ -211,6 +217,7 @@ console = Console()
 session = randint(0, 291462)
 # Configurações do iPXE Boot 
 start = __init__()
+pwd = '/files'
 # Inicialização normal
 if start == True:
     system('title Dsa Terminal')
@@ -259,6 +266,9 @@ if start == True:
                         system('cls')
                     else:
                         pass
+            # Caminho
+            elif cmd == 'pwd':
+                print(pwd)
             # Desinstalando pacotes
             elif cmd.startswith('pkg uninstall'):
                 packge.pkg_uninstall(cmd)
@@ -309,6 +319,7 @@ if start == True:
                 print('version               Exibe versão instalada')
                 print('./[shell script]      Executa shell script')
                 print('cli-http              Console httpie Client')
+                print('pwd                   Caminho do diretorio')
                 print('wn [parametros]       Noticias da web')
                 print('mkdir [pasta]         Cria uma pasta')
                 print('ssl                   SSL Controller')
