@@ -175,6 +175,14 @@ def iPXE():
             sleep(9.1)
             return True
             break
+        elif cmd == 'boot':
+            cmd = input('Boot Image in ServerLocal: ').strip().lower()
+            try:
+                img = get(cmd)
+            except:
+                print("iPXE: Server Webhost don't existent")
+            else:
+                print(img)
         elif cmd == '':
             continue
         elif cmd == 'exit':
@@ -221,6 +229,10 @@ if start == True:
                 print('pkg install [pkgname]      Instala pacotes')
                 print('pkg uninstall [pkgname]    Desinstala pacotes')
                 print('pkg update                 Atualiza versão instalada do Dsa Terminal')
+            # Diskket
+            elif cmd.startswith('disk'):
+                system('gpg --gen-key')
+                continue
             # Debug
             elif cmd == 'debug':
                 system(r'mingw64\bin\edit_text.exe')
@@ -242,12 +254,12 @@ if start == True:
                     elif cmd.startswith('http'):
                         cmd = cmd.replace('http ', '')
                         cmd = cmd.replace('http', '')
-                        if cmd == '':
-                            system('run\http_cli\http.exe')
-                        else:
-                            system(f'run\http_cli\http.exe {cmd}')
+                        system(r'cls')
+                        system(r'run\http_cli\http.exe')
                     elif cmd == 'clear':
                         system('cls')
+                    else:
+                        pass
             # Desinstalando pacotes
             elif cmd.startswith('pkg uninstall'):
                 packge.pkg_uninstall(cmd)
