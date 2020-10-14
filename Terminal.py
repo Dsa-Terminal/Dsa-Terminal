@@ -28,6 +28,7 @@ import socket
 from os import system, startfile, mkdir, listdir
 from random import randint
 from time import strftime, sleep
+from getpass import getpass
 from rich.console import Console
 from rich.markdown import Markdown
 from tqdm import tqdm, trange
@@ -206,8 +207,23 @@ def __init__():
     system('pause')
     if files.ArquivoExiste(fr'boot\boot.ini'):
         if files.ArquivoExiste(rf'boot\init.sh'):
-            system(r'bin\bash.exe boot\init.sh')
-            return True
+            if files.ArquivoExiste('Terminal.dll'):
+                with open('Terminal.dll') as keyword:
+                    password: str = getpass('\033[1;92mPassword\033[1;93m:\033[m ').strip()
+                    if password == keyword:
+                        system(r'bin\bash.exe boot\init.sh')
+                        return True
+                    else:
+                        return None
+            else:
+                print('Bem-vindo ao Dsa Terminal, me chamo Config. sou seu assistente!')
+                print('\nPara começar defina uma senha para ser usada como palavra-passe')
+                print('do Dsa Terminal!\n')
+                while True:
+                    password: str = getpass('\033[1;92mPassword\033[1;93m:\033[m ').strip()
+                    files.CriarArquivo('Terminal.dll')
+                    with open('Terminal.dll', 'wt') as keyword:
+                        files.Write('Terminal.dll', password)
         else:
             return False
     else:
@@ -475,6 +491,10 @@ if start == True:
                 break
             else:
                 continue
+# Senha invalida
+elif start == None:
+    print('\n\nSenha invalida\nExiting PXE ROM'), sleep(5.8)
+    system('pause')
 # Falhar Exiting Pxe Rom
 else:
     system('cls')
