@@ -77,16 +77,16 @@ class packge:
     def __init__(self):
         pass
     def pkg_install(command):
-        cmd = command.replace('pkg install ', '')
-        cmd = command.replace('pkg install', '')
+        cmd = command.replace('pkginstall ', '')
+        cmd = command.replace('pkginstall', '')
         if cmd == '':
             print('Pkg: Insira-um-nome-de-pacote-valido')
         elif cmd == 'Dsa-Terminal':
             print('Pkg: Para atualizar o Dsa Terminal você deve usar o comando "pkg update"')
         else:
-            print(f'\033[32mLendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
+            print(f'Lendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
             print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
-            auto_get_ProgressBar(1)
+            auto_get_ProgressBar(0.001)
             ProgressBar('Baixando tools')
             system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
             system(fr'move {cmd} Lib')
@@ -98,7 +98,7 @@ class packge:
         system(fr'del Lib\{cmd}')
         return True
     def pkg_update(command):
-        cmd = command.replace('pkg uninstall ', '')
+        cmd = command.replace('pkg update ', '')
         print(f'\033[32mLendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
         print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
         auto_get_ProgressBar(1)
@@ -275,8 +275,18 @@ if start == True:
                 system(r'mingw64\bin\openssl.exe')
                 continue
             # Instalando pacotes
+            elif cmd.startswith('sudo pkg install'):
+                cmd = cmd.replace('sudo ', '')
+                cmd = cmd.replace(' ', '')
+                password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
+                if password == key:
+                    packge.pkg_install(cmd)
+                else:
+                    print('[sudo] Senha invalida!\n')
+                continue
+            # Instalando pacotes
             elif cmd.startswith('pkg install'):
-                packge.pkg_install(cmd)
+                print('13: Erro (Permissão negada)!')
                 continue
             # Clidev
             elif cmd == 'cli-http':
@@ -298,7 +308,15 @@ if start == True:
                 print(pwd)
             # Desinstalando pacotes
             elif cmd.startswith('pkg uninstall'):
-                packge.pkg_uninstall(cmd)
+                print('13: Erro (Permissão negada)!')
+                continue
+            # Desinstalando pacotes
+            elif cmd.startswith('sudo pkg uninstall'):
+                password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
+                if password == key:
+                    packge.pkg_uninstall(cmd)
+                else:
+                    print('[sudo] Senha invalida!\n')
                 continue
             # Dsa Terminal e-ditor
             elif cmd.startswith('nano'):
