@@ -425,9 +425,11 @@ if start == True:
             # Api 
             elif cmd == 'apimon':
                 system(r'run\sudo\apimon.exe')
+                print('')
                 continue
             elif cmd == 'env':
                 system(r'run\env.exe')
+                print('')
                 continue
             # Node.js Server
             elif cmd == 'node':
