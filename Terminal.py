@@ -238,15 +238,18 @@ session = randint(0, 291462)
 # Configurações do iPXE Boot 
 start = __init__()
 pwd = '/files'
+user = r'%username%'
 # Inicialização normal
 if start == True:
+    with open(r'boot\drivers\pass.exc') as key:
+        key = key.read()
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
     print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
     while True:
         try:
-            system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
+            system(f'echo ┌─────────[\033[32m{user}@%computername%\033[m] \033[34m~\033[m')
             cmd: str = input(f'└─$ ').strip()
             # Listagem de parametros do Pkg
             if cmd == 'pkg /?':
@@ -255,14 +258,18 @@ if start == True:
                 print('pkg install [pkgname]      Instala pacotes')
                 print('pkg uninstall [pkgname]    Desinstala pacotes')
                 print('pkg update                 Atualiza versão instalada do Dsa Terminal')
-            # Diskket
-            elif cmd.startswith('disk'):
-                system('gpg --gen-key')
-                continue
             # Debug
             elif cmd == 'debug':
                 system(r'mingw64\bin\edit_text.exe')
                 continue
+            # Root USer
+            elif cmd == 'sudo su':
+                password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
+                if password == key:
+                    user = 'root'
+                    system('cls')
+                else:
+                    print('[sudo] Senha invalida!\n')
             # OpenSSL
             elif cmd == 'ssl':
                 system(r'mingw64\bin\openssl.exe')
