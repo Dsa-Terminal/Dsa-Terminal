@@ -202,9 +202,9 @@ def iPXE():
             print(f'{cmd}: iPXE command not found!')
 # Inicalizar
 def __init__():
-    system('cls')
-    system('title Dsa Terminal -i --login --bin\init.sh')
-    system('pause')
+    system(r'cls')
+    system(r'title Dsa Terminal -i --login --bin\init.sh')
+    system(r'pause')
     if files.ArquivoExiste(fr'boot\boot.ini'):
         if files.ArquivoExiste(rf'boot\init.sh'):
             if files.ArquivoExiste(r'boot\drivers\pass.exc'):
@@ -365,7 +365,6 @@ if start == True:
                 print('./[shell script]      Executa shell script')
                 print('cli-http              Console httpie Client')
                 print('pwd                   Caminho do diretorio')
-                print('wn [parametros]       Noticias da web')
                 print('mkdir [pasta]         Cria uma pasta')
                 print('ssl                   SSL Controller')
                 print('debug                 Debug system')
@@ -447,7 +446,7 @@ if start == True:
                 print('Host da Janela         [Serviço do Windows]     Executando...')
                 print('Config.                /Terminal.exe            Executando...')
                 print('Bash.exe               /bin/bash.exe            Executando...')
-                print('Serviçõs do http-cli   /run/http_cli/http.exe   Executando em segundo plano...')
+                print('Servições do http-cli  /run/http_cli/http.exe   Executando em segundo plano...')
                 print('Github connection      /.git     <dir>          Executando...')
                 print('Linux Subsystem        /Terminal.exe            Executando em segundo plano...')
                 print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
