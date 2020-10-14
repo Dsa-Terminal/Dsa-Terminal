@@ -207,23 +207,27 @@ def __init__():
     system('pause')
     if files.ArquivoExiste(fr'boot\boot.ini'):
         if files.ArquivoExiste(rf'boot\init.sh'):
-            if files.ArquivoExiste('Terminal.dll'):
-                with open('Terminal.dll') as keyword:
-                    password: str = getpass('\033[1;92mPassword\033[1;93m:\033[m ').strip()
-                    if password == keyword:
+            if files.ArquivoExiste(r'boot\drivers\pass.exc'):
+                with open(r'boot\drivers\pass.exc', 'rt') as key:
+                    key = key.read()
+                    password = getpass('Password: ').strip()
+                    if password == key:
                         system(r'bin\bash.exe boot\init.sh')
                         return True
                     else:
                         return None
             else:
-                print('Bem-vindo ao Dsa Terminal, me chamo Config. sou seu assistente!')
-                print('\nPara começar defina uma senha para ser usada como palavra-passe')
-                print('do Dsa Terminal!\n')
+                print('Registre uma palavra-passe para o Dsa Terminal!\n')
                 while True:
-                    password: str = getpass('\033[1;92mPassword\033[1;93m:\033[m ').strip()
-                    files.CriarArquivo('Terminal.dll')
-                    with open('Terminal.dll', 'wt') as keyword:
-                        files.Write('Terminal.dll', password)
+                    password = getpass('Password: ').strip()
+                    if password == '':
+                        print('Insira uma palavra-passe!')
+                    else:
+                        with open(r'boot\drivers\pass.exc', 'wt+') as key:
+                            files.Write(r'boot\drivers\pass.exc', password)
+                            system('cls')
+                            break
+                return True
         else:
             return False
     else:
@@ -239,7 +243,7 @@ if start == True:
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
-    print(strftime('====================Dsa Terminal=====================')), sleep(2.9)
+    print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
     while True:
         try:
             system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
@@ -493,7 +497,7 @@ if start == True:
                 continue
 # Senha invalida
 elif start == None:
-    print('\n\nSenha invalida\nExiting PXE ROM'), sleep(5.8)
+    print('\n\nSenha invalida\nPXE MOF: Exiting PXE ROM'), sleep(5.8)
     system('pause')
 # Falhar Exiting Pxe Rom
 else:
