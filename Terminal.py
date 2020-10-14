@@ -422,6 +422,13 @@ if start == True:
                 else:
                     system(fr'var\Lua\lua.exe {cmd}')
                 system('title Dsa terminal')
+            # Api 
+            elif cmd == 'apimon':
+                system(r'run\sudo\apimon.exe')
+                continue
+            elif cmd == 'env':
+                system(r'run\env.exe')
+                continue
             # Node.js Server
             elif cmd == 'node':
                 system('cls')
