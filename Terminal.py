@@ -66,9 +66,9 @@ def auto_get_ProgressBar(time):
 # Atualizador do Dsa Terminal
 def update():
     system('title [Update] - Dsa Terminal')
-    print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(21)
+    print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(2.8)
     auto_get_ProgressBar(0.1)
-    print('\033[mDecodificando Setups paea o Compilador GitBoster (info).'), sleep(1.99)
+    print('\033[mDecodificando Setups para o Compilador GitBoster (info).'), sleep(1.99)
     ProgressBar('Validando Serial')
     system('bin\git.exe pull')
     print(f'Setup de versão {__version__} Anterior <==== Update selected')
@@ -180,6 +180,10 @@ def iPXE():
             print('net0: 10.0.0.155/255.255.255.0 gw 10.0.0.1')
         elif cmd == 'sanboot':
             sleep(9.1)
+            system('cls')
+            print(strftime('Iniciando Dsa Terminal...'))
+            print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
+            print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
             return True
             break
         elif cmd == 'boot':
@@ -216,7 +220,6 @@ class Arduino:
                 break
             elif cmd == 'route':
                 print(self)
-
 # Inicalizar
 def __init__():
     system(r'cls')
@@ -279,14 +282,6 @@ if start == True:
             elif cmd == 'debug':
                 system(r'mingw64\bin\edit_text.exe')
                 continue
-            # Root USer
-            elif cmd == 'sudo su':
-                password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
-                if password == key:
-                    user = 'root'
-                    system('cls')
-                else:
-                    print('[sudo] Senha invalida!\n')
             # OpenSSL
             elif cmd == 'ssl':
                 system(r'mingw64\bin\openssl.exe')
