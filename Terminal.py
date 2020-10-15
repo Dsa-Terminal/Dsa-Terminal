@@ -34,6 +34,7 @@ from rich.markdown import Markdown
 from tqdm import tqdm, trange
 from rich.progress import track
 from requests import get
+import arduino, serial
 # ==========================
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
@@ -200,6 +201,22 @@ def iPXE():
             print(f'iPXE: Network COMBOOT IP: {ip}\n')
         else:
             print(f'{cmd}: iPXE command not found!')
+# Arduino module
+class Arduino:
+    def __init__(self):
+        host_id = (ip)
+        return host_id
+    def run(self):
+        print('Monitor Serial do Arduino Controlador pelo Dsa Terminal')
+        print('Use comandos do Arduino para controlar o sistema do micro-controlador')
+        print('')
+        while True:
+            cmd: str = str(input(r'Code:\>_')).strip()
+            if cmd == 'exit':
+                break
+            elif cmd == 'route':
+                print(self)
+
 # Inicalizar
 def __init__():
     system(r'cls')
@@ -274,6 +291,10 @@ if start == True:
             elif cmd == 'ssl':
                 system(r'mingw64\bin\openssl.exe')
                 continue
+            # cmd
+            elif cmd == 'cmd':
+                system('cls')
+                system('cmd')
             # Instalando pacotes
             elif cmd.startswith('sudo pkg install'):
                 cmd = cmd.replace('sudo ', '')
@@ -511,6 +532,11 @@ if start == True:
                 else:
                     auto_get_ProgressBar(0.01)
                     system(fr'Lib\{cmd}\Main.exe')
+            # Arduino Network Controller
+            elif cmd == 'clino':
+                system('cls')
+                arduino_network = Arduino.__init__(cmd)
+                Arduino.run(arduino_network)
             # iPXE
             elif cmd == 'ipxe':
                 i = iPXE()
