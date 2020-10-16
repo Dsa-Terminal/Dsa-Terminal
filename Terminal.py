@@ -139,36 +139,10 @@ class files:
         pass
 # Ping network Servidor
 class ping:
-    def __init__(self, ip_to_conect, porta_to_conect):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(0.03)
-        try:
-            s.connect_ex((ip_to_conect, int(porta_to_conect)))
-        except:
-            print('Ping: Erro ao tentar se conectar com o servidor!')
-        else:
-            print(f'Ping: Conectado com IP: [{ip_to_conect}] Porta: [{porta_to_conect}]!'), sleep(2.08)
-            while True:
-                try:
-                    print('Ping: Recebendo respostas do Servidor....')
-                    print('Ping: Diagnosticando dados seriais recebidos')
-                    print('Ping: Matendo solicitação infinita de Socket (ipv4/tcp)')
-                except KeyboardInterrupt:
-                    break
-    def __server__(self, listen):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.listen(int(listen))
-        s.bind((ip, porta))
-        while True:
-            s.accept()
-            print('Ping: Uma conexão recebida neste Servidor!')
-            try:
-                msg = 'Servidor: Bem-vindo, você esta conectado com o servidor!'
-                s.send(msg.decode('utf-8'))
-            except:
-                continue
-            msg = 'Servidor: Mais um nodo recebido!'
-            s.send(msg.encode('utf-8'))
+    def __init__(self):
+        system('ping')
+    def connect(self, ip):
+        system(f'ping -t {ip}')
 # iPXE
 def iPXE():
     system('cls')
