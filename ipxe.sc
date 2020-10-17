@@ -10,5 +10,5 @@
 			System.echo()
 		}
 	}
-	exec(ipxe(""))
+	exec(ipxe("", '/Terminal.exe'))
 </script ctrl> 
