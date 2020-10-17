@@ -231,19 +231,22 @@ console = Console()
 session = randint(0, 291462)
 # Configurações do iPXE Boot 
 start = __init__()
-pwd = '/files'
-user = r'%username%'
 # Inicialização normal
 if start == True:
+    # Leitura de Senha
     with open(r'boot\drivers\pass.exc') as key:
         key = key.read()
+    # Variaveis globais
+    root = "/"
+    pwd = "/files"
+    # Sistema
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
     print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
     while True:
         try:
-            system(f'echo ┌─────────[\033[32m{user}@%computername%\033[m] \033[34m~\033[m')
+            system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
             cmd: str = input(f'└─$ ').strip()
             # Listagem de parametros do Pkg
             if cmd == 'pkg /?':
