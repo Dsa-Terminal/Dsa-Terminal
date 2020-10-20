@@ -270,6 +270,27 @@ if start == True:
                 print('pkg install [pkgname]      Instala pacotes')
                 print('pkg uninstall [pkgname]    Desinstala pacotes')
                 print('pkg update                 Atualiza versão instalada do Dsa Terminal')
+            # Python
+            elif cmd.startswith('python3'):
+                system('title Python3 for Dsa Terminal')
+                if cmd == 'python3':
+                    system(fr'Python3\Scripts\python.exe')
+                else:
+                    cmd = cmd.replace('python3', '')
+                    cmd = cmd.replace('python3 ', '')
+                    if '-m' in cmd:
+                        system(fr'Python3\Scripts\python.exe {cmd}')
+                    else:
+                        system(fr'Python3\Scripts\python.exe files\{cmd}')
+                system('title Dsa Terminal')
+            elif cmd.startswith('pip'):
+                cmd = cmd.replace('pip ', '')
+                cmd = cmd.replace('pip', '')
+                system(rf'Python3\Scripts\pip.exe {cmd}')
+            elif cmd.startswith('pip3'):
+                cmd = cmd.replace('pip3 ', '')
+                cmd = cmd.replace('pip3', '')
+                system(rf'Python3\Scripts\pip3.8.exe {cmd}')
             # Debug
             elif cmd == 'debug':
                 system(r'mingw64\bin\edit_text.exe')
