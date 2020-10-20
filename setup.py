@@ -24,9 +24,7 @@ def iPXE():
         elif cmd == 'sanboot':
             sleep(9.1)
             system('cls')
-            print(strftime('Iniciando Dsa Terminal...'))
-            print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
-            print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
+            input('...')
             return True
             break
         elif cmd == 'boot':
