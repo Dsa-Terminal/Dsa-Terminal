@@ -36,7 +36,7 @@ def openAndRead(file):
 		with open(file) as scil:
 			scil = scil.read()
 	except:
-		print('Traceback (FileNotFoundError - No such File on Diretory)')
+		raise FileNotFoundError('Traceback (FileNotFoundError - No such File on Diretory)')
 	else:
 		return scil
 def prompt(msg):
