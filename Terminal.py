@@ -26,7 +26,7 @@ __version__ = '1.0.9'
 # Importando modulos
 import socket
 from os import system, startfile, mkdir, listdir
-from random import randint
+from random import randint, choice
 from time import strftime, sleep
 from getpass import getpass
 from rich.console import Console
@@ -194,6 +194,21 @@ class Arduino:
                 break
             elif cmd == 'route':
                 print(self)
+# Compile emulador
+def matrixe(AF_INET):
+    chars_to_print = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', ' ']
+    hall = True
+    for c in range(0, AF_INET):
+        try:
+            for i in range(100):
+                print(choice(chars_to_print), end='', sep='')
+            print(i)
+        except KeyboardInterrupt:
+            hall = None
+            break
+    if hall == True:
+        print('Compilação completa')
+    print('\n')
 # Inicalizar
 def __init__():
     system(r'cls')
