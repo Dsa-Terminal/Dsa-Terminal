@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='E:\abc_lang'
+VIRTUAL_ENV='D:\Python3'
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

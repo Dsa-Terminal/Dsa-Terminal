@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=E:\abc_lang"
+set "VIRTUAL_ENV=D:\Python3"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

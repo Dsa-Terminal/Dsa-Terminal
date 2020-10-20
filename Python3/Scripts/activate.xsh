@@ -28,7 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"E:\abc_lang"
+$VIRTUAL_ENV = r"D:\Python3"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]
