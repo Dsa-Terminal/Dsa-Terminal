@@ -18,7 +18,7 @@ def wait(seconds):
 	try:
 		a = int(seconds)
 	except:
-		print(f'Traceback (TypeError - {seconds})')
+		raise TypeError(f'Traceback (TypeError - {seconds})')
 	else:
 		sleep(a)
 	return True
