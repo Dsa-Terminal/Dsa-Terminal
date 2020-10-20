@@ -1,0 +1,337 @@
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-weight: normal;
+	vertical-align: baseline;
+	background: transparent;
+}
+article, aside, figure, footer, header, nav, section, details, summary {display: block;}
+html {
+	box-sizing: border-box;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+img,
+object,
+embed {max-width: 100%;}
+
+html {overflow-y: scroll;}
+
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; }
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom;}
+.ie7 input[type="checkbox"] {vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+
+small {font-size: 85%;}
+
+strong {font-weight: bold;}
+
+td, td img {vertical-align: top;}
+
+/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+button,
+input[type=button] {width: auto; overflow: visible;}
+
+/* scale images in IE7 more attractively */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover
+   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+*/
+
+/* let's clear some floats */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+@font-face {
+  font-family: 'Perfect';
+  src: url('fonts/Perfect.eot');
+  src: local('?'), url('fonts/Perfect.woff') format('woff'), url('fonts/Perfect.ttf') format('truetype'), url('fonts/Perfect.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+html, body {
+	cursor: none;
+}
+body {
+    font-family: 'Perfect';
+    background-color: #CCCCCC;
+    font-size: 26px;
+    line-height: 33px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+body, select, input, textarea {color: #73ffff;}
+
+a {text-decoration: none; color: #ffff25;}
+a:hover {color: #ffff25;}
+table{width: 100%;}
+.header {
+	text-align: center;
+	background-color: #00EEBB;
+	color: #000;
+}
+.clickable tr{
+	color: #0426EA;
+}
+.rightPanelHead {
+	color: #0426EA;
+}
+.panel {
+	color: #000;
+}
+#mainMenu {
+	display: block;
+	background-color: #0426EA;
+	Color: #CCCCCC;
+}
+#mainMenu li {
+    display: inline-block;
+    padding: 0 30px;
+}
+#mainMenu li.selected {
+	background-color: #CCCCCC;
+	Color: #0426EA;
+}
+.mainContent {
+    border: 3px solid #000;
+    position: fixed;
+    top: 85px;
+    bottom: 100px;
+    left: 20px;
+    right: 20px;
+    color: #0426EA;
+}
+.keys {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 80px;
+	background-color: #00EEBB;
+	color: #000;
+	padding: 25px 20px 0;
+	width: 100%;
+}
+.keys > div {
+	display: inline-block;
+	padding-right: 85px;
+}
+.keys span {
+    color: #FFF;
+    display: inline-block;
+    width: auto;
+}
+.panel {
+	height: 100%;
+	width: 100%;
+	display: none;
+}
+.panel.visiblepanel {
+	display: block
+}
+.gery {
+	color: #555;
+}
+.leftPanel {
+    border-right: 3px solid #000;
+    float: left;
+    width: 65%;
+    height: 100%;
+}
+.rightPanelHead {
+    border-bottom: 3px solid #000;	
+}
+.explicationText {
+	line-height: 25px;
+}
+.leftPanelInner, .rightPanelHead, .explicationText {
+	padding: 20px;
+}
+.rightPanel {
+	float: right;
+	width: 35%;
+}
+.clickable .selected {
+	color: #FFF;
+}
+
+#restart {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 
+}
+
+
+
+
+
+@media screen and (max-width: 1450px) {
+	.keys {
+		padding: 4px 0 0 20px;
+	}
+	.keys > div {
+		display: inline-block;
+		padding-right: 0;
+		width: 44%;
+		text-align: left;
+	}
+
+
+	
+}
+
+
+@media screen and (max-width: 1000px) {
+	.leftPanel, .rightPanel {
+		overflow: auto;
+	}
+	body {
+		font-size: 20px;
+		line-height: 26px;
+	}
+	
+}
+
+@media screen and (max-width: 850px) {
+	.leftPanel, .rightPanel {
+		overflow: auto;
+	}
+	#mainMenu li {
+		padding: 0 20px;
+	}	
+}
+
+@media screen and (max-width: 700px) {
+	.rightPanel {
+		display: none;
+	}
+	.leftPanel {
+		border-right: none;
+		float: none;
+		width: 100%;
+		height: 100%;
+	}
+
+}
+
+@media screen and (max-width: 600px) {
+	#mainMenu li {
+		padding: 0 8px;
+	}
+	body {
+		font-size: 17px;
+		line-height: 23px;
+	}	
+}
+
+
+@media screen and (max-width: 450px) {
+	body {
+		font-size: 15px;
+		line-height: 20px;
+	}		
+	.keys > div:nth-child(1), .keys > div:nth-child(2) {
+		display: none;
+	}
+	.header {
+		height: 23px;
+		overflow: hidden;
+	}
+	.mainContent {
+		border: 2px solid #000;
+		top: 75px;
+		bottom: 80px;
+		left: 8px;
+		right: 8px;
+	}
+	.keys {
+		height: 50px;
+	}
+	.leftPanelInner, .rightPanelHead, .explicationText {
+		padding: 5px;
+	}	
+	
+}
+
+
+@media print {
+	color: #000;
+	background-color: #FFF;
+}

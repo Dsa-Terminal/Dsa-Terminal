@@ -1,0 +1,18 @@
+[diff "astextplain"]
+	textconv = astextplain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[http]
+	sslBackend = openssl
+	sslCAInfo = C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+[core]
+	autocrlf = true
+	fscache = true
+	symlinks = false
+[pull]
+	rebase = false
+[credential]
+	helper = manager

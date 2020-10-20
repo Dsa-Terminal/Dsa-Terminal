@@ -1,0 +1,7 @@
+{
+    "root dir": "/"
+    "git bash core": "/cmd", "/mingw64"
+    "node core": "/var"
+    "lua installation": "/var/Lua"
+    "home": "/files"
+}
