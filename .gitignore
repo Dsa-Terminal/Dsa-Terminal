@@ -1,5 +1,6 @@
 # Build and Release Folders
-.github/
+.releases
+.sudo_settings
 [Oo]bj/
 [Bb]in/
 
