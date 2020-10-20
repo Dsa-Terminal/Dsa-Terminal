@@ -355,7 +355,7 @@ if start == True:
                 print('nano [arquivo]        Dsa Terminal E-ditor')
                 print('help                  Exibe ajuda')
                 print('version               Exibe versão instalada')
-                print('./[shell script]      Executa shell script')
+                print('./[script]            Executa script')
                 print('cli-http              Console httpie Client')
                 print('pwd                   Caminho do diretorio')
                 print('mkdir [pasta]         Cria uma pasta')

@@ -31,6 +31,14 @@ def suspendConsole():
 	return True
 def personalized(msg)
 	return msg
+def openAndRead(file):
+	try:
+		with open(file) as scil:
+			scil = scil.read()
+	except:
+		print('Traceback (FileNotFoundError - No such File on Diretory)')
+	else:
+		return scil
 def prompt(msg):
 	a = input(msg)
 	return a
