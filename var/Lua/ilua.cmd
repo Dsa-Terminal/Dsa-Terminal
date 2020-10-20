@@ -1,1 +1,0 @@
-lua.exe -lilua

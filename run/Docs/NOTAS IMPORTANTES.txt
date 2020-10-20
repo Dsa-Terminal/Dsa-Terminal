@@ -1,2 +1,0 @@
-Não nos responsabilizamos pelos direitos autorais do Python3 se você for redistribuir o Dsa Terminal
-que vem com o nucleo em Python e o Python3 instalados em /run/Python3/python.exe
