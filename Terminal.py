@@ -463,6 +463,10 @@ if start == True:
                 system(r'var\node.exe')
                 system('title Dsa terminal')
                 continue
+            # Dir classico
+            elif cmd.startswith('dir'):
+                system(r'bin\dir.exe')
+                continue
             # Criar diretorio
             elif cmd.startswith('mkdir'):
                 cmd = cmd.replace('mkdir ', '')
