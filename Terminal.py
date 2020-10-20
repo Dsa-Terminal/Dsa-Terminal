@@ -221,10 +221,8 @@ def __init__():
                     key = key.read()
                     password = getpass('Password: ').strip()
                     if password == key:
-                        system(r'cls')
-                        return True
-                    else:
-                        return None
+                        system('cls')
+                        return True 
             else:
                 print('Registre uma palavra-passe para o Dsa Terminal!\n')
                 while True:
@@ -255,6 +253,7 @@ if start == True:
     root = "/"
     pwd = "/files"
     # Sistema
+    system('cls')
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
@@ -379,6 +378,14 @@ if start == True:
             elif cmd.startswith('./'):
                 cmd = cmd.replace('./', '')
                 system(fr'bin\bash.exe /files/{cmd}')
+            # Lnk
+            elif cmd.startswith('lnk'):
+                cmd = cmd.replace('lnk', '')
+                cmd = cmd.replace('lnk ', '')
+                if cmd == '':
+                    system(rf'run\framework.exe')
+                elif cmd == '--edit':
+                     system(fr'usr\bin\nano.exe /run/index.html')
             # Ajuda manual
             elif cmd == 'help':
                 print('Comando:              Funão:\n')
@@ -387,6 +394,9 @@ if start == True:
                 print('nano [arquivo]        Dsa Terminal E-ditor')
                 print('help                  Exibe ajuda')
                 print('version               Exibe versão instalada')
+                print('python3 [parametros]  Python v3.8.6...')
+                print('lnk [parametros]      Framework')
+                print('pip3 [parametros]     Pip3 para Python env')
                 print('./[script]            Executa script')
                 print('cli-http              Console httpie Client')
                 print('pwd                   Caminho do diretorio')
@@ -571,5 +581,5 @@ else:
     system('cls')
     print('Error: No Botable Device')
     print("Don't have a installed System on Dsa Terminal as Device Operative")
-    print('Exiting iPxe Rom...'), sleep(6.26)
+    print('PXE MOF: Exiting iPxe Rom...'), sleep(6.26)
     auto_get_ProgressBar(0.001)
