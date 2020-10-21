@@ -1,6 +1,7 @@
 # Build and Release Folders
 .releases
 .sudo_settings
+.idea/
 [Oo]bj/
 [Bb]in/
 
