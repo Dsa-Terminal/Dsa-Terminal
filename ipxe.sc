@@ -1,7 +1,7 @@
 /*
 Console de opereções loteadas do Dsa Terminal v1.0.9
 Disponivel no Github.com (https://github.com/Dsa-Terminal/Dsa-Terminal)
-License: Mit |Copyright (c) 2020
+License: Mit | Copyright (c) 2020
 */
 <script ctrl>
 	import System;

@@ -30,11 +30,9 @@ from random import randint, choice
 from time import strftime, sleep
 from getpass import getpass
 from rich.console import Console
-from rich.markdown import Markdown
 from tqdm import tqdm, trange
 from rich.progress import track
 from requests import get
-import arduino, serial
 # ==========================
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
@@ -135,14 +133,14 @@ class files:
             return False
         else:
             return True
-    def __init__():
-        pass
 # Ping network Servidor
 class ping:
     def __init__(self):
         system('ping')
+        return True
     def connect(self, ip):
         system(f'ping -t {ip}')
+        return True
 # iPXE
 def iPXE():
     system('cls')
@@ -156,7 +154,7 @@ def iPXE():
             sleep(9.1)
             system('cls')
             print(strftime('Iniciando Dsa Terminal...'))
-            print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
+            print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
             print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
             return True
             break
@@ -179,21 +177,6 @@ def iPXE():
             print(f'iPXE: Network COMBOOT IP: {ip}\n')
         else:
             print(f'{cmd}: iPXE command not found!')
-# Arduino module
-class Arduino:
-    def __init__(self):
-        host_id = (ip)
-        return host_id
-    def run(self):
-        print('Monitor Serial do Arduino Controlador pelo Dsa Terminal')
-        print('Use comandos do Arduino para controlar o sistema do micro-controlador')
-        print('')
-        while True:
-            cmd: str = str(input(r'Code:\>_')).strip()
-            if cmd == 'exit':
-                break
-            elif cmd == 'route':
-                print(self)
 # Compile emulador
 def matrixe(AF_INET):
     chars_to_print = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', ' ']
@@ -247,7 +230,7 @@ start = __init__()
 # Inicialização normal
 if start == True:
     # Leitura de Senha
-    with open(r'boot\drivers\pass.exc') as key:
+    with open(r boot\drivers\pass.exc') as key:
         key = key.read()
     # Variaveis globais
     root = "/"
@@ -256,7 +239,7 @@ if start == True:
     system('cls')
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
-    print(strftime(f'(C) %Y Dsa Terminal versão {__version__} Sessão: [{session}]'))
+    print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
     print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
     while True:
         try:
@@ -330,6 +313,7 @@ if start == True:
             # Caminho
             elif cmd == 'pwd':
                 print(pwd)
+                continue
             # Desinstalando pacotes
             elif cmd.startswith('pkg uninstall'):
                 print('13: Erro (Permissão negada)!')
@@ -405,9 +389,7 @@ if start == True:
                 print('debug                 Debug system')
                 print('ifconfig              Exibe configurações de IP')
                 print('set [options]         Difinindo variaveis seriais')
-                print('task                  Gerenciador de Tarefas')
-                print('touch [arquivo]       Cria um arquivo')
-                print('incluide [modulo]     Importa modulo e o executa')
+                print('task                  Exibe Tarefas do Dsa Terminal')
                 print('exit                  Sai do Dsa Terminal')
             # Esmaeçer
             elif cmd == '':
@@ -541,20 +523,15 @@ if start == True:
                 print(f'IP: [{ip}] Porta: [82]')
                 print()
                 continue
-            # Incluir e executar Modulo
-            elif cmd.startswith('incluide'):
-                cmd = cmd.replace('incluide ', '')
-                cmd = cmd.replace('incluide', '')
-                if cmd == '':
-                    print('Incluide: Modulo sem nome')
-                else:
-                    auto_get_ProgressBar(0.01)
-                    system(fr'Lib\{cmd}\Main.exe')
-            # Arduino Network Controller
-            elif cmd == 'clino':
-                system('cls')
-                arduino_network = Arduino.__init__(cmd)
-                Arduino.run(arduino_network)
+            # Apps e modulos do Dsa Terminal
+            elif cmd == 'kernel':
+                try:
+                    startfile('Lib\kernel\main.exe')
+                except FileNotFoundError:
+                    print('Modulo não instalado no sistema do Dsa Terminal!')
+                    print('Try:')
+                    print('      sudo pkg install kernel')
+                continue
             # iPXE
             elif cmd == 'ipxe':
                 i = iPXE()
