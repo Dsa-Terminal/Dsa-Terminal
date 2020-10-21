@@ -433,7 +433,7 @@ if start == True:
                 if cmd == '':
                     system(r'var\Lua\lua.exe')
                 else:
-                    system(fr'var\Lua\lua.exe {cmd}')
+                    system(fr'var\Lua\lua.exe \files\{cmd}lua')
                 system('title Dsa terminal')
             # Api 
             elif cmd == 'apimon':
