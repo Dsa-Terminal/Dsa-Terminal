@@ -240,7 +240,7 @@ if start == True:
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
-    print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
+    print(strftime('====================Dsa Terminal==============')), sleep(0.08)
     while True:
         try:
             system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
