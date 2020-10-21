@@ -230,7 +230,7 @@ start = __init__()
 # Inicialização normal
 if start == True:
     # Leitura de Senha
-    with open(r boot\drivers\pass.exc') as key:
+    with open(r'boot\drivers\pass.exec', 'rt') as key:
         key = key.read()
     # Variaveis globais
     root = "/"
