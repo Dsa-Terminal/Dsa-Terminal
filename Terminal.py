@@ -273,10 +273,6 @@ if start == True:
             elif cmd == 'debug':
                 system(r'mingw64\bin\edit_text.exe')
                 continue
-            # OpenSSL
-            elif cmd == 'ssl':
-                system(r'mingw64\bin\openssl.exe')
-                continue
             # cmd
             elif cmd == 'cmd':
                 system('cls')
