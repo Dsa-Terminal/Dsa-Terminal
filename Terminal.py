@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.0.9'
+__version__ = '1.8.2'
 # Importando modulos
 import socket
 from os import system, startfile, mkdir, listdir
@@ -267,9 +267,9 @@ if start == True:
                     else:
                         system(fr'Python3\Scripts\python.exe files\{cmd}')
                 system('title Dsa Terminal')
-            elif cmd.startswith('pip3'):
-                cmd = cmd.replace('pip3 ', '')
-                cmd = cmd.replace('pip3', '')
+            elif cmd.startswith('pip'):
+                cmd = cmd.replace('pip ', '')
+                cmd = cmd.replace('pip', '')
                 system(rf'Python3\Scripts\pip.exe {cmd}')
             # cmd
             elif cmd == 'cmd':
@@ -362,11 +362,14 @@ if start == True:
                 cmd = cmd.replace('lnk ', '')
                 if cmd == '':
                     system(rf'run\framework.exe')
+                elif cmd == ' --edit':
+                     system(fr'usr\bin\nano.exe /run/index.html')
                 elif cmd == '--edit':
                      system(fr'usr\bin\nano.exe /run/index.html')
             # Ajuda manual
             elif cmd == 'help':
-                print('Comando:              Funão:\n')
+                print('Comando:              Funão:')
+                print('_____________________________________________________')
                 print('echo [mensagem]       Escreve mensagens na tela')
                 print('pkg [parametros]      Gerenciador de pacotes')
                 print('nano [arquivo]        Dsa Terminal E-ditor')
@@ -375,7 +378,7 @@ if start == True:
                 print('python3 [parametros]  Python v3.8.6...')
                 print('lnk [parametros]      Framework')
                 print("gitlocal              Local no GitHub.com (url)")
-                print('pip3 [parametros]     Pip3 para Python env')
+                print('pip [parametros]      Gerenciador de pacotes do Config.')
                 print('./[script]            Executa script')
                 print('cli-http              Console httpie Client')
                 print('pwd                   Caminho do diretorio')
