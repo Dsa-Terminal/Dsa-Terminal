@@ -43,6 +43,16 @@ path = ['/bin', '/usr/bin', '/var', '/var/Lua', '/run',
         '/mingw64', '/mingw64/ssl', '/mingw64/libexec/gti-core',
         '/boot', '/boot/drivers', 'var/node_modules/npm', '/tmp',
         'usr/etc', '/usr/lib', '/usr', '/usr/share']
+assoc = {
+    '.exe': 'executavel', '.py': 'python file',
+    '.com': 'executavel', '.run': 'executavel',
+    '.api': 'api de módulo', 'packge.json': 'node.js server',
+    '.lua': 'lua script', '.js': 'javascipt file',
+    '.sc': 'arquivo em lotes do Dsa Terminal',
+    '.txt': 'arquivo de texto', '.exc': 'arquivo de texto',
+    '.html': 'documento web', '.xml': 'documento xml'
+}
+run = r'Dsa Terminal -i --login --boot\boot.ini'
 session = randint(0, 291462)
 pwd = "/files"
 porta = 82
@@ -164,7 +174,7 @@ def iPXE():
         cmd: str = input('iPXE> ')
         if cmd == 'route':
             print(route)
-        elif cmd == 'sanboot':
+        elif cmd == 'sanboot' or cmd == run:
             sleep(9.1)
             system('cls')
             print(strftime('Iniciando Dsa Terminal...'))
@@ -207,59 +217,74 @@ def matrixe(AF_INET):
     print('\n')
 def __init__():
     system(r'cls')
-    system(r'title Dsa Terminal -i --login --bin\init.sh')
+    run = r'Dsa Terminal -i --login --boot\boot.ini'
+    system('title Dsa Terminal')
     system(r'pause')
-    if files.ArquivoExiste(fr'boot\boot.ini'):
-        if files.ArquivoExiste(rf'boot\init.sh'):
-            if files.ArquivoExiste(r'boot\drivers\pass.exc'):
-                with open(r'boot\drivers\pass.exc', 'rt') as key:
-                    key = key.read()
-                    password = getpass('Password: ').strip()
-                    if password == key:
-                        try:
-                            with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'rt') as commit:
-                                commit = commit.read()
-                        except FileNotFoundError:
-                            pass
-                        else:
-                            print('Iniciando depuração do sistema....'), sleep(10.8)
-                            remove('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db')
-                            print('Tentando manter instabilidade na inicialização...'), sleep(12)
-                            input('Pressione ENTER para continuar a depuração. . .')
-                            system('timeout /T 10')
-                            print('Retomando o Shell Kernel para erros potenciais...')
-                            print('Seja paciente, a depuração pode demorar horas'), sleep(12.837)
-                            print('_______________________________________________________\n')
-                            print('Carregando modulos de entrada... ', end=''), sleep(10)
-                            print('carregado!!!')
-                            print('\n\n')
-                            print('Checando Framework de serviço do Node.JS Server...'), sleep(1.287)
-                            print('Zerando cache para melhor instabilidade...'), sleep(19.37)
-                            auto_get_ProgressBar(0.001)
-                            ProgressBar('Iniciando')
-                            print('Iniciando o Dsa Terminal...'), sleep(18)
-                        system('cls')
-                        return True 
-            else:
-                print('Registre uma palavra-passe para o Dsa Terminal!\n')
-                while True:
-                    password = getpass('Password: ').strip()
-                    if password == '':
-                        print('Config.: Insira uma palavra-passe!')
-                    elif password == 'abc123' or password == 'ABC123':
-                        print('Config.: Pó meu, capricha na senha mano!')
-                    else:
-                        with open(r'boot\drivers\pass.exc', 'wt+') as key:
-                            files.Write(r'boot\drivers\pass.exc', password)
-                            system('cls')
-                            break
-                return True
-        else:
-            return 'hmbdxyt'
+    if files.ArquivoExiste('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe'):
+        return run, ''
     else:
-        return 'ffcffff'
+        system(f'title {run}')
+        if files.ArquivoExiste(fr'boot\boot.ini'):
+            if files.ArquivoExiste(rf'boot\init.sh'):
+                if files.ArquivoExiste(r'boot\drivers\pass.exc'):
+                    with open(r'boot\drivers\pass.exc', 'rt') as key:
+                        key = key.read()
+                        password = getpass('Password: ').strip()
+                        if password == key:
+                            try:
+                                with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'rt') as commit:
+                                    commit = commit.read()
+                            except FileNotFoundError:
+                                pass
+                            else:
+                                print('Iniciando depuração do sistema....'), sleep(10.8)
+                                remove('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db')
+                                print('Tentando manter instabilidade na inicialização...'), sleep(12)
+                                input('Pressione ENTER para continuar a depuração. . .')
+                                system('timeout /T 10')
+                                print('Retomando o Shell Kernel para erros potenciais...')
+                                print('Seja paciente, a depuração pode demorar horas'), sleep(12.837)
+                                print('_______________________________________________________\n')
+                                print('Carregando modulos de entrada... ', end=''), sleep(10)
+                                print('carregado!!!')
+                                print('\n\n')
+                                print('Checando Framework de serviço do Node.JS Server...'), sleep(1.287)
+                                print('Zerando cache para melhor instabilidade...'), sleep(19.37)
+                                auto_get_ProgressBar(0.001)
+                                ProgressBar('Iniciando')
+                                print('Iniciando o Dsa Terminal...'), sleep(18)
+                            system('cls')
+                            return run, True
+                        elif password == f'{key} --main':
+                            password = password.replace(f'{key} --main', '')
+                            run = input('Boot Code:\>_')
+                            if run == r'Dsa Terminal -i --login --boot\boot.ini':
+                                return run, True
+                            elif run == r'Dsa Terminal -i --login --bin\boot.ini --cache':
+                                return run, True
+                            else:
+                                system(f'title {run}')
+                                return run, False
+                else:
+                    print('Registre uma palavra-passe para o Dsa Terminal!\n')
+                    while True:
+                        password = getpass('Password: ').strip()
+                        if password == '':
+                            print('Config.: Insira uma palavra-passe!')
+                        elif password == 'abc123' or password == 'ABC123':
+                            print('Config.: Pó meu, capricha na senha mano!')
+                        else:
+                            with open(r'boot\drivers\pass.exc', 'wt+') as key:
+                                files.Write(r'boot\drivers\pass.exc', password)
+                                system('cls')
+                                break
+                    return run, True
+            else:
+                return run, 'hmbdxyt'
+        else:
+            return run, 'ffcffff'
 # Setup
-start = __init__()
+run, start = __init__()
 if start == True:
     with open(r'boot\drivers\pass.exc', 'rt') as key:
         key = key.read()
@@ -382,6 +407,12 @@ if start == True:
                     system(fr'usr\bin\nano.exe /run/index.html')
                 elif cmd == '--edit':
                     system(fr'usr\bin\nano.exe /run/index.html')
+            elif cmd == run:
+                system('cls')
+                system('title Dsa Terminal')
+                print(strftime('Iniciando Dsa Terminal...'))
+                print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
+                print(strftime('===================Dsa Terminal==============')), sleep(0.08)
             elif cmd == 'help':
                 print('Comando:             Fução:')
                 print('_____________________________________________________')
@@ -577,11 +608,28 @@ elif start == None:
     print('\n\nSenha invalida\nPXE MOF: Exiting PXE ROM'), sleep(5.8)
     system('pause')
 elif start == False:
-    print('Config.: Erro na depuração!')
-    print('PXE MOF: Exiting iPxe Rom...'), sleep(6.26)
+    print('Config.: Módulo de inicianlização não recebeu comando valido para inicializar o Dsa Terminal!')
+    print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
+    a = open('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe', 'wt+')
+elif start == '':
+    print('Config.: Ha um poblema impedindo a inicialização do Dsa Terminal!')
+    coregir = input('Você dejesa executar o depurador[S,N]? ').upper()
+    if coregir == 'S':
+        print('')
+        system('timeout /T 10')
+        print('Iniciando depuração do sistema...'), sleep(2.37)
+        remove('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe')
+        print('Terminando Depuração...', end=''), sleep(16.9)
+        print('concluida!!!')
+        print('\nPXE MOF: Exiting PXE ROM...'), sleep(6.26)
+    elif coregir == 'N':
+        print('\nPXE MOF: Exiting PXE ROM...'), sleep(6.26)
+    else:
+        print('\nConfig.: Isso não é uma opção!')
+        print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
 else:
     system('cls')
     print('Error: No Botable Device')
     print("Don't have a installed System on Dsa Terminal as Device Operative")
-    print('PXE MOF: Exiting iPxe Rom...'), sleep(6.26)
+    print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
     auto_get_ProgressBar(0.001)
