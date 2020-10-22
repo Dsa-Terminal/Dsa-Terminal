@@ -1,7 +1,8 @@
+# Licensa de uso do Dsa Terminal
 """
 MIT License
 
-Copyright (c) 2020 Dsa-Terminal
+Copyright (c) 2020 Dsa-Software
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +37,7 @@ from requests import get
 # ==========================
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
+route = 'net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1'
 porta = 82
 # Barra de Progresso Tradicional
 def ProgressBar(titulo):
@@ -149,7 +151,7 @@ def iPXE():
     while True:
         cmd: str = input('iPXE> ')
         if cmd == 'route':
-            print('net0: 10.0.0.155/255.255.255.0 gw 10.0.0.1')
+            print(route)
         elif cmd == 'sanboot':
             sleep(9.1)
             system('cls')
@@ -269,10 +271,6 @@ if start == True:
                 cmd = cmd.replace('pip3 ', '')
                 cmd = cmd.replace('pip3', '')
                 system(rf'Python3\Scripts\pip.exe {cmd}')
-            # Debug
-            elif cmd == 'debug':
-                system(r'mingw64\bin\edit_text.exe')
-                continue
             # cmd
             elif cmd == 'cmd':
                 system('cls')
@@ -383,7 +381,6 @@ if start == True:
                 print('pwd                   Caminho do diretorio')
                 print('mkdir [pasta]         Cria uma pasta')
                 print('ssl                   SSL Controller')
-                print('debug                 Debug system')
                 print('ifconfig              Exibe configurações de IP')
                 print('set [options]         Difinindo variaveis seriais')
                 print('task                  Exibe Tarefas do Dsa Terminal')
@@ -473,6 +470,7 @@ if start == True:
             elif cmd == 'task':
                 print('Tarefas sendo executadas no sistema:')
                 print('Nome do Serviço:       Local:                   Status:')
+                print('______________________________________________________________________________')
                 print('Host da Janela         [Serviço do Windows]     Executando...')
                 print('Config.                /Terminal.exe            Executando...')
                 print('Bash.exe               /bin/bash.exe            Executando...')
@@ -482,7 +480,7 @@ if start == True:
                 print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
                 print('mingw64                /mingw64/Main.sh         Executando...')
                 print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
-                print('===============================================================================\n')
+                print('==============================================================================\n')
             # Criar arquivo
             elif cmd.startswith('touch'):
                 cmd = cmd.replace('touch ', '')
@@ -520,9 +518,9 @@ if start == True:
                 continue
             # Configurações de IP 
             elif cmd == 'ifconfig':
-                print('Configuração de IP do Dsa Terminal [conexão direta]!')
-                print(f'IP: [{ip}] Porta: [82]')
-                print()
+                print(f'Configuração de IP do Dsa Terminal [conexão direta]!')
+                print(f'IP: [{ip}] Porta: [{porta}]')
+                print(f'Rota de Gateway: {route} (Padrão)')
                 continue
             # Apps e modulos do Dsa Terminal
             elif cmd == 'kernel':
@@ -530,7 +528,7 @@ if start == True:
                     startfile('Lib\kernel\main.exe')
                 except FileNotFoundError:
                     print('Modulo não instalado no sistema do Dsa Terminal!')
-                    print('Try:')
+                    print('Tente:')
                     print('      sudo pkg install kernel')
                 continue
             # iPXE
