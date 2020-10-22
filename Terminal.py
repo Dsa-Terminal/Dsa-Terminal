@@ -30,7 +30,6 @@ from os import system, startfile, mkdir, listdir, remove
 from random import randint, choice
 from time import strftime, sleep
 from getpass import getpass
-from rich.console import Console
 from tqdm import tqdm, trange
 from rich.progress import track
 from requests import get
@@ -38,7 +37,12 @@ from requests import get
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 route = 'net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1'
-console = Console()
+path = ['/bin', '/usr/bin', '/var', '/var/Lua', '/run',
+        '/run/sudo', '/run/http_cli', '/run/SetupUltility',
+        '/Python3/Scripts', '/dev', '/cmd', '/Lib', '/Lib/dpkg',
+        '/mingw64', '/mingw64/ssl', '/mingw64/libexec/gti-core',
+        '/boot', '/boot/drivers', 'var/node_modules/npm', '/tmp',
+        'usr/etc', '/usr/lib', '/usr', '/usr/share']
 session = randint(0, 291462)
 pwd = "/files"
 porta = 82
@@ -140,6 +144,18 @@ class ping:
     def connect(self, ip):
         system(f'ping -t {ip}')
         return True
+def virtualenv(env_name):
+    print(f'Criando ambiente virtual {env_name}...'), sleep(1.22)
+    try:
+        mkdir(fr'files\{env_name}')
+    except FileExistsError:
+        print('Venv: Esta pasta já existe!')
+    else:
+        print('Movendo arquivos base para o ambiente de desenvolvimento...'), sleep(13.162)
+        print('Finalizando...\nDando toques finais...\nExecutando Venv...')
+        print('Terminado tudo. . .', end=''), sleep(12)
+        print('criado!!!')
+        print()
 def iPXE():
     system('cls')
     print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
@@ -282,6 +298,9 @@ if start == True:
             elif cmd == 'cmd':
                 system('cls')
                 system('cmd')
+            elif cmd == 'sudo' or cmd == 'pkg':
+                print('Config.: Insira parametros')
+                continue
             elif cmd.startswith('sudo pkg install'):
                 cmd = cmd.replace('sudo ', '')
                 cmd = cmd.replace(' ', '')
@@ -364,26 +383,32 @@ if start == True:
                 elif cmd == '--edit':
                     system(fr'usr\bin\nano.exe /run/index.html')
             elif cmd == 'help':
-                print('Comando:              Funão:')
+                print('Comando:             Fução:')
                 print('_____________________________________________________')
-                print('echo [mensagem]       Escreve mensagens na tela')
-                print('pkg [parametros]      Gerenciador de pacotes')
-                print('nano [arquivo]        Dsa Terminal E-ditor')
-                print('help                  Exibe ajuda')
-                print('version               Exibe versão instalada')
-                print('python3 [parametros]  Python v3.8.6...')
-                print('lnk [parametros]      Framework')
-                print("gitlocal              Local no GitHub.com (url)")
-                print('pip [parametros]      Gerenciador de pacotes do Config.')
-                print('./[script]            Executa script')
-                print('cli-http              Console httpie Client')
-                print('pwd                   Caminho do diretorio')
-                print('mkdir [pasta]         Cria uma pasta')
-                print('ssl                   SSL Controller')
-                print('ifconfig              Exibe configurações de IP')
-                print('set [options]         Difinindo variaveis seriais')
-                print('task                  Exibe Tarefas do Dsa Terminal')
-                print('exit                  Sai do Dsa Terminal')
+                print('echo [mensagem]      Escreve mensagens na tela')
+                print('pkg [parametros]     Gerenciador de pacotes')
+                print('nano [arquivo]       Dsa Terminal E-ditor')
+                print('help                 Exibe ajuda')
+                print('version              Exibe versão instalada')
+                print('python3 [parametros] Python v3.8.6...')
+                print('lnk [parametros]     Framework')
+                print("gitlocal             Local no GitHub.com (url)")
+                print('pip [parametros]     Gerenciador de pacotes do Config.')
+                print('./[script]           Executa script')
+                print('wmic                 Sistema de Alias')
+                print('prompt               Suspende o console')
+                print('issue                Relatar um poblema')
+                print('cli-http             Console httpie Client')
+                print('pwd                  Caminho do diretorio')
+                print('mkdir [pasta]        Cria uma pasta')
+                print('ssl                  SSL Controller')
+                print('ifconfig             Exibe configurações de IP')
+                print('set [options]        Difinindo variaveis seriais')
+                print('task                 Exibe Tarefas do Dsa Terminal')
+                print('exit                 Sai do Dsa Terminal')
+            elif cmd == 'issue':
+                system('mingw64\gh.exe issue create')
+                continue
             elif cmd == 'gitlocal':
                 print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
                 continue
@@ -391,6 +416,16 @@ if start == True:
                 for d in range(0, 1):
                     continue
                 del d
+            elif cmd.startswith('virtualenv'):
+                cmd = cmd.replace('virtualenv', '')
+                cmd = cmd.replace('virtualenv ', '')
+                if cmd == '':
+                    print('Venv: Insira-um-nome-de-ambiente-virtual!')
+                else:
+                    virtualenv(cmd)
+            elif cmd == 'prompt':
+                system('pause')
+                cpntinue
             elif cmd.startswith('set'):
                 cmd = cmd.replace('set ', '')
                 cmd = cmd.replace('set', '')
@@ -412,7 +447,7 @@ if start == True:
                 system('cls')
                 continue
             elif cmd == 'version':
-                print(startfile(f'Dsa Terminal Copyright (C) %Y v{__version__}'))
+                print(strftime(f'Dsa Terminal Copyright (C) %Y v{__version__}'))
                 continue
             elif cmd == 'pkg update':
                 update()
@@ -432,9 +467,16 @@ if start == True:
                 system(r'run\sudo\apimon.exe')
                 print('')
                 continue
+            elif cmd == 'cls':
+                system('cls')
+                continue
             elif cmd == 'env':
                 system(r'run\env.exe')
                 print('')
+                continue
+            elif cmd == 'wmic':
+                print('')
+                system('wmic')
                 continue
             elif cmd == 'node':
                 system('cls')
