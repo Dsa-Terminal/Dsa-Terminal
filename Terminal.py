@@ -105,6 +105,16 @@ class packge:
             system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
             system(fr'move {cmd} Lib')
             return True
+    def pkg_search(appname):
+        print('Lote:       Nome do pacote:        Versão:     Tag:           ')
+        print('______________________________________________________________')
+        if appname == 'kernel':
+            print('@tool-boot  kernel                 v0.0.1      #Servicodeerro')
+            print('@devtools   kernel-tool         Não disponivel  #Ferramentas')
+        elif appname == 'ssh':
+            print('@ping(more) ssh                    v1.8.3      #Conectividade')
+        else:
+            print('            ---Nenhum pacote encontrado---')
     def pkg_uninstall(command):
         cmd = command.replace('pkg uninstall ', '')
         print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
@@ -210,16 +220,12 @@ def matrixe(AF_INET):
                 print(choice(chars_to_print), end='', sep='')
             print(i)
         except KeyboardInterrupt:
-            hall = None
             break
-    if hall == True:
-        print('Compilação completa')
     print('\n')
 def __init__():
     system(r'cls')
     run = r'Dsa Terminal -i --login --boot\boot.ini'
-    system('title Dsa Terminal')
-    system(r'pause')
+    system('pause')
     if files.ArquivoExiste('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe'):
         return run, ''
     else:
@@ -257,14 +263,70 @@ def __init__():
                             return run, True
                         elif password == f'{key} --main':
                             password = password.replace(f'{key} --main', '')
-                            run = input('Boot Code:\>_')
+                            run = input('Boot Code:\>_').strip()
                             if run == r'Dsa Terminal -i --login --boot\boot.ini':
+                                try:
+                                    with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'rt') as commit:
+                                        commit = commit.read()
+                                except FileNotFoundError:
+                                    pass
+                                else:
+                                    print('Iniciando depuração do sistema....'), sleep(10.8)
+                                    remove('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db')
+                                    print('Tentando manter instabilidade na inicialização...'), sleep(12)
+                                    input('Pressione ENTER para continuar a depuração. . .')
+                                    system('timeout /T 10')
+                                    print('Retomando o Shell Kernel para erros potenciais...')
+                                    print('Seja paciente, a depuração pode demorar horas'), sleep(12.837)
+                                    print('_______________________________________________________\n')
+                                    print('Carregando modulos de entrada... ', end=''), sleep(10)
+                                    print('carregado!!!')
+                                    print('\n\n')
+                                    print('Checando Framework de serviço do Node.JS Server...'), sleep(1.287)
+                                    print('Zerando cache para melhor instabilidade...'), sleep(19.37)
+                                    auto_get_ProgressBar(0.001)
+                                    ProgressBar('Iniciando')
+                                    print('Iniciando o Dsa Terminal...'), sleep(18)
                                 return run, True
-                            elif run == r'Dsa Terminal -i --login --bin\boot.ini --cache':
+                            elif run == r'Dsa Terminal -i --login --bin\boot.ini --nocache':
+                                try:
+                                    with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'rt') as commit:
+                                        commit = commit.read()
+                                except FileNotFoundError:
+                                    pass
+                                else:
+                                    print('Iniciando depuração do sistema....'), sleep(10.8)
+                                    remove('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db')
+                                    print('Tentando manter instabilidade na inicialização...'), sleep(12)
+                                    input('Pressione ENTER para continuar a depuração. . .')
+                                    system('timeout /T 10')
+                                    print('Retomando o Shell Kernel para erros potenciais...')
+                                    print('Seja paciente, a depuração pode demorar horas'), sleep(12.837)
+                                    print('_______________________________________________________\n')
+                                    print('Carregando modulos de entrada... ', end=''), sleep(10)
+                                    print('carregado!!!')
+                                    print('\n\n')
+                                    print('Checando Framework de serviço do Node.JS Server...'), sleep(1.287)
+                                    print('Zerando cache para melhor instabilidade...'), sleep(19.37)
+                                    auto_get_ProgressBar(0.001)
+                                    ProgressBar('Iniciando')
+                                    print('Iniciando o Dsa Terminal...'), sleep(18)
                                 return run, True
                             else:
                                 system(f'title {run}')
                                 return run, False
+                        elif password == f'{key} --network':
+                            password = password.replace(f'{key} --network', '')
+                            cmd: str = input('Boot Image in ServerLocal: ').strip().lower()
+                            try:
+                                run = get(cmd)
+                            except:
+                                print(f'Config.: Não encontrei nenhuma imagem de boot em {cmd}!')
+                                return run, False
+                            else:
+                                print(run)
+                                system('pause')
+                                return run, True
                 else:
                     print('Registre uma palavra-passe para o Dsa Terminal!\n')
                     while True:
@@ -302,7 +364,15 @@ if start == True:
                 print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
                 print('pkg install [pkgname]      Instala pacotes')
                 print('pkg uninstall [pkgname]    Desinstala pacotes')
+                print('pkg search [pkgname]       Procura um pacote')
                 print('pkg update                 Atualiza versão instalada do Dsa Terminal')
+            elif cmd.startswith('pkg search'):
+                cmd = cmd.replace('pkg search ', '')
+                cmd = cmd.replace('pkg search', '')
+                if cmd == '':
+                    print('Pkg: Insira-um-nome-de-pacote!')
+                else:
+                    packge.pkg_search(appname=cmd)
             elif cmd.startswith('python3'):
                 system('cls')
                 if cmd == 'python3':
@@ -407,7 +477,13 @@ if start == True:
                     system(fr'usr\bin\nano.exe /run/index.html')
                 elif cmd == '--edit':
                     system(fr'usr\bin\nano.exe /run/index.html')
-            elif cmd == run:
+            elif cmd == r'Dsa Terminal -i --login --boot\boot.ini':
+                system('cls')
+                system('title Dsa Terminal')
+                print(strftime('Iniciando Dsa Terminal...'))
+                print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
+                print(strftime('===================Dsa Terminal==============')), sleep(0.08)
+            elif cmd == r'Dsa Terminal -i --login --boot\boot.ini --nocache':
                 system('cls')
                 system('title Dsa Terminal')
                 print(strftime('Iniciando Dsa Terminal...'))
@@ -442,6 +518,9 @@ if start == True:
                 continue
             elif cmd == 'gitlocal':
                 print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
+                continue
+            elif cmd == 'cmatrix':
+                matrixe(127363846129649436438972987436743)
                 continue
             elif cmd == '':
                 for d in range(0, 1):
