@@ -240,7 +240,7 @@ if start == True:
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
-    print(strftime('====================Dsa Terminal==============')), sleep(0.08)
+    print(strftime('===================Dsa Terminal==============')), sleep(0.08)
     while True:
         try:
             system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
@@ -376,6 +376,7 @@ if start == True:
                 print('version               Exibe versão instalada')
                 print('python3 [parametros]  Python v3.8.6...')
                 print('lnk [parametros]      Framework')
+                print("gitlocal              Local no GitHub.com (url)")
                 print('pip3 [parametros]     Pip3 para Python env')
                 print('./[script]            Executa script')
                 print('cli-http              Console httpie Client')
@@ -387,6 +388,9 @@ if start == True:
                 print('set [options]         Difinindo variaveis seriais')
                 print('task                  Exibe Tarefas do Dsa Terminal')
                 print('exit                  Sai do Dsa Terminal')
+            # Local na rede
+            elif cmd == 'gitlocal':
+                print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
             # Esmaeçer
             elif cmd == '':
                 for d in range(0, 1):
@@ -478,6 +482,7 @@ if start == True:
                 print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
                 print('mingw64                /mingw64/Main.sh         Executando...')
                 print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
+                print('===============================================================================\n')
             # Criar arquivo
             elif cmd.startswith('touch'):
                 cmd = cmd.replace('touch ', '')
