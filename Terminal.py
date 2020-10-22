@@ -26,7 +26,7 @@ SOFTWARE.
 __version__ = '1.8.2'
 # Importando modulos
 import socket
-from os import system, startfile, mkdir, listdir
+from os import system, startfile, mkdir, listdir, remove
 from random import randint, choice
 from time import strftime, sleep
 from getpass import getpass
@@ -200,6 +200,28 @@ def __init__():
                     key = key.read()
                     password = getpass('Password: ').strip()
                     if password == key:
+                        try:
+                            with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'rt') as commit:
+                                commit = commit.read()
+                        except FileNotFoundError:
+                            pass
+                        else:
+                            print('Iniciando depuração do sistema....'), sleep(10.8)
+                            remove('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db')
+                            print('Tentando manter instabilidade na inicialização...'), sleep(12)
+                            input('Pressione ENTER para continuar a depuração. . .')
+                            system('timeout /T 10')
+                            print('Retomando o Shell Kernel para erros potenciais...')
+                            print('Seja paciente, a depuração pode demorar horas'), sleep(12.837)
+                            print('_______________________________________________________\n')
+                            print('Carregando modulos de entrada... ', end=''), sleep(10)
+                            print('carregado!!!')
+                            print('\n\n')
+                            print('Checando Framework de serviço do Node.JS Server...'), sleep(1.287)
+                            print('Zerando cache para melhor instabilidade...'), sleep(19.37)
+                            auto_get_ProgressBar(0.001)
+                            ProgressBar('Iniciando')
+                            print('Iniciando o Dsa Terminal...'), sleep(18)
                         system('cls')
                         return True 
             else:
@@ -217,9 +239,9 @@ def __init__():
                             break
                 return True
         else:
-            return False
+            return 'hmbdxyt'
     else:
-        return False
+        return 'ffcffff'
 # Setup
 start = __init__()
 if start == True:
@@ -493,6 +515,8 @@ if start == True:
             elif cmd == 'ipxe':
                 i = iPXE()
                 if i == False:
+                    with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'wt+') as commit:
+                        commit = commit.read()
                     break
                 else:
                     continue
@@ -502,12 +526,17 @@ if start == True:
         except:
             i = iPXE()
             if i == False:
+                with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'wt+') as commit:
+                    commit = commit.read()
                 break
             else:
                 continue
 elif start == None:
     print('\n\nSenha invalida\nPXE MOF: Exiting PXE ROM'), sleep(5.8)
     system('pause')
+elif start == False:
+    print('Config.: Erro na depuração!')
+    print('PXE MOF: Exiting iPxe Rom...'), sleep(6.26)
 else:
     system('cls')
     print('Error: No Botable Device')
