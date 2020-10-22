@@ -34,12 +34,15 @@ from rich.console import Console
 from tqdm import tqdm, trange
 from rich.progress import track
 from requests import get
-# ==========================
+# Variaveis globais
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 route = 'net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1'
+console = Console()
+session = randint(0, 291462)
+pwd = "/files"
 porta = 82
-# Barra de Progresso Tradicional
+# Funções
 def ProgressBar(titulo):
     with tqdm(total=100) as progressbar:
         for i in range(10):
@@ -55,15 +58,12 @@ def ProgressBar(titulo):
     for i in tqdm(range(20)):
         sleep(0.5)
         pass
-# Configurador de Barra
 def do_step(set, time):
     sleep(time)
     pass
-# Barra de Progresso Padrão
 def auto_get_ProgressBar(time):
     for step in track(range(100)):
         do_step(step, time)
-# Atualizador do Dsa Terminal
 def update():
     system('title [Update] - Dsa Terminal')
     print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(2.8)
@@ -73,7 +73,6 @@ def update():
     system('bin\git.exe pull')
     print(f'Setup de versão {__version__} Anterior <==== Update selected')
     return True
-# Configuração do atualizador
 class packge:
     def __init__(self):
         pass
@@ -108,7 +107,6 @@ class packge:
         system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
         system(fr'move {cmd} Lib')
         return True
-# Controlador de arquivos
 class files:
     def __init__(self):
         pass
@@ -135,7 +133,6 @@ class files:
             return False
         else:
             return True
-# Ping network Servidor
 class ping:
     def __init__(self):
         system('ping')
@@ -143,7 +140,6 @@ class ping:
     def connect(self, ip):
         system(f'ping -t {ip}')
         return True
-# iPXE
 def iPXE():
     system('cls')
     print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
@@ -179,7 +175,6 @@ def iPXE():
             print(f'iPXE: Network COMBOOT IP: {ip}\n')
         else:
             print(f'{cmd}: iPXE command not found!')
-# Compile emulador
 def matrixe(AF_INET):
     chars_to_print = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', ' ']
     hall = True
@@ -194,7 +189,6 @@ def matrixe(AF_INET):
     if hall == True:
         print('Compilação completa')
     print('\n')
-# Inicalizar
 def __init__():
     system(r'cls')
     system(r'title Dsa Terminal -i --login --bin\init.sh')
@@ -213,7 +207,9 @@ def __init__():
                 while True:
                     password = getpass('Password: ').strip()
                     if password == '':
-                        print('Insira uma palavra-passe!')
+                        print('Config.: Insira uma palavra-passe!')
+                    elif password == 'abc123' or password == 'ABC123':
+                        print('Config.: Pó meu, capricha na senha mano!')
                     else:
                         with open(r'boot\drivers\pass.exc', 'wt+') as key:
                             files.Write(r'boot\drivers\pass.exc', password)
@@ -224,20 +220,11 @@ def __init__():
             return False
     else:
         return False
-# Set up
-console = Console()
-session = randint(0, 291462)
-# Configurações do iPXE Boot 
+# Setup
 start = __init__()
-# Inicialização normal
 if start == True:
-    # Leitura de Senha
     with open(r'boot\drivers\pass.exc', 'rt') as key:
         key = key.read()
-    # Variaveis globais
-    root = "/"
-    pwd = "/files"
-    # Sistema
     system('cls')
     system('title Dsa Terminal')
     print(strftime('Iniciando Dsa Terminal...'))
@@ -247,18 +234,17 @@ if start == True:
         try:
             system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
             cmd: str = input(f'└─$ ').strip()
-            # Listagem de parametros do Pkg
             if cmd == 'pkg /?':
                 print('Pkg: Listagem de parametros')
                 print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
                 print('pkg install [pkgname]      Instala pacotes')
                 print('pkg uninstall [pkgname]    Desinstala pacotes')
                 print('pkg update                 Atualiza versão instalada do Dsa Terminal')
-            # Python
             elif cmd.startswith('python3'):
                 system('cls')
                 if cmd == 'python3':
                     system(fr'Python3\Scripts\python.exe')
+                    continue
                 else:
                     cmd = cmd.replace('python3', '')
                     cmd = cmd.replace('python3 ', '')
@@ -271,11 +257,9 @@ if start == True:
                 cmd = cmd.replace('pip ', '')
                 cmd = cmd.replace('pip', '')
                 system(rf'Python3\Scripts\pip.exe {cmd}')
-            # cmd
             elif cmd == 'cmd':
                 system('cls')
                 system('cmd')
-            # Instalando pacotes
             elif cmd.startswith('sudo pkg install'):
                 cmd = cmd.replace('sudo ', '')
                 cmd = cmd.replace(' ', '')
@@ -285,11 +269,9 @@ if start == True:
                 else:
                     print('[sudo] Senha invalida!\n')
                 continue
-            # Instalando pacotes
             elif cmd.startswith('pkg install'):
                 print('13: Erro (Permissão negada)!')
                 continue
-            # Clidev
             elif cmd == 'cli-http':
                 while True:
                     cmd = input('\033[32m[~]\033[m ')
@@ -302,17 +284,15 @@ if start == True:
                         system(r'run\http_cli\http.exe')
                     elif cmd == 'clear':
                         system('cls')
+                        continue
                     else:
                         pass
-            # Caminho
             elif cmd == 'pwd':
                 print(pwd)
                 continue
-            # Desinstalando pacotes
             elif cmd.startswith('pkg uninstall'):
                 print('13: Erro (Permissão negada)!')
                 continue
-            # Desinstalando pacotes
             elif cmd.startswith('sudo pkg uninstall'):
                 password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
                 if password == key:
@@ -320,7 +300,6 @@ if start == True:
                 else:
                     print('[sudo] Senha invalida!\n')
                 continue
-            # Dsa Terminal e-ditor
             elif cmd.startswith('nano'):
                 print('Dsa Terminal editor foi iniciado')
                 system('title [Nano] - Dsa terminal')
@@ -332,11 +311,9 @@ if start == True:
                 else:
                     system(fr'usr\bin\nano.exe /files/{cmd}')
                 system('title Dsa Terminal')
-            # Escrever na tela
             elif cmd.startswith('echo'):
                 cmd = cmd.replace('echo ', '')
                 cmd = cmd.replace('echo', '')
-                cmd = cmd.replace('"', '')
                 cmd = cmd.replace(r'\n', '\n')
                 cmd = cmd.replace(r'\t', '\t')
                 try:
@@ -352,21 +329,18 @@ if start == True:
                 else:
                     print(cmd)
                 continue
-            # Executar shell script
             elif cmd.startswith('./'):
                 cmd = cmd.replace('./', '')
                 system(fr'bin\bash.exe /files/{cmd}')
-            # Lnk
             elif cmd.startswith('lnk'):
                 cmd = cmd.replace('lnk', '')
                 cmd = cmd.replace('lnk ', '')
                 if cmd == '':
                     system(rf'run\framework.exe')
                 elif cmd == ' --edit':
-                     system(fr'usr\bin\nano.exe /run/index.html')
+                    system(fr'usr\bin\nano.exe /run/index.html')
                 elif cmd == '--edit':
-                     system(fr'usr\bin\nano.exe /run/index.html')
-            # Ajuda manual
+                    system(fr'usr\bin\nano.exe /run/index.html')
             elif cmd == 'help':
                 print('Comando:              Funão:')
                 print('_____________________________________________________')
@@ -388,15 +362,13 @@ if start == True:
                 print('set [options]         Difinindo variaveis seriais')
                 print('task                  Exibe Tarefas do Dsa Terminal')
                 print('exit                  Sai do Dsa Terminal')
-            # Local na rede
             elif cmd == 'gitlocal':
                 print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
-            # Esmaeçer
+                continue
             elif cmd == '':
                 for d in range(0, 1):
                     continue
                 del d
-            # Upload de dados "string"
             elif cmd.startswith('set'):
                 cmd = cmd.replace('set ', '')
                 cmd = cmd.replace('set', '')
@@ -411,24 +383,19 @@ if start == True:
                     myload = cmd
                     continue
                     print('')
-            # Sair do Dsa Terminal
             elif cmd == 'exit':
                 auto_get_ProgressBar(0.01)
                 break
-            # Limpa a tela
             elif cmd == 'clear':
                 system('cls')
                 continue
-            # Mostra versão do Dsa Terminal
             elif cmd == 'version':
-                print(__version__)
+                print(startfile(f'Dsa Terminal Copyright (C) %Y v{__version__}'))
                 continue
-            # Dsa Terminal Update
             elif cmd == 'pkg update':
                 update()
                 system('pause')
                 break
-            # Lua Linguagem
             elif cmd.startswith('lua'):
                 cmd = cmd.replace('lua ', '')
                 cmd = cmd.replace('lua', '')
@@ -439,7 +406,6 @@ if start == True:
                 else:
                     system(fr'var\Lua\lua.exe \files\{cmd}lua')
                 system('title Dsa terminal')
-            # Api 
             elif cmd == 'apimon':
                 system(r'run\sudo\apimon.exe')
                 print('')
@@ -448,18 +414,15 @@ if start == True:
                 system(r'run\env.exe')
                 print('')
                 continue
-            # Node.js Server
             elif cmd == 'node':
                 system('cls')
                 system('title node.js for Dsa Terminal')
                 system(r'var\node.exe')
                 system('title Dsa terminal')
                 continue
-            # Dir classico
             elif cmd.startswith('dir'):
                 system(fr'bin\dir.exe {pwd}')
                 continue
-            # Criar diretorio
             elif cmd.startswith('mkdir'):
                 cmd = cmd.replace('mkdir ', '')
                 cmd = cmd.replace('mkdir', '')
@@ -469,7 +432,6 @@ if start == True:
                     system(fr'mkdir files\{cmd}')
                 print('')
                 continue
-            # Tarefas
             elif cmd == 'task':
                 print('Tarefas sendo executadas no sistema:')
                 print('Nome do Serviço:       Local:                   Status:')
@@ -477,6 +439,7 @@ if start == True:
                 print('Host da Janela         [Serviço do Windows]     Executando...')
                 print('Config.                /Terminal.exe            Executando...')
                 print('Bash.exe               /bin/bash.exe            Executando...')
+                print('Catalogo de Serviço    /ipxe.sc                 Executando primariamente...')
                 print('Servições do http-cli  /run/http_cli/http.exe   Executando em segundo plano...')
                 print('Github connection      /.git     <dir>          Executando...')
                 print('Linux Subsystem        /Terminal.exe            Executando em segundo plano...')
@@ -484,7 +447,6 @@ if start == True:
                 print('mingw64                /mingw64/Main.sh         Executando...')
                 print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
                 print('==============================================================================\n')
-            # Criar arquivo
             elif cmd.startswith('touch'):
                 cmd = cmd.replace('touch ', '')
                 cmd = cmd.replace('touch', '')
@@ -492,15 +454,13 @@ if start == True:
                     open(r'files\Novo arquivo.txt', 'wt+')
                 else:
                     open(fr'files\{cmd}', 'wt+')
-                    print(f"Criando arquivos {cmd}..."), sleep(1)
+                    print(f"Criando arquivo (s) {cmd}..."), sleep(1)
                     auto_get_ProgressBar(0.03)
                     continue
-            # Phoenix Setup Utility
             elif cmd == 'gui':
                 auto_get_ProgressBar(0.01)
                 system(r'run\SetupUltility\PhoenixSetupGUI.exe')
                 break
-            # Remover...
             elif 'rm' in cmd:
                 cmd = cmd.replace('rm ', '')
                 cmd = cmd.replace('rm', '')
@@ -509,23 +469,19 @@ if start == True:
                 else:
                     system(fr'del {pwd}\{cmd}')
                 print('')
-            # Listar de diretorios e objetos
             elif cmd == 'ls':
                 system(rf'run\ls.exe {pwd}')
                 print('')
                 continue
-            # Listagem de diretorios, objetos e ocultos
             elif cmd == 'ls -a':                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
                 system(rf'run\ls {pwd} -a')
                 print('')
                 continue
-            # Configurações de IP 
             elif cmd == 'ifconfig':
                 print(f'Configuração de IP do Dsa Terminal [conexão direta]!')
                 print(f'IP: [{ip}] Porta: [{porta}]')
                 print(f'Rota de Gateway: {route} (Padrão)')
                 continue
-            # Apps e modulos do Dsa Terminal
             elif cmd == 'kernel':
                 try:
                     startfile('Lib\kernel\main.exe')
@@ -534,14 +490,12 @@ if start == True:
                     print('Tente:')
                     print('      sudo pkg install kernel')
                 continue
-            # iPXE
             elif cmd == 'ipxe':
                 i = iPXE()
                 if i == False:
                     break
                 else:
                     continue
-            # Comando invalido!
             else:
                 print(f'{cmd}: comando invalido!')
                 continue
@@ -551,11 +505,9 @@ if start == True:
                 break
             else:
                 continue
-# Senha invalida
 elif start == None:
     print('\n\nSenha invalida\nPXE MOF: Exiting PXE ROM'), sleep(5.8)
     system('pause')
-# Falhar Exiting Pxe Rom
 else:
     system('cls')
     print('Error: No Botable Device')
