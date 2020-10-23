@@ -84,8 +84,8 @@ Se isso não funcionar, [mande um email!](mailto:dsaterminal@gmail.com)
 
 ## Contribuidores para este projeto
 
-[Felipe Souza Pereira de Lima](https://github.com/Felipe-Souza-Pereira-Lima)
-[Cauê Alves](https://github.com/caue-alves)
+- [Felipe Souza Pereira de Lima](https://github.com/Felipe-Souza-Pereira-Lima)
+- [Cauê Alves](https://github.com/caue-alves)
 Qualquer poblema [envie um email!](mailto:dsaterminal@gmail.com)
 
           Dsa Terminal | dsaterminal@gmail.com | Dsa Software Fundation
