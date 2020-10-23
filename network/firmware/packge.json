@@ -1,0 +1,6 @@
+{
+  "name": "firmware",
+  "version": "0.0.01",
+  "main_file": "./network/firmware/firmware.sc",
+  "System locate interprete": "./run/Script-Terminal/Lib/System.py"
+}
