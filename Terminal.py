@@ -211,17 +211,6 @@ def iPXE():
             print(f'iPXE: Network COMBOOT IP: {ip}\n')
         else:
             print(f'{cmd}: iPXE command not found!')
-def matrixe(AF_INET):
-    chars_to_print = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', ' ']
-    hall = True
-    for c in range(0, AF_INET):
-        try:
-            for i in range(100):
-                print(choice(chars_to_print), end='', sep='')
-            print(i)
-        except KeyboardInterrupt:
-            break
-    print('\n')
 def __init__():
     system(r'cls')
     run = r'Dsa Terminal -i --login --boot\boot.ini'
@@ -518,9 +507,6 @@ if start == True:
                 continue
             elif cmd == 'gitlocal':
                 print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
-                continue
-            elif cmd == 'cmatrix':
-                matrixe(127363846129649436438972987436743)
                 continue
             elif cmd == '':
                 for d in range(0, 1):
