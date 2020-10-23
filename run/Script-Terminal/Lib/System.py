@@ -4,6 +4,11 @@ from random import choice
 
 def init():
 	return True
+def run(self):
+	if self == 'exec as packge':
+		return True
+	else:
+		return False
 def cmd(windows_Cmd):
 	system(windows_Cmd)
 	return True
@@ -29,7 +34,7 @@ def sync(value):
 def suspendConsole():
 	system('pause')
 	return True
-def personalized(msg)
+def personalized(msg):
 	return msg
 def prompt(msg):
 	a = input(msg)
