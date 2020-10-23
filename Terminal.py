@@ -54,7 +54,7 @@ assoc = {
 }
 run = r'Dsa Terminal -i --login --boot\boot.ini'
 session = randint(0, 291462)
-pwd = "/files"
+pwd = "/filesD:\Python3\Scripts\python.exe -m pip uninstall bootle"
 porta = 82
 # Funções
 def ProgressBar(titulo):
@@ -390,9 +390,6 @@ if start == True:
                 cmd = cmd.replace('pip ', '')
                 cmd = cmd.replace('pip', '')
                 system(rf'Python3\Scripts\pip.exe {cmd}')
-            elif cmd == 'cmd':
-                system('cls')
-                system('cmd')
             elif cmd == 'sudo' or cmd == 'pkg':
                 print('Config.: Insira parametros')
                 continue
@@ -543,11 +540,17 @@ if start == True:
                 cmd = cmd.replace(r'\t', '\t')
                 cmd = cmd.replace(r'"', '')
                 if cmd == '= nil':
-                    del myload
-                    print('Registro deletado!')
+                    try:
+                        del myload
+                        del loaded
+                    except:
+                        print('Config.: Nenhum registro salvo!')
+                    else:
+                        print('Config.: Registro deletado!')
                     continue
                 else:
                     myload = cmd
+                    loaded = True
                     continue
                     print('')
             elif cmd == 'exit':
@@ -607,8 +610,17 @@ if start == True:
                 print('')
                 continue
             elif cmd == 'task':
-                print('Tarefas sendo executadas no sistema:')
+                print('Tarefas sendo executadas:')
                 print('Nome do Serviço:       Local:                   Status:')
+                print('______________________________________________________________________________')
+                try:
+                    cmd = loaded
+                    if cmd == True:
+                        print('String Sync            /Terminal.exe            Executando...')
+                except:
+                    pass
+                print('')
+                print('Tarefas do Sistema:')
                 print('______________________________________________________________________________')
                 print('Host da Janela         [Serviço do Windows]     Executando...')
                 print('Config.                /Terminal.exe            Executando...')
@@ -628,12 +640,12 @@ if start == True:
                     open(r'files\Novo arquivo.txt', 'wt+')
                 else:
                     open(fr'files\{cmd}', 'wt+')
-                    print(f"Criando arquivo (s) {cmd}..."), sleep(1)
+                    print(f"Criando arquivo {cmd}..."), sleep(1)
                     auto_get_ProgressBar(0.03)
                     continue
             elif cmd == 'gui':
                 auto_get_ProgressBar(0.01)
-                system(r'run\SetupUltility\PhoenixSetupGUI.exe')
+                system(r'start run\SetupUltility\PhoenixSetupGUI.exe')
                 break
             elif 'rm' in cmd:
                 cmd = cmd.replace('rm ', '')
@@ -658,7 +670,7 @@ if start == True:
                 continue
             elif cmd == 'kernel':
                 try:
-                    startfile('Lib\kernel\main.exe')
+                    system('Lib\kernel\main.exe')
                 except FileNotFoundError:
                     print('Modulo não instalado no sistema do Dsa Terminal!')
                     print('Tente:')
