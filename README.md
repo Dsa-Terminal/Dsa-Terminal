@@ -27,30 +27,30 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - [ ] Sistema operacional Botavel no computador
 
 ## Comandos
-`echo [mensagem[parametros]]` Imprime uma mensagem na tela
-`pkg [parametros]` Gerenciador de pacotes
-`nano [nome do arquivo]` Dsa Terminal E-ditor
-`help` Exibe ajuda
-`version` Exibe versão do Dsa Terminal instalada
-`python3 [parametros]` Python v3.8.6...
-`lnk [parametros]` Framework
-`gitlocal` Local do repositorio no github (url)
-`pip [parametros]` Python v3.8.6 (pip module)
-`./[script]` Executa shell script
-`wmic` Sistema de alias
-`prompt` Suspende o console
-`firefox` Inicia o firefox
-`issue` Cria um poblema no github
-`cli-http` Interface de Linha de comando do cliente http
-`pwd` Caminho do diretorio atual
-`gui` Phoenix Setup Utility
-`mkdir [pasta]` Cria um diretorio\pasta
-`ssl` Controlador SSL
-`touch [nome do arquivo]` Cria um arquivo
-`ifconfig` Exibe configurações de IP
-`set [parametros]` Define variaveis seriais
-`task` Gerenciador de tarefas do Dsa Terminal
-`exit` Sair da sessão da Dsa Terminal
+- `echo [mensagem[parametros]]` Imprime uma mensagem na tela
+- `pkg [parametros]` Gerenciador de pacotes
+- `nano [nome do arquivo]` Dsa Terminal E-ditor
+- `help` Exibe ajuda
+- `version` Exibe versão do Dsa Terminal instalada
+- `python3 [parametros]` Python v3.8.6...
+- `lnk [parametros]` Framework
+- `gitlocal` Local do repositorio no github (url)
+- `pip [parametros]` Python v3.8.6 (pip module)
+- `./[script]` Executa shell script
+- `wmic` Sistema de alias
+- `prompt` Suspende o console
+- `firefox` Inicia o firefox
+- `issue` Cria um poblema no github
+- `cli-http` Interface de Linha de comando do cliente http
+- `pwd` Caminho do diretorio atual
+- `gui` Phoenix Setup Utility
+- `mkdir [pasta]` Cria um diretorio\pasta
+- `ssl` Controlador SSL
+- `touch [nome do arquivo]` Cria um arquivo
+- `ifconfig` Exibe configurações de IP
+- `set [parametros]` Define variaveis seriais
+- `task` Gerenciador de tarefas do Dsa Terminal
+- `exit` Sair da sessão da Dsa Terminal
 ______________________________________________
 
 ## Kernel de Atualizações
@@ -78,9 +78,9 @@ Se isso não funcionar, [mande um email!](mailto:dsaterminal@gmail.com)
 ## Gerenciador de pacotes (pkg)
 
 ### Comandos
-`pkg install [nome do pacote]` Instala um pacote no Dsa Terminal
-`pkg uninstall [nome do pacote]` Desinstala um pacote no Dsa Terminal
-`pkg search [nome do pacote]` Procura um pacote do Dsa Terminal
+- `pkg install [nome do pacote]` Instala um pacote no Dsa Terminal
+- `pkg uninstall [nome do pacote]` Desinstala um pacote no Dsa Terminal
+- `pkg search [nome do pacote]` Procura um pacote do Dsa Terminal
 
 ## Contribuidores para este projeto
 
