@@ -164,18 +164,69 @@ class ping:
     def connect(self, ip):
         system(f'ping -t {ip}')
         return True
-def virtualenv(env_name):
-    print(f'Criando ambiente virtual {env_name}...'), sleep(1.22)
-    try:
-        mkdir(fr'files\{env_name}')
-    except FileExistsError:
-        print('Venv: Esta pasta já existe!')
-    else:
-        print('Movendo arquivos base para o ambiente de desenvolvimento...'), sleep(13.162)
-        print('Finalizando...\nDando toques finais...\nExecutando Venv...')
-        print('Terminado tudo. . .', end=''), sleep(12)
-        print('criado!!!')
-        print()
+class CallTree:
+	""" This class provides a tree representation of the functions
+		call stack. If a function has no parent in the kernel (interrupt,
+		syscall, kernel thread...) then it is attached to a virtual parent
+		called ROOT.
+	"""
+	ROOT = None
+	def __init__(self, func, time = None, parent = None):
+		self._func = func
+		self._time = time
+		if parent is None:
+			self._parent = CallTree.ROOT
+		else:
+			self._parent = parent
+		self._children = []
+	def calls(self, func, calltime):
+		""" If a function calls another one, call this method to insert it
+			into the tree at the appropriate place.
+			@return: A reference to the newly created child node.
+		"""
+		child = CallTree(func, calltime, self)
+		self._children.append(child)
+		return child
+	def getParent(self, func):
+		""" Retrieve the last parent of the current node that
+			has the name given by func. If this function is not
+			on a parent, then create it as new child of root
+			@return: A reference to the parent.
+		"""
+		tree = self
+		while tree != CallTree.ROOT and tree._func != func:
+			tree = tree._parent
+		if tree == CallTree.ROOT:
+			child = CallTree.ROOT.calls(func, None)
+			return child
+		return tree
+	def __repr__(self):
+		return self.__toString("", True)
+	def __toString(self, branch, lastChild):
+		if self._time is not None:
+			s = "%s----%s (%s)\n" % (branch, self._func, self._time)
+		else:
+			s = "%s----%s\n" % (branch, self._func)
+
+		i = 0
+		if lastChild:
+			branch = branch[:-1] + " "
+		while i < len(self._children):
+			if i != len(self._children) - 1:
+				s += "%s" % self._children[i].__toString(branch +\
+								"    |", False)
+			else:
+				s += "%s" % self._children[i].__toString(branch +\
+								"    |", True)
+			i += 1
+		return s
+class DeviceLinuxDriverAssert:
+    """Calibrador e depurador do iExecutor do Device de Driver Linux do Dsa Terminal"""
+    def __init__(self):
+        calibre = super(DeviceLinuxDriverAssert, self)
+        return True, calibre
+    def sync(self, serial):
+        return True
 def iPXE():
     system('cls')
     print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
@@ -512,13 +563,6 @@ if start == True:
                 for d in range(0, 1):
                     continue
                 del d
-            elif cmd.startswith('virtualenv'):
-                cmd = cmd.replace('virtualenv', '')
-                cmd = cmd.replace('virtualenv ', '')
-                if cmd == '':
-                    print('Venv: Insira-um-nome-de-ambiente-virtual!')
-                else:
-                    virtualenv(cmd)
             elif cmd == 'prompt':
                 system('pause')
                 cpntinue
