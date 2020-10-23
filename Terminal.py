@@ -591,6 +591,10 @@ if start == True:
                 print('')
                 system('wmic')
                 continue
+            elif cmd == 'firefox':
+                system(r'start network\firefox\firefox.exe')
+                print('')
+                continue
             elif cmd == 'node':
                 system('cls')
                 system('title node.js for Dsa Terminal')
