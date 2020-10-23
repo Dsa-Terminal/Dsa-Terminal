@@ -54,7 +54,7 @@ assoc = {
 }
 run = r'Dsa Terminal -i --login --boot\boot.ini'
 session = randint(0, 291462)
-pwd = "/filesD:\Python3\Scripts\python.exe -m pip uninstall bootle"
+pwd = "/files"
 porta = 82
 # Funções
 def ProgressBar(titulo):
