@@ -86,7 +86,7 @@ Se isso não funcionar, [mande um email!](mailto:dsaterminal@gmail.com)
 
 - [Felipe Souza Pereira de Lima](https://github.com/Felipe-Souza-Pereira-Lima)
 - [Cauê Alves](https://github.com/caue-alves)
-Qualquer poblema [envie um email!](mailto:dsaterminal@gmail.com)
+Qualquer poblema ou duvida [envie um email!](mailto:dsaterminal@gmail.com)
 
           Dsa Terminal | dsaterminal@gmail.com | Dsa Software Fundation
                         Copyright (C) 2020 MIT LICENSE
