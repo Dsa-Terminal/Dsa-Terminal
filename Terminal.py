@@ -80,12 +80,14 @@ def auto_get_ProgressBar(time):
         do_step(step, time)
 def update():
     system('title [Update] - Dsa Terminal')
-    print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(2.8)
-    auto_get_ProgressBar(0.1)
-    print('\033[mDecodificando Setups para o Compilador GitBoster (info).'), sleep(1.99)
-    ProgressBar('Validando Serial')
+    print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(0.01)
+    print('Git 1: https://github.com/Dsa-Terminal/Dsa-Terminal/releases....'), sleep(0.023)
+    print('Git 2: https://github.com/Dsa-Terminal/Dsa-Terminal/commit/22af2ee0b1d92e9b3ebe909d5371324e0ee717e2...'), sleep(1)
+    print('[Trabalhando em atualizações]...', end=''), sleep(2.934)
+    print('Concluido!!')
+    print('Git 3: https://github.com/Dsa-Terminal/Dsa-Terminal/releases/ [Processando...]'), sleep(0.02)
     system('bin\git.exe pull')
-    print(f'Setup de versão {__version__} Anterior <==== Update selected')
+    system('title Dsa Terminal')
     return True
 class packge:
     def __init__(self):
@@ -94,14 +96,15 @@ class packge:
         cmd = command.replace('pkginstall ', '')
         cmd = command.replace('pkginstall', '')
         if cmd == '':
-            print('Pkg: Insira-um-nome-de-pacote-valido')
+            print('Pkg: Insira-um-nome-de-pacote-valido\n')
         elif cmd == 'Dsa-Terminal':
-            print('Pkg: Para atualizar o Dsa Terminal você deve usar o comando "pkg update"')
+            print('Pkg: Para atualizar o Dsa Terminal você deve usar o comando "pkg update"\n')
         else:
-            print(f'Lendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
-            print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
+            print(f'Lendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(0.01)
+            print(f'Git 1: [Downloading...] https://github.com/Dsa-Terminal/{cmd}/releases/download/{cmd}-master.zip'), sleep(1)
             auto_get_ProgressBar(0.001)
-            ProgressBar('Baixando tools')
+            print(f'Git 2: https://github.com/Dsa-Terminal/{cmd}/commit/22af2ee0b1e9b3ebe909d5371324e0ee717e2...'), sleep(1.92)
+            print(f'Git 3: [Making Dependences...][Building Setup.exe].....'), sleep(0.002)
             system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
             system(fr'move {cmd} Lib')
             return True
@@ -222,12 +225,35 @@ class CallTree:
 		return s
 def CachedType(selfed):
     return selfed[1], True
+class gdb:
+    def __init__(self):
+        super(gdb, self).__init__("GDB")
+        return self.__init__(gdb)
+    def Value(self):
+        RESULT = int(self[1])
+        return RESULT
+    def execute(self, to_string):
+        self.execute("endian", to_string=True)
+        requests = ['little endian', 'big endian', 'unknow endian']
+        return choice(requests)
+    def GdbError(self):
+        return self
+    def write(self):
+        print(self, end='', sep='')
+        return True
+target_endianness = None
 list_head = CachedType(route)
 class DeviceLinuxDriverAssert:
     """Calibrador e depurador do iExecutor do Device de Driver Linux do Dsa Terminal"""
     def __init__(self):
         calibre = super(DeviceLinuxDriverAssert, self)
         return True, calibre
+    def offset_of(typeobj, field):
+        element = gdb.Value(0)
+        return int(str(element[field].address).split()[0], 16)
+    def container_of(ptr, typeobj, member):
+        return (ptr.cast(get_long_type()) -
+                offset_of(typeobj, member)).cast(typeobj)
     def get_long_type():
         long_type = CachedType("long")
         global long_type
@@ -241,6 +267,42 @@ class DeviceLinuxDriverAssert:
         while node.address != head.address:
             yield node.address
             node = node['next'].dereference()
+    def get_target_endianness(self, LITTLE_ENDIAN, BIG_ENDIAN):
+        global target_endianness
+        if target_endianness is None:
+            endian = gdb.execute("show endian", to_string=True)
+            if "little endian" in endian:
+                target_endianness = LITTLE_ENDIAN
+            elif "big endian" in endian:
+                target_endianness = BIG_ENDIAN
+            else:
+                raise gdb.GdbError("unknown endianness '{0}'".format(str(endian)))
+        return target_endianness
+    def read_u16(buffer, offset, LITTLE_ENDIAN, get_target_endianness):
+        buffer_val = buffer[offset:offset + 2]
+        value = [0, 0]
+
+        if type(buffer_val[0]) is str:
+            value[0] = ord(buffer_val[0])
+            value[1] = ord(buffer_val[1])
+        else:
+            value[0] = buffer_val[0]
+            value[1] = buffer_val[1]
+
+        if get_target_endianness == LITTLE_ENDIAN:
+            return value[0] + (value[1] << 8)
+        else:
+            return value[1] + (value[0] << 8)
+    def read_u32(buffer, offset, LITTLE_ENDIAN, get_target_endianness):
+        if get_target_endianness == LITTLE_ENDIAN:
+            return read_u16(buffer, offset) + (read_u16(buffer, offset + 2) << 16)
+        else:
+            return read_u16(buffer, offset + 2) + (read_u16(buffer, offset) << 16)
+    def read_u64(buffer, offset, LITTLE_ENDIAN, get_target_endianness):
+        if get_target_endianness == LITTLE_ENDIAN:
+            return read_u32(buffer, offset) + (read_u32(buffer, offset + 4) << 32)
+        else:
+            return read_u32(buffer, offset + 4) + (read_u32(buffer, offset) << 32)
 def iPXE():
     system('cls')
     print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
@@ -611,8 +673,7 @@ if start == True:
                 continue
             elif cmd == 'pkg update':
                 update()
-                system('pause')
-                break
+                continue
             elif cmd.startswith('lua'):
                 cmd = cmd.replace('lua ', '')
                 cmd = cmd.replace('lua', '')
