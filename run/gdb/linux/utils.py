@@ -40,15 +40,6 @@ class CachedType:
 
 
 
-def offset_of(typeobj, field):
-    element = gdb.Value(0).cast(typeobj)
-    return int(str(element[field].address).split()[0], 16)
-
-
-def container_of(ptr, typeobj, member):
-    return (ptr.cast(get_long_type()) -
-            offset_of(typeobj, member)).cast(typeobj)
-
 
 class ContainerOf(gdb.Function):
     """Return pointer to containing data structure.
@@ -60,9 +51,6 @@ Note that TYPE and ELEMENT have to be quoted as strings."""
     def __init__(self):
         super(ContainerOf, self).__init__("container_of")
 
-    def invoke(self, ptr, typename, elementname):
-        return container_of(ptr, gdb.lookup_type(typename.string()).pointer(),
-                            elementname.string())
 
 
 ContainerOf()
@@ -73,41 +61,14 @@ LITTLE_ENDIAN = 1
 target_endianness = None
 
 
-def get_target_endianness():
-    global target_endianness
-    if target_endianness is None:
-        endian = gdb.execute("show endian", to_string=True)
-        if "little endian" in endian:
-            target_endianness = LITTLE_ENDIAN
-        elif "big endian" in endian:
-            target_endianness = BIG_ENDIAN
-        else:
-            raise gdb.GdbError("unknown endianness '{0}'".format(str(endian)))
-    return target_endianness
 
 
-def read_memoryview(inf, start, length):
-    return memoryview(inf.read_memory(start, length))
 
 
-def read_u16(buffer, offset):
-    buffer_val = buffer[offset:offset + 2]
-    value = [0, 0]
-
-    if type(buffer_val[0]) is str:
-        value[0] = ord(buffer_val[0])
-        value[1] = ord(buffer_val[1])
-    else:
-        value[0] = buffer_val[0]
-        value[1] = buffer_val[1]
-
-    if get_target_endianness() == LITTLE_ENDIAN:
-        return value[0] + (value[1] << 8)
-    else:
-        return value[1] + (value[0] << 8)
 
 
-def read_u32(buffer, offset):
+
+def read_u32(buffer, offset, LITTLE_ENDIAN):
     if get_target_endianness() == LITTLE_ENDIAN:
         return read_u16(buffer, offset) + (read_u16(buffer, offset + 2) << 16)
     else:
