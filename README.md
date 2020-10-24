@@ -59,6 +59,15 @@ no sistema do Dsa Terminal! Ele sera atualizado para a ultima versão publicada 
 então a sessão aberta sera fechada e você podera reiniciar o Dsa Terminal e da proxima vez que você o iniciar
 e colocar sua senha, ele ja estara com a atualização aplicada!
 
+## iPXE Kernel de erros do Dsa Terminal
+O iPXE para Dsa Terminal é uma versão do [ipxe](https://ipxe.org) que pode gerenciar o sistema do Dsa Terminal
+quando acontece um erro potencial por exemplo você fornece um argumento errado, ou a um poblema no código no [github](https://github.com/Dsa-Terminal/Dsa-Terminal)
+então se você percebeu este erro, crie um issue no [github](https://github.com/Dsa-Terminal/Dsa-Terminal) e relate o poblema!
+
+### O que fazer para corrigir o erro do Dsa Terminal
+Se você relatou o poblema você tera um retorno de 1 a 5 dias com a solução então você dara um `pkg update` que provalvelmente
+o erro ira desaparecer ou senão [mande um email!](mailto:dsaterminal@gmail.com)
+
 ## FireFox para Dsa Terminal
 
 Da primeira vez que usaro Dsa Terminal, extraia o arquivo que esta na pasta `network` chamado `xul.rar` dentro da pasta:
