@@ -55,62 +55,7 @@ def hlist_for_each_entry(head, gdbtype, member):
         yield utils.container_of(node, gdbtype, member)
 
 
-def list_check(head):
-    nb = 0
-    if (head.type == list_head.get_type().pointer()):
-        head = head.dereference()
-    elif (head.type != list_head.get_type()):
-        raise gdb.GdbError('argument must be of type (struct list_head [*])')
-    c = head
-    try:
-        gdb.write("Starting with: {}\n".format(c))
-    except gdb.MemoryError:
-        gdb.write('head is not accessible\n')
-        return
-    while True:
-        p = c['prev'].dereference()
-        n = c['next'].dereference()
-        try:
-            if p['next'] != c.address:
-                gdb.write('prev.next != current: '
-                          'current@{current_addr}={current} '
-                          'prev@{p_addr}={p}\n'.format(
-                              current_addr=c.address,
-                              current=c,
-                              p_addr=p.address,
-                              p=p,
-                          ))
-                return
-        except gdb.MemoryError:
-            gdb.write('prev is not accessible: '
-                      'current@{current_addr}={current}\n'.format(
-                          current_addr=c.address,
-                          current=c
-                      ))
-            return
-        try:
-            if n['prev'] != c.address:
-                gdb.write('next.prev != current: '
-                          'current@{current_addr}={current} '
-                          'next@{n_addr}={n}\n'.format(
-                              current_addr=c.address,
-                              current=c,
-                              n_addr=n.address,
-                              n=n,
-                          ))
-                return
-        except gdb.MemoryError:
-            gdb.write('next is not accessible: '
-                      'current@{current_addr}={current}\n'.format(
-                          current_addr=c.address,
-                          current=c
-                      ))
-            return
-        c = n
-        nb += 1
-        if c == head:
-            gdb.write("list is consistent: {} node(s)\n".format(nb))
-            return
+
 
 
 class LxListChk(gdb.Command):
