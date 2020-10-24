@@ -256,7 +256,6 @@ class DeviceLinuxDriverAssert:
                 offset_of(typeobj, member)).cast(typeobj)
     def get_long_type():
         long_type = CachedType("long")
-        global long_type
         return long_type.get_type()
     def list_for_each(head):
         if head.type == list_head.get_type().pointer():
@@ -685,14 +684,14 @@ if start == True:
                     system(fr'var\Lua\lua.exe \files\{cmd}lua')
                 system('title Dsa terminal')
             elif cmd == 'apimon':
-                system(r'run\sudo\apimon.exe')
+                system(r'start run\sudo\apimon.exe')
                 print('')
                 continue
             elif cmd == 'cls':
                 system('cls')
                 continue
             elif cmd == 'env':
-                system(r'run\env.exe')
+                system(r'start run\env.exe')
                 print('')
                 continue
             elif cmd == 'wmic':
@@ -782,12 +781,19 @@ if start == True:
                 continue
             elif cmd == 'kernel':
                 try:
-                    system('Lib\kernel\main.exe')
+                    startfile('Lib\kernel\main.exe')
                 except FileNotFoundError:
                     print('Modulo não instalado no sistema do Dsa Terminal!')
                     print('Tente:')
                     print('      sudo pkg install kernel')
                 continue
+            elif cmd == 'ssh':
+                try:
+                    startfile('Lib\ssh\main.exe')
+                except FileNotFoundError:
+                    print('Modulo não instalado no sistema do Dsa Terminal!')
+                    print('Tente:')
+                    print('      sudo pkg install ssh')
             elif cmd == 'ipxe':
                 i = iPXE()
                 if i == False:
