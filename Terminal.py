@@ -171,7 +171,7 @@ class CallTree:
 		called ROOT.
 	"""
 	ROOT = None
-	def __init__(self, func, time = None, parent = None):
+	def __init__(self, func, time=None, parent=None):
 		self._func = func
 		self._time = time
 		if parent is None:
@@ -220,13 +220,27 @@ class CallTree:
 								"    |", True)
 			i += 1
 		return s
+def CachedType(selfed):
+    return selfed[1], True
+list_head = CachedType(route)
 class DeviceLinuxDriverAssert:
     """Calibrador e depurador do iExecutor do Device de Driver Linux do Dsa Terminal"""
     def __init__(self):
         calibre = super(DeviceLinuxDriverAssert, self)
         return True, calibre
-    def sync(self, serial):
-        return True
+    def get_long_type():
+        long_type = CachedType("long")
+        global long_type
+        return long_type.get_type()
+    def list_for_each(head):
+        if head.type == list_head.get_type().pointer():
+            head = head.dereference()
+        elif head.type != list_head.get_type():
+            raise TypeError("Must be struct list_head not {}".format(head.type))
+        node = head['next'].dereference()
+        while node.address != head.address:
+            yield node.address
+            node = node['next'].dereference()
 def iPXE():
     system('cls')
     print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
