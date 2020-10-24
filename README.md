@@ -24,7 +24,10 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - [x] Firefox 
 - [x] Node.js Server, Lua Script e Python 3.8.6 
 - [x] Git for Windows
+- [x] Programa Portatil
+- [x] Dependencias de aplicações Windows 10
 - [ ] Sistema operacional Botavel no computador
+- [ ] 
 
 ## Comandos
 - `echo [mensagem[parametros]]` Imprime uma mensagem na tela
@@ -70,7 +73,7 @@ o erro ira desaparecer ou senão [mande um email!](mailto:dsaterminal@gmail.com)
 
 ## FireFox para Dsa Terminal
 
-Da primeira vez que usaro Dsa Terminal, extraia o arquivo que esta na pasta `network` chamado `xul.rar` dentro da pasta:
+Da primeira vez que usar o Dsa Terminal, extraia o arquivo que esta na pasta `network` chamado `xul.rar` dentro da pasta:
 `network\firefox\` porque o arquivo é maior de 100mb é não pode ser carregado ao github!
 
 ### Como iniciar o Firefox
