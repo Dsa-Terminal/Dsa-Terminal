@@ -27,7 +27,6 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - [x] Programa Portatil
 - [x] Dependencias de aplicações Windows 10
 - [ ] Sistema operacional Botavel no computador
-- [ ] 
 
 ## Comandos
 - `echo [mensagem[parametros]]` Imprime uma mensagem na tela
