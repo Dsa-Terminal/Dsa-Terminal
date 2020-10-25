@@ -93,11 +93,34 @@ Se isso não funcionar, [mande um email!](mailto:dsaterminal@gmail.com)
 - `pkg uninstall [nome do pacote]` Desinstala um pacote no Dsa Terminal
 - `pkg search [nome do pacote]` Procura um pacote do Dsa Terminal
 
+## Interface de Linha de comando para controle de Arduino Uno
+A Interface de Linha de comando para controle de Arduino Uno do Dsa Terminal é um recurso _Beta_ que esta em desenvolvimento
+e não tem previsão de entrega exata!
+
+### Como acessar a CLI do Arduino Uno pelo Dsa Terminal
+Abra uma instancia do _Dsa Terminal_ e digite o comando:
+- `cli-ino`
+
+### Comandos
+
+- `.exit` Sai da Cli do Arduino UNO
+- `.clear` Limpa a tela
+- `dW` Invoca o _digitalWrite_
+- `aW` Invoca o _anologicWrite_
+Em breve teremos mais comandos!!!
+
+### Poblemas Comuns
+__Erro Na hora de compilar__
+Isso é um erro no código, não compre outro Arduino achando que é um poblema na placa!
+
+__Meu arduino não é suportado__
+Provavelmente ele não é um Arduino UNO, a __CLI__ Tem suporte apenas para Arduinos UNO's
+
 ## Contribuidores para este projeto
 
 - [Felipe Souza Pereira de Lima](https://github.com/Felipe-Souza-Pereira-Lima)
 - [Cauê Alves](https://github.com/caue-alves)
 Qualquer poblema ou duvida [envie um email!](mailto:dsaterminal@gmail.com)
 
-          Dsa Terminal | dsaterminal@gmail.com | Dsa Software Fundation
+           Dsa Terminal | dsaterminal@gmail.com | Dsa Software Fundation
                         Copyright (C) 2020 MIT LICENSE
