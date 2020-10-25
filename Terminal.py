@@ -168,61 +168,61 @@ class ping:
         system(f'ping -t {ip}')
         return True
 class CallTree:
-	""" This class provides a tree representation of the functions
-		call stack. If a function has no parent in the kernel (interrupt,
-		syscall, kernel thread...) then it is attached to a virtual parent
-		called ROOT.
-	"""
-	ROOT = None
-	def __init__(self, func, time=None, parent=None):
-		self._func = func
-		self._time = time
-		if parent is None:
-			self._parent = CallTree.ROOT
-		else:
-			self._parent = parent
-		self._children = []
-	def calls(self, func, calltime):
-		""" If a function calls another one, call this method to insert it
-			into the tree at the appropriate place.
-			@return: A reference to the newly created child node.
-		"""
-		child = CallTree(func, calltime, self)
-		self._children.append(child)
-		return child
-	def getParent(self, func):
-		""" Retrieve the last parent of the current node that
-			has the name given by func. If this function is not
-			on a parent, then create it as new child of root
-			@return: A reference to the parent.
-		"""
-		tree = self
-		while tree != CallTree.ROOT and tree._func != func:
-			tree = tree._parent
-		if tree == CallTree.ROOT:
-			child = CallTree.ROOT.calls(func, None)
-			return child
-		return tree
-	def __repr__(self):
-		return self.__toString("", True, "")
-	def __toString(self, branch, lastChild):
-		if self._time is not None:
-			s = "%s----%s (%s)\n" % (branch, self._func, self._time)
-		else:
-			s = "%s----%s\n" % (branch, self._func)
+    """ This class provides a tree representation of the functions
+        call stack. If a function has no parent in the kernel (interrupt,
+        syscall, kernel thread...) then it is attached to a virtual parent
+        called ROOT.
+    """
+    ROOT = None
+    def __init__(self, func, time=None, parent=None):
+        self._func = func
+        self._time = time
+        if parent is None:
+            self._parent = CallTree.ROOT
+        else:
+            self._parent = parent
+        self._children = []
+    def calls(self, func, calltime):
+        """ If a function calls another one, call this method to insert it
+            into the tree at the appropriate place.
+            @return: A reference to the newly created child node.
+        """
+        child = CallTree(func, calltime, self)
+        self._children.append(child)
+        return child
+    def getParent(self, func):
+        """ Retrieve the last parent of the current node that
+            has the name given by func. If this function is not
+            on a parent, then create it as new child of root
+            @return: A reference to the parent.
+        """
+        tree = self
+        while tree != CallTree.ROOT and tree._func != func:
+            tree = tree._parent
+        if tree == CallTree.ROOT:
+            child = CallTree.ROOT.calls(func, None)
+            return child
+        return tree
+    def __repr__(self):
+        return self.__toString("", True, "")
+    def __toString(self, branch, lastChild):
+        if self._time is not None:
+            s = "%s----%s (%s)\n" % (branch, self._func, self._time)
+        else:
+            s = "%s----%s\n" % (branch, self._func)
 
-		i = 0
-		if lastChild:
-			branch = branch[:-1] + " "
-		while i < len(self._children):
-			if i != len(self._children) - 1:
-				s += "%s" % self._children[i].__toString(branch +\
-								"    |", False)
-			else:
-				s += "%s" % self._children[i].__toString(branch +\
-								"    |", True)
-			i += 1
-		return s
+        i = 0
+        if lastChild:
+            branch = branch[:-1] + " "
+        while i < len(self._children):
+            if i != len(self._children) - 1:
+                s += "%s" % self._children[i].__toString(branch +\
+                                "    |", False)
+            else:
+                s += "%s" % self._children[i].__toString(branch +\
+                                "    |", True)
+            i += 1
+        return s
 def CachedType(selfed):
     return selfed[1], True
 class gdb:
@@ -233,11 +233,11 @@ class gdb:
         RESULT = int(self[1])
         return RESULT
     def execute(self, to_string):
-        self.execute("endian", to_string=True)
-        requests = ['little endian', 'big endian', 'unknow endian']
+        self.execute("endian", to_string=to_string)
+        requests = [f'little endian {to_string}', f'big endian {to_string}', '1028']
         return choice(requests)
-    def GdbError(self):
-        return self
+    def GdbError(self, msg):
+        return msg
     def write(self):
         print(self, end='', sep='')
         return True
@@ -266,12 +266,14 @@ class DeviceLinuxDriverAssert:
         while node.address != head.address:
             yield node.address
             node = node['next'].dereference()
-    def get_target_endianness(self, LITTLE_ENDIAN, BIG_ENDIAN):
+    def get_target_endianness(self, LITTLE_ENDIAN, MEDIUM_ENDIAN ,BIG_ENDIAN):
         global target_endianness
         if target_endianness is None:
             endian = gdb.execute("show endian", to_string=True)
             if "little endian" in endian:
                 target_endianness = LITTLE_ENDIAN
+            elif "medium endian" in endian:
+                target_endianness = MEDIUM_ENDIAN
             elif "big endian" in endian:
                 target_endianness = BIG_ENDIAN
             else:
@@ -570,6 +572,12 @@ if start == True:
             elif cmd == 'pwd':
                 print(pwd)
                 continue
+            elif 'endian' in cmd:
+                target_endianness = DeviceLinuxDriverAssert.get_target_endianness(self="", 
+                                                                                LITTLE_ENDIAN='<endian="0">',
+                                                                                MEDIUM_ENDIAN='<endian="512">',
+                                                                                BIG_ENDIAN='<endian="1024">')
+                print(target_endianness)
             elif cmd.startswith('pkg uninstall'):
                 print('13: Erro (Permissão negada)!')
                 continue
@@ -621,13 +629,15 @@ if start == True:
                     system(fr'usr\bin\nano.exe /run/index.html')
                 elif cmd == '--edit':
                     system(fr'usr\bin\nano.exe /run/index.html')
-            elif cmd == 'cli-uno':
+            elif cmd == 'cli-ino':
                 while True:
                     try:
                         cmd = input('[~] ')
-                        if cmd == 'exit':
+                        if cmd == '.exit':
                             print('Exiting CLI Arduino UNO...'), sleep(0.02)
                             break
+                        elif cmd == '.clear':
+                            system('cls')
                         elif cmd.startswith('digitalWrite'):
                             while True:
                                 try:
@@ -666,6 +676,7 @@ if start == True:
                 print('pkg [parametros]     Gerenciador de pacotes')
                 print('nano [arquivo]       Dsa Terminal E-ditor')
                 print('help                 Exibe ajuda')
+                print('endian               Ganha um novo código de endian')
                 print('version              Exibe versão instalada')
                 print('python3 [parametros] Python v3.8.6...')
                 print('lnk [parametros]     Framework')
@@ -698,7 +709,7 @@ if start == True:
                 del d
             elif cmd == 'prompt':
                 system('pause')
-                cpntinue
+                continue
             elif cmd.startswith('set'):
                 cmd = cmd.replace('set ', '')
                 cmd = cmd.replace('set', '')
