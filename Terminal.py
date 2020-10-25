@@ -204,7 +204,7 @@ class CallTree:
 			return child
 		return tree
 	def __repr__(self):
-		return self.__toString("", True)
+		return self.__toString("", True, "")
 	def __toString(self, branch, lastChild):
 		if self._time is not None:
 			s = "%s----%s (%s)\n" % (branch, self._func, self._time)
