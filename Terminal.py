@@ -308,34 +308,35 @@ class Arduino:
     board_name = 'Arduino UNO'
     digital_pin_num = 14
     analog_pin_num = 6
-    def __init__(self, port=None, baud=38400):
-        self.port = port
-        self.baud = baud
-        self.comm = serial.Serial(port, baud)
+    port = None
+    baud = 38400
+    comm = serial.Serial(port, baud)
+    def __init__(self):
+        return True
     def send_cmd(self, command, params):
-        self.comm.write(('{%s%s}' % (command, params)).encode())
-        self.comm.flush()
+        Arduino.comm.write(('{%s%s}' % (command, params)).encode())
+        Arduino.comm.flush()
     def digitalWrite(self, pin, value):
-        if pin >= self.digital_pin_num:
+        if pin >= Arduino.digital_pin_num:
             print('\033[33mWARNING\033[m: Invalid pin number!\n There are only %d digital pins on %s.' % (
-            self.digital_pin_num, self.board_name))
+            Arduino.digital_pin_num, Arduino.board_name))
         pin = str(pin).zfill(2)
         value = 'H' if value else 'L'
-        self.send_cmd(f'digitalWrite({pin}, {value})')
+        self.send_cmd('dW', pin, value)
     def analogWrite(self, pin, value):
         if pin not in [3, 5, 6, 9, 10, 11]:
-            print('\033[33mWARNING\033[m: Invalid pin number!\n pin %d on %s does not have PWM function.' % (pin, self.board_name))
+            print('\033[33mWARNING\033[m: Invalid pin number!\n pin %d on %s does not have PWM function.' % (pin, Arduino.board_name))
         pin = str(pin).zfill(2)
         value = str(min(max(value, 0), 255))
         value = value.zfill(3)
-        self.send_cmd('aW', pin + value)
+        self.send_cmd('aW', pin, value)
     def servoWrite(self, pin, angle):
         pin = str(pin).zfill(2)
         angle = str(min(max(angle, 0), 180))
-        self.send_cmd('Sv', pin + angle)
+        self.send_cmd('Sv', pin, angle)
     def EMERGENCYSTOP(self):
-        self.comm.write(b'{!!}')
-        print('\033[33mWARNING\033[m: %s has stopped due to an EMERGENCYSTOP.' % self.board_name)
+        Arduino.comm.write(b'{!!}')
+        print('\033[33mWARNING\033[m: %s has stopped due to an EMERGENCYSTOP.' % Arduino.board_name)
 def iPXE():
     system('cls')
     print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
@@ -654,7 +655,10 @@ if start == True:
                                     break
                                 else:
                                     print('\033[33mWARNING\033[m: VALUES IS: "HIGH" or "LOW"!')
-                            Arduino.digitalWrite('', pin=pina, value=hailaity)
+                            try:
+                                Arduino.digitalWrite(pin=pina, value=hailaity)
+                            except Exception as e:
+                                print(e)
                     except KeyboardInterrupt:
                         break
             elif cmd == r'Dsa Terminal -i --login --boot\boot.ini':
