@@ -45,6 +45,7 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - `issue` Cria um poblema no github
 - `cli-http` Interface de Linha de comando do cliente http
 - `pwd` Caminho do diretorio atual
+- `endian` Ganha um novo código de endian
 - `gui` Phoenix Setup Utility
 - `mkdir [pasta]` Cria um diretorio\pasta
 - `ssl` Controlador SSL
