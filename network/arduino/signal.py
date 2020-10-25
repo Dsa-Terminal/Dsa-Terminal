@@ -1,5 +1,0 @@
-
-
-HIGH = True
-
-LOW = False
