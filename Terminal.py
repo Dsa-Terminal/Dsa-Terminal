@@ -43,15 +43,6 @@ path = ['/bin', '/usr/bin', '/var', '/var/Lua', '/run',
         '/mingw64', '/mingw64/ssl', '/mingw64/libexec/gti-core',
         '/boot', '/boot/drivers', 'var/node_modules/npm', '/tmp',
         'usr/etc', '/usr/lib', '/usr', '/usr/share']
-assoc = {
-    '.exe': 'executavel', '.py': 'python file',
-    '.com': 'executavel', '.run': 'executavel',
-    '.api': 'api de módulo', 'packge.json': 'node.js server',
-    '.lua': 'lua script', '.js': 'javascipt file',
-    '.sc': 'arquivo em lotes do Dsa Terminal',
-    '.txt': 'arquivo de texto', '.exc': 'arquivo de texto',
-    '.html': 'documento web', '.xml': 'documento xml'
-}
 run = r'Dsa Terminal -i --login --boot\boot.ini'
 session = randint(0, 291462)
 pwd = "/files"
@@ -305,38 +296,7 @@ class DeviceLinuxDriverAssert:
         else:
             return read_u32(buffer, offset + 4) + (read_u32(buffer, offset) << 32)
 class Arduino:
-    board_name = 'Arduino UNO'
-    digital_pin_num = 14
-    analog_pin_num = 6
-    port = None
-    baud = 38400
-    comm = serial.Serial(port, baud)
-    def __init__(self):
-        return True
-    def send_cmd(self, command, params):
-        Arduino.comm.write(('{%s%s}' % (command, params)).encode())
-        Arduino.comm.flush()
-    def digitalWrite(self, pin, value):
-        if pin >= Arduino.digital_pin_num:
-            print('\033[33mWARNING\033[m: Invalid pin number!\n There are only %d digital pins on %s.' % (
-            Arduino.digital_pin_num, Arduino.board_name))
-        pin = str(pin).zfill(2)
-        value = 'H' if value else 'L'
-        self.send_cmd('dW', pin, value)
-    def analogWrite(self, pin, value):
-        if pin not in [3, 5, 6, 9, 10, 11]:
-            print('\033[33mWARNING\033[m: Invalid pin number!\n pin %d on %s does not have PWM function.' % (pin, Arduino.board_name))
-        pin = str(pin).zfill(2)
-        value = str(min(max(value, 0), 255))
-        value = value.zfill(3)
-        self.send_cmd('aW', pin, value)
-    def servoWrite(self, pin, angle):
-        pin = str(pin).zfill(2)
-        angle = str(min(max(angle, 0), 180))
-        self.send_cmd('Sv', pin, angle)
-    def EMERGENCYSTOP(self):
-        Arduino.comm.write(b'{!!}')
-        print('\033[33mWARNING\033[m: %s has stopped due to an EMERGENCYSTOP.' % Arduino.board_name)
+    __module__ = 'Arduino UNO'
 def iPXE():
     system('cls')
     print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
@@ -631,36 +591,7 @@ if start == True:
                 elif cmd == '--edit':
                     system(fr'usr\bin\nano.exe /run/index.html')
             elif cmd == 'cli-ino':
-                while True:
-                    try:
-                        cmd = input('[~] ')
-                        if cmd == '.exit':
-                            print('Exiting CLI Arduino UNO...'), sleep(0.02)
-                            break
-                        elif cmd == '.clear':
-                            system('cls')
-                        elif cmd.startswith('digitalWrite'):
-                            while True:
-                                try:
-                                    pina = int(input('PIN:\>_'))
-                                except TypeError:
-                                    print('\033[33mWARNING\033[m: PIN Shuld is a number!')
-                                else:
-                                    break
-                            while True:
-                                hailaity = input('VALUE:\>_').strip().upper()
-                                if hailaity == 'HIGH':
-                                    break
-                                elif hailaity == 'LOW':
-                                    break
-                                else:
-                                    print('\033[33mWARNING\033[m: VALUES IS: "HIGH" or "LOW"!')
-                            try:
-                                Arduino.digitalWrite(pin=pina, value=hailaity)
-                            except Exception as e:
-                                print(e)
-                    except KeyboardInterrupt:
-                        break
+                print('')
             elif cmd == r'Dsa Terminal -i --login --boot\boot.ini':
                 system('cls')
                 system('title Dsa Terminal')
