@@ -26,3 +26,5 @@ $RECYCLE.BIN
 network/firefox/xul.dll
 $AV_AVG/$VAULT/vault.db
 sample/rootfs/Uninstall.exe
+tmp/Boted.log
+boot/drivers/pass.exc
