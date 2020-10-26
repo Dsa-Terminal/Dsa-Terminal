@@ -591,7 +591,8 @@ if start == True:
                 elif cmd == '--edit':
                     system(fr'usr\bin\nano.exe /run/index.html')
             elif cmd == 'cli-ino':
-                print('')
+                Arduino()
+                continue
             elif cmd == r'Dsa Terminal -i --login --boot\boot.ini':
                 system('cls')
                 system('title Dsa Terminal')
