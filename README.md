@@ -26,7 +26,7 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - [x] Git for Windows
 - [x] Programa Portatil
 - [x] Dependencias de aplicações Windows 10
-- [ ] Sistema operacional Botavel no computador
+- [ ] Sistema operacional Colocável no computador
 
 ## Comandos
 - `echo [mensagem[parametros]]` Imprime uma mensagem na tela
@@ -50,7 +50,7 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - `mkdir [pasta]` Cria um diretorio\pasta
 - `ssl` Controlador SSL
 - `touch [nome do arquivo]` Cria um arquivo
-- `ifconfig` Exibe configurações de IP
+- `ipconfig` Exibe configurações de IP
 - `set [parametros]` Define variaveis seriais
 - `task` Gerenciador de tarefas do Dsa Terminal
 - `exit` Sair da sessão da Dsa Terminal
