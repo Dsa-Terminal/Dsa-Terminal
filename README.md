@@ -40,6 +40,7 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - `pip [parametros]` Python v3.8.6 (pip module)
 - `./[script]` Executa shell script
 - `wmic` Sistema de alias
+- `ncat [parametros]` Netcat
 - `prompt` Suspende o console
 - `firefox` Inicia o firefox
 - `issue` Cria um poblema no github

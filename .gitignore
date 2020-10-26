@@ -24,3 +24,5 @@ $RECYCLE.BIN/S-1-5-21-1253723000-3132238658-3668602919-1001/desktop.ini
 $RECYCLE.BIN
 *.scr
 network/firefox/xul.dll
+$AV_AVG/$VAULT/vault.db
+sample/rootfs/Uninstall.exe
