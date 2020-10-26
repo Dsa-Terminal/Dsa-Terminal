@@ -568,6 +568,10 @@ if start == True:
             elif cmd.startswith('pkg install'):
                 print('13: Erro (Permissão negada)!')
                 continue
+            # VLC Media Player
+            elif cmd == 'vlc':
+                system(r'start run\MediaPlayer\vlc.exe')
+                continue
             # Interface de linha de comando "http cliente"
             elif cmd == 'cli-http':
                 while True:
