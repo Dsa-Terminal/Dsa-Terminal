@@ -297,6 +297,14 @@ class DeviceLinuxDriverAssert:
             return read_u32(buffer, offset + 4) + (read_u32(buffer, offset) << 32)
 class Arduino:
     __module__ = 'Arduino UNO'
+    def __init__(self):
+        while True:
+            try:
+                cmd: str = str(input("[~] ")).strip()
+                if cmd == 'exit':
+                    break
+            except KeyboardInterrupt:
+                break
 def iPXE():
     system('cls')
     print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
