@@ -694,7 +694,11 @@ if start == True:
             elif cmd.startswith('ncat'):
                 cmd = cmd.replace('ncat ', '')
                 cmd = cmd.replace('ncat', '')
-                system(fr'sample\ncat.exe {cmd}')
+                try:
+                    system(fr'sample\ncat.exe {cmd}')
+                except:
+                    continue
+                continue
             # GIT URL local
             elif cmd == 'gitlocal':
                 print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
