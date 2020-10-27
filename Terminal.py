@@ -363,6 +363,9 @@ def iPXE():
             print(f'{cmd}: iPXE command not found!')
 # Driver de som
 pygame.mixer.init()
+def mixer(filename):
+    pygame.mixer.music.load(fr"sample\rootfs\{filename}")
+    pygame.mixer.music.play()
 # Driver de inicialização avançada
 def __init__():
     system(r'cls')
@@ -402,8 +405,7 @@ def __init__():
                                 ProgressBar('Iniciando')
                                 print('Iniciando o Dsa Terminal...'), sleep(18)
                             system('cls')
-                            pygame.mixer.music.load(r"sample\rootfs\Startup.mp3")
-                            pygame.mixer.music.play()
+                            mixer('Startup.mp3')
                             return run, True
                         elif password == f'{key} --main':
                             password = password.replace(f'{key} --main', '')
@@ -431,6 +433,7 @@ def __init__():
                                     auto_get_ProgressBar(0.001)
                                     ProgressBar('Iniciando')
                                     print('Iniciando o Dsa Terminal...'), sleep(18)
+                                mixer('Startup.mp3')
                                 return run, True
                             elif run == r'Dsa Terminal -i --login --bin\boot.ini --nocache':
                                 try:
@@ -455,8 +458,7 @@ def __init__():
                                     auto_get_ProgressBar(0.001)
                                     ProgressBar('Iniciando')
                                     print('Iniciando o Dsa Terminal...'), sleep(18)
-                                pygame.mixer.music.load(r"sample\rootfs\Startup.mp3")
-                                pygame.mixer.music.play()
+                                mixer('Startup.mp3')
                                 return run, True
                             else:
                                 system(f'title {run}')
@@ -472,8 +474,7 @@ def __init__():
                             else:
                                 print(run)
                                 system('pause')
-                                pygame.mixer.music.load(r"sample\rootfs\Startup.mp3")
-                                pygame.mixer.music.play()
+                                mixer('Startup.mp3')
                                 return run, True
                         else:
                             return run, None
@@ -490,6 +491,7 @@ def __init__():
                                 files.Write(r'boot\drivers\pass.exc', password)
                                 system('cls')
                                 break
+                    mixer('Startup.mp3')
                     return run, True
             else:
                 return run, 'hmbdxyt'
@@ -953,22 +955,24 @@ if start == True:
         except:
             system('cls')
             for i in range(0, 5):
-                pygame.mixer.music.load(r"sample\rootfs\ERROR_Media.mp3")
-                pygame.mixer.music.play()
+                mixer('ERROR_Media.mp3')
             print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt')
             print(''), sleep(10)
             break
 # Senha incorreta: Falha no Boot
 elif start == None:
+    mixer('ERROR_Media.mp3')
     print('\n\nSenha invalida\nPXE MOF: Exiting PXE ROM'), sleep(5.8)
     system('pause')
 # Comando de boot invalido: Falha no Boot
 elif start == False:
+    mixer('ERROR_Media.mp3')
     print('Config.: Módulo de inicianlização não recebeu comando valido para inicializar o Dsa Terminal!')
     print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
     a = open('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe', 'wt+')
 # Comando de boot invalido: Falha no Boot
 elif start == '':
+    mixer('ERROR_Media.mp3')
     print('Config.: Ha um poblema impedindo a inicialização do Dsa Terminal!')
     coregir = input('Você dejesa executar o depurador[S,N]? ').upper()
     if coregir == 'S':
@@ -987,6 +991,7 @@ elif start == '':
 # No Bootable DEVICE: Falha no Boot
 else:
     system('cls')
+    mixer('ERROR_Media.mp3')
     print('Error: No Botable Device')
     print("Don't have a installed System on Dsa Terminal as Device Operative")
     print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
