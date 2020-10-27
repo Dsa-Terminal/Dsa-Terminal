@@ -51,7 +51,7 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - `mkdir [pasta]` Cria um diretorio\pasta
 - `ssl` Controlador SSL
 - `touch [nome do arquivo]` Cria um arquivo
-- `ipconfig` Exibe configurações de IP
+- `ifconfig` Exibe configurações de IP
 - `set [parametros]` Define variaveis seriais
 - `task` Gerenciador de tarefas do Dsa Terminal
 - `exit` Sair da sessão da Dsa Terminal
