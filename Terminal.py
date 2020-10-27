@@ -768,7 +768,8 @@ if start == True:
                     print('')
             # Finalizar sessão
             elif cmd == 'exit':
-                auto_get_ProgressBar(0.01)
+                print('Encerrando Tarefas. . .'), sleep(2.3)
+                auto_get_progressBar(0.001)
                 break
             # Limpar a tela
             elif cmd == 'clear':
