@@ -35,6 +35,7 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - `help` Exibe ajuda
 - `version` Exibe versão do Dsa Terminal instalada
 - `python3 [parametros]` Python v3.8.6...
+- `vlc` VLC Media Player
 - `lnk [parametros]` Framework
 - `gitlocal` Local do repositorio no github (url)
 - `pip [parametros]` Python v3.8.6 (pip module)
@@ -56,6 +57,11 @@ O Dsa Terminal só deve ser executado em `Windows 10 v10.0.18362.1139` ou poster
 - `task` Gerenciador de tarefas do Dsa Terminal
 - `exit` Sair da sessão da Dsa Terminal
 ______________________________________________
+
+## Como usar o Dsa Terminal
+É recomendavel instalar o Dsa Terminal em um pendriver pois ele foi desenvolvido como um Sistema Operacional
+portatil, ele tem varios recuros como Git, Firefox, Python 3.8.6, Node.js, Lua 5, VLC Media Player, netcat e
+Driver de rede!
 
 ## Kernel de Atualizações
 É bom a cada semana você digitar o comando `pkg update` no Dsa Terminal para incluir novas atualizações 
