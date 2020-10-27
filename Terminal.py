@@ -228,6 +228,7 @@ class CallTree:
                                 "    |", True)
             i += 1
         return s
+# Ultilitario de sistema binario
 def CachedType(selfed):
     return selfed[1], True
 # Giga database de "endiannes"
@@ -690,6 +691,19 @@ if start == True:
             elif cmd == 'cli-ino':
                 Arduino()
                 continue
+            # Driver de audio
+            elif cmd.startswith('drv -m "'):
+                if cmd.endswith('"'):
+                    cmd = cmd.replace('drv -m', '')
+                    cmd = cmd.replace('"', '')
+                    if cmd == '':
+                        print('Driver de Audio: Insira-um-nome-de-arquivo')
+                    else:
+                        try:
+                            pygame.mixer.music.load(fr'{win_pwd}\{cmd}')
+                            pygame.mixer.music.play()
+                        except:
+                            print('Driver de Audio: Erro na reprodução do arquivo')
             # Ajuda maxima
             elif cmd == 'help':
                 print('Comando:             Fução:')
@@ -737,6 +751,10 @@ if start == True:
             elif cmd == 'gitlocal':
                 print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
                 continue
+            # Alarme
+            elif cmd == 'alone':
+                mixer('Alarm01.wav')
+                print('')
             # Se entrada for vazia
             elif cmd == '':
                 for d in range(0, 1):
@@ -771,7 +789,7 @@ if start == True:
             # Finalizar sessão
             elif cmd == 'exit':
                 print('Encerrando Tarefas. . .'), sleep(2.3)
-                auto_get_progressBar(0.001)
+                auto_get_ProgressBar(0)
                 break
             # Limpar a tela
             elif cmd == 'clear':
