@@ -26,6 +26,7 @@ SOFTWARE.
 __version__ = '1.8.2'
 # Importando modulos
 import socket, serial
+import pygame
 from os import system, startfile, mkdir, listdir, remove
 from random import randint, choice
 from time import strftime, sleep
@@ -360,6 +361,8 @@ def iPXE():
             print(f'iPXE: Network COMBOOT IP: {ip}\n')
         else:
             print(f'{cmd}: iPXE command not found!')
+# Driver de som
+pygame.mixer.init()
 # Driver de inicialização avançada
 def __init__():
     system(r'cls')
@@ -399,6 +402,8 @@ def __init__():
                                 ProgressBar('Iniciando')
                                 print('Iniciando o Dsa Terminal...'), sleep(18)
                             system('cls')
+                            pygame.mixer.music.load(r"sample\rootfs\Startup.mp3")
+                            pygame.mixer.music.play()
                             return run, True
                         elif password == f'{key} --main':
                             password = password.replace(f'{key} --main', '')
@@ -450,6 +455,8 @@ def __init__():
                                     auto_get_ProgressBar(0.001)
                                     ProgressBar('Iniciando')
                                     print('Iniciando o Dsa Terminal...'), sleep(18)
+                                pygame.mixer.music.load(r"sample\rootfs\Startup.mp3")
+                                pygame.mixer.music.play()
                                 return run, True
                             else:
                                 system(f'title {run}')
@@ -465,7 +472,11 @@ def __init__():
                             else:
                                 print(run)
                                 system('pause')
+                                pygame.mixer.music.load(r"sample\rootfs\Startup.mp3")
+                                pygame.mixer.music.play()
                                 return run, True
+                        else:
+                            return run, None
                 else:
                     print('Registre uma palavra-passe para o Dsa Terminal!\n')
                     while True:
@@ -940,6 +951,9 @@ if start == True:
                 continue
         except:
             system('cls')
+            for i in range(0, 5):
+                pygame.mixer.music.load(r"sample\rootfs\ERROR_Media.mp3")
+                pygame.mixer.music.play()
             print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt')
             print(''), sleep(10)
             break
