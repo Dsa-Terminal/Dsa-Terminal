@@ -502,8 +502,9 @@ if start == True:
     elif not files.ArquivoExiste('tmp\Booted.log'):
         files.CriarArquivo('tmp\Boted.log')
         files.Write('tmp\Boted.log', timeout)
-    # Sistema de log
+    # Laço infinito
     while True:
+        # Tentar Fazer
         try:
             # Prompt de Comando
             system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
@@ -912,7 +913,8 @@ if start == True:
             else:
                 print(f'{cmd}: comando invalido!')
                 continue
-        except:
+        # Excepções
+        except KeyboardInterrupt:
             i = iPXE()
             if i == False:
                 with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'wt+') as commit:
@@ -920,6 +922,11 @@ if start == True:
                 break
             else:
                 continue
+        except:
+            system('cls')
+            print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt')
+            print(''), sleep(10)
+            break
 # Senha incorreta: Falha no Boot
 elif start == None:
     print('\n\nSenha invalida\nPXE MOF: Exiting PXE ROM'), sleep(5.8)
