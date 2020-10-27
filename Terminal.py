@@ -624,7 +624,7 @@ if start == True:
                 else:
                     system(fr'usr\bin\nano.exe /files/{cmd}')
                 system('title Dsa Terminal')
-            # Imprimir na tela
+            # Imprimir mensagem na tela
             elif cmd.startswith('echo'):
                 cmd = cmd.replace('echo ', '')
                 cmd = cmd.replace('echo', '')
