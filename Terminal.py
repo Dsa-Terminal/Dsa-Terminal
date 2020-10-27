@@ -42,6 +42,7 @@ porta = 82
 run = r'Dsa Terminal -i --login --boot\boot.ini' # Boot Device: Commando corrente
 session = randint(0, 291462) # Código de sessão
 pwd = "/files" # Diretorio atual
+win_pwd = r'\files' # Diretorio atual no windows 10
 # Barra de progresso tradicional
 def ProgressBar(titulo):
     with tqdm(total=100) as progressbar:
@@ -646,7 +647,22 @@ if start == True:
             # Executar
             elif cmd.startswith('./'):
                 cmd = cmd.replace('./', '')
-                system(fr'bin\bash.exe /files/{cmd}')
+                if cmd == 'vlc':
+                    system(r'start run\MediaPlayer\vlc.exe')
+                    continue
+                elif cmd == 'firefox':
+                    system(r'start network\firefox\firefox.exe')
+                    print('')
+                    continue
+                else:
+                    if cmd.endswith('.sh'):
+                        system(fr'bin\bash.exe {pwd}/{cmd}')
+                    elif cmd.endswith('.exe'):
+                        system(rf'{pwd}/{cmd}')
+                    elif cmd.endswith('.py'):
+                        system(rf'Python3\Scripts\python.exe {win_pwd}\{cmd}')
+                    elif cmd.endswith('.lua'):
+                        system(fr'var\Lua\lua.exe {win_pwd}\{cmd}lua')
             # Framework DevServer
             elif cmd.startswith('lnk'):
                 cmd = cmd.replace('lnk', '')
@@ -764,7 +780,7 @@ if start == True:
                 if cmd == '':
                     system(r'var\Lua\lua.exe')
                 else:
-                    system(fr'var\Lua\lua.exe \files\{cmd}lua')
+                    system(fr'var\Lua\lua.exe {win_pwd}\{cmd}lua')
                 system('title Dsa terminal')
             # Api de troca e montagem no Aplicativo. . .
             elif cmd == 'apimon':
