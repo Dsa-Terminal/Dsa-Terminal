@@ -26,6 +26,7 @@ SOFTWARE.
 __version__ = '1.8.2'
 # Importando modulos
 import socket, serial
+from flask import Flask
 import pygame
 from os import system, startfile, mkdir, listdir, remove
 from random import randint, choice
@@ -38,6 +39,7 @@ from requests import get
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 route = 'net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1'
+app = Flask(__name__)
 porta = 82
 # Variaveis globais
 run = r'Dsa Terminal -i --login --boot\boot.ini' # Boot Device: Commando corrente
@@ -338,6 +340,7 @@ def iPXE():
         elif cmd == 'sanboot' or cmd == run:
             sleep(9.1)
             system('cls')
+            mixer('Startup.mp3')
             print(strftime('Iniciando Dsa Terminal...'))
             print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
             print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
@@ -498,6 +501,29 @@ def __init__():
                 return run, 'hmbdxyt'
         else:
             return run, 'ffcffff'
+# FrameWork
+@app.route('/')
+def main_route():
+    site = '''
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dsa Terminal Framework</title>
+    </head>
+    <body>
+        <h1>Hello, World!<h1>
+        <script>
+            var cmd = window.prompt("Código")
+            if (cmd == "exit")
+            {
+                window.close()
+            }
+        </script>
+    </body>
+    </html>
+    '''
+    return site
 # Setup
 run, start = __init__()
 # Inicializar normalmente
@@ -679,14 +705,11 @@ if start == True:
                         system(fr'var\Lua\lua.exe {win_pwd}\{cmd}lua')
             # Framework DevServer
             elif cmd.startswith('lnk'):
-                cmd = cmd.replace('lnk', '')
-                cmd = cmd.replace('lnk ', '')
-                if cmd == '':
-                    system(rf'run\framework.exe')
-                elif cmd == ' --edit':
-                    system(fr'usr\bin\nano.exe /run/index.html')
-                elif cmd == '--edit':
-                    system(fr'usr\bin\nano.exe /run/index.html')
+                try:
+                    app.run()
+                except:
+                    continue
+                continue
             # Interface de linha de comando "Driver do Arduino UNO"
             elif cmd == 'cli-ino':
                 Arduino()
@@ -759,6 +782,7 @@ if start == True:
             # Se entrada for vazia
             elif cmd == '':
                 print('')
+                continue
             # Suspuender console
             elif cmd == 'prompt':
                 print('')
