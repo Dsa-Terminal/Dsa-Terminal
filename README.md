@@ -115,7 +115,7 @@ Abra uma instancia do _Dsa Terminal_ e digite o comando:
 - `.clear` Limpa a tela
 - `dW` Invoca o _digitalWrite_
 - `aW` Invoca o _anologicWrite_
-Em breve teremos mais comandos!!!
+- Em breve teremos mais comandos!!!
 
 ### Poblemas Comuns
 __Erro Na hora de compilar__
