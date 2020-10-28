@@ -758,9 +758,7 @@ if start == True:
                 print('')
             # Se entrada for vazia
             elif cmd == '':
-                for d in range(0, 1):
-                    continue
-                del d
+                print('')
             # Suspuender console
             elif cmd == 'prompt':
                 print('')
@@ -976,7 +974,8 @@ if start == True:
             for i in range(0, 5):
                 mixer('ERROR_Media.mp3')
             print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt')
-            print(''), sleep(10)
+            print('O Config. esta coletando informações sobre este ERROR, se ele continuar a se repetir')
+            print('mande um email para: dsaterminal@gmail.com   ***MANDAR UMA DESCRIÇÃO EXPLICITA***')
             break
 # Senha incorreta: Falha no Boot
 elif start == None:
