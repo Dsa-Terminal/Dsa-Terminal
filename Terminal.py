@@ -702,8 +702,9 @@ if start == True:
                         try:
                             pygame.mixer.music.load(fr'{win_pwd}\{cmd}')
                             pygame.mixer.music.play()
-                        except:
+                        except Exception as e:
                             print('Driver de Audio: Erro na reprodução do arquivo')
+                            print(e)
             # Ajuda maxima
             elif cmd == 'help':
                 print('Comando:             Fução:')
