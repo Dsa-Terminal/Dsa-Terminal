@@ -975,7 +975,7 @@ if start == True:
                 mixer('ERROR_Media.mp3')
             print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt')
             print('O Config. esta coletando informações sobre este ERROR, se ele continuar a se repetir')
-            print('mande um email para: dsaterminal@gmail.com   ***MANDAR UMA DESCRIÇÃO EXPLICITA***')
+            print('mande um email para: dsaterminal@gmail.com   ***MANDAR UMA DESCRIÇÃO EXPLICITA***'), sleep(13)
             break
 # Senha incorreta: Falha no Boot
 elif start == None:
