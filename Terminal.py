@@ -67,8 +67,8 @@ def do_step(set, time):
     sleep(time)
     pass
 # Barra de progresso padrão
-def auto_get_ProgressBar(time):
-    for step in track(range(100)):
+def auto_get_ProgressBar(time, title="Carregando..."):
+    for step in track(range(100), description=title):
         do_step(step, time)
 # Kernel de atualizações
 def update():
@@ -97,7 +97,7 @@ class packge:
         else:
             print(f'Lendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(0.01)
             print(f'Git 1: [Downloading...] https://github.com/Dsa-Terminal/{cmd}/releases/download/{cmd}-master.zip'), sleep(1)
-            auto_get_ProgressBar(0.001)
+            auto_get_ProgressBar(0.001, title="downloading...")
             print(f'Git 2: https://github.com/Dsa-Terminal/{cmd}/commit/22af2ee0b1e9b3ebe909d5371324e0ee717e2...'), sleep(1.92)
             print(f'Git 3: [Making Dependences...][Building Setup.exe].....'), sleep(0.002)
             system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
@@ -129,7 +129,7 @@ class packge:
         cmd = command.replace('pkg update ', '')
         print(f'\033[32mLendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
         print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
-        auto_get_ProgressBar(1)
+        auto_get_ProgressBar(1, title='uninstalling...')
         ProgressBar('Baixando tools')
         system(rf'del Lib\{cmd}')
         system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
@@ -520,6 +520,11 @@ def main_route():
     </html>
     '''
     return site
+# Configurações do sistema de armazenamento
+def loadComputer(info):
+    for step in track(range(100), description="Carregando..."):
+        do_step(step, 0.01)
+    return True
 # Setup
 run, start = __init__()
 # Inicializar normalmente
