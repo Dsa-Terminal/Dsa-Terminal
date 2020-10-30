@@ -515,10 +515,6 @@ def main_route():
         <h1>Hello, World!<h1>
         <script>
             var cmd = window.prompt("Código")
-            if (cmd == "exit")
-            {
-                window.close()
-            }
         </script>
     </body>
     </html>
@@ -940,7 +936,7 @@ if start == True:
                 if cmd == '':
                     print('Remove: Insira um nome-de-arquivo')
                 else:
-                    system(fr'del {pwd}\{cmd}')
+                    system(fr'del {win_pwd}\{cmd}')
                 print('')
             # Listar diretorios e objetos
             elif cmd.startswith('ls'):
