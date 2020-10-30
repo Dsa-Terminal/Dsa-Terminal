@@ -698,7 +698,7 @@ if start == True:
                     elif cmd.endswith('.py'):
                         system(rf'Python3\Scripts\python.exe {win_pwd}\{cmd}')
                     elif cmd.endswith('.lua'):
-                        system(fr'var\Lua\lua.exe {win_pwd}\{cmd}lua')
+                        system(fr'var\Lua\lua.exe {win_pwd}\{cmd}')
             # Framework DevServer
             elif cmd.startswith('lnk'):
                 try:
@@ -921,7 +921,7 @@ if start == True:
                             try:
                                 alinar: str = str(input(''))
                                 files.Write(fr'{pwd}\{cmd}', alinar)
-                            except KeyboardInterrupt:
+                            except:
                                 break
                     continue
             # Phoenix Setup Gui TrustedBios (tm) CMOS Utility
