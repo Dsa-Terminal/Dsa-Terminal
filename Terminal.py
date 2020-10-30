@@ -989,13 +989,13 @@ if start == True:
                 break
             else:
                 continue
-        except:
+        except Exception as erro:
             system('cls')
             for i in range(0, 5):
                 mixer('ERROR_Media.mp3')
             print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt')
-            print('O Config. esta coletando informações sobre este ERROR, se ele continuar a se repetir')
-            print('mande um email para: dsaterminal@gmail.com   ***MANDAR UMA DESCRIÇÃO EXPLICITA***'), sleep(13)
+            print('Config.: Estamos coletando Iinformações sobre o e depois encerraremos esta sessão do Dsa Terminal para você!'), sleep(0.01)
+            sleep(0.111)
             break
 # Senha incorreta: Falha no Boot
 elif start == None:

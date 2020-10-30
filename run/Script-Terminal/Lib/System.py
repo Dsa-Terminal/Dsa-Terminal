@@ -5,25 +5,31 @@ from random import choice
 def init():
 	return True
 def run(self):
-	if self == 'exec as packge':
+	if self == 'run as packge':
 		return True
 	else:
 		return False
 def cmd(windows_Cmd):
 	system(windows_Cmd)
 	return True
-def echo(msg):
-	print(msg)
-	return True
+class out:
+	def __init__(self):
+		return True
+	def println(mensagem):
+		print(mensagen, end='\n')
+		return True
+	def print(mensagem):
+		print(mensagem, end='')
+		return True
 def argv(list_options):
 	return choice(list_options)
-def close():
+def Close():
 	exit()
 def wait(seconds):
 	try:
 		a = int(seconds)
 	except:
-		raise TypeError(f'Traceback (TypeError - {seconds})')
+		raise TypeError(f'Traceback (Error in convert {seconds} in Number())')
 	else:
 		sleep(a)
 	return True
@@ -39,8 +45,5 @@ def personalized(msg):
 def prompt(msg):
 	a = input(msg)
 	return a
-def terminal():
-	system(r'start chdir\Terminal.exe')
-	close()
 def efectued():
 	return True

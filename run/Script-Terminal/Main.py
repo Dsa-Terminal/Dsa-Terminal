@@ -3,7 +3,7 @@ from os import mkdir, system
 import Lib as base
 import Lib.System as dll
 
-class scripts;
+class scripts:
 	def __init__(self):
 		return True
 	def new(object_new):
