@@ -165,14 +165,6 @@ class files:
             return False
         else:
             return True
-# Ping do CMD.exe
-class ping:
-    def __init__(self):
-        system('ping')
-        return True
-    def connect(self, ip):
-        system(f'ping -t {ip}')
-        return True
 # Chamada especifica de Devices e Drivers
 class CallTree:
     """ This class provides a tree representation of the functions
@@ -522,7 +514,7 @@ def main_route():
     return site
 # Configurações do sistema de armazenamento
 def loadComputer(info):
-    for step in track(range(100), description="Carregando..."):
+    for step in track(range(100), description="Carregando dados..."):
         do_step(step, 0.01)
     return True
 # Setup
@@ -716,9 +708,9 @@ if start == True:
                 Arduino()
                 continue
             # Driver de audio
-            elif cmd.startswith('drv -m "'):
+            elif cmd.startswith('drv -m --sound"'):
                 if cmd.endswith('"'):
-                    cmd = cmd.replace('drv -m', '')
+                    cmd = cmd.replace('drv -m --sound', '')
                     cmd = cmd.replace('"', '')
                     if cmd == '':
                         print('Driver de Audio: Insira-um-nome-de-arquivo')
@@ -813,7 +805,7 @@ if start == True:
             # Finalizar sessão
             elif cmd == 'exit':
                 print('Encerrando Tarefas. . .'), sleep(2.3)
-                auto_get_ProgressBar(0)
+                auto_get_ProgressBar(0, title="Saindo...")
                 break
             # Limpar a tela
             elif cmd == 'clear':
@@ -945,6 +937,8 @@ if start == True:
                 print('')
             # Listar diretorios e objetos
             elif cmd.startswith('ls'):
+                cmd = cmd.replace('ls', '')
+                cmd = cmd.replace('ls ', '')
                 system(rf'run\ls.exe {pwd} {cmd}')
                 print('')
                 continue
@@ -985,7 +979,7 @@ if start == True:
             else:
                 print(f'{cmd}: comando invalido!')
                 continue
-        # Excepções
+        # Interrupção pelo teclado "^C"
         except KeyboardInterrupt:
             i = iPXE()
             if i == False:
@@ -994,6 +988,7 @@ if start == True:
                 break
             else:
                 continue
+        # Ocorreu algum erro
         except Exception as erro:
             system('cls')
             for i in range(0, 5):
