@@ -696,9 +696,9 @@ if start == True:
                 except:
                     continue
                 continue
-            # Interface de linha de comando "Driver do Arduino UNO"
-            elif cmd == 'cli-ino':
-                Arduino()
+            # Arduino IDE
+            elif cmd == 'arduino':
+                startfile(r'var\Arduino\arduino.exe')
                 continue
             # Driver de audio
             elif cmd.startswith('drv -m --sound"'):
