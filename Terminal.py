@@ -516,6 +516,10 @@ def main_route():
 def loadComputer(info):
     for step in track(range(100), description="Carregando dados..."):
         do_step(step, 0.01)
+    return Tru
+# Config.
+def config():
+    print('')
     return True
 # Setup
 run, start = __init__()

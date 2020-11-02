@@ -29,14 +29,15 @@ def wait(seconds):
 	try:
 		a = int(seconds)
 	except:
-		raise TypeError(f'Traceback (Error in convert {seconds} in Number())')
+		raise TypeError(f'Traceback (Error in convert {seconds} in Type >Number<)')
 	else:
 		sleep(a)
 	return True
 def sync(value):
 	a = (value + 1)
 	b = (value + a + 2)
-	return value
+	c = (value + b + 3)
+	return c
 def suspendConsole():
 	system('pause')
 	return True

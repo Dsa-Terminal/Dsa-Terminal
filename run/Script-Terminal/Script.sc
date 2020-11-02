@@ -1,10 +1,10 @@
-<scipt ctrl>
+<script ctrl>
 	import System;
 	import SuppressWarnings;
 	System.init();
 	class Script
 	{
-		static void __init__(start, String[])
+		private static void __init__(start, String[])
 		{
 			System.cmd("cls");
 			var cmd = SuppressWarnings.SuppressWarnings(6);
