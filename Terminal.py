@@ -309,17 +309,6 @@ class DeviceLinuxDriverAssert:
             return read_u32(buffer, offset) + (read_u32(buffer, offset + 4) << 32)
         else:
             return read_u32(buffer, offset + 4) + (read_u32(buffer, offset) << 32)
-# Driver de controle e Arduino
-class Arduino:
-    __module__ = 'Arduino UNO'
-    def __init__(self):
-        while True:
-            try:
-                cmd: str = str(input("[~] ")).strip()
-                if cmd == 'exit':
-                    break
-            except KeyboardInterrupt:
-                break
 # iPXE Network System
 def iPXE():
     system('cls')
