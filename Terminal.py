@@ -38,7 +38,9 @@ from requests import get
 # Configurações de IP da Maquina local
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
-route = 'net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1'
+routes_free = ['net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1', 'net-2: 17.0.0.192/255.255.255.0 gw 10.0.0.2',
+               'net-1: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3']
+route = choice(routes_free)
 app = Flask(__name__)
 porta = 82
 # Variaveis globais
