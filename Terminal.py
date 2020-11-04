@@ -27,7 +27,7 @@ __version__ = '1.8.2'
 # Importando modulos
 import socket, serial
 from flask import Flask
-import pygame
+import pygame, asyncio
 from os import system, startfile, mkdir, listdir, remove
 from random import randint, choice
 from time import strftime, sleep
@@ -508,10 +508,6 @@ def loadComputer(info):
     for step in track(range(100), description="Carregando dados..."):
         do_step(step, 0.01)
     return Tru
-# Config.
-def config():
-    print('')
-    return True
 # Setup
 run, start = __init__()
 # Inicializar normalmente
