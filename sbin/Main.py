@@ -1,28 +1,64 @@
-#!/Python3/Scripts/python.exe
-# Importando Módulos
-from time import sleep
-from random import randge, randint, random
-import socketserver as sock_server
-from rich.console import Console
-from os import system
-import socket
-# Settings
-console = Console()
-# Function
-def main(ip, conn, route, port, host, server, app="__main__", path="/sbin/Main.py"):
-	if conn is not bool:
-		raise TypeError("Conexão Não foi estabelecida com o servidor só entende dados booleanos como verdadeiro e fo")
-    	else:
-		if route.startswith("net-1: "):
-			if port < 1028:
-				if host.upper() == "IPV4":
-					s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				else:
-			     		print("O Dsa Terminal só se conecta pelo provedorIPV4 do Sistema de criptografia UTF-16")
-			else:
-		     		print("O Dsa Terminal só pode se conectar com porta antes de 1028 pois são ligadas a serviços avançados")
-		     		return False
-		else:
-	     		print("As rotas são definidas como net- e o host do provedor de rede")
-	     		return False
-main()
+# -*- encoding: utf-8 -*-
+# kb v0.1.5
+# A knowledge base organizer
+# Copyright © 2020, gnc.
+# See /LICENSE for licensing information.
+
+"""
+kb main module
+
+:Copyright: © 2020, gnc.
+:License: GPLv3 (see /LICENSE).
+"""
+
+__all__ = ()
+
+import sys
+from kb.cl_parser import parse_args
+
+from kb.commands.add import add
+from kb.commands.search import search
+from kb.commands.edit import edit
+from kb.commands.update import update
+from kb.commands.delete import delete
+from kb.commands.template import template
+from kb.commands.view import view
+from kb.commands.grep import grep
+from kb.commands.erase import erase
+from kb.commands.ingest import ingest
+from kb.commands.export import export
+
+from kb.config import DEFAULT_CONFIG
+
+
+COMMANDS = {
+    'add': add,
+    'delete': delete,
+    'edit': edit,
+    'update': update,
+    'list': search,
+    'view': view,
+    'grep': grep,
+    'erase': erase,
+    'import': ingest,
+    'export': export,
+    'template': template,
+}
+
+
+def dispatch(function, *args, **kwargs):
+    """
+    Dispatch command line action to proper
+    kb function
+    """
+    return COMMANDS[function](*args, **kwargs)
+
+
+def main():
+    """Main routine of kb."""
+    args = parse_args(sys.argv[1:])
+
+    cmd = args.command
+    cmd_params = vars(args)
+
+    dispatch(cmd, cmd_params, config=DEFAULT_CONFIG)
