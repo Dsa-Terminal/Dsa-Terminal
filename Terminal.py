@@ -576,6 +576,9 @@ if start == True:
                 print('#     #  ######  #    #          #    ###    #####  #   #   #  #  #  #  # #    # #')
                 print('#     #        # ######          #    #      #    # #       #  #  #   # # ###### #')
                 print('######   ######  #    #          #    ###### #    # #       #  #  #    ## #    # #####')
+            # PHP for Dsa Terminal
+            elif cm.startswith("php"):
+                system(:"")
             # Negativado
             elif cmd == 'sudo' or cmd == 'pkg':
                 print('Config.: Insira parametros')
