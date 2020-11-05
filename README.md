@@ -6,6 +6,23 @@
 O **Dsa Terminal** é um Terminal de computador para Windows 10 baseado em Gnu/Linux Ubuntu, eseu
 core feito totalmente em [Python 3](https://python.org/Donwloads)!
 
+## Indice
+- [indice](https://github.com/Dsa-Terminal/Dsa-Terminal/#indice)
+- [Como instalar o Dsa Terminal v1.8.2](https://github.com/Dsa-Terminal/Dsa-Terminal/#como-instalar-o-dsa-terminal-v182)
+- [Pre-requesitos-para-usar](https://github.com/Dsa-Terminal/Dsa-Terminal/#pre-requesitos-para-usar)
+- [Recursos do Dsa Terminal](https://github.com/Dsa-Terminal/Dsa-Terminal/#recursos-do-dsa-terminal)
+- [Comandos](https://github.com/Dsa-Terminal/Dsa-Terminal/#comandos)
+- [Como usar o Dsa Terminal](https://github.com/Dsa-Terminal/Dsa-Terminal/#como-usar-o-dsa-terminal)
+- [Kernel de atualizações](https://github.com/Dsa-Terminal/Dsa-Terminal/#kernel-de-atualizações)
+- [Kernel de erro do Dsa Terminal](https://github.com/Dsa-Terminal/Dsa-Terminal/#ipxe-kernel-de-erros-do-dsa-terminal)
+  - [O que fazer para corrigir um erro do Dsa Terminal](https://github.com/Dsa-Terminal/Dsa-Terminal/#o-que-fazer-para-corrigir-o-erro-do-dsa-terminal)
+- [Firefox para Dsa Terminal](https://github.com/Dsa-Terminal/Dsa-Terminal/#firefox-para-dsa-terminal)
+  - [Como iniciar o Firefox](https://github.com/Dsa-Terminal/Dsa-Terminal/#como-iniciar-o-firefox)
+  - [Meu Firefox não inicia o que fazer](https://github.com/Dsa-Terminal/Dsa-Terminal/#meu-firefox-não-inicia-o-que-fazer)
+- [Gerenciador de pacotes](https://github.com/Dsa-Terminal/Dsa-Terminal/#gerenciador-de-pacotes-pkg)
+- [Arduino](https://github.com/Dsa-Terminal/Dsa-Terminal/#Arduino)
+- [Contribuidores](https://github.com/Dsa-Terminal/Dsa-Terminal/#contribuidores-para-este-projeto)
+
 ## Como instalar o Dsa Terminal v1.8.2
 Para fazer download do Setup de instalação do Dsa Terminal [clique aqui!](https://github.com/Dsa-Terminal/Dsa-Terminal/releases/download/Setup/Setup.exe)
 Fara o download então pegue um pendrive e aplique no seu computador, e instale o Dsa Terminal no pendriver!
@@ -101,34 +118,15 @@ Se isso não funcionar, [mande um email!](mailto:dsaterminal@gmail.com)
 - `pkg uninstall [nome do pacote]` Desinstala um pacote no Dsa Terminal
 - `pkg search [nome do pacote]` Procura um pacote do Dsa Terminal
 
-## Interface de Linha de comando para controle de Arduino Uno
-A Interface de Linha de comando para controle de Arduino Uno do Dsa Terminal é um recurso _Beta_ que esta em desenvolvimento
-e não tem previsão de entrega exata!
-
-### Como acessar a CLI do Arduino Uno pelo Dsa Terminal
-Abra uma instancia do _Dsa Terminal_ e digite o comando:
-- `cli-ino`
-
-### Comandos
-
-- `.exit` Sai da Cli do Arduino UNO
-- `.clear` Limpa a tela
-- `dW` Invoca o _digitalWrite_
-- `aW` Invoca o _anologicWrite_
-- Em breve teremos mais comandos!!!
-
-### Poblemas Comuns
-__Erro Na hora de compilar__
-Isso é um erro no código, não compre outro Arduino achando que é um poblema na placa!
-
-__Meu arduino não é suportado__
-Provavelmente ele não é um Arduino UNO, a __CLI__ Tem suporte apenas para Arduinos UNO's
+## Arduino
+O Dsa Terminal tem a Arduino IDE ja pre-instalada, você poder inicia-la digitando o comando
+`arduino` que vain iniciar o Arduino IDE!
 
 ## Contribuidores para este projeto
 
 - [Felipe Souza Pereira de Lima](https://github.com/Felipe-Souza-Pereira-Lima)
 - [Cauê Alves](https://github.com/caue-alves)
-Qualquer poblema ou duvida [envie um email!](mailto:dsaterminal@gmail.com)
+- Qualquer poblema ou duvida [envie um email!](mailto:dsaterminal@gmail.com)
 
            Dsa Terminal | dsaterminal@gmail.com | Dsa Software Fundation
                         Copyright (C) 2020 MIT LICENSE
