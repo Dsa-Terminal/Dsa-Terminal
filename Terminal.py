@@ -982,7 +982,7 @@ if start == True:
             else:
                 print(f'{cmd}: comando invalido!')
                 continue
-        # Interrupção pelo teclado 
+        # Interrupção pelo teclado
         except KeyboardInterrupt:
             i = iPXE()
             if i == False:
