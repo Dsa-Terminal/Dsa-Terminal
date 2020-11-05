@@ -39,7 +39,7 @@ from requests import get
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 routes_free = ['net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1', 'net-2: 17.0.0.192/255.255.255.0 gw 10.0.0.2',
-               'net-1: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3']
+               'net-3: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3']
 conn = sqlite3.connect("Config.db")
 cursor = conn.cursor()
 route = choice(routes_free)
@@ -509,7 +509,7 @@ def main_route():
 def loadComputer(info):
     for step in track(range(100), description="Carregando dados..."):
         do_step(step, 0.01)
-    return Tru
+    return True
 # Setup
 run, start = __init__()
 # Inicializar normalmente
@@ -945,6 +945,12 @@ if start == True:
                 print(f'IP: [{ip}] Porta: [{porta}]')
                 print(f'Rota de Gateway: {route} (Padrão)')
                 print(f'=====================================================')
+                continue
+            # PHP
+            elif cmd.startswith('php'):
+                cmd = cmd.replace('php ', '')
+                cmd = cmd.replace('php', '')
+                system(f'var\php\php.exe {cmd}')
                 continue
             # API de erro "Kernel"
             elif cmd == 'kernel':
