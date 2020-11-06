@@ -275,19 +275,6 @@ class DeviceLinuxDriverAssert:
         while node.address != head.address:
             yield node.address
             node = node['next'].dereference()
-    def get_target_endianness(self, LITTLE_ENDIAN, MEDIUM_ENDIAN ,BIG_ENDIAN):
-        global target_endianness
-        if target_endianness is None:
-            endian = gdb.execute("show endian", to_string=True)
-            if "little endian" in endian:
-                target_endianness = LITTLE_ENDIAN
-            elif "medium endian" in endian:
-                target_endianness = MEDIUM_ENDIAN
-            elif "big endian" in endian:
-                target_endianness = BIG_ENDIAN
-            else:
-                raise gdb.GdbError("unknown endianness '{0}'".format(str(endian)))
-        return target_endianness
     def read_u16(buffer, offset, LITTLE_ENDIAN, get_target_endianness):
         buffer_val = buffer[offset:offset + 2]
         value = [0, 0]
@@ -350,6 +337,35 @@ def iPXE():
             print(f'iPXE: Network COMBOOT IP: {ip}\n')
         else:
             print(f'{cmd}: iPXE command not found!')
+# valor desconhecido
+class UknownValueError:
+    __module__ = "Dsa Terminal UknownValueError"
+    __dict__ = {}
+    def __init__(self):
+        return True
+    def __unicode__(self):
+        return self.__init__(UknownValueError())
+    def __bytes__(self, other):
+        if other == self:
+            return False
+        else:
+            return True
+    def __divmod__(self, other):
+        return other + 1
+    def __abs__(self):
+        return True
+    def __hash__(self):
+        while True:
+            continue
+    def __complex__(self):
+        return True, self, UknownValueError(1)
+    def __await__(self):
+        return True and self
+    def __class__(self: _T) -> Type[_T]:
+        return str(self)
+    def __contains__(self, item):
+        for i in item:
+            print(self.__module__)
 # Driver de som
 pygame.mixer.init()
 def mixer(filename):
@@ -624,13 +640,6 @@ if start == True:
             elif cmd == 'pwd':
                 print(pwd)
                 continue
-            # Conseguir resultado basico de "ENDIAN"
-            elif 'endian' in cmd:
-                target_endianness = DeviceLinuxDriverAssert.get_target_endianness(self="", 
-                                                                                LITTLE_ENDIAN='<endian="0">',
-                                                                                MEDIUM_ENDIAN='<endian="512">',
-                                                                                BIG_ENDIAN='<endian="1024">')
-                print(target_endianness)
             # Desinstalando pacotes
             elif cmd.startswith('pkg uninstall'):
                 print('13: Erro (Permissão negada)!')
@@ -727,7 +736,6 @@ if start == True:
                 print('nano [arquivo]       Dsa Terminal E-ditor')
                 print('ncat [parametros]    NetCat Builder')
                 print('help                 Exibe ajuda')
-                print('endian               Ganha um novo código de endian')
                 print('version              Exibe versão instalada')
                 print('python3 [parametros] Python v3.8.6...')
                 print('lnk [parametros]     Framework')
@@ -991,6 +999,11 @@ if start == True:
                 break
             else:
                 continue
+        # Valor desconhecido
+        except UknownValueError:
+            print(f'Uknown Value: {cmd}\nResults in Englesh because failture in System of Dsa Terminal')
+            print('Sorry, I am Config. and I being repair this poblem!'), sleep(19.384)
+            continue
         # Ocorreu algum erro
         except Exception as erro:
             system('cls')
