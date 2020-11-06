@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.8.2'
+__version__ = '1.8.2020.9'
 # Importando modulos
 import socket, serial
 from flask import Flask
@@ -361,7 +361,7 @@ class UknownValueError:
         return True, self, UknownValueError(1)
     def __await__(self):
         return True and self
-    def __class__(self: _T) -> Type[_T]:
+    def __class__(self: str) -> str:
         return str(self)
     def __contains__(self, item):
         for i in item:
@@ -709,6 +709,10 @@ if start == True:
                 except:
                     continue
                 continue
+            # Notas de versão
+            elif cmd == 'changelog':
+                with open('CHANGELOG.TXT') as logme:
+                    print(logme.read())
             # Arduino IDE
             elif cmd == 'arduino':
                 startfile(r'var\Arduino\arduino.exe')
