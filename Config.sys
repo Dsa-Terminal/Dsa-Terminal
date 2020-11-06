@@ -1,0 +1,27 @@
+;; Config.sys
+item = all(Config)
+async Object class PyIsInstalled
+{
+	a = detect in PATH ("python.exe")
+	if (a == TRUE)
+	{
+		Python is REAL
+	}
+	else
+	{
+		Python Not INSTALLED
+	}
+}
+{
+    if (item == "%1")
+    {
+	while (item is str)
+	{
+	     item.out = "%2"
+	} 
+    }
+    if (item.out == "%1")
+    {
+	exec(PyIsInstalled == REAL; Python terminal.py; ELSE; Terminal.exe)
+    }
+}
