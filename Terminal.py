@@ -1021,6 +1021,7 @@ elif start == None:
 # Comando de boot invalido: Falha no Boot
 elif start == False:
     mixer('ERROR_Media.mp3')
+
     print('Config.: Módulo de inicianlização não recebeu comando valido para inicializar o Dsa Terminal!')
     print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
     a = open('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe', 'wt+')
