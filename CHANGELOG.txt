@@ -1,0 +1,13 @@
+Dsa Terminal v1.8.2020.9
+(C) 2020 Dsa Software Fundation, todos os direitos reservados
+
+Notas de versão:
+A versão v1.8.2020.9 do Dsa Terminal foi lançada em 06/11/2020, ela trouxe
+inovações, retirada de recursos inuteis, se você gostava desses recursos que foram retirados, crie
+um issue no repositorio de Github, pedindo para trazer o recurso devolta!
+
+Novidades:
+Sonorização
+Notas de Versão
+PHP
+Arduino IDE
