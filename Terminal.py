@@ -870,6 +870,18 @@ if start == True:
                 system(r'var\node.exe')
                 system('title Dsa terminal')
                 continue
+            # Arquitetura do Sistema
+            elif cmd == 'arch':
+                system(r'usr\bin\arch.exe')
+                continue
+            # Id do controlador
+            elif cmd == 'id':
+                system(r'usr\bin\id.exe')
+                continue
+            # Bash and Shell
+            elif cmd == 'mintty':
+                startfile(r'usr\bin\mintty.exe')
+                continue
             # LICENSE
             elif cmd == 'license':
                 with open('LICENSE') as lic:
@@ -996,7 +1008,7 @@ if start == True:
                     continue
             # Comando invalido
             else:
-                print(f'{cmd}: comando invalido!')
+                print(f'{cmd}: comando não encontrado!')
                 continue
         # Interrupção pelo teclado
         except KeyboardInterrupt:
