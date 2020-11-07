@@ -27,6 +27,7 @@ __version__ = '1.8.2020.9'
 # Importando modulos
 import socket, serial
 from flask import Flask
+import sys
 import pygame, asyncio, sqlite3
 from os import system, startfile, mkdir, listdir, remove
 from random import randint, choice
@@ -526,7 +527,6 @@ def loadComputer(info):
     for step in track(range(100), description="Carregando dados..."):
         do_step(step, 0.01)
     return True
-# Setup
 run, start = __init__()
 # Inicializar normalmente
 if start == True:
@@ -881,6 +881,15 @@ if start == True:
             # Bash and Shell
             elif cmd == 'mintty':
                 startfile(r'usr\bin\mintty.exe')
+                continue
+            # Data
+            elif cmd == 'date':
+                system(r'usr\bin\date.exe')
+                print('')
+                continue
+            # Gimp setup
+            elif cmd == 'gpg':
+                system(r'usr\bin\gpg.exe')
                 continue
             # LICENSE
             elif cmd == 'license':
