@@ -870,6 +870,10 @@ if start == True:
                 system(r'var\node.exe')
                 system('title Dsa terminal')
                 continue
+            # LICENSE
+            elif cmd == 'license':
+                with open('LICENSE') as lic:
+                    print(lic.read())
             # Exibe diretorios e arquivos
             elif cmd.startswith('dir'):
                 system(fr'usr\bin\dir.exe {pwd}')
