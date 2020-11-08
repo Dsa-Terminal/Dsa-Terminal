@@ -413,6 +413,14 @@ def __init__():
                             system('cls')
                             mixer('Startup.mp3')
                             return run, True
+                        elif password == f'{key} --bash':
+                            system('title SUDO: /usr/bin/bash.exe')
+                            try:
+                                system(fr'usr\bin\bash.exe')
+                            except:
+                                pass
+                            mixer('Startup.mp3')
+                            return run, True
                         elif password == f'{key} --main':
                             password = password.replace(f'{key} --main', '')
                             run = input('Boot Code:\>_').strip()
@@ -587,6 +595,16 @@ if start == True:
                 cmd = cmd.replace('pip ', '')
                 cmd = cmd.replace('pip', '')
                 system(rf'Python3\Scripts\pip.exe {cmd}')
+            # Resetar o Dsa Terminal
+            elif cmd == 'reset':
+                with open(r'boot\drivers\pass.exc', 'rt') as key:
+                    key = key.read()
+                system('cls')
+                system('title Dsa Terminal')
+                mixer('Starting.mp3')
+                print(strftime('Iniciando Dsa Terminal...'))
+                print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
+                print(strftime('===================Dsa Terminal==============')), sleep(0.08)
             # Banner do Dsa Terminal
             elif cmd == 'bunner':
                 print('######   ######   ####        ####### ###### #####  #### ####  º  ##    #  ####  #')
@@ -594,10 +612,6 @@ if start == True:
                 print('#     #  ######  #    #          #    ###    #####  #   #   #  #  #  #  # #    # #')
                 print('#     #        # ######          #    #      #    # #       #  #  #   # # ###### #')
                 print('######   ######  #    #          #    ###### #    # #       #  #  #    ## #    # #####')
-            # PHP for Dsa Terminal
-            elif cmd.startswith("php"):
-                system("run\php\php.exe")
-                continue
             # Negativado
             elif cmd == 'sudo' or cmd == 'pkg':
                 print('Config.: Insira parametros')
@@ -983,7 +997,7 @@ if start == True:
                 print(f'Rota de Gateway: {route} (Padrão)')
                 print(f'=====================================================')
                 continue
-            # PHP
+            # PHP para Dsa Terminal
             elif cmd.startswith('php'):
                 cmd = cmd.replace('php ', '')
                 cmd = cmd.replace('php', '')
