@@ -511,6 +511,10 @@ def __init__():
                 return run, 'hmbdxyt'
         else:
             return run, 'ffcffff'
+# Escrevedo pelo cmd
+def println(msg):
+    system(f'echo {msg}')
+    return True
 # FrameWork
 @app.route('/')
 def main_route():
@@ -558,10 +562,10 @@ if start == True:
         # Tentar Fazer
         try:
             # Prompt de Comando
-            system(f'echo ┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
+            println('┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
             cmd: str = input(f'└─$ ').strip()
             # Ajuda do "PKG"
-            if cmd == 'pkg /?':
+            if cmd == 'pkg /?' or cmd == 'pkg':
                 print('Pkg: Listagem de parametros')
                 print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
                 print('pkg install [pkgname]      Instala pacotes')
@@ -612,10 +616,37 @@ if start == True:
                 print('#     #  ######  #    #          #    ###    #####  #   #   #  #  #  #  # #    # #')
                 print('#     #        # ######          #    #      #    # #       #  #  #   # # ###### #')
                 print('######   ######  #    #          #    ###### #    # #       #  #  #    ## #    # #####')
-            # Negativado
-            elif cmd == 'sudo' or cmd == 'pkg':
-                print('Config.: Insira parametros')
-                continue
+            # Ajuda do sudo
+            elif cmd == 'sudo':
+                print('Usage: sudo [commmand] <parameters>')
+                print('')
+                print(' commands:')
+                print('     pkg install         Install Packges With Root permission')
+                print('    pkg uninstall       Uninstall Packges WIth Root permission')
+                print('')
+                print(' parameters:')
+                print('     --version      -v      Print sudo version istalled')
+                print("      --help        -h      Print Sudo's help")
+                print('      --unix                Print Unix Sudo in WSL')
+            elif cmd == 'sudo --help' or cmd == 'sudo -h':
+                print('Usage: sudo [commmand] <parameters>')
+                print('')
+                print(' commands:')
+                print('     pkg install         Install Packges With Root permission')
+                print('    pkg uninstall       Uninstall Packges WIth Root permission')
+                print('')
+                print(' parameters:')
+                print('     --version      -v      Print sudo version istalled')
+                print("      --help        -h      Print Sudo's help")
+                print('      --unix                Print Unix Sudo in WSL')
+            # Versão do sudo
+            elif cmd == 'sudo --version' or cmd == 'sudo -v':
+                print('Dsa Terminal @Root_User v0.0.2020.1')
+                println('root@%computername%')
+            # Nome do host atual
+            elif cmd == 'hostname':
+                system(r'usr\bin\hostname.exe')
+                print('')
             # Intalando pacotes com permissão de adiministrador
             elif cmd.startswith('sudo pkg install'):
                 cmd = cmd.replace('sudo ', '')
