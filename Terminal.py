@@ -25,7 +25,7 @@ SOFTWARE.
 # Dsa Terminal codigo-fonte
 __version__ = '1.8.2020.9'
 # Importando modulos
-import socket, serial
+import socket
 from flask import Flask
 import sys
 import pygame, asyncio, sqlite3
@@ -662,6 +662,8 @@ if start == True:
             elif cmd.startswith('pkg install'):
                 print('13: Erro (Permissão negada)!')
                 continue
+            # Muito alem do "help"
+            
             # VLC Media Player
             elif cmd == 'vlc':
                 system(r'start run\MediaPlayer\vlc.exe')
