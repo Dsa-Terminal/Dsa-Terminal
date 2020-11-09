@@ -562,7 +562,7 @@ if start == True:
         # Tentar Fazer
         try:
             # Prompt de Comando
-            println('┌─────────[\033[32m%username%@%computername%\033[m] \033[34m~\033[m')
+            println(f'┌─────────[\033[32m%username%@{hostname}\033[m] \033[34m~\033[m')
             cmd: str = input(f'└─$ ').strip()
             # Ajuda do "PKG"
             if cmd == 'pkg /?' or cmd == 'pkg':
@@ -599,16 +599,6 @@ if start == True:
                 cmd = cmd.replace('pip ', '')
                 cmd = cmd.replace('pip', '')
                 system(rf'Python3\Scripts\pip.exe {cmd}')
-            # Resetar o Dsa Terminal
-            elif cmd == 'reset':
-                with open(r'boot\drivers\pass.exc', 'rt') as key:
-                    key = key.read()
-                system('cls')
-                system('title Dsa Terminal')
-                mixer('Starting.mp3')
-                print(strftime('Iniciando Dsa Terminal...'))
-                print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
-                print(strftime('===================Dsa Terminal==============')), sleep(0.08)
             # Banner do Dsa Terminal
             elif cmd == 'bunner':
                 print('######   ######   ####        ####### ###### #####  #### ####  º  ##    #  ####  #')
