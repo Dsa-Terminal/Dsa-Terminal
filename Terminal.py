@@ -663,7 +663,9 @@ if start == True:
                 print('13: Erro (Permissão negada)!')
                 continue
             # Muito alem do "help"
-            
+s            elif cmd == 'putty':
+                startfile('sbin\putty.exe')
+                continue
             # VLC Media Player
             elif cmd == 'vlc':
                 system(r'start run\MediaPlayer\vlc.exe')
