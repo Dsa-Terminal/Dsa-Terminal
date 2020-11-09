@@ -550,7 +550,7 @@ if start == True:
     print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
     print(strftime('===================Dsa Terminal==============')), sleep(0.08)
     # Sistema de armazenamento de logs
-    timeout = strftime(f'Dsa Terminal v{__version__}(C) %Y - Session Code: [{session}] - IP: [{ip}]\n')
+    timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computador: [{hostname}]')
     if files.ArquivoExiste('tmp\Booted.log'):
         files.Write('tmp\Boted.log', timeout)
         pass
@@ -599,6 +599,17 @@ if start == True:
                 cmd = cmd.replace('pip ', '')
                 cmd = cmd.replace('pip', '')
                 system(rf'Python3\Scripts\pip.exe {cmd}')
+            # Bash as Sudo's
+            elif cmd == 'sudo su':
+                password = getpass('Password: ').strip()
+                if key == password:
+                    system('cls')
+                    system('title SUDO: /usr/bin/bash.exe')
+                    system(r'usr\bin\bash.exe')
+                    system('cls')
+                else:
+                    print('[sudo] Senha invalida!\n')
+                continue
             # Banner do Dsa Terminal
             elif cmd == 'bunner':
                 print('######   ######   ####        ####### ###### #####  #### ####  º  ##    #  ####  #')
