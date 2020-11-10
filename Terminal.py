@@ -988,6 +988,11 @@ if start == True:
             elif cmd == 'tty':
                 system(r'usr\bin\tty.exe')
                 continue
+            # Gerenciar o sistema de arquivos na rede
+            elif cmd.startswith('psftp'):
+                system('sbin\psftp.exe')
+                print('')
+                continue
             # Criar arquivo
             elif cmd.startswith('touch'):
                 cmd = cmd.replace('touch ', '')
