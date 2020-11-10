@@ -547,7 +547,7 @@ if start == True:
     protocol = "MINGW64"
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
-    print(strftime('===================Dsa Terminal=================')), sleep(0.08)
+    print(strftime('===================Dsa Terminal===================')), sleep(0.08)
     # Sistema de armazenamento de logs
     timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computador: [{host()}]')
     if files.ArquivoExiste('tmp\Booted.log'):
