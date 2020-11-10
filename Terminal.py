@@ -601,7 +601,7 @@ if start == True:
                 system(rf'Python3\Scripts\pip.exe {cmd}')
             # Bash as Sudo's
             elif cmd == 'sudo su':
-                password = getpass('Password: ').strip()
+                password = getpass('[sudo] Palavra-passe do Dsa Terminal: ').strip()
                 if key == password:
                     system('cls')
                     system('title SUDO: /usr/bin/bash.exe')
@@ -663,7 +663,7 @@ if start == True:
                 print('13: Erro (Permissão negada)!')
                 continue
             # Muito alem do "help"
-s            elif cmd == 'putty':
+            elif cmd == 'putty':
                 startfile('sbin\putty.exe')
                 continue
             # VLC Media Player
