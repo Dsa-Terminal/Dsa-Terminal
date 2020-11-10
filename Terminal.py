@@ -515,7 +515,7 @@ if start == True:
     print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
     print(strftime('===================Dsa Terminal===================')), sleep(0.08)
     # Sistema de armazenamento de logs
-    timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computador: [{host()}]')
+    timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computador: [{host()}]\n')
     if files.ArquivoExiste('tmp\Booted.log'):
         files.Write('tmp\Boted.log', timeout)
         pass
