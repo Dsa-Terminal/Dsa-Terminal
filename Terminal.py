@@ -310,8 +310,8 @@ def iPXE():
             system('cls')
             mixer('Startup.mp3')
             print(strftime('Iniciando Dsa Terminal...'))
-            print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
-            print(strftime('====================Dsa Terminal=====================')), sleep(0.08)
+            print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
+            print(strftime('===================Dsa Terminal===================')), sleep(0.08)
             return True
             break
         elif cmd == 'boot':
@@ -333,35 +333,6 @@ def iPXE():
             print(f'iPXE: Network COMBOOT IP: {ip}\n')
         else:
             print(f'{cmd}: iPXE command not found!')
-# valor desconhecido
-class UknownValueError:
-    __module__ = "Dsa Terminal UknownValueError"
-    __dict__ = {}
-    def __init__(self):
-        return True
-    def __unicode__(self):
-        return self.__init__(UknownValueError())
-    def __bytes__(self, other):
-        if other == self:
-            return False
-        else:
-            return True
-    def __divmod__(self, other):
-        return other + 1
-    def __abs__(self):
-        return True
-    def __hash__(self):
-        while True:
-            continue
-    def __complex__(self):
-        return True, self, UknownValueError(1)
-    def __await__(self):
-        return True and self
-    def __class__(self: str) -> str:
-        return str(self)
-    def __contains__(self, item):
-        for i in item:
-            print(self.__module__)
 # Driver de som
 pygame.mixer.init()
 def mixer(filename):
@@ -529,11 +500,6 @@ def main_route():
     </html>
     '''
     return site
-# Configurações do sistema de armazenamento
-def loadComputer(info):
-    for step in track(range(100), description="Carregando dados..."):
-        do_step(step, 0.01)
-    return True
 # Nome do host local
 def host():
     return socket.gethostname()
@@ -581,6 +547,13 @@ if start == True:
                     else:
                         print('[sudo] Senha invalida!\n')
                     system('title Dsa Terminal')
+                    continue
+                # Inicializar
+                elif cmd == 'base86':
+                    system(r'sbin\bash.exe')
+                    continue
+                elif cmd == 'base64':
+                    system('run\wsl.exe')
                     continue
             # Mundança de protocolo
             if cmd == 'msys':
@@ -1011,6 +984,10 @@ if start == True:
                 print('mingw64                /mingw64/Main.sh         Executando...')
                 print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
                 print('==============================================================================\n')
+            # Deviced
+            elif cmd == 'tty':
+                system(r'usr\bin\tty.exe')
+                continue
             # Criar arquivo
             elif cmd.startswith('touch'):
                 cmd = cmd.replace('touch ', '')
@@ -1095,6 +1072,7 @@ if start == True:
             # Comando invalido
             else:
                 print(f'{cmd}: comando não encontrado!')
+                print('')
                 continue
         # Interrupção pelo teclado
         except KeyboardInterrupt:
@@ -1105,11 +1083,6 @@ if start == True:
                 break
             else:
                 continue
-        # Valor desconhecido
-        except UknownValueError:
-            print(f'Uknown Value: {cmd}\nResults in Englesh because failture in System of Dsa Terminal')
-            print('Sorry, I am Config. and I being repair this poblem!'), sleep(19.384)
-            continue
         # Ocorreu algum erro
         except Exception as erro:
             system('cls')
