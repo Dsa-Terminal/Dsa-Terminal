@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 # Dsa Terminal codigo-fonte
-__version__ = '1.8.2020.9'
+__version__ = '1.9.0'
 # Importando modulos
 import socket
 from flask import Flask
@@ -113,13 +113,12 @@ class packge:
         print('Lote:       Nome do pacote:        Versão:     Tag:           ')
         print('______________________________________________________________')
         if appname == 'kernel-tool':
-
             print('@devtools   kernel-tool         Não disponivel  #Ferramentas')
         elif appname == 'kernel':
-            print('@tool-boot  kernel                 v0.0.1      #Servicodeerro')
+            print('@tool-boot    kernel               v0.0.1      #Servicodeerro')
             print('@devtools   kernel-tool         Não disponivel  #Ferramentas')
         elif appname == 'ssh':
-            print('@ping(more) ssh                    v1.8.3      #Conectividade')
+            print('@ping(more)     ssh                v1.8.3      #Conectividade')
         else:
             print('            ---Nenhum pacote encontrado---')
     # Desinstalar pacotes
@@ -546,6 +545,7 @@ if start == True:
         key = key.read()
     system('cls')
     system('title Dsa Terminal')
+    protocol = "MINGW64"
     print(strftime('Iniciando Dsa Terminal...'))
     print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
     print(strftime('===================Dsa Terminal==============')), sleep(0.08)
@@ -562,10 +562,15 @@ if start == True:
         # Tentar Fazer
         try:
             # Prompt de Comando
-            println(f'┌─────────[\033[32m%username%@{hostname}\033[m] \033[34m~\033[m')
+            println(f'┌─────────[\033[32m%username%@{hostname}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
             cmd: str = input(f'└─$ ').strip()
+            # Mundança de protocolo
+            if cmd == 'msys':
+                protocol = 'MSYS'
+                print('')
+                continue
             # Ajuda do "PKG"
-            if cmd == 'pkg /?' or cmd == 'pkg':
+            elif cmd == 'pkg /?' or cmd == 'pkg':
                 print('Pkg: Listagem de parametros')
                 print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
                 print('pkg install [pkgname]      Instala pacotes')
@@ -609,6 +614,7 @@ if start == True:
                     system('cls')
                 else:
                     print('[sudo] Senha invalida!\n')
+                system('title Dsa Terminal')
                 continue
             # Banner do Dsa Terminal
             elif cmd == 'bunner':
@@ -739,6 +745,8 @@ if start == True:
                 if cmd == 'vlc':
                     system(r'start run\MediaPlayer\vlc.exe')
                     continue
+                elif cmd == 'putty':
+                    startfile('sbin\putty.exe')
                 elif cmd == 'firefox':
                     system(r'start network\firefox\firefox.exe')
                     print('')
@@ -804,7 +812,6 @@ if start == True:
                 print('cli-http             Console httpie Client')
                 print('pwd                  Caminho do diretorio')
                 print('mkdir [pasta]        Cria uma pasta')
-                print('ssl                  SSL Controller')
                 print('touch [arquivo]      Criar arquivo')
                 print('ifconfig             Exibe configurações de IP')
                 print('set [parametros]     Difinindo variaveis seriais')
@@ -1030,7 +1037,7 @@ if start == True:
             elif cmd == 'ifconfig':
                 print(f'Configuração de IP do Dsa Terminal [conexão direta]!')
                 print(f'IP: [{ip}] Porta: [{porta}]')
-                print(f'Rota de Gateway: {route} (Padrão)')
+                print(f'Gateway: {route}')
                 print(f'=====================================================')
                 continue
             # PHP para Dsa Terminal
