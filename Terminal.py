@@ -25,7 +25,7 @@ SOFTWARE.
 # Dsa Terminal codigo-fonte
 __version__ = '1.9.0'
 # Importando modulos
-import socket
+import socket, logging
 from flask import Flask
 import sys
 import pygame, asyncio, sqlite3
@@ -37,17 +37,13 @@ from tqdm import tqdm, trange
 from rich.progress import track
 from requests import get
 # Configurações de IP da Maquina local
-hostname = socket.gethostname()
-ip = socket.gethostbyname(hostname)
-routes_free = ['net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1', 'net-2: 17.0.0.192/255.255.255.0 gw 10.0.0.2',
-               'net-3: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3']
-conn = sqlite3.connect("Config.db")
-cursor = conn.cursor()
-route = choice(routes_free)
+ip = socket.gethostbyname(socket.gethostname())
+conn = sqlite3.connect("Config.db").cursor()
+route = choice(['net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1', 'net-2: 17.0.0.192/255.255.255.0 gw 10.0.0.2',
+               'net-3: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3'])
 app = Flask(__name__)
-porta = 82
 # Variaveis globais
-run = r'Dsa Terminal -i --login --boot\boot.ini' # Boot Device: Commando corrente
+log = logging.getLogger(__name__)
 session = randint(0, 291462) # Código de sessão
 pwd = "/files" # Diretorio atual
 win_pwd = r'\files' # Diretorio atual no windows 10
@@ -538,6 +534,9 @@ def loadComputer(info):
     for step in track(range(100), description="Carregando dados..."):
         do_step(step, 0.01)
     return True
+# Nome do host local
+def host():
+    return socket.gethostname()
 run, start = __init__()
 # Inicializar normalmente
 if start == True:
@@ -547,10 +546,10 @@ if start == True:
     system('title Dsa Terminal')
     protocol = "MINGW64"
     print(strftime('Iniciando Dsa Terminal...'))
-    print(strftime(f'(C) %Y Dsa Terminal v{__version__} Sessão: [{session}]'))
-    print(strftime('===================Dsa Terminal==============')), sleep(0.08)
+    print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
+    print(strftime('===================Dsa Terminal=================')), sleep(0.08)
     # Sistema de armazenamento de logs
-    timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computador: [{hostname}]')
+    timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computador: [{host()}]')
     if files.ArquivoExiste('tmp\Booted.log'):
         files.Write('tmp\Boted.log', timeout)
         pass
@@ -562,16 +561,31 @@ if start == True:
         # Tentar Fazer
         try:
             # Prompt de Comando
-            println(f'┌─────────[\033[32m%username%@{hostname}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
+            println(f'┌─────────[\033[32m%username%@{host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
             cmd: str = input(f'└─$ ').strip()
+            # MSYS Protocol CMDs
+            if protocol == 'MSYS':
+                # Mundando protocolo
+                if cmd == 'mingw64':
+                    protocol = 'MINGW64'
+                    print()
+                    continue
+                # shell
+                elif cmd == 'sh':
+                    password = getpass('[sudo] Palavra-passe do Dsa Terminal: ').strip()
+                    if key == password:
+                        system('cls')
+                        system('title SUDO: /bin/sh.exe')
+                        system(r'usr\bin\sh.exe')
+                        system('cls')
+                    else:
+                        print('[sudo] Senha invalida!\n')
+                    system('title Dsa Terminal')
+                    continue
             # Mundança de protocolo
             if cmd == 'msys':
                 protocol = 'MSYS'
                 print('')
-                continue
-            elif cmd == 'mingw64':
-                protocol = 'MINGW64'
-                print()
                 continue
             # Ajuda do "PKG"
             elif cmd == 'pkg /?' or cmd == 'pkg':
@@ -748,9 +762,11 @@ if start == True:
                 cmd = cmd.replace('./', '')
                 if cmd == 'vlc':
                     system(r'start run\MediaPlayer\vlc.exe')
+                    print("")
                     continue
                 elif cmd == 'putty':
                     startfile('sbin\putty.exe')
+                    print('')
                 elif cmd == 'firefox':
                     system(r'start network\firefox\firefox.exe')
                     print('')
@@ -1040,7 +1056,7 @@ if start == True:
             # Configurações de rede
             elif cmd == 'ifconfig':
                 print(f'Configuração de IP do Dsa Terminal [conexão direta]!')
-                print(f'IP: [{ip}] Porta: [{porta}]')
+                print(f'IP: [{ip}] Porta: [22]')
                 print(f'Gateway: {route}')
                 print(f'=====================================================')
                 continue
@@ -1062,7 +1078,7 @@ if start == True:
             # API de rede "secure Shell"
             elif cmd == 'ssh':
                 try:
-                    startfile('Lib\ssh\main.exe')
+                    startfile('Lib\ssh\ssh.exe')
                 except FileNotFoundError:
                     print('Modulo não instalado no sistema do Dsa Terminal!')
                     print('Tente:')
