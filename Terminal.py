@@ -569,6 +569,10 @@ if start == True:
                 protocol = 'MSYS'
                 print('')
                 continue
+            elif cmd == 'mingw64':
+                protocol = 'MINGW64'
+                print()
+                continue
             # Ajuda do "PKG"
             elif cmd == 'pkg /?' or cmd == 'pkg':
                 print('Pkg: Listagem de parametros')
