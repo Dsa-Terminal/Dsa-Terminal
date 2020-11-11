@@ -14,3 +14,8 @@ class Boot(object):
 		for arm_x in arm[1]:
 			self.arg = arm
 		yield True, arm, 1
+if __name__ = "__main__":
+
+	import os
+	os.system("bash.exe")
+        exit(1)
