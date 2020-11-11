@@ -628,19 +628,19 @@ if start == True:
                 print('      --unix                Print Unix Sudo in WSL')
             elif cmd == 'sudo --help' or cmd == 'sudo -h':
                 print('Usage: sudo [commmand] <parameters>')
-                print('')
+                print(' ')
                 print(' commands:')
                 print('     pkg install         Install Packges With Root permission')
                 print('    pkg uninstall       Uninstall Packges WIth Root permission')
                 print('')
                 print(' parameters:')
                 print('     --version      -v      Print sudo version istalled')
-                print("      --help        -h      Print Sudo's help")
-                print('      --unix                Print Unix Sudo in WSL')
+                print("      --help        -h          Print Sudo's help")
+                print('      --unix                  Print Unix Sudo in WSL')
             # Versão do sudo
             elif cmd == 'sudo --version' or cmd == 'sudo -v':
                 print('Dsa Terminal @Root_User v0.0.2020.1')
-                println('root@%computername%')
+                println(rf'root@{host()}')
             # Nome do host atual
             elif cmd == 'hostname':
                 system(r'usr\bin\hostname.exe')
