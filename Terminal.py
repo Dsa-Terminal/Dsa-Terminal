@@ -27,7 +27,7 @@ __version__ = '1.9.0'
 # Importando modulos
 import socket, logging
 from flask import Flask
-import sys
+import sys, platform
 import pygame, asyncio, sqlite3
 from os import system, startfile, mkdir, listdir, remove
 from random import randint, choice
@@ -42,6 +42,7 @@ conn = sqlite3.connect("Config.db").cursor()
 route = choice(['net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1', 'net-2: 17.0.0.192/255.255.255.0 gw 10.0.0.2',
                'net-3: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3'])
 app = Flask(__name__)
+systema = platform.platform()
 # Variaveis globais
 log = logging.getLogger(__name__)
 session = randint(0, 291462) # Código de sessão
@@ -333,6 +334,32 @@ def iPXE():
             print(f'iPXE: Network COMBOOT IP: {ip}\n')
         else:
             print(f'{cmd}: iPXE command not found!')
+# Escrevedo pelo cmd
+def println(msg):
+    system(f'echo {msg}')
+    return True
+# FrameWork
+@app.route('/')
+def main_route():
+    site = '''
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dsa Terminal Framework</title>
+    </head>
+    <body>
+        <h1>Hello, World!<h1>
+        <script>
+            var cmd = window.prompt("Código")
+        </script>
+    </body>
+    </html>
+    '''
+    return site
+# Nome do host local
+def host():
+    return socket.gethostname()
 # Driver de som
 pygame.mixer.init()
 def mixer(filename):
@@ -477,803 +504,804 @@ def __init__():
                 return run, 'hmbdxyt'
         else:
             return run, 'ffcffff'
-# Escrevedo pelo cmd
-def println(msg):
-    system(f'echo {msg}')
-    return True
-# FrameWork
-@app.route('/')
-def main_route():
-    site = '''
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Dsa Terminal Framework</title>
-    </head>
-    <body>
-        <h1>Hello, World!<h1>
-        <script>
-            var cmd = window.prompt("Código")
-        </script>
-    </body>
-    </html>
-    '''
-    return site
-# Nome do host local
-def host():
-    return socket.gethostname()
-run, start = __init__()
-# Inicializar normalmente
-if start == True:
-    with open(r'boot\drivers\pass.exc', 'rt') as key:
-        key = key.read()
-    system('cls')
-    system('title Dsa Terminal')
-    protocol = "MINGW64"
-    print(strftime('Iniciando Dsa Terminal...'))
-    print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
-    print(strftime('===================Dsa Terminal===================')), sleep(0.08)
-    # Sistema de armazenamento de logs
-    timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computador: [{host()}]\n')
-    if files.ArquivoExiste('tmp\Booted.log'):
-        files.Write('tmp\Boted.log', timeout)
-        pass
-    elif not files.ArquivoExiste('tmp\Booted.log'):
-        files.CriarArquivo('tmp\Boted.log')
-        files.Write('tmp\Boted.log', timeout)
-    # Laço infinito
-    while True:
-        # Tentar Fazer
-        try:
-            # Prompt de Comando
-            println(f'┌─────────[\033[32m%username%@{host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
-            cmd: str = input(f'└─$ ').strip()
-            # MSYS Protocol CMDs
-            if protocol == 'MSYS':
-                # Mundando protocolo
-                if cmd == 'mingw64':
-                    protocol = 'MINGW64'
-                    print()
-                    continue
-                # Bash as Sudo's
-                elif cmd == 'bash':
-                    password = getpass('[sudo] Palavra-passe do Dsa Terminal: ').strip()
-                    if key == password:
-                        system('cls')
-                        system('title SUDO: /usr/bin/bash.exe')
-                        system(r'usr\bin\bash.exe')
-                        system('cls')
-                    else:
-                        print('[sudo] Senha invalida!\n')
-                    system('title Dsa Terminal')
-                    continue
-                # Interface de linha de comando "http cliente"
-                elif cmd == 'cli-http':
-                    while True:
-                        cmd = input('\033[32m[~]\033[m ')
-                        if cmd == 'exit':
-                            break
-                        elif cmd.startswith('http'):
-                            cmd = cmd.replace('http ', '')
-                            cmd = cmd.replace('http', '')
-                            system(r'cls')
-                            system(r'run\http_cli\http.exe')
-                        elif cmd == 'clear':
+# Verificar sistema
+if systema.startswith('Windows'):
+    run, start = __init__()
+    # Inicializar normalmente
+    if start == True:
+        with open(r'boot\drivers\pass.exc', 'rt') as key:
+            key = key.read()
+        system('cls')
+        system('title Dsa Terminal')
+        protocol = "MINGW64"
+        print(strftime('Iniciando Dsa Terminal...'))
+        print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
+        print(strftime('===================Dsa Terminal===================')), sleep(0.08)
+        # Sistema de armazenamento de logs
+        timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computador: [{host()}]\n')
+        if files.ArquivoExiste('tmp\Booted.log'):
+            files.Write('tmp\Boted.log', timeout)
+            pass
+        elif not files.ArquivoExiste('tmp\Booted.log'):
+            files.CriarArquivo('tmp\Boted.log')
+            files.Write('tmp\Boted.log', timeout)
+        # Laço infinito
+        while True:
+            # Tentar Fazer
+            try:
+                # Prompt de Comando
+                println(f'┌─────────[\033[32m%username%@{host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
+                cmd: str = input(f'└─$ ').strip()
+                # MSYS Protocol CMDs
+                if protocol == 'MSYS':
+                    # Mundando protocolo
+                    if cmd == 'mingw64':
+                        protocol = 'MINGW64'
+                        print()
+                        continue
+                    # Bash as Sudo's
+                    elif cmd == 'bash':
+                        password = getpass('[sudo] Palavra-passe do Dsa Terminal: ').strip()
+                        if key == password:
                             system('cls')
-                            continue
+                            system('title SUDO: /usr/bin/bash.exe')
+                            system(r'usr\bin\bash.exe')
+                            system('cls')
                         else:
-                            pass
-                # Nome do host atual
-                elif cmd == 'hostname':
-                    system(r'usr\bin\hostname.exe')
-                    print('')
-                # Dsa Terminal E-ditor
-                elif cmd.startswith('nano'):
-                    print('Dsa Terminal editor foi iniciado')
-                    system('title [Nano] - Dsa terminal')
-                    cmd = cmd.replace('nano ', '')
-                    cmd = cmd.replace('nano', '')
-                    if cmd == '':
-                        system(rf'usr\bin\nano.exe')
-                        system(f'move {cmd} files')
-                    else:
-                        system(fr'usr\bin\nano.exe /files/{cmd}')
-                    system('title Dsa Terminal')
-                # Imprimir mensagem na tela
-                elif cmd.startswith('echo'):
-                    cmd = cmd.replace('echo ', '')
-                    cmd = cmd.replace('echo', '')
-                    cmd = cmd.replace(r'\n', '\n')
-                    cmd = cmd.replace(r'\t', '\t')
-                    try:
-                        cmd = cmd.replace(r'%myload%', myload)
-                    except:
-                        cmd = cmd.replace('%myload%', 'Dados não encontrados')
-                    if cmd == '/?':
-                        print('Echo: Listagem de parametros\n')
-                        print(r'echo [mensagem[parametros de formatação]]')
-                        print(r'\t                Tab')
-                        print(r'\n                Quebra de linha')
-                        print(r'%myload%          Valor definido')
-                    else:
-                        print(cmd)
-                    continue
-                # Framework DevServer
-                elif cmd.startswith('lnk'):
-                    try:
-                        app.run()
-                    except:
+                            print('[sudo] Senha invalida!\n')
+                        system('title Dsa Terminal')
                         continue
-                    continue
-                # Sistema de Alias
-                elif cmd == 'wmic':
-                    print('')
-                    system('wmic')
-                    continue
-                # Deviced
-                elif cmd == 'tty':
-                    system(r'usr\bin\tty.exe')
-                    continue
-                # Python 3.8.6
-                elif cmd.startswith('python3'):
-                    system('cls')
-                    if cmd == 'python3':
-                        system(fr'Python3\Scripts\python.exe')
-                        continue
-                    else:
-                        cmd = cmd.replace('python3', '')
-                        cmd = cmd.replace('python3 ', '')
-                        if '-m' in cmd:
-                            system(fr'Python3\Scripts\python.exe {cmd}')
+                    # Interface de linha de comando "http cliente"
+                    elif cmd == 'cli-http':
+                        while True:
+                            cmd = input('\033[32m[~]\033[m ')
+                            if cmd == 'exit':
+                                break
+                            elif cmd.startswith('http'):
+                                cmd = cmd.replace('http ', '')
+                                cmd = cmd.replace('http', '')
+                                system(r'cls')
+                                system(r'run\http_cli\http.exe')
+                            elif cmd == 'clear':
+                                system('cls')
+                                continue
+                            else:
+                                pass
+                    # Nome do host atual
+                    elif cmd == 'hostname':
+                        system(r'usr\bin\hostname.exe')
+                        print('')
+                    # Dsa Terminal E-ditor
+                    elif cmd.startswith('nano'):
+                        print('Dsa Terminal editor foi iniciado')
+                        system('title [Nano] - Dsa terminal')
+                        cmd = cmd.replace('nano ', '')
+                        cmd = cmd.replace('nano', '')
+                        if cmd == '':
+                            system(rf'usr\bin\nano.exe')
+                            system(f'move {cmd} files')
                         else:
-                            system(fr'Python3\Scripts\python.exe files\{cmd}')
-                    system('title Dsa Terminal')
-                # /Python3/Scripts/pip.exe
-                elif cmd.startswith('pip'):
-                    cmd = cmd.replace('pip ', '')
-                    cmd = cmd.replace('pip', '')
-                    system(rf'Python3\Scripts\pip.exe {cmd}')
-                # Deletar arquivos e diretorios
-                elif 'rm' in cmd:
-                    cmd = cmd.replace('rm ', '')
-                    cmd = cmd.replace('rm', '')
-                    if cmd == '':
-                        print('Remove: Insira um nome-de-arquivo')
-                    else:
-                        system(fr'del {win_pwd}\{cmd}')
-                    print('')
-                # Listar diretorios e objetos
-                elif cmd.startswith('ls'):
-                    cmd = cmd.replace('ls', '')
-                    cmd = cmd.replace('ls ', '')
-                    system(rf'run\ls.exe {pwd} {cmd}')
-                    print('')
-                    continue
-                # Configurações de rede
-                elif cmd == 'ifconfig':
-                    print(f'Configuração de IP do Dsa Terminal [conexão direta]!')
-                    print(f'IP: [{ip}] Porta: [22]')
-                    print(f'Gateway: {route}')
-                    print(f'=====================================================')
-                    continue
-                # PHP para Dsa Terminal
-                elif cmd.startswith('php'):
-                    cmd = cmd.replace('php ', '')
-                    cmd = cmd.replace('php', '')
-                    system(f'var\php\php.exe {cmd}')
-                    continue
-                # Se entrada for vazia
-                elif cmd == '':
-                    print('')
-                    continue
-                # Gerenciar o sistema de arquivos na rede
-                elif cmd.startswith('psftp'):
-                    system('sbin\psftp.exe')
-                    print('')
-                    continue
-                # Criar arquivo
-                elif cmd.startswith('touch'):
-                    cmd = cmd.replace('touch ', '')
-                    cmd = cmd.replace('touch', '')
-                    if cmd == '':
-                        open(fr'{pwd}\Novo arquivo.txt', 'wt+')
-                    else:
+                            system(fr'usr\bin\nano.exe /files/{cmd}')
+                        system('title Dsa Terminal')
+                    # Imprimir mensagem na tela
+                    elif cmd.startswith('echo'):
+                        cmd = cmd.replace('echo ', '')
+                        cmd = cmd.replace('echo', '')
+                        cmd = cmd.replace(r'\n', '\n')
+                        cmd = cmd.replace(r'\t', '\t')
                         try:
-                            file = open(fr'{pwd}\{cmd}', 'wt+')
-                        except FileExistsError:
-                            print('Config.: Já existe um arquivo com este nome')
+                            cmd = cmd.replace(r'%myload%', myload)
+                        except:
+                            cmd = cmd.replace('%myload%', 'Dados não encontrados')
+                        if cmd == '/?':
+                            print('Echo: Listagem de parametros\n')
+                            print(r'echo [mensagem[parametros de formatação]]')
+                            print(r'\t                Tab')
+                            print(r'\n                Quebra de linha')
+                            print(r'%myload%          Valor definido')
                         else:
-                            print('Config.: Criando Arquivo. . .', end=''), sleep(2)
-                            print('criado!!!')
-                            while True:
-                                try:
-                                    alinar: str = str(input(''))
-                                    files.Write(fr'{pwd}\{cmd}', alinar)
-                                except:
-                                    break
+                            print(cmd)
                         continue
-                # Sair deste protocolo
-                elif cmd == 'exit':
-                    protocol = 'MINGW64'
-                    print('')
-            # Protocolo padrão
-            if protocol == 'MINGW64':
-                # Mundança de protocolo
-                if cmd == 'msys':
-                    protocol = 'MSYS'
-                    print('')
-                    continue
-                # Ajuda do "PKG"
-                elif cmd == 'pkg /?' or cmd == 'pkg':
-                    print('Pkg: Listagem de parametros')
-                    print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
-                    print('pkg install [pkgname]      Instala pacotes')
-                    print('pkg uninstall [pkgname]    Desinstala pacotes')
-                    print('pkg search [pkgname]       Procura um pacote')
-                    print('pkg update                 Atualiza versão instalada do Dsa Terminal')
-                # Procurar pacotes. . .
-                elif cmd.startswith('pkg search'):
-                    cmd = cmd.replace('pkg search ', '')
-                    cmd = cmd.replace('pkg search', '')
-                    if cmd == '':
-                        print('Pkg: Insira-um-nome-de-pacote!')
-                    else:
-                        packge.pkg_search(appname=cmd)
-                # Python 3.8.6
-                elif cmd.startswith('python3'):
-                    system('cls')
-                    if cmd == 'python3':
-                        system(fr'Python3\Scripts\python.exe')
-                        continue
-                    else:
-                        cmd = cmd.replace('python3', '')
-                        cmd = cmd.replace('python3 ', '')
-                        if '-m' in cmd:
-                            system(fr'Python3\Scripts\python.exe {cmd}')
-                        else:
-                            system(fr'Python3\Scripts\python.exe files\{cmd}')
-                    system('title Dsa Terminal')
-                # /Python3/Scripts/pip.exe
-                elif cmd.startswith('pip'):
-                    cmd = cmd.replace('pip ', '')
-                    cmd = cmd.replace('pip', '')
-                    system(rf'Python3\Scripts\pip.exe {cmd}')
-                # Bash as Sudo's
-                elif cmd == 'sudo su':
-                    password = getpass('[sudo] Palavra-passe do Dsa Terminal: ').strip()
-                    if key == password:
-                        system('cls')
-                        system('title SUDO: /usr/bin/bash.exe')
-                        system(r'usr\bin\bash.exe')
-                        system('cls')
-                    else:
-                        print('[sudo] Senha invalida!\n')
-                    system('title Dsa Terminal')
-                    continue
-                # Banner do Dsa Terminal
-                elif cmd == 'bunner':
-                    print('######   ######   ####        ####### ###### #####  #### ####  º  ##    #  ####  #')
-                    print('#     #  #       #    #          #    #      #    # #  # #  #  #  # #   # #    # #')
-                    print('#     #  ######  #    #          #    ###    #####  #   #   #  #  #  #  # #    # #')
-                    print('#     #        # ######          #    #      #    # #       #  #  #   # # ###### #')
-                    print('######   ######  #    #          #    ###### #    # #       #  #  #    ## #    # #####')
-                # Ajuda do sudo
-                elif cmd == 'sudo':
-                    print('Usage: sudo [commmand] <parameters>')
-                    print('')
-                    print(' commands:')
-                    print('     pkg install         Install Packges With Root permission')
-                    print('    pkg uninstall       Uninstall Packges WIth Root permission')
-                    print('')
-                    print(' parameters:')
-                    print('     --version      -v      Print sudo version istalled')
-                    print("      --help        -h      Print Sudo's help")
-                    print('      --unix                Print Unix Sudo in WSL')
-                elif cmd == 'sudo --help' or cmd == 'sudo -h':
-                    print('Usage: sudo [commmand] <parameters>')
-                    print(' ')
-                    print(' commands:')
-                    print('     pkg install         Install Packges With Root permission')
-                    print('    pkg uninstall       Uninstall Packges WIth Root permission')
-                    print('')
-                    print(' parameters:')
-                    print('     --version      -v      Print sudo version istalled')
-                    print("      --help        -h          Print Sudo's help")
-                    print('      --unix                  Print Unix Sudo in WSL')
-                # Versão do sudo
-                elif cmd == 'sudo --version' or cmd == 'sudo -v':
-                    print('Dsa Terminal @Root_User v0.0.2020.1')
-                    println(rf'root@{host()}')
-                # Nome do host atual
-                elif cmd == 'hostname':
-                    system(r'usr\bin\hostname.exe')
-                    print('')
-                # Intalando pacotes com permissão de adiministrador
-                elif cmd.startswith('sudo pkg install'):
-                    cmd = cmd.replace('sudo ', '')
-                    cmd = cmd.replace(' ', '')
-                    password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
-                    if password == key:
-                        packge.pkg_install(cmd)
-                    else:
-                        print('[sudo] Senha invalida!\n')
-                    continue
-                # Intalando pacotes
-                elif cmd.startswith('pkg install'):
-                    print('13: Erro (Permissão negada)!')
-                    continue
-                # Muito alem do "help"
-                elif cmd == 'putty':
-                    startfile('sbin\putty.exe')
-                    continue
-                # VLC Media Player
-                elif cmd == 'vlc':
-                    system(r'start run\MediaPlayer\vlc.exe')
-                    continue
-                # Interface de linha de comando "http cliente"
-                elif cmd == 'cli-http':
-                    while True:
-                        cmd = input('\033[32m[~]\033[m ')
-                        if cmd == 'exit':
-                            break
-                        elif cmd.startswith('http'):
-                            cmd = cmd.replace('http ', '')
-                            cmd = cmd.replace('http', '')
-                            system(r'cls')
-                            system(r'run\http_cli\http.exe')
-                        elif cmd == 'clear':
-                            system('cls')
+                    # Framework DevServer
+                    elif cmd == 'lnk':
+                        try:
+                            app.run()
+                        except:
                             continue
-                        else:
-                            pass
-                # Diretorio atual
-                elif cmd == 'pwd':
-                    print(pwd)
-                    continue
-                # Desinstalando pacotes
-                elif cmd.startswith('pkg uninstall'):
-                    print('13: Erro (Permissão negada)!')
-                    continue
-                # Desinstalando pacotes com permissão de adiministrador
-                elif cmd.startswith('sudo pkg uninstall'):
-                    password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
-                    if password == key:
-                        packge.pkg_uninstall(cmd)
-                    else:
-                        print('[sudo] Senha invalida!\n')
-                    continue
-                # Dsa Terminal E-ditor
-                elif cmd.startswith('nano'):
-                    print('Dsa Terminal editor foi iniciado')
-                    system('title [Nano] - Dsa terminal')
-                    cmd = cmd.replace('nano ', '')
-                    cmd = cmd.replace('nano', '')
-                    if cmd == '':
-                        system(rf'usr\bin\nano.exe')
-                        system(f'move {cmd} files')
-                    else:
-                        system(fr'usr\bin\nano.exe /files/{cmd}')
-                    system('title Dsa Terminal')
-                # Imprimir mensagem na tela
-                elif cmd.startswith('echo'):
-                    cmd = cmd.replace('echo ', '')
-                    cmd = cmd.replace('echo', '')
-                    cmd = cmd.replace(r'\n', '\n')
-                    cmd = cmd.replace(r'\t', '\t')
-                    try:
-                        cmd = cmd.replace(r'%myload%', myload)
-                    except:
-                        cmd = cmd.replace('%myload%', 'Dados não encontrados')
-                    if cmd == '/?':
-                        print('Echo: Listagem de parametros\n')
-                        print(r'echo [mensagem[parametros de formatação]]')
-                        print(r'\t                Tab')
-                        print(r'\n                Quebra de linha')
-                        print(r'%myload%          Valor definido')
-                    else:
-                        print(cmd)
-                    continue
-                # Executar
-                elif cmd.startswith('./'):
-                    cmd = cmd.replace('./', '')
-                    if cmd == 'vlc':
-                        system(r'start run\MediaPlayer\vlc.exe')
-                        print("")
                         continue
+                    # Sistema de Alias
+                    elif cmd == 'wmic':
+                        print('')
+                        system('wmic')
+                        continue
+                    # Deviced
+                    elif cmd == 'tty':
+                        system(r'usr\bin\tty.exe')
+                        continue
+                    # Deletar arquivos e diretorios
+                    elif 'rm' in cmd:
+                        cmd = cmd.replace('rm ', '')
+                        cmd = cmd.replace('rm', '')
+                        if cmd == '':
+                            print('Remove: Insira um nome-de-arquivo')
+                        else:
+                            system(fr'del {win_pwd}\{cmd}')
+                        print('')
+                    # Listar diretorios e objetos
+                    elif cmd.startswith('ls'):
+                        cmd = cmd.replace('ls', '')
+                        cmd = cmd.replace('ls ', '')
+                        system(rf'run\ls.exe {pwd} {cmd}')
+                        print('')
+                        continue
+                    # Configurações de rede
+                    elif cmd == 'ifconfig':
+                        print(f'Configuração de IP do Dsa Terminal [conexão direta]!')
+                        print(f'IP: [{ip}] Porta: [22]')
+                        print(f'Gateway: {route}')
+                        print(f'=====================================================')
+                        continue
+                    # PHP para Dsa Terminal
+                    elif cmd.startswith('php'):
+                        cmd = cmd.replace('php ', '')
+                        cmd = cmd.replace('php', '')
+                        system(f'var\php\php.exe {cmd}')
+                        continue
+                    # Se entrada for vazia
+                    elif cmd == '':
+                        print('')
+                        continue
+                    # Gerenciar o sistema de arquivos na rede
+                    elif cmd.startswith('psftp'):
+                        system('sbin\psftp.exe')
+                        print('')
+                        continue
+                    # Criar arquivo
+                    elif cmd.startswith('touch'):
+                        cmd = cmd.replace('touch ', '')
+                        cmd = cmd.replace('touch', '')
+                        if cmd == '':
+                            open(fr'{pwd}\Novo arquivo.txt', 'wt+')
+                        else:
+                            try:
+                                file = open(fr'{pwd}\{cmd}', 'wt+')
+                            except FileExistsError:
+                                print('Config.: Já existe um arquivo com este nome')
+                            else:
+                                print('Config.: Criando Arquivo. . .', end=''), sleep(2)
+                                print('criado!!!')
+                                while True:
+                                    try:
+                                        alinar: str = str(input(''))
+                                        files.Write(fr'{pwd}\{cmd}', alinar)
+                                    except:
+                                        break
+                            continue
+                    # Sair deste protocolo
+                    elif cmd == 'exit':
+                        protocol = 'MINGW64'
+                        print('')
+                    # Putty
                     elif cmd == 'putty':
                         startfile('sbin\putty.exe')
+                        continue
+                    # NetCat Builder
+                    elif cmd.startswith('ncat'):
+                        cmd = cmd.replace('ncat ', '')
+                        cmd = cmd.replace('ncat', '')
+                        try:
+                            system(fr'sample\ncat.exe {cmd}')
+                        except:
+                            continue
+                        continue
+                    # Limpar a tela
+                    elif cmd == 'clear':
+                        system('cls')
+                        continue
+                    # Ajuda
+                    elif cmd == 'help':
+                        print("Listagem de comandos do Protocolo MSYS:")
+                        print('Comando:             Descrição:')
+                        print('_____________________________________________________')
+                        print('cli-http             Console httpie Client')
+                        print('hostname             Nome do host atual')
+                        print('nano [arquivo]       Dsa Terminal E-ditor')
+                        print('echo [mensagem]      Escreve mensagens na tela')
+                        print('lnk                  Framework')
+                        print('wmic                 Sistema de Alias')
+                        print('tty                  Device connectado')
+                        print('ifconfig             Exibe configurações de IP')
+                        print("php                  PHP iNTERPRET")
+                        print("psftp                Conexão remota")
+                        print("touch [arquivo]      Criar arquivo")
+                        print('putty                Putty driver')
+                        print('ncat [parametros]    NetCat Driver de rede')
+                        print('clear                Limpa a tela')
+                        print('exit                 Sai deste Protocolo')
+                    # Comando invalido
+                    else:
+                        print(f'{cmd}: comando não encontrado!')
                         print('')
+                        continue
+                # Protocolo padrão
+                if protocol == 'MINGW64':
+                    # Mundança de protocolo
+                    if cmd == 'msys':
+                        protocol = 'MSYS'
+                        print('')
+                        continue
+                    # Ajuda do "PKG"
+                    elif cmd == 'pkg /?' or cmd == 'pkg':
+                        print('Pkg: Listagem de parametros')
+                        print('Local dos pacotes na rede: https://github.com/Dsa-Terminal\n')
+                        print('pkg install [pkgname]      Instala pacotes')
+                        print('pkg uninstall [pkgname]    Desinstala pacotes')
+                        print('pkg search [pkgname]       Procura um pacote')
+                        print('pkg update                 Atualiza versão instalada do Dsa Terminal')
+                    # Procurar pacotes. . .
+                    elif cmd.startswith('pkg search'):
+                        cmd = cmd.replace('pkg search ', '')
+                        cmd = cmd.replace('pkg search', '')
+                        if cmd == '':
+                            print('Pkg: Insira-um-nome-de-pacote!')
+                        else:
+                            packge.pkg_search(appname=cmd)
+                    # Python 3.8.6
+                    elif cmd.startswith('python3'):
+                        system('cls')
+                        if cmd == 'python3':
+                            system(fr'Python3\Scripts\python.exe')
+                            continue
+                        else:
+                            cmd = cmd.replace('python3', '')
+                            cmd = cmd.replace('python3 ', '')
+                            if '-m' in cmd:
+                                system(fr'Python3\Scripts\python.exe {cmd}')
+                            else:
+                                system(fr'Python3\Scripts\python.exe files\{cmd}')
+                        system('title Dsa Terminal')
+                    # /Python3/Scripts/pip.exe
+                    elif cmd.startswith('pip'):
+                        cmd = cmd.replace('pip ', '')
+                        cmd = cmd.replace('pip', '')
+                        system(rf'Python3\Scripts\pip.exe {cmd}')
+                    # Bash as Sudo's
+                    elif cmd == 'sudo su':
+                        password = getpass('[sudo] Palavra-passe do Dsa Terminal: ').strip()
+                        if key == password:
+                            system('cls')
+                            system('title SUDO: /usr/bin/bash.exe')
+                            system(r'usr\bin\bash.exe')
+                            system('cls')
+                        else:
+                            print('[sudo] Senha invalida!\n')
+                        system('title Dsa Terminal')
+                        continue
+                    # Banner do Dsa Terminal
+                    elif cmd == 'bunner':
+                        print('######   ######   ####        ####### ###### #####  #### ####  º  ##    #  ####  #')
+                        print('#     #  #       #    #          #    #      #    # #  # #  #  #  # #   # #    # #')
+                        print('#     #  ######  #    #          #    ###    #####  #   #   #  #  #  #  # #    # #')
+                        print('#     #        # ######          #    #      #    # #       #  #  #   # # ###### #')
+                        print('######   ######  #    #          #    ###### #    # #       #  #  #    ## #    # #####')
+                    # Ajuda do sudo
+                    elif cmd == 'sudo':
+                        print('Usage: sudo [commmand] <parameters>')
+                        print('')
+                        print(' commands:')
+                        print('     pkg install         Install Packges With Root permission')
+                        print('    pkg uninstall       Uninstall Packges WIth Root permission')
+                        print('')
+                        print(' parameters:')
+                        print('     --version      -v      Print sudo version istalled')
+                        print("      --help        -h      Print Sudo's help")
+                        print('      --unix                Print Unix Sudo in WSL')
+                    elif cmd == 'sudo --help' or cmd == 'sudo -h':
+                        print('Usage: sudo [commmand] <parameters>')
+                        print(' ')
+                        print(' commands:')
+                        print('     pkg install         Install Packges With Root permission')
+                        print('    pkg uninstall       Uninstall Packges WIth Root permission')
+                        print('')
+                        print(' parameters:')
+                        print('     --version      -v      Print sudo version istalled')
+                        print("      --help        -h          Print Sudo's help")
+                        print('      --unix                  Print Unix Sudo in WSL')
+                    # Versão do sudo
+                    elif cmd == 'sudo --version' or cmd == 'sudo -v':
+                        print('Dsa Terminal @Root_User v0.0.2020.1')
+                        println(rf'root@{host()}')
+                    # Nome do host atual
+                    elif cmd == 'hostname':
+                        system(r'usr\bin\hostname.exe')
+                        print('')
+                    # Intalando pacotes com permissão de adiministrador
+                    elif cmd.startswith('sudo pkg install'):
+                        cmd = cmd.replace('sudo ', '')
+                        cmd = cmd.replace(' ', '')
+                        password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
+                        if password == key:
+                            packge.pkg_install(cmd)
+                        else:
+                            print('[sudo] Senha invalida!\n')
+                        continue
+                    # Intalando pacotes
+                    elif cmd.startswith('pkg install'):
+                        print('13: Erro (Permissão negada)!')
+                        continue
+                    # VLC Media Player
+                    elif cmd == 'vlc':
+                        system(r'start run\MediaPlayer\vlc.exe')
+                        continue
+                    # Interface de linha de comando "http cliente"
+                    elif cmd == 'cli-http':
+                        while True:
+                            cmd = input('\033[32m[~]\033[m ')
+                            if cmd == 'exit':
+                                break
+                            elif cmd.startswith('http'):
+                                cmd = cmd.replace('http ', '')
+                                cmd = cmd.replace('http', '')
+                                system(r'cls')
+                                system(r'run\http_cli\http.exe')
+                            elif cmd == 'clear':
+                                system('cls')
+                                continue
+                            else:
+                                pass
+                    # Diretorio atual
+                    elif cmd == 'pwd':
+                        print(pwd)
+                        continue
+                    # Desinstalando pacotes
+                    elif cmd.startswith('pkg uninstall'):
+                        print('13: Erro (Permissão negada)!')
+                        continue
+                    # Desinstalando pacotes com permissão de adiministrador
+                    elif cmd.startswith('sudo pkg uninstall'):
+                        password = getpass("[sudo] Palavra-passe do Dsa Terminal: ").strip()
+                        if password == key:
+                            packge.pkg_uninstall(cmd)
+                        else:
+                            print('[sudo] Senha invalida!\n')
+                        continue
+                    # Dsa Terminal E-ditor
+                    elif cmd.startswith('nano'):
+                        print('Dsa Terminal editor foi iniciado')
+                        system('title [Nano] - Dsa terminal')
+                        cmd = cmd.replace('nano ', '')
+                        cmd = cmd.replace('nano', '')
+                        if cmd == '':
+                            system(rf'usr\bin\nano.exe')
+                            system(f'move {cmd} files')
+                        else:
+                            system(fr'usr\bin\nano.exe /files/{cmd}')
+                        system('title Dsa Terminal')
+                    # Imprimir mensagem na tela
+                    elif cmd.startswith('echo'):
+                        cmd = cmd.replace('echo ', '')
+                        cmd = cmd.replace('echo', '')
+                        cmd = cmd.replace(r'\n', '\n')
+                        cmd = cmd.replace(r'\t', '\t')
+                        try:
+                            cmd = cmd.replace(r'%myload%', myload)
+                        except:
+                            cmd = cmd.replace('%myload%', 'Dados não encontrados')
+                        if cmd == '/?':
+                            print('Echo: Listagem de parametros\n')
+                            print(r'echo [mensagem[parametros de formatação]]')
+                            print(r'\t                Tab')
+                            print(r'\n                Quebra de linha')
+                            print(r'%myload%          Valor definido')
+                        else:
+                            print(cmd)
+                        continue
+                    # Executar
+                    elif cmd.startswith('./'):
+                        cmd = cmd.replace('./', '')
+                        if cmd == 'vlc':
+                            system(r'start run\MediaPlayer\vlc.exe')
+                            print("")
+                            continue
+                        elif cmd == 'putty':
+                            startfile('sbin\putty.exe')
+                            print('')
+                        elif cmd == 'firefox':
+                            system(r'start network\firefox\firefox.exe')
+                            print('')
+                            continue
+                        else:
+                            if cmd.endswith('.sh'):
+                                system(fr'bin\bash.exe {pwd}/{cmd}')
+                            elif cmd.endswith('.exe'):
+                                system(rf'{pwd}/{cmd}')
+                            elif cmd.endswith('.py'):
+                                system(rf'Python3\Scripts\python.exe {win_pwd}\{cmd}')
+                            elif cmd.endswith('.lua'):
+                                system(fr'var\Lua\lua.exe {win_pwd}\{cmd}')
+                    # Framework DevServer
+                    elif cmd == 'lnk':
+                        try:
+                            app.run()
+                        except:
+                            continue
+                        continue
+                    # Notas de versão
+                    elif cmd == 'changelog':
+                        with open('CHANGELOG.TXT') as logme:
+                            print(logme.read())
+                    # Arduino IDE
+                    elif cmd == 'arduino':
+                        startfile(r'var\Arduino\arduino.exe')
+                        continue
+                    # Driver de audio
+                    elif cmd.startswith('drv -m --sound"'):
+                        if cmd.endswith('"'):
+                            cmd = cmd.replace('drv -m --sound', '')
+                            cmd = cmd.replace('"', '')
+                            if cmd == '':
+                                print('Driver de Audio: Insira-um-nome-de-arquivo')
+                            else:
+                                try:
+                                    pygame.mixer.music.load(fr'{win_pwd}\{cmd}')
+                                    pygame.mixer.music.play()
+                                except Exception as e:
+                                    print('Driver de Audio: Erro na reprodução do arquivo')
+                                    print(e)
+                    # Ajuda maxima
+                    elif cmd == 'help':
+                        print("Listagem de comandos do Protocolo MINGW64:")
+                        print('Comando:             Descrição:')
+                        print('_____________________________________________________')
+                        print('echo [mensagem]      Escreve mensagens na tela')
+                        print('pkg [parametros]     Gerenciador de pacotes')
+                        print('nano [arquivo]       Dsa Terminal E-ditor')
+                        print('ncat [parametros]    NetCat driver de rede')
+                        print('help                 Exibe ajuda')
+                        print('tty                  Device connectado')
+                        print('hostname             Nome do host atual')
+                        print('mintty               Mintty Console usr/bin/mintty.exe')
+                        print('version              Exibe versão instalada')
+                        print('python3 [parametros] Python v3.8.6...')
+                        print('ls [parametros]      Lista diretorios e objetos')
+                        print('dir [parametros]     Lista o que tem no diretorio')
+                        print('lnk                  Framework')
+                        print('gui                  Phoenix Setup Utility')
+                        print("gitlocal             Local no GitHub.com (url)")
+                        print('pip [parametros]     Gerenciador de pacotes do Config.')
+                        print('./[script or app]    Executar')
+                        print('prompt               Suspende o console')
+                        print('firefox              Inicia o firefox')
+                        print('issue                Relatar um poblema')
+                        print('cli-http             Console httpie Client')
+                        print('pwd                  Caminho do diretorio')
+                        print('mkdir [pasta]        Cria uma pasta')
+                        print('rm [dirs/files]      Deletar algo')
+                        print('touch [arquivo]      Criar arquivo')
+                        print('ifconfig             Exibe configurações de IP')
+                        print('set [parametros]     Difinindo variaveis seriais')
+                        print('task                 Exibe Tarefas do Dsa Terminal')
+                        print('exit                 Sai do Dsa Terminal')
+                    # Criar poblema no repositorio do GitHub
+                    elif cmd == 'issue':
+                        system('mingw64\gh.exe issue create')
+                        continue
+                    # NetCat Builder
+                    elif cmd.startswith('ncat'):
+                        cmd = cmd.replace('ncat ', '')
+                        cmd = cmd.replace('ncat', '')
+                        try:
+                            system(fr'sample\ncat.exe {cmd}')
+                        except:
+                            continue
+                        continue
+                    # GIT URL local
+                    elif cmd == 'gitlocal':
+                        print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
+                        continue
+                    # Alarme
+                    elif cmd == 'alone':
+                        mixer('Alarm01.wav')
+                        print('')
+                    # Se entrada for vazia
+                    elif cmd == '':
+                        print('')
+                        continue
+                    # Suspuender console
+                    elif cmd == 'prompt':
+                        print('')
+                        system('pause')
+                        continue
+                    # Armazenar cadeia de caracteres variavel
+                    elif cmd.startswith('set'):
+                        cmd = cmd.replace('set ', '')
+                        cmd = cmd.replace('set', '')
+                        cmd = cmd.replace(r'\n', '\n')
+                        cmd = cmd.replace(r'\t', '\t')
+                        cmd = cmd.replace(r'"', '')
+                        if cmd == '= nil':
+                            try:
+                                del myload
+                                del loaded
+                            except:
+                                print('Config.: Nenhum registro salvo!')
+                            else:
+                                print('Config.: Registro deletado!')
+                            continue
+                        else:
+                            myload = cmd
+                            loaded = True
+                            continue
+                            print('')
+                    # Finalizar sessão
+                    elif cmd == 'exit':
+                        print('Encerrando Tarefas. . .'), sleep(2.3)
+                        auto_get_ProgressBar(0, title="Saindo...")
+                        break
+                    # Limpar a tela
+                    elif cmd == 'clear':
+                        system('cls')
+                        continue
+                    # Exibir versão do Dsa Terminal
+                    elif cmd == 'version':
+                        print(strftime(f'Dsa Terminal Copyright (C) %Y v{__version__}'))
+                        continue
+                    # Atualizar o Dsa Terminal
+                    elif cmd == 'pkg update':
+                        update()
+                        continue
+                    # Lua Linguagem interpret
+                    elif cmd.startswith('lua'):
+                        cmd = cmd.replace('lua ', '')
+                        cmd = cmd.replace('lua', '')
+                        system('title lua for Dsa Terminal')
+                        system('cls')
+                        if cmd == '':
+                            system(r'var\Lua\lua.exe')
+                        else:
+                            system(fr'var\Lua\lua.exe {win_pwd}\{cmd}lua')
+                        system('title Dsa terminal')
+                    # Api de troca e montagem no Aplicativo. . .
+                    elif cmd == 'apimon':
+                        system(r'start run\sudo\apimon.exe')
+                        print('')
+                        continue
+                    # Limpar a tela
+                    elif cmd == 'cls':
+                        system('cls')
+                        continue
+                    # Sistema binario de controle
+                    elif cmd == 'env':
+                        system(r'start run\env.exe')
+                        print('')
+                        continue
+                    # FireFox para Dsa Terminal
                     elif cmd == 'firefox':
                         system(r'start network\firefox\firefox.exe')
                         print('')
                         continue
-                    else:
-                        if cmd.endswith('.sh'):
-                            system(fr'bin\bash.exe {pwd}/{cmd}')
-                        elif cmd.endswith('.exe'):
-                            system(rf'{pwd}/{cmd}')
-                        elif cmd.endswith('.py'):
-                            system(rf'Python3\Scripts\python.exe {win_pwd}\{cmd}')
-                        elif cmd.endswith('.lua'):
-                            system(fr'var\Lua\lua.exe {win_pwd}\{cmd}')
-                # Framework DevServer
-                elif cmd.startswith('lnk'):
-                    try:
-                        app.run()
-                    except:
+                    # Node.js Server para Dsa Terminal
+                    elif cmd == 'node':
+                        system('cls')
+                        system('title node.js for Dsa Terminal')
+                        system(r'var\node.exe')
+                        system('title Dsa terminal')
                         continue
-                    continue
-                # Notas de versão
-                elif cmd == 'changelog':
-                    with open('CHANGELOG.TXT') as logme:
-                        print(logme.read())
-                # Arduino IDE
-                elif cmd == 'arduino':
-                    startfile(r'var\Arduino\arduino.exe')
-                    continue
-                # Driver de audio
-                elif cmd.startswith('drv -m --sound"'):
-                    if cmd.endswith('"'):
-                        cmd = cmd.replace('drv -m --sound', '')
-                        cmd = cmd.replace('"', '')
+                    # Arquitetura do Sistema
+                    elif cmd == 'arch':
+                        system(r'usr\bin\arch.exe')
+                        continue
+                    # Id do controlador
+                    elif cmd == 'id':
+                        system(r'usr\bin\id.exe')
+                        continue
+                    # Bash and Shell
+                    elif cmd == 'mintty':
+                        startfile(r'usr\bin\mintty.exe')
+                        continue
+                    # Data
+                    elif cmd == 'date':
+                        system(r'usr\bin\date.exe')
+                        print('')
+                        continue
+                    # Gimp setup
+                    elif cmd == 'gpg':
+                        system(r'usr\bin\gpg.exe')
+                        continue
+                    # LICENSE
+                    elif cmd == 'license':
+                        with open('LICENSE') as lic:
+                            print(lic.read())
+                    # Exibe diretorios e arquivos
+                    elif cmd.startswith('dir'):
+                        system(fr'usr\bin\dir.exe {pwd}')
+                        continue
+                    # Criar diretorio
+                    elif cmd.startswith('mkdir'):
+                        cmd = cmd.replace('mkdir ', '')
+                        cmd = cmd.replace('mkdir', '')
                         if cmd == '':
-                            print('Driver de Audio: Insira-um-nome-de-arquivo')
+                            pass
+                        else:
+                            system(fr'mkdir files\{cmd}')
+                        print('')
+                        continue
+                    # Exibe tarefas sendo executadas
+                    elif cmd == 'task':
+                        print('Tarefas sendo executadas:')
+                        print('Nome do Serviço:       Local:                   Status:')
+                        print('______________________________________________________________________________')
+                        try:
+                            cmd = loaded
+                            if cmd == True:
+                                print('String Sync            /Terminal.exe            Executando...')
+                        except:
+                            pass
+                        print('')
+                        print('Tarefas do Sistema:')
+                        print('______________________________________________________________________________')
+                        print('Host da Janela         [Serviço do Windows]     Executando...')
+                        print('Config.                /Terminal.exe            Executando...')
+                        print('Bash.exe               /bin/bash.exe            Executando...')
+                        print('Catalogo de Serviço    /ipxe.sc                 Executando primariamente...')
+                        print('Servições do http-cli  /run/http_cli/http.exe   Executando em segundo plano...')
+                        print('Github connection      /.git     <dir>          Executando...')
+                        print('Linux Subsystem        /Terminal.exe            Executando em segundo plano...')
+                        print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
+                        print('mingw64                /mingw64/Main.sh         Executando...')
+                        print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
+                        print('==============================================================================\n')
+                    # Deviced
+                    elif cmd == 'tty':
+                        system(r'usr\bin\tty.exe')
+                        continue
+                    # Gerenciar o sistema de arquivos na rede
+                    elif cmd.startswith('psftp'):
+                        system('sbin\psftp.exe')
+                        print('')
+                        continue
+                    # Criar arquivo
+                    elif cmd.startswith('touch'):
+                        cmd = cmd.replace('touch ', '')
+                        cmd = cmd.replace('touch', '')
+                        if cmd == '':
+                            open(fr'{pwd}\Novo arquivo.txt', 'wt+')
                         else:
                             try:
-                                pygame.mixer.music.load(fr'{win_pwd}\{cmd}')
-                                pygame.mixer.music.play()
-                            except Exception as e:
-                                print('Driver de Audio: Erro na reprodução do arquivo')
-                                print(e)
-                # Ajuda maxima
-                elif cmd == 'help':
-                    print('Comando:             Fução:')
-                    print('_____________________________________________________')
-                    print('echo [mensagem]      Escreve mensagens na tela')
-                    print('pkg [parametros]     Gerenciador de pacotes')
-                    print('nano [arquivo]       Dsa Terminal E-ditor')
-                    print('ncat [parametros]    NetCat Builder')
-                    print('help                 Exibe ajuda')
-                    print('tty                  Device connectado')
-                    print('hostname             Nome do host atual')
-                    print('mintty               Mintty Console usr/bin/mintty.exe')
-                    print('version              Exibe versão instalada')
-                    print('python3 [parametros] Python v3.8.6...')
-                    print('lnk [parametros]     Framework')
-                    print('gui                  Phoenix Setup Utility')
-                    print("gitlocal             Local no GitHub.com (url)")
-                    print('pip [parametros]     Gerenciador de pacotes do Config.')
-                    print('./[script]           Executa script')
-                    print('wmic                 Sistema de Alias')
-                    print('prompt               Suspende o console')
-                    print('firefox              Inicia o firefox')
-                    print('issue                Relatar um poblema')
-                    print('cli-http             Console httpie Client')
-                    print('pwd                  Caminho do diretorio')
-                    print('mkdir [pasta]        Cria uma pasta')
-                    print('touch [arquivo]      Criar arquivo')
-                    print('ifconfig             Exibe configurações de IP')
-                    print('set [parametros]     Difinindo variaveis seriais')
-                    print('task                 Exibe Tarefas do Dsa Terminal')
-                    print('exit                 Sai do Dsa Terminal')
-                # Criar poblema no repositorio do GitHub
-                elif cmd == 'issue':
-                    system('mingw64\gh.exe issue create')
-                    continue
-                # NetCat Builder
-                elif cmd.startswith('ncat'):
-                    cmd = cmd.replace('ncat ', '')
-                    cmd = cmd.replace('ncat', '')
-                    try:
-                        system(fr'sample\ncat.exe {cmd}')
-                    except:
-                        continue
-                    continue
-                # GIT URL local
-                elif cmd == 'gitlocal':
-                    print('Github: https://github.com/Dsa-Terminal/Dsa-Terminal.git\n')
-                    continue
-                # Alarme
-                elif cmd == 'alone':
-                    mixer('Alarm01.wav')
-                    print('')
-                # Se entrada for vazia
-                elif cmd == '':
-                    print('')
-                    continue
-                # Suspuender console
-                elif cmd == 'prompt':
-                    print('')
-                    system('pause')
-                    continue
-                # Armazenar cadeia de caracteres variavel
-                elif cmd.startswith('set'):
-                    cmd = cmd.replace('set ', '')
-                    cmd = cmd.replace('set', '')
-                    cmd = cmd.replace(r'\n', '\n')
-                    cmd = cmd.replace(r'\t', '\t')
-                    cmd = cmd.replace(r'"', '')
-                    if cmd == '= nil':
-                        try:
-                            del myload
-                            del loaded
-                        except:
-                            print('Config.: Nenhum registro salvo!')
-                        else:
-                            print('Config.: Registro deletado!')
-                        continue
-                    else:
-                        myload = cmd
-                        loaded = True
-                        continue
-                        print('')
-                # Finalizar sessão
-                elif cmd == 'exit':
-                    print('Encerrando Tarefas. . .'), sleep(2.3)
-                    auto_get_ProgressBar(0, title="Saindo...")
-                    break
-                # Limpar a tela
-                elif cmd == 'clear':
-                    system('cls')
-                    continue
-                # Exibir versão do Dsa Terminal
-                elif cmd == 'version':
-                    print(strftime(f'Dsa Terminal Copyright (C) %Y v{__version__}'))
-                    continue
-                # Atualizar o Dsa Terminal
-                elif cmd == 'pkg update':
-                    update()
-                    continue
-                # Lua Linguagem interpret
-                elif cmd.startswith('lua'):
-                    cmd = cmd.replace('lua ', '')
-                    cmd = cmd.replace('lua', '')
-                    system('title lua for Dsa Terminal')
-                    system('cls')
-                    if cmd == '':
-                        system(r'var\Lua\lua.exe')
-                    else:
-                        system(fr'var\Lua\lua.exe {win_pwd}\{cmd}lua')
-                    system('title Dsa terminal')
-                # Api de troca e montagem no Aplicativo. . .
-                elif cmd == 'apimon':
-                    system(r'start run\sudo\apimon.exe')
-                    print('')
-                    continue
-                # Limpar a tela
-                elif cmd == 'cls':
-                    system('cls')
-                    continue
-                # Sistema binario de controle
-                elif cmd == 'env':
-                    system(r'start run\env.exe')
-                    print('')
-                    continue
-                # FireFox para Dsa Terminal
-                elif cmd == 'firefox':
-                    system(r'start network\firefox\firefox.exe')
-                    print('')
-                    continue
-                # Node.js Server para Dsa Terminal
-                elif cmd == 'node':
-                    system('cls')
-                    system('title node.js for Dsa Terminal')
-                    system(r'var\node.exe')
-                    system('title Dsa terminal')
-                    continue
-                # Arquitetura do Sistema
-                elif cmd == 'arch':
-                    system(r'usr\bin\arch.exe')
-                    continue
-                # Id do controlador
-                elif cmd == 'id':
-                    system(r'usr\bin\id.exe')
-                    continue
-                # Bash and Shell
-                elif cmd == 'mintty':
-                    startfile(r'usr\bin\mintty.exe')
-                    continue
-                # Data
-                elif cmd == 'date':
-                    system(r'usr\bin\date.exe')
-                    print('')
-                    continue
-                # Gimp setup
-                elif cmd == 'gpg':
-                    system(r'usr\bin\gpg.exe')
-                    continue
-                # LICENSE
-                elif cmd == 'license':
-                    with open('LICENSE') as lic:
-                        print(lic.read())
-                # Exibe diretorios e arquivos
-                elif cmd.startswith('dir'):
-                    system(fr'usr\bin\dir.exe {pwd}')
-                    continue
-                # Criar diretorio
-                elif cmd.startswith('mkdir'):
-                    cmd = cmd.replace('mkdir ', '')
-                    cmd = cmd.replace('mkdir', '')
-                    if cmd == '':
-                        pass
-                    else:
-                        system(fr'mkdir files\{cmd}')
-                    print('')
-                    continue
-                # Exibe tarefas sendo executadas
-                elif cmd == 'task':
-                    print('Tarefas sendo executadas:')
-                    print('Nome do Serviço:       Local:                   Status:')
-                    print('______________________________________________________________________________')
-                    try:
-                        cmd = loaded
-                        if cmd == True:
-                            print('String Sync            /Terminal.exe            Executando...')
-                    except:
-                        pass
-                    print('')
-                    print('Tarefas do Sistema:')
-                    print('______________________________________________________________________________')
-                    print('Host da Janela         [Serviço do Windows]     Executando...')
-                    print('Config.                /Terminal.exe            Executando...')
-                    print('Bash.exe               /bin/bash.exe            Executando...')
-                    print('Catalogo de Serviço    /ipxe.sc                 Executando primariamente...')
-                    print('Servições do http-cli  /run/http_cli/http.exe   Executando em segundo plano...')
-                    print('Github connection      /.git     <dir>          Executando...')
-                    print('Linux Subsystem        /Terminal.exe            Executando em segundo plano...')
-                    print('Gerenciador de Tarefas /Terminal.exe            Executando em segundo plano...')
-                    print('mingw64                /mingw64/Main.sh         Executando...')
-                    print('Phoenix Setup CMOS     /run/SetupUltility/...   Executando em segundo plano...')
-                    print('==============================================================================\n')
-                # Deviced
-                elif cmd == 'tty':
-                    system(r'usr\bin\tty.exe')
-                    continue
-                # Gerenciar o sistema de arquivos na rede
-                elif cmd.startswith('psftp'):
-                    system('sbin\psftp.exe')
-                    print('')
-                    continue
-                # Criar arquivo
-                elif cmd.startswith('touch'):
-                    cmd = cmd.replace('touch ', '')
-                    cmd = cmd.replace('touch', '')
-                    if cmd == '':
-                        open(fr'{pwd}\Novo arquivo.txt', 'wt+')
-                    else:
-                        try:
-                            file = open(fr'{pwd}\{cmd}', 'wt+')
-                        except FileExistsError:
-                            print('Config.: Já existe um arquivo com este nome')
-                        else:
-                            print('Config.: Criando Arquivo. . .', end=''), sleep(2)
-                            print('criado!!!')
-                            while True:
-                                try:
-                                    alinar: str = str(input(''))
-                                    files.Write(fr'{pwd}\{cmd}', alinar)
-                                except:
-                                    break
-                        continue
-                # Phoenix Setup Gui TrustedBios (tm) CMOS Utility
-                elif cmd == 'gui':
-                    auto_get_ProgressBar(0.01)
-                    system(r'start run\SetupUltility\PhoenixSetupGUI.exe')
-                    break
-                # Deletar arquivos e diretorios
-                elif 'rm' in cmd:
-                    cmd = cmd.replace('rm ', '')
-                    cmd = cmd.replace('rm', '')
-                    if cmd == '':
-                        print('Remove: Insira um nome-de-arquivo')
-                    else:
-                        system(fr'del {win_pwd}\{cmd}')
-                    print('')
-                # Listar diretorios e objetos
-                elif cmd.startswith('ls'):
-                    cmd = cmd.replace('ls', '')
-                    cmd = cmd.replace('ls ', '')
-                    system(rf'run\ls.exe {pwd} {cmd}')
-                    print('')
-                    continue
-                # Configurações de rede
-                elif cmd == 'ifconfig':
-                    print(f'Configuração de IP do Dsa Terminal [conexão direta]!')
-                    print(f'IP: [{ip}] Porta: [22]')
-                    print(f'Gateway: {route}')
-                    print(f'=====================================================')
-                    continue
-                # PHP para Dsa Terminal
-                elif cmd.startswith('php'):
-                    cmd = cmd.replace('php ', '')
-                    cmd = cmd.replace('php', '')
-                    system(f'var\php\php.exe {cmd}')
-                    continue
-                # API de erro "Kernel"
-                elif cmd == 'kernel':
-                    try:
-                        startfile('Lib\kernel\main.exe')
-                    except FileNotFoundError:
-                        print('Modulo não instalado no sistema do Dsa Terminal!')
-                        print('Tente:')
-                        print('      sudo pkg install kernel')
-                    continue
-                # API de rede "secure Shell"
-                elif cmd == 'ssh':
-                    try:
-                        startfile('Lib\ssh\ssh.exe')
-                    except FileNotFoundError:
-                        print('Modulo não instalado no sistema do Dsa Terminal!')
-                        print('Tente:')
-                        print('      sudo pkg install ssh')
-                # iPXE LAN COMBOOT Network
-                elif cmd == 'ipxe':
-                    i = iPXE()
-                    if i == False:
-                        with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'wt+') as commit:
-                            commit = commit.read()
+                                file = open(fr'{pwd}\{cmd}', 'wt+')
+                            except FileExistsError:
+                                print('Config.: Já existe um arquivo com este nome')
+                            else:
+                                print('Config.: Criando Arquivo. . .', end=''), sleep(2)
+                                print('criado!!!')
+                                while True:
+                                    try:
+                                        alinar: str = str(input(''))
+                                        files.Write(fr'{pwd}\{cmd}', alinar)
+                                    except:
+                                        break
+                            continue
+                    # Phoenix Setup Gui TrustedBios (tm) CMOS Utility
+                    elif cmd == 'gui':
+                        auto_get_ProgressBar(0.01)
+                        system(r'start run\SetupUltility\PhoenixSetupGUI.exe')
                         break
-                    else:
+                    # Deletar arquivos e diretorios
+                    elif 'rm' in cmd:
+                        cmd = cmd.replace('rm ', '')
+                        cmd = cmd.replace('rm', '')
+                        if cmd == '':
+                            print('Remove: Insira um nome-de-arquivo')
+                        else:
+                            system(fr'del {win_pwd}\{cmd}')
+                        print('')
+                    # Listar diretorios e objetos
+                    elif cmd.startswith('ls'):
+                        cmd = cmd.replace('ls', '')
+                        cmd = cmd.replace('ls ', '')
+                        system(rf'run\ls.exe {pwd} {cmd}')
+                        print('')
                         continue
-                # Comando invalido
+                    # Configurações de rede
+                    elif cmd == 'ifconfig':
+                        print(f'Configuração de IP do Dsa Terminal [conexão direta]!')
+                        print(f'IP: [{ip}] Porta: [22]')
+                        print(f'Gateway: {route}')
+                        print(f'=====================================================')
+                        continue
+                    # PHP para Dsa Terminal
+                    elif cmd.startswith('php'):
+                        cmd = cmd.replace('php ', '')
+                        cmd = cmd.replace('php', '')
+                        system(f'var\php\php.exe {cmd}')
+                        continue
+                    # API de erro "Kernel"
+                    elif cmd == 'kernel':
+                        try:
+                            startfile('Lib\kernel\main.exe')
+                        except FileNotFoundError:
+                            print('Modulo não instalado no sistema do Dsa Terminal!')
+                            print('Tente:')
+                            print('      sudo pkg install kernel')
+                        continue
+                    # API de rede "secure Shell"
+                    elif cmd == 'ssh':
+                        try:
+                            startfile('Lib\ssh\ssh.exe')
+                        except FileNotFoundError:
+                            print('Modulo não instalado no sistema do Dsa Terminal!')
+                            print('Tente:')
+                            print('      sudo pkg install ssh')
+                    # iPXE LAN COMBOOT Network
+                    elif cmd == 'ipxe':
+                        i = iPXE()
+                        if i == False:
+                            with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'wt+') as commit:
+                                commit = commit.read()
+                            break
+                        else:
+                            continue
+                    # Comando invalido
+                    else:
+                        print(f'{cmd}: comando não encontrado!')
+                        print('')
+                        continue
+            # Interrupção pelo teclado
+            except KeyboardInterrupt:
+                i = iPXE()
+                if i == False:
+                    with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'wt+') as commit:
+                        commit = commit.read()
+                    break
                 else:
-                    print(f'{cmd}: comando não encontrado!')
-                    print('')
                     continue
-        # Interrupção pelo teclado
-        except KeyboardInterrupt:
-            i = iPXE()
-            if i == False:
-                with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'wt+') as commit:
-                    commit = commit.read()
+            # Ocorreu algum erro
+            except Exception as erro:
+                system('cls')
+                for i in range(0, 5):
+                    mixer('ERROR_Media.mp3')
+                print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt')
+                print('Config.: Estamos coletando Iinformações sobre o e depois encerraremos esta sessão do Dsa Terminal para você!'), sleep(0.01)
+                sleep(0.111)
                 break
-            else:
-                continue
-        # Ocorreu algum erro
-        except Exception as erro:
-            system('cls')
-            for i in range(0, 5):
-                mixer('ERROR_Media.mp3')
-            print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt')
-            print('Config.: Estamos coletando Iinformações sobre o e depois encerraremos esta sessão do Dsa Terminal para você!'), sleep(0.01)
-            sleep(0.111)
-            break
-# Senha incorreta: Falha no Boot
-elif start == None:
-    mixer('ERROR_Media.mp3')
-    print('\n\nSenha invalida\nPXE MOF: Exiting PXE ROM'), sleep(5.8)
-    system('pause')
-# Comando de boot invalido: Falha no Boot
-elif start == False:
-    mixer('ERROR_Media.mp3')
+    # Senha incorreta: Falha no Boot
+    elif start == None:
+        mixer('ERROR_Media.mp3')
+        print('\n\nSenha invalida\nPXE MOF: Exiting PXE ROM'), sleep(5.8)
+        system('pause')
+    # Comando de boot invalido: Falha no Boot
+    elif start == False:
+        mixer('ERROR_Media.mp3')
 
-    print('Config.: Módulo de inicianlização não recebeu comando valido para inicializar o Dsa Terminal!')
-    print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
-    a = open('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe', 'wt+')
-# Comando de boot invalido: Falha no Boot
-elif start == '':
-    mixer('ERROR_Media.mp3')
-    print('Config.: Ha um poblema impedindo a inicialização do Dsa Terminal!')
-    coregir = input('Você dejesa executar o depurador[S,N]? ').upper()
-    if coregir == 'S':
-        print('')
-        system('timeout /T 10')
-        print('Iniciando depuração do sistema...'), sleep(2.37)
-        remove('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe')
-        print('Terminando Depuração...', end=''), sleep(16.9)
-        print('concluida!!!')
-        print('\nPXE MOF: Exiting PXE ROM...'), sleep(6.26)
-    elif coregir == 'N':
-        print('\nPXE MOF: Exiting PXE ROM...'), sleep(6.26)
-    else:
-        print('\nConfig.: Isso não é uma opção!')
+        print('Config.: Módulo de inicianlização não recebeu comando valido para inicializar o Dsa Terminal!')
         print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
-# No Bootable DEVICE: Falha no Boot
+        a = open('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe', 'wt+')
+    # Comando de boot invalido: Falha no Boot
+    elif start == '':
+        mixer('ERROR_Media.mp3')
+        print('Config.: Ha um poblema impedindo a inicialização do Dsa Terminal!')
+        coregir = input('Você dejesa executar o depurador[S,N]? ').upper()
+        if coregir == 'S':
+            print('')
+            system('timeout /T 10')
+            print('Iniciando depuração do sistema...'), sleep(2.37)
+            remove('boot\drivers\IMPOSSIBLE-BOOT-BIOSTOPXEROM.ipxe')
+            print('Terminando Depuração...', end=''), sleep(16.9)
+            print('concluida!!!')
+            print('\nPXE MOF: Exiting PXE ROM...'), sleep(6.26)
+        elif coregir == 'N':
+            print('\nPXE MOF: Exiting PXE ROM...'), sleep(6.26)
+        else:
+            print('\nConfig.: Isso não é uma opção!')
+            print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
+    # No Bootable DEVICE: Falha no Boot
+    else:
+        system('cls')
+        mixer('ERROR_Media.mp3')
+        print('Error: No Botable Device')
+        print("Don't have a installed System on Dsa Terminal as Device Operative")
+        print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
+        auto_get_ProgressBar(0.001)
 else:
-    system('cls')
-    mixer('ERROR_Media.mp3')
-    print('Error: No Botable Device')
-    print("Don't have a installed System on Dsa Terminal as Device Operative")
-    print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
-    auto_get_ProgressBar(0.001)
+    print("O Dsa Terminal só pode ser executado em Windows 10")
+    print('Saindo do Dsa Terminal. . .'), sleep(12.263)
