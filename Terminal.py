@@ -18,6 +18,7 @@ except:
     from os import system
     from platform import platform
     # Reparo automatico
+    system('cls')
     print('Iniciando o Dsa Terminal. . .'), sleep(7.37)
     print('Caregando dados do Reparo Automatico do Dsa Terminal. . .'), sleep(12)
     if platform().startswith('Windows'):
