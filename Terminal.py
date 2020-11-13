@@ -1,5 +1,6 @@
 # Dsa Terminal codigo-fonte
-__version__ = '1.9.0'
+__version__ = f'1.9.0' # Versão do Dsa Terminal
+__license__ = f'(C) 2020 Dsa Software Fundation [Mit License]' # Licença atualizada da dsa Software Fundation
 # Inicializar com toda força
 try:
     from flask import Flask
@@ -554,7 +555,7 @@ else:
                         elif cmd.startswith('python'):
                             cmd = cmd.replace('python ', '')
                             cmd = cmd.replace('python', '')
-                            system(rf'usr\local\Python27\python.exe {cmd}')
+                            system(rf'usr\local\Python27\python.exe {win_pwd}\{cmd}')
                         # Pip do python2
                         elif cmd.startswith('pip'):
                             cmd = cmd.replace('pip ', '')
@@ -587,12 +588,12 @@ else:
                                 if '-m' in cmd:
                                     system(fr'Python3\Scripts\python.exe {cmd}')
                                 else:
-                                    system(fr'Python3\Scripts\python.exe files\{cmd}')
+                                    system(fr'Python3\Scripts\python.exe {win_pwd}\{cmd}')
                             system('title Dsa Terminal')
                         # /Python3/Scripts/pip.exe
                         elif cmd.startswith('pip3'):
-                            cmd = cmd.replace('pip ', '')
-                            cmd = cmd.replace('pip', '')
+                            cmd = cmd.replace('pip3 ', '')
+                            cmd = cmd.replace('pip3', '')
                             system(rf'Python3\Scripts\pip.exe {cmd}')
                         # Bash as Sudo's
                         elif cmd == 'sudo su':
