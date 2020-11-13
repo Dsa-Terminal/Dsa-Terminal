@@ -11,9 +11,92 @@ try:
     from tqdm import tqdm, trange
     from rich.progress import track
     from requests import get
-except ImportError:
+# Erro na importação
+except:
+    # Importando modulos do Python
+    from time import sleep
+    from os import system
+    from platform import platform
+    # Reparo automatico
     print('Iniciando o Dsa Terminal. . .'), sleep(7.37)
     print('Caregando dados do Reparo Automatico do Dsa Terminal. . .'), sleep(12)
+    if platform().startswith('Windows'):
+        system("cls")
+        print(f"Config.: Erro ao inicializar o Dsa Terminal v{__version__}")
+        print(r'Opções de inicializição avançada:')
+        print(f'1 - CMD                                     2 - Instalar dependencias do Python')
+        print(r'3 - Tentar iniciar o Dsa Terminal novamente 4 - Diagnosticar erro')
+        print(f'5 - Abrir Github                            6 - Sair')
+        print('')
+        while True:
+            cmd = input('Code:\>_').strip()
+            if cmd == '1':
+                system('cls')
+                system('cmd')
+                system('cls')
+                print('Iniciando o Dsa Terminal. . .'), sleep(7.37)
+                print('Caregando dados do Reparo Automatico do Dsa Terminal. . .'), sleep(12)
+                system("cls")
+                print(f"Config.: Erro ao inicializar o Dsa Terminal v{__version__}")
+                print(r'Opções de inicializição avançada:')
+                print(f'1 - CMD                                     2 - Instalar dependencias do Python')
+                print(r'3 - Tentar iniciar o Dsa Terminal novamente 4 - Diagnosticar erro')
+                print(f'5 - Abrir Github                            6 - Sair')
+            elif cmd == '2':
+                system('pip3 install pygame')
+                system('pip3 install sqlite3')
+                system('pip3 install tqdm')
+                system('pip3 install rich')
+                system('pip3 install flask')
+            elif cmd == '3':
+                while True:
+                    system('cls')
+                    print('=====================================================')
+                    print('Inicializar o:')
+                    print('1 - Terminal.exe')
+                    print('2 - python3 Terminal.py')
+                    print('-----------------------------------------------------')
+                    cmd = input('>>> ').strip()
+                    if cmd == '1':
+                        system("start Terminal.exe")
+                        break
+                    elif cmd == '2':
+                        system('start Terminal.py')
+                        break
+                    else:
+                        print('Isso não é uma opção')
+                        print('')
+                break
+            elif cmd == '4':
+                print('Procurando poblemas. . .'), sleep(12)
+                if files.ArquivoExiste('boot\Boot.py'):
+                    if files.ArquivoExiste(r'boot\boot.ini'):
+                        if files.ArquivoExiste(r'boot\Boot.tar.gz'):
+                            if files.ArquivoExiste('boot\efi.exe'):
+                                if path.exists(r'bin\bash.exe'):
+                                    pass
+                                else:
+                                    print('Config.: Não existe um bash para operar')
+                            else:
+                                print('Config.: Não existe a base do depurador e inciaizador')
+                        else:
+                            print('Config.: Não existe um arquivo base para extair drivers')
+                    else:
+                        print('Config.: Não existe uma configuração para o depurador do Config.')
+                else:
+                    print('Config.: Não existe um arquivo base para o Boot')
+                print("O Config. não encontrou as dependencias")
+            elif cmd == '5':
+                system('start "" "https:/github.com/Dsa-Terminal/Dsa-Terminal/issue"')
+                continue
+            elif cmd == '6':
+                print('Deletando variaveis. . .'), sleep(10)
+                print('PXE MOF: Exiting PXE ROM'), sleep(5)
+                break
+    else:
+        print(f"Config.: Erro ao inicializar o Dsa Terminal v{__version__}")
+        print('Config.: O Dsa Terminal só pode ser iniciado em Windows')
+# Inicializando
 else:
     # Variaveis globais
     ip = socket.gethostbyname(socket.gethostname())
@@ -1023,5 +1106,5 @@ else:
             print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
             auto_get_ProgressBar(0.001)
     else:
-        print("O Dsa Terminal só pode ser executado em Windows 10")
-        print('Saindo do Dsa Terminal. . .'), sleep(12.263)
+        print(f"Config.: Erro ao inicializar o Dsa Terminal v{__version__}")
+        print('Config.: O Dsa Terminal só pode ser iniciado em Windows')
