@@ -108,8 +108,8 @@ if __name__ == "__main__":
         route = choice(['net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1', 'net-2: 17.0.0.192/255.255.255.0 gw 10.0.0.2',
                        'net-3: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3'])
         app = Flask(__name__)
-        pwd = "/files" # Diretorio atual
-        win_pwd = r'\files' # Diretorio atual no windows 10
+        pwd = "/home" # Diretorio atual
+        win_pwd = r'\home' # Diretorio atual no windows 10
         # Barra de progresso tradicional
         def ProgressBar(titulo):
             with tqdm(total=100) as progressbar:
