@@ -550,6 +550,16 @@ else:
                             protocol = 'MSYS'
                             print('')
                             continue
+                        # Python 2.7.18
+                        elif cmd.startswith('python'):
+                            cmd = cmd.replace('python ', '')
+                            cmd = cmd.replace('python', '')
+                            system(rf'usr\local\Python27\python.exe {cmd}')
+                        # Pip do python2
+                        elif cmd.startswith('pip'):
+                            cmd = cmd.replace('pip ', '')
+                            cmd = cmd.replace('pip', '')
+                            system(fr'usr\local\Python27\Scripts\pip.exe {cmd}')
                         # Ajuda do "PKG"
                         elif cmd == 'pkg /?' or cmd == 'pkg':
                             print('Pkg: Listagem de parametros')
@@ -568,7 +578,6 @@ else:
                                 packge.pkg_search(appname=cmd)
                         # Python 3.8.6
                         elif cmd.startswith('python3'):
-                            system('cls')
                             if cmd == 'python3':
                                 system(fr'Python3\Scripts\python.exe')
                                 continue
@@ -581,7 +590,7 @@ else:
                                     system(fr'Python3\Scripts\python.exe files\{cmd}')
                             system('title Dsa Terminal')
                         # /Python3/Scripts/pip.exe
-                        elif cmd.startswith('pip'):
+                        elif cmd.startswith('pip3'):
                             cmd = cmd.replace('pip ', '')
                             cmd = cmd.replace('pip', '')
                             system(rf'Python3\Scripts\pip.exe {cmd}')
@@ -674,7 +683,7 @@ else:
                             cmd = cmd.replace('cd ', '')
                             cmd = cmd.replace('cd', '')
                             if cmd == '..':
-                                chdir(fr'{win_}\{cmd}')
+                                chdir(fr'{win_pwd}\{cmd}')
                             try:
                                 chdir(fr'{win_pwd}\{cmd}')
                             except:
@@ -803,6 +812,7 @@ else:
                             print('gui                  Phoenix Setup Utility')
                             print("gitlocal             Local no GitHub.com (url)")
                             print('pip [parametros]     Gerenciador de pacotes do Config.')
+                            print('pip3 [parametros]    Gerenciador de pacotes do Config.')
                             print('./[script or app]    Executar')
                             print('prompt               Suspende o console')
                             print('firefox              Inicia o firefox')
