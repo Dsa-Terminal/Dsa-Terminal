@@ -585,6 +585,20 @@ else:
                                     continue
                                 else:
                                     pass
+                        # Navegando pelos dirs
+                        elif cmd.startswith('cd'):
+                            cmd = cmd.replace('cd ', '')
+                            cmd = cmd.replace('cd', '')
+                            if cmd == '..':
+                                chdir(fr'{win_}\{cmd}')
+                            try:
+                                chdir(fr'{win_pwd}\{cmd}')
+                            except:
+                                print('Config.: Não foi possivel encontrar o diretorio')
+                            else:
+                                pwd = fr'{pwd}/{cmd}'
+                                win_pwd = rf'{win_pwd}\{cmd}'
+                            print('')
                         # Diretorio atual
                         elif cmd == 'pwd':
                             print(pwd)
