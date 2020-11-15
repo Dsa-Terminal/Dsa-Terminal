@@ -2,7 +2,7 @@
 __version__ = f'1.9.0' # Versão do Dsa Terminal
 __license__ = f'(C) 2020 Dsa Software Fundation [Mit License]' # Licença atualizada da dsa Software Fundation
 # Metodo de entrada serial
-if __name__ == "__main__":
+if __name__ == '__main__':
     # Inicializar com toda força
     try:
         from flask import Flask
@@ -26,26 +26,27 @@ if __name__ == "__main__":
         print('Caregando dados do Reparo Automatico do Dsa Terminal. . .'), sleep(12)
         if platform().startswith('Windows'):
             system("cls")
-            print(f"Config.: Erro ao inicializar o Dsa Terminal v{__version__}")
-            print(r'Opções de inicializição avançada:')
+            print(f"Config.: Erro ao inicializar o Dsa Terminal v{__version__}\n")
+            print(r'Opções Avançadas:')
             print(f'1 - CMD                                     2 - Instalar dependencias do Python')
             print(r'3 - Tentar iniciar o Dsa Terminal novamente 4 - Diagnosticar erro')
-            print(f'5 - Abrir Github                            6 - Sair')
-            print('')
+            print(f'5 - Abrir Github                            6 - Scapy')
+            print(f'7 - Boot with GUI                           8 - Ajuda')
+            print(f'9 - Bash                                    10 - Restaurar padrão de fabrica')
+            print(f'11 - Shell                                  12 - Sair')
             while True:
                 cmd = input('Code:\>_').strip()
                 if cmd == '1':
                     system('cls')
                     system('cmd')
-                    system('cls')
-                    print('Iniciando o Dsa Terminal. . .'), sleep(7.37)
-                    print('Caregando dados do Reparo Automatico do Dsa Terminal. . .'), sleep(12)
                     system("cls")
-                    print(f"Config.: Erro ao inicializar o Dsa Terminal v{__version__}")
-                    print(r'Opções de inicializição avançada:')
+                    print(r'Opções Avançadas:')
                     print(f'1 - CMD                                     2 - Instalar dependencias do Python')
                     print(r'3 - Tentar iniciar o Dsa Terminal novamente 4 - Diagnosticar erro')
-                    print(f'5 - Abrir Github                            6 - Sair')
+                    print(f'5 - Abrir Github                            6 - Scapy')
+                    print(f'7 - Boot with GUI                           8 - Avançado')
+                    print(f'9 - Bash                                    10 - Restaurar padrão de fabrica')
+                    print(f'11 - Shell                                  12 - Sair')
                 elif cmd == '2':
                     system('pip3 install pygame')
                     system('pip3 install sqlite3')
@@ -73,27 +74,93 @@ if __name__ == "__main__":
                     break
                 elif cmd == '4':
                     print('Procurando poblemas. . .'), sleep(12)
-                    if files.ArquivoExiste('boot\Boot.py'):
-                        if files.ArquivoExiste(r'boot\boot.ini'):
-                            if files.ArquivoExiste(r'boot\Boot.tar.gz'):
-                                if files.ArquivoExiste('boot\efi.exe'):
-                                    if path.exists(r'bin\bash.exe'):
-                                        pass
-                                    else:
-                                        print('Config.: Não existe um bash para operar')
-                                else:
-                                    print('Config.: Não existe a base do depurador e inciaizador')
-                            else:
-                                print('Config.: Não existe um arquivo base para extair drivers')
-                        else:
-                            print('Config.: Não existe uma configuração para o depurador do Config.')
-                    else:
-                        print('Config.: Não existe um arquivo base para o Boot')
-                    print("O Config. não encontrou as dependencias")
+                    print("O Config. não encontrou as dependencias de Boot")
                 elif cmd == '5':
                     system('start "" "https:/github.com/Dsa-Terminal/Dsa-Terminal/issue"')
                     continue
                 elif cmd == '6':
+                    system('network\scapy.exe')
+                    continue
+                elif cmd == '7':
+                    print('Installing tmp files...'), sleep(4)
+                    print('loading usr/bin/env bash'), sleep(13)
+                    system('start run\SetupUltility\PhoenixSetupGUI.exe')
+                elif cmd == '8':
+                    print(r'Opções Avançadas:')
+                    print(f'1 - CMD                                     2 - Instalar dependencias do Python')
+                    print(r'3 - Tentar iniciar o Dsa Terminal novamente 4 - Diagnosticar erro')
+                    print(f'5 - Abrir Github                            6 - Scapy')
+                    print(f'7 - Boot with GUI                           8 - Ajuda')
+                    print(f'9 - Bash                                    10 - Restaurar padrão de fabrica')
+                    print(f'11 - Shell                                  12 - Sair')
+                elif cmd == '9':
+                    system(r'bin\bash.exe')
+                    continue
+                elif cmd == '10':
+                    print('Limpando a Memoria RAM. . .'), sleep(10)
+                    print('================================================')
+                    print('Restaurar o Padrão de fabrica do Dsa Termina pode ser FATAL')
+                    print('ou seja, você ira perder todos os seus dados, aplicativos e')
+                    print('conta e isso não pode ser desfeito, antes de fazer isso tenha')
+                    print('certeza do que esta prestes a fazer!')
+                    querer = input('Você realmente quer fazer isso? [S/N];')
+                    if querer.upper() == 'S':
+                        input("Pressione ENTER para continuar. . .")
+                        print('Nos proximos 10 segundos se você fechar esta sessão do Dsa Terminal você ira cancelar a operação')
+                        sleep(13)
+                        system('cls')
+                        print('A operação começou...')
+                        print('================!!!Ultimo aviso!!!===============')
+                        print('Iremos criar uma imagem padrão do Dsa Terminal enquanto criamos a imagem')
+                        print('Você não perderá nada, enviaremos um aviso quando comançarmos a reinstalar o Dsa Terminal')
+                        print('Se você cancelar a operação depois da mensagem, o Dsa Terminal ficara inultilizavel!!!')
+                        sleep(60)
+                        print('A operação pode demorar horas, a operação só podera ser concluida se houver internet!')
+                        input('Pressione ENTER para continuar. . .')
+                        system('cls')
+                        print("A operação esta começando. . .")
+                        print('Criando Imagem de Disco padrão. . .')
+                        system('bin\git.exe clone https://github.com/Dsa-Terminal/Dsa-Terminal.git')
+                        print('Pediremos varias vezes para deletar confirmar a deleção, se digitar N ou outra coisa que não é S')
+                        print('O Provedor ira abortar a o operação isso podera cauisar erros FATAIS na restauração!')
+                        print('A deleção começou. . .')
+                        system('del .git')
+                        system('del .github')
+                        system('del bin')
+                        system('del boot')
+                        system('del dev')
+                        system('del cmd')
+                        system('del etc')
+                        system('del home')
+                        system('del lib')
+                        system('del mingw64')
+                        system('del network')
+                        system('del Python3')
+                        system('del run')
+                        system('del sample')
+                        system('del sbin')
+                        system('del usr')
+                        system('del tmp')
+                        system('del var')
+                        system('del changelog.txt')
+                        system('del .gitignore')
+                        system('del Config.db')
+                        system('del Config.sys')
+                        system('del DRVSTRORE.exe')
+                        system('del packge.json')
+                        system('del Terminal.cpython-38.pyc')
+                        system('del Dsa-Terminal\Terminal.exe')
+                        system('del Dsa-Terminal\Terminal.py')
+                        system('move Dsa-Terminal\*.* chdir')
+                        print('O sistema foi restauarado!!!')
+                        print('Para que o Dsa terminal funcione novamente, iremos reiniciar o Computador')
+                        system('shutdown -r')
+                    else:
+                        print('Operação Abortada')
+                elif cmd == '11':
+                    system('bin\sh.exe')
+                    continue
+                elif cmd == '12':
                     print('Deletando variaveis. . .'), sleep(10)
                     print('PXE MOF: Exiting PXE ROM'), sleep(5)
                     break
