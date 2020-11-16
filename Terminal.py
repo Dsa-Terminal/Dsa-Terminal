@@ -299,13 +299,13 @@ if __name__ == '__main__':
         def iPXE():
             system('cls')
             print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
-            print('Features: HTTP iSCSI DNS TFTP AoE FCoE TFTP COMBOOT ELF PXE PXEXT\n'), sleep(9.2)
+            print('Features: HTTP iSCSI DNS TFTP AoE FCoE TFTP COMBOOT ELF PXE PXEXT\n'), sleep(1)
             while True:
                 cmd: str = input('iPXE> ')
                 if cmd == 'route':
                     print(route)
-                elif cmd == 'sanboot' or cmd == run:
-                    sleep(9.1)
+                elif cmd == 'sanboot':
+                    sleep(1)
                     system('cls')
                     mixer('Startup.mp3')
                     print(strftime('Iniciando Dsa Terminal...'))
@@ -324,7 +324,7 @@ if __name__ == '__main__':
                 elif cmd == '':
                     continue
                 elif cmd == 'exit':
-                    sleep(11.9)
+                    sleep(5)
                     return False
                     break
                 elif cmd == 'ping':
@@ -1150,8 +1150,6 @@ if __name__ == '__main__':
                             elif cmd == 'ipxe':
                                 i = iPXE()
                                 if i == False:
-                                    with open('tmp\DEBUG-NEED-INSTART(Win32)-SYSTEMCTRL-LOADSYS.db', 'wt+') as commit:
-                                        commit = commit.read()
                                     break
                                 else:
                                     continue
