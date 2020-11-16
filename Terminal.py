@@ -198,18 +198,18 @@ if __name__ == '__main__':
             sleep(time)
             pass
         # Barra de progresso padrão
-        def auto_get_ProgressBar(time, title="Carregando..."):
+        def auto_get_ProgressBar(time, title="Loading..."):
             for step in track(range(100), description=title):
                 do_step(step, time)
         # Kernel de atualizações
         def update():
             system('title [Update] - Dsa Terminal')
-            print('Lendo pacotes de https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(0.01)
+            print('Reading packges: https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(0.01)
             print('Git 1: https://github.com/Dsa-Terminal/Dsa-Terminal/releases....'), sleep(0.023)
             print('Git 2: https://github.com/Dsa-Terminal/Dsa-Terminal/commit/22af2ee0b1d92e9b3ebe909d5371324e0ee717e2...'), sleep(1)
-            print('[Trabalhando em atualizações]...', end=''), sleep(2.934)
-            print('Concluido!!')
-            print('Git 3: https://github.com/Dsa-Terminal/Dsa-Terminal/releases/ [Processando...]'), sleep(0.02)
+            print('[Working in updates]...', end=''), sleep(2.934)
+            print('Finish!!')
+            print('Git 3: https://github.com/Dsa-Terminal/Dsa-Terminal/releases/ [Updating...]'), sleep(0.02)
             system('bin\git.exe pull')
             system('title Dsa Terminal')
             return True
@@ -222,11 +222,11 @@ if __name__ == '__main__':
                 cmd = command.replace('pkginstall ', '')
                 cmd = command.replace('pkginstall', '')
                 if cmd == '':
-                    print('Pkg: Insira-um-nome-de-pacote-valido\n')
+                    print('Pkg: Insert a packge name\n')
                 elif cmd == 'Dsa-Terminal':
-                    print('Pkg: Para atualizar o Dsa Terminal você deve usar o comando "pkg update"\n')
+                    print('Pkg: To update Dsa Terminal use command "pkg update"\n')
                 else:
-                    print(f'Lendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(0.01)
+                    print(f'Reading packges: https://github.com/Dsa-Terminal/{cmd}...'), sleep(0.01)
                     print(f'Git 1: [Downloading...] https://github.com/Dsa-Terminal/{cmd}/releases/download/{cmd}-master.zip'), sleep(1)
                     auto_get_ProgressBar(0.001, title="downloading...")
                     print(f'Git 2: https://github.com/Dsa-Terminal/{cmd}/commit/22af2ee0b1e9b3ebe909d5371324e0ee717e2...'), sleep(1.92)
@@ -256,11 +256,10 @@ if __name__ == '__main__':
                 return True
             # Atualizar pacotes
             def pkg_update(command):
-                cmd = command.replace('pkg update ', '')
-                print(f'\033[32mLendo coleção https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
-                print(f'Acessando archive do Dsa Terminal [{cmd}.git]'), sleep(4)
-                auto_get_ProgressBar(1, title='uninstalling...')
-                ProgressBar('Baixando tools')
+                cmd = command.replace('pkg update', '')
+                print(f'Reading packges: https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
+                print(f'Connecting... Acess to [{cmd}.git]'), sleep(4)
+                auto_get_ProgressBar(1, title='Uninstalling...')
                 system(rf'del Lib\{cmd}')
                 system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
                 system(fr'move {cmd} Lib')
