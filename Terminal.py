@@ -112,143 +112,174 @@ if __name__ == '__main__':
                        'net-3: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3'])
         pwd = "/home"
         win_pwd = r'\home'
-        def do_step(set, time):
-            sleep(time)
-            pass
-        def ProgressBar(time, title="Loading..."):
-            for step in track(range(100), description=title):
-                do_step(step, time)
-        def update():
-            system('title [Update] - Dsa Terminal')
-            print('Reading packges: https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(0.01)
-            print('Git 1: https://github.com/Dsa-Terminal/Dsa-Terminal/releases....'), sleep(0.023)
-            print('Git 2: https://github.com/Dsa-Terminal/Dsa-Terminal/commit/22af2ee0b1d92e9b3ebe909d5371324e0ee717e2...'), sleep(1)
-            print('[Working in updates]...', end=''), sleep(2.934)
-            print('Finish!!')
-            print('Git 3: https://github.com/Dsa-Terminal/Dsa-Terminal/releases/ [Updating...]'), sleep(0.02)
-            system('bin\git.exe pull')
-            system('title Dsa Terminal')
-            return True
-        class packge:
+        class BosterTrips:
             def __init__(self):
+                return True
+
+            def do_step(set, time):
+                sleep(time)
                 pass
-            def pkg_install(command):
-                cmd = command.replace('pkginstall ', '')
-                cmd = command.replace('pkginstall', '')
-                if cmd == '':
-                    print('Pkg: Insert a packge name\n')
-                elif cmd == 'Dsa-Terminal':
-                    print('Pkg: To update Dsa Terminal use command "pkg update"\n')
-                else:
-                    print(f'Reading packges: https://github.com/Dsa-Terminal/{cmd}...'), sleep(0.01)
-                    print(f'Git 1: [Downloading...] https://github.com/Dsa-Terminal/{cmd}/releases/download/{cmd}-master.zip'), sleep(1)
-                    ProgressBar(0.001, title="downloading...")
-                    print(f'Git 2: https://github.com/Dsa-Terminal/{cmd}/commit/22af2ee0b1e9b3ebe909d5371324e0ee717e2...'), sleep(1.92)
-                    print(f'Git 3: [Making Dependences...][Building Setup.exe].....'), sleep(0.002)
+
+            def ProgressBar(time, title="Loading..."):
+                for step in track(range(100), description=title):
+                    do_step(step, time)
+
+            def __enter__(self):
+                return True
+
+            def update():
+                system('title [Update] - Dsa Terminal')
+                print('Reading packges: https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(0.01)
+                print('Git 1: https://github.com/Dsa-Terminal/Dsa-Terminal/releases....'), sleep(0.023)
+                print('Git 2: https://github.com/Dsa-Terminal/Dsa-Terminal/commit/22af2ee0b1d92e9b3ebe909d5371324e0ee717e2...'), sleep(1)
+                print('[Working in updates]...', end=''), sleep(2.934)
+                print('Finish!!')
+                print('Git 3: https://github.com/Dsa-Terminal/Dsa-Terminal/releases/ [Updating...]'), sleep(0.02)
+                system('bin\git.exe pull')
+                system('title Dsa Terminal')
+                return True
+
+            class packge:
+                def __init__(self):
+                    pass
+                def pkg_install(command):
+                    cmd = command.replace('pkginstall ', '')
+                    cmd = command.replace('pkginstall', '')
+                    if cmd == '':
+                        print('Pkg: Insert a packge name\n')
+                    elif cmd == 'Dsa-Terminal':
+                        print('Pkg: To update Dsa Terminal use command "pkg update"\n')
+                    else:
+                        print(f'Reading packges: https://github.com/Dsa-Terminal/{cmd}...'), sleep(0.01)
+                        print(f'Git 1: [Downloading...] https://github.com/Dsa-Terminal/{cmd}/releases/download/{cmd}-master.zip'), sleep(1)
+                        ProgressBar(0.001, title="downloading...")
+                        print(f'Git 2: https://github.com/Dsa-Terminal/{cmd}/commit/22af2ee0b1e9b3ebe909d5371324e0ee717e2...'), sleep(1.92)
+                        print(f'Git 3: [Making Dependences...][Building Setup.exe].....'), sleep(0.002)
+                        system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
+                        system(fr'move {cmd} Lib')
+                        return True
+                def pkg_search(appname):
+                    print('Lote:       Nome do pacote:        Versão:     Tag:           ')
+                    print('______________________________________________________________')
+                    if appname == 'kernel-tool':
+                        print('@devtools   kernel-tool           Indisponible  #Ferramentas')
+                    elif appname == 'kernel':
+                        print('@tool-boot    kernel               v0.0.1      #Servicodeerro')
+                        print('@devtools   kernel-tool         Indisponible    #Ferramentas')
+                    elif appname == 'ssh':
+                        print('@ping(more)     ssh                v1.8.3       #Connection')
+                    else:
+                        print('            ---Packge not found---')
+                def pkg_uninstall(command):
+                    cmd = command.replace('pkg uninstall ', '')
+                    print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
+                    ProgressBar('Desinstalando')
+                    system(fr'del Lib\{cmd}')
+                    return True
+                # Atualizar pacotes
+                def pkg_update(command):
+                    cmd = command.replace('pkg update', '')
+                    print(f'Reading packges: https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
+                    print(f'Connecting... Acess to [{cmd}.git]'), sleep(4)
+                    auto_get_ProgressBar(1, title='Uninstalling...')
+                    system(rf'del Lib\{cmd}')
                     system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
                     system(fr'move {cmd} Lib')
                     return True
-            def pkg_search(appname):
-                print('Lote:       Nome do pacote:        Versão:     Tag:           ')
-                print('______________________________________________________________')
-                if appname == 'kernel-tool':
-                    print('@devtools   kernel-tool           Indisponible  #Ferramentas')
-                elif appname == 'kernel':
-                    print('@tool-boot    kernel               v0.0.1      #Servicodeerro')
-                    print('@devtools   kernel-tool         Indisponible    #Ferramentas')
-                elif appname == 'ssh':
-                    print('@ping(more)     ssh                v1.8.3       #Connection')
-                else:
-                    print('            ---Packge not found---')
-            def pkg_uninstall(command):
-                cmd = command.replace('pkg uninstall ', '')
-                print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
-                ProgressBar('Desinstalando')
-                system(fr'del Lib\{cmd}')
-                return True
-            # Atualizar pacotes
-            def pkg_update(command):
-                cmd = command.replace('pkg update', '')
-                print(f'Reading packges: https://github.com/Dsa-Terminal/{cmd}...'), sleep(8)
-                print(f'Connecting... Acess to [{cmd}.git]'), sleep(4)
-                auto_get_ProgressBar(1, title='Uninstalling...')
-                system(rf'del Lib\{cmd}')
-                system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
-                system(fr'move {cmd} Lib')
-                return True
-        class files:
-            def __init__(self):
-                pass
-            def Write(filename, texto):
-                try:
-                    a = open(filename, 'wt')
-                except FileNotFoundError:
-                    return False
-                else:
-                    a.write(texto)
-                    a.close()
-            def CriarArquivo(filename):
-                try:
-                    a = open(filename, 'wt+')
-                    a.close()
-                except Exception as e:
-                    return False
-                else:
-                    return True
-            def ArquivoExiste(filename):
-                try:
-                    a = open(filename, 'rt')
-                except FileNotFoundError:
-                    return False
-                else:
-                    return True
-        def iPXE():
-            system('cls')
-            print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
-            print('Features: HTTP iSCSI DNS TFTP AoE FCoE TFTP COMBOOT ELF PXE PXEXT\n'), sleep(1)
-            while True:
-                cmd: str = input('iPXE> ')
-                if cmd == 'route':
-                    print(route)
-                elif cmd == 'sanboot':
-                    sleep(1)
-                    system('cls')
-                    mixer('Startup.mp3')
-                    print(strftime('Starting Dsa Terminal...'))
-                    print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
-                    print(strftime('===================Dsa Terminal===================')), sleep(0.08)
-                    return True
-                    break
-                elif cmd == 'boot':
-                    cmd = input('Boot Image in ServerLocal: ').strip().lower()
+
+            class files:
+                def __init__(self):
+                    pass
+                def Write(filename, texto):
                     try:
-                        img = get(cmd)
-                    except:
-                        print("iPXE: Server Webhost don't existent")
+                        a = open(filename, 'wt')
+                    except FileNotFoundError:
+                        return False
                     else:
-                        print(img)
-                elif cmd == '':
-                    continue
-                elif cmd == 'exit':
-                    sleep(5)
-                    return False
-                    break
-                elif cmd == 'ping':
-                    print('iPXE: Your network Firmware connection is variable!')
-                    print(f'iPXE: Network COMBOOT IP: {ip}\n')
-                else:
-                    print(f'{cmd}: iPXE command not found!')
+                        a.write(texto)
+                        a.close()
+                def CriarArquivo(filename):
+                    try:
+                        a = open(filename, 'wt+')
+                        a.close()
+                    except Exception as e:
+                        return False
+                    else:
+                        return True
+                def ArquivoExiste(filename):
+                    try:
+                        a = open(filename, 'rt')
+                    except FileNotFoundError:
+                        return False
+                    else:
+                        return True
+
+            def iPXE():
+                system('cls')
+                print('iPXE -- Open Source Network Boot Firmware -- http://ipxe.org')
+                print('Features: HTTP iSCSI DNS TFTP AoE FCoE TFTP COMBOOT ELF PXE PXEXT\n'), sleep(1)
+                while True:
+                    cmd: str = input('iPXE> ')
+                    if cmd == 'route':
+                        print(route)
+                    elif cmd == 'sanboot':
+                        sleep(1)
+                        system('cls')
+                        mixer('Startup.mp3')
+                        print(strftime('Starting Dsa Terminal...'))
+                        print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
+                        print(strftime('===================Dsa Terminal===================')), sleep(0.08)
+                        return True
+                        break
+                    elif cmd == 'boot':
+                        cmd = input('Boot Image in ServerLocal: ').strip().lower()
+                        try:
+                            img = get(cmd)
+                        except:
+                            print("iPXE: Server Webhost don't existent")
+                        else:
+                            print(img)
+                    elif cmd == '':
+                        continue
+                    elif cmd == 'exit':
+                        sleep(5)
+                        return False
+                        break
+                    elif cmd == 'ping':
+                        print('iPXE: Your network Firmware connection is variable!')
+                        print(f'iPXE: Network COMBOOT IP: {ip}\n')
+                    else:
+                        print(f'{cmd}: iPXE command not found!')
+
+            def host():
+                return socket.gethostname()
+        class Brain:
+            def netBias(unit: int, bias, key="KuevY635vbTYVbYbY", base='System.IO'):
+                app = (key and base, (bias * 12) / 4 - unit)
+                return app
+
+            def connectBias(bias_base, bias_conn):
+                bias4 = (Brain.netBias(6, 4, key='Sht52fTYBBYTTFsbcny'))
+                result = (bias_base and bias4), bias_conn
+
+                return result
+
+            def adjustBias(bias, Drivers="System.IO.stream", debug=True):
+                a, b = Drivers, debug
+                return bias
+
+            def listen(source):
+                return bool(source)
         def println(msg):
             system(f'echo {msg}')
             return True
-        def host():
-            return socket.gethostname()
+        ftp = BosterTrips
         if platform.platform().startswith('Windows'):
             def __init__():
-                if files.ArquivoExiste('boot\Boot.py'):
-                    if files.ArquivoExiste(r'boot\boot.ini'):
-                        if files.ArquivoExiste(r'boot\Boot.tar.gz'):
-                            if files.ArquivoExiste('boot\efi.exe'):
+                if ftp.files.ArquivoExiste('boot\Boot.py'):
+                    if ftp.files.ArquivoExiste(r'boot\boot.ini'):
+                        if ftp.files.ArquivoExiste(r'boot\Boot.tar.gz'):
+                            if ftp.files.ArquivoExiste('boot\efi.exe'):
                                 if path.exists(r'bin\bash.exe'):
                                     try:
                                         a = open('boot\drivers\pass.exc', 'rt').read()
@@ -256,8 +287,8 @@ if __name__ == '__main__':
                                         print(f'Welcome to Dsa Terminal v{__version__}!')
                                         print(f"To start create an password [sudo]! The password don't need match with Windows password!")
                                         password = getpass("Registre uma palavra-passe: ")
-                                        files.CriarArquivo('boot\drivers\pass.exc')
-                                        files.Write('boot\drivers\pass.exc', password)
+                                        ftp.files.CriarArquivo('boot\drivers\pass.exc')
+                                        ftp.files.Write('boot\drivers\pass.exc', password)
                                         return True
                                     else:
                                         return True
@@ -272,6 +303,11 @@ if __name__ == '__main__':
                 else:
                     return False
             start = __init__()
+            bias1 = Brain.adjustBias(Brain.netBias(12, 1))
+            bias2 = Brain.adjustBias(Brain.netBias(12, 2))
+            bias3 = Brain.adjustBias(Brain.netBias(12, 3))
+            conn1 = Brain.connectBias(bias1, bias2)
+            conn2 = Brain.connectBias(bias2, bias3)
             if start == True:
                 pygame.mixer.init()
                 def mixer(sound):
@@ -286,16 +322,16 @@ if __name__ == '__main__':
                 print(strftime('Starting Dsa Terminal...'))
                 print(strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}]'))
                 print(strftime('===================Dsa Terminal===================')), sleep(0.08)
-                timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computer: [{host()}]\n')
-                if files.ArquivoExiste('tmp\Booted.log'):
-                    files.Write('tmp\Boted.log', timeout)
+                timeout = strftime(f'(C) %Y Dsa Terminal v{__version__} | IP: [{ip}] | Computer: [{ftp.host()}]\n')
+                if ftp.files.ArquivoExiste('tmp\Booted.log'):
+                    ftp.files.Write('tmp\Boted.log', timeout)
                     pass
-                elif not files.ArquivoExiste('tmp\Booted.log'):
-                    files.CriarArquivo('tmp\Boted.log')
-                    files.Write('tmp\Boted.log', timeout)
+                elif not ftp.files.ArquivoExiste('tmp\Booted.log'):
+                    ftp.files.CriarArquivo('tmp\Boted.log')
+                    ftp.files.Write('tmp\Boted.log', timeout)
                 while True:
                     try:
-                        println(f'┌─────────[\033[32m%username%@{host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
+                        println(f'┌─────────[\033[32m%username%@{ftp.host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
                         cmd: str = input(f'└─$ ').strip()
                         if protocol == 'MSYS':
                             if cmd == 'mingw64':
@@ -360,12 +396,6 @@ if __name__ == '__main__':
                                 else:
                                     print(cmd)
                                 continue
-                            elif cmd == 'lnk':
-                                try:
-                                    app.run()
-                                except:
-                                    continue
-                                continue
                             elif cmd == 'wmic':
                                 print('')
                                 system('wmic')
@@ -421,13 +451,13 @@ if __name__ == '__main__':
                                         while True:
                                             try:
                                                 alinar: str = str(input(''))
-                                                files.Write(fr'{pwd}\{cmd}', alinar)
+                                                ftp.files.Write(fr'{pwd}\{cmd}', alinar)
                                             except:
                                                 break
                                     continue
                             elif cmd == 'exit':
-                                protocol = 'MINGW64'
-                                print('')
+                                print('exit'), sleep(2)
+                                break
                             elif cmd == 'putty':
                                 startfile('sbin\putty.exe')
                                 continue
@@ -469,6 +499,9 @@ if __name__ == '__main__':
                                 protocol = 'MSYS'
                                 print('')
                                 continue
+                            elif cmd.startswith('ftp'):
+                                print(bias1, '\n', conn2, '\n', conn1)
+                                print(ftp.host(), ' ** ', route, '\n', bias3)
                             elif cmd.startswith('python'):
                                 cmd = cmd.replace('python ', '')
                                 cmd = cmd.replace('python', '')
@@ -551,7 +584,7 @@ if __name__ == '__main__':
                                 cmd = cmd.replace(' ', '')
                                 password = getpass("[sudo] Password: ").strip()
                                 if password == key:
-                                    packge.pkg_install(cmd)
+                                    ftp.packge.pkg_install(cmd)
                                 else:
                                     print('[sudo] Password not found!\n')
                                 continue
@@ -598,7 +631,7 @@ if __name__ == '__main__':
                             elif cmd.startswith('sudo pkg uninstall'):
                                 password = getpass("[sudo] Password: ").strip()
                                 if password == key:
-                                    packge.pkg_uninstall(cmd)
+                                    ftp.packge.pkg_uninstall(cmd)
                                 else:
                                     print('[sudo] Password not found!\n')
                                 continue
@@ -733,8 +766,7 @@ if __name__ == '__main__':
                                     continue
                                     print('')
                             elif cmd == 'exit':
-                                print('Encerrando Tarefas. . .'), sleep(2.3)
-                                auto_get_ProgressBar(0, title="Saindo...")
+                                print('exit'), sleep(2)
                                 break
                             elif cmd == 'clear':
                                 system('cls')
@@ -743,13 +775,11 @@ if __name__ == '__main__':
                                 print(strftime(f'Dsa Terminal Copyright (C) %Y v{__version__}'))
                                 continue
                             elif cmd == 'pkg update':
-                                update()
+                                ftp.update()
                                 continue
                             elif cmd.startswith('lua'):
                                 cmd = cmd.replace('lua ', '')
                                 cmd = cmd.replace('lua', '')
-                                system('title lua for Dsa Terminal')
-                                system('cls')
                                 if cmd == '':
                                     system(r'var\Lua\lua.exe')
                                 else:
@@ -854,12 +884,12 @@ if __name__ == '__main__':
                                         while True:
                                             try:
                                                 alinar: str = str(input(''))
-                                                files.Write(fr'{pwd}\{cmd}', alinar)
+                                                ftp.files.Write(fr'{pwd}\{cmd}', alinar)
                                             except:
                                                 break
                                     continue
                             elif cmd == 'gui':
-                                ProgressBar(0.01, "Starting...")
+                                ftp.ProgressBar(0.01, "Starting...")
                                 system(r'start run\SetupUltility\PhoenixSetupGUI.exe')
                                 break
                             elif 'rm' in cmd:
@@ -877,7 +907,7 @@ if __name__ == '__main__':
                                 print('')
                                 continue
                             elif cmd == 'ifconfig':
-                                print(f'Settings IP and rounts: net[sh-1 gw 192.168.1.1')
+                                print(f'Settings IP and rounts: net[sh-1 gw 192.168.1.1]')
                                 print(f'IP: [{ip}] Porta: [22]')
                                 print(f'Gateway: {route}')
                                 print(f'=====================================================')
@@ -903,7 +933,7 @@ if __name__ == '__main__':
                                     print('Try:')
                                     print('      sudo pkg install ssh')
                             elif cmd == 'ipxe':
-                                i = iPXE()
+                                i = ftp.iPXE()
                                 if i == False:
                                     break
                                 else:
@@ -913,15 +943,14 @@ if __name__ == '__main__':
                                 print('')
                                 continue
                     except KeyboardInterrupt:
-                        i = iPXE()
+                        i = ftp.iPXE()
                         if i == False:
                             break
                         else:
                             continue
                     except Exception as erro:
                         system('cls')
-                        for i in range(0, 5):
-                            mixer('ERROR_Media.mp3')
+                        mixer('ERROR_Media.mp3')
                         print('\033[33mFatal:\033[m Dsa Terminal Excepition Interrupt'), sleep(0.111)
                         break
             else:
