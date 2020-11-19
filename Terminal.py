@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-__version__ = f'1.9.0'
-__license__ = f'(C) 2020 Dsa Software Fundation [Mit License]'
-if __name__ == '__main__':
+__version__ = ("1.9.0")
+__license__ = ("(C) 2020 Dsa Software Fundation [MIT LICENSE]")
+if __name__ == "__main__":
     try:
         import pygame, asyncio, sqlite3, sys, platform, socket
         from os import system, startfile, mkdir, listdir, remove, path, chdir
@@ -253,7 +253,7 @@ if __name__ == '__main__':
 
             def host():
                 return socket.gethostname()
-        class Brain:
+        class Brain(BosterTrips):
             def netBias(unit: int, bias, key="KuevY635vbTYVbYbY", base='System.IO'):
                 app = (key and base, (bias * 12) / 4 - unit)
                 return app
