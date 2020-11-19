@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-__version__ = ("1.9.0")
-__license__ = ("(C) 2020 Dsa Software Fundation [MIT LICENSE]")
+__version__ = "1.9.0"
+__license__ = "(C) 2020 Dsa Software Fundation [MIT LICENSE]"
 if __name__ == "__main__":
     try:
         import pygame, asyncio, sqlite3, sys, platform, socket
