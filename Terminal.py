@@ -250,26 +250,9 @@ if __name__ == "__main__":
                         print(f'iPXE: Network COMBOOT IP: {ip}\n')
                     else:
                         print(f'{cmd}: iPXE command not found!')
-
+            
             def host():
                 return socket.gethostname()
-        class Brain(BosterTrips):
-            def netBias(unit: int, bias, key="KuevY635vbTYVbYbY", base='System.IO'):
-                app = (key and base, (bias * 12) / 4 - unit)
-                return app
-
-            def connectBias(bias_base, bias_conn):
-                bias4 = (Brain.netBias(6, 4, key='Sht52fTYBBYTTFsbcny'))
-                result = (bias_base and bias4), bias_conn
-
-                return result
-
-            def adjustBias(bias, Drivers="System.IO.stream", debug=True):
-                a, b = Drivers, debug
-                return bias
-
-            def listen(source):
-                return bool(source)
         def println(msg):
             system(f'echo {msg}')
             return True
@@ -303,11 +286,6 @@ if __name__ == "__main__":
                 else:
                     return False
             start = __init__()
-            bias1 = Brain.adjustBias(Brain.netBias(12, 1))
-            bias2 = Brain.adjustBias(Brain.netBias(12, 2))
-            bias3 = Brain.adjustBias(Brain.netBias(12, 3))
-            conn1 = Brain.connectBias(bias1, bias2)
-            conn2 = Brain.connectBias(bias2, bias3)
             if start == True:
                 pygame.mixer.init()
                 def mixer(sound):
