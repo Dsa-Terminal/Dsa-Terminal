@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 __version__ = "1.9.0"
 __license__ = "(C) 2020 Dsa Software Fundation [MIT LICENSE]"
-if __name__ == "__main__":
+# Prompt de commando
+def main():
     try:
         import pygame, asyncio, sqlite3, sys, platform, socket
         from os import system, startfile, mkdir, listdir, remove, path, chdir
@@ -93,7 +94,8 @@ if __name__ == "__main__":
                     continue
                 elif cmd == '10':
                     print('Forcing Exit. . .'), sleep(4)
-                    print("FATAL: No have operating system installed in Dsa Terminal!"), sleep(1000098765436789483765489087654098764589084279584572968547965421738999999999999999999999999999999999999999999999999.999)
+                    print("FATAL: No have operating system installed in Dsa Terminal!"), sleep(
+                        1000098765436789483765489087654098764589084279584572968547965421738999999999999999999999999999999999999999999999999.999)
                     break
                 elif cmd == '11':
                     system('bin\sh.exe')
@@ -109,9 +111,10 @@ if __name__ == "__main__":
         ip = socket.gethostbyname(socket.gethostname())
         conn = sqlite3.connect("Config.db").cursor()
         route = choice(['net-1: 10.0.0.155/255.255.255.0 gw 10.0.0.1', 'net-2: 17.0.0.192/255.255.255.0 gw 10.0.0.2',
-                       'net-3: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3'])
+                        'net-3: 10.0.0.255/255.255.255.0 gw 10.0.0.4', 'net-4: 17.0.0.174/255.255.255.0 gw 10.0.0.3'])
         pwd = "/home"
         win_pwd = r'\home'
+
         class BosterTrips:
             def __init__(self):
                 return True
@@ -131,7 +134,9 @@ if __name__ == "__main__":
                 system('title [Update] - Dsa Terminal')
                 print('Reading packges: https://github.com/Dsa-Terminal/Dsa-Terminal.git....'), sleep(0.01)
                 print('Git 1: https://github.com/Dsa-Terminal/Dsa-Terminal/releases....'), sleep(0.023)
-                print('Git 2: https://github.com/Dsa-Terminal/Dsa-Terminal/commit/22af2ee0b1d92e9b3ebe909d5371324e0ee717e2...'), sleep(1)
+                print(
+                    'Git 2: https://github.com/Dsa-Terminal/Dsa-Terminal/commit/22af2ee0b1d92e9b3ebe909d5371324e0ee717e2...'), sleep(
+                    1)
                 print('[Working in updates]...', end=''), sleep(2.934)
                 print('Finish!!')
                 print('Git 3: https://github.com/Dsa-Terminal/Dsa-Terminal/releases/ [Updating...]'), sleep(0.02)
@@ -142,6 +147,7 @@ if __name__ == "__main__":
             class packge:
                 def __init__(self):
                     pass
+
                 def pkg_install(command):
                     cmd = command.replace('pkginstall ', '')
                     cmd = command.replace('pkginstall', '')
@@ -151,13 +157,18 @@ if __name__ == "__main__":
                         print('Pkg: To update Dsa Terminal use command "pkg update"\n')
                     else:
                         print(f'Reading packges: https://github.com/Dsa-Terminal/{cmd}...'), sleep(0.01)
-                        print(f'Git 1: [Downloading...] https://github.com/Dsa-Terminal/{cmd}/releases/download/{cmd}-master.zip'), sleep(1)
+                        print(
+                            f'Git 1: [Downloading...] https://github.com/Dsa-Terminal/{cmd}/releases/download/{cmd}-master.zip'), sleep(
+                            1)
                         ProgressBar(0.001, title="downloading...")
-                        print(f'Git 2: https://github.com/Dsa-Terminal/{cmd}/commit/22af2ee0b1e9b3ebe909d5371324e0ee717e2...'), sleep(1.92)
+                        print(
+                            f'Git 2: https://github.com/Dsa-Terminal/{cmd}/commit/22af2ee0b1e9b3ebe909d5371324e0ee717e2...'), sleep(
+                            1.92)
                         print(f'Git 3: [Making Dependences...][Building Setup.exe].....'), sleep(0.002)
                         system(fr'bin\git.exe clone https://github.com/Dsa-Terminal/{cmd}.git')
                         system(fr'move {cmd} Lib')
                         return True
+
                 def pkg_search(appname):
                     print('Lote:       Nome do pacote:        Versão:     Tag:           ')
                     print('______________________________________________________________')
@@ -170,12 +181,14 @@ if __name__ == "__main__":
                         print('@ping(more)     ssh                v1.8.3       #Connection')
                     else:
                         print('            ---Packge not found---')
+
                 def pkg_uninstall(command):
                     cmd = command.replace('pkg uninstall ', '')
                     print(f'Recolhendo informações do pacote {cmd}...'), sleep(5.25)
                     ProgressBar('Desinstalando')
                     system(fr'del Lib\{cmd}')
                     return True
+
                 # Atualizar pacotes
                 def pkg_update(command):
                     cmd = command.replace('pkg update', '')
@@ -190,6 +203,7 @@ if __name__ == "__main__":
             class files:
                 def __init__(self):
                     pass
+
                 def Write(filename, texto):
                     try:
                         a = open(filename, 'wt')
@@ -198,6 +212,7 @@ if __name__ == "__main__":
                     else:
                         a.write(texto)
                         a.close()
+
                 def CriarArquivo(filename):
                     try:
                         a = open(filename, 'wt+')
@@ -206,6 +221,7 @@ if __name__ == "__main__":
                         return False
                     else:
                         return True
+
                 def ArquivoExiste(filename):
                     try:
                         a = open(filename, 'rt')
@@ -250,12 +266,14 @@ if __name__ == "__main__":
                         print(f'iPXE: Network COMBOOT IP: {ip}\n')
                     else:
                         print(f'{cmd}: iPXE command not found!')
-            
+
             def host():
                 return socket.gethostname()
+
         def println(msg):
             system(f'echo {msg}')
             return True
+
         ftp = BosterTrips
         if platform.platform().startswith('Windows'):
             def __init__():
@@ -268,7 +286,8 @@ if __name__ == "__main__":
                                         a = open('boot\drivers\pass.exc', 'rt').read()
                                     except FileNotFoundError:
                                         print(f'Welcome to Dsa Terminal v{__version__}!')
-                                        print(f"To start create an password [sudo]! The password don't need match with Windows password!")
+                                        print(
+                                            f"To start create an password [sudo]! The password don't need match with Windows password!")
                                         password = getpass("Registre uma palavra-passe: ")
                                         ftp.files.CriarArquivo('boot\drivers\pass.exc')
                                         ftp.files.Write('boot\drivers\pass.exc', password)
@@ -285,12 +304,15 @@ if __name__ == "__main__":
                         return False
                 else:
                     return False
+
             start = __init__()
             if start == True:
                 pygame.mixer.init()
+
                 def mixer(sound):
                     pygame.mixer.music.load(fr'sample\rootfs\{sound}')
                     pygame.mixer.music.play()
+
                 with open(r'boot\drivers\pass.exc', 'rt') as key:
                     key = key.read()
                 system('cls')
@@ -309,7 +331,8 @@ if __name__ == "__main__":
                     ftp.files.Write('tmp\Boted.log', timeout)
                 while True:
                     try:
-                        println(f'┌─────────[\033[32m%username%@{ftp.host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
+                        println(
+                            f'┌─────────[\033[32m%username%@{ftp.host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
                         cmd: str = input(f'└─$ ').strip()
                         if protocol == 'MSYS':
                             if cmd == 'mingw64':
@@ -687,6 +710,7 @@ if __name__ == "__main__":
                                 print('dir [parametros]     List dir')
                                 print('gui                  Phoenix Setup Utility')
                                 print("gitlocal             Github.com url of repository")
+                                print('login                Authentication Login in Github.com')
                                 print('./[script or app]    Run. . .')
                                 print('firefox              Start firefox')
                                 print('issue                Open issue in github')
@@ -702,6 +726,9 @@ if __name__ == "__main__":
                             elif cmd == 'issue':
                                 system('mingw64\gh.exe issue create')
                                 continue
+                            elif cmd == 'login':
+                                system('mingw64\gh.exe auth login')
+                                print('')
                             elif cmd.startswith('ncat'):
                                 cmd = cmd.replace('ncat ', '')
                                 cmd = cmd.replace('ncat', '')
@@ -838,7 +865,8 @@ if __name__ == "__main__":
                                 print('Gerenciador de Tarefas /Terminal.exe            Running in second instance...')
                                 print('mingw64                /mingw64/Main.sh         Running...')
                                 print('Phoenix Setup CMOS     /run/SetupUltility/...   Running in second instance...')
-                                print('==============================================================================\n')
+                                print(
+                                    '==============================================================================\n')
                             elif cmd == 'tty':
                                 system(r'usr\bin\tty.exe')
                                 continue
@@ -941,3 +969,6 @@ if __name__ == "__main__":
         else:
             print(f"Config.: Dsa Terminal v{__version__} not was started sucefully")
             print('Config.: Dsa Terminal only started in Windows 10, sorry!')
+
+if __name__ == "__main__":
+    main()
