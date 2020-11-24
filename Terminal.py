@@ -965,7 +965,7 @@ def main():
                 print('Error: No Botable Device')
                 print("Don't have a installed System on Dsa Terminal as Device Operative")
                 print('PXE MOF: Exiting PXE ROM...'), sleep(6.26)
-                auto_get_ProgressBar(0.001)
+                ProgressBar(0.001)
         else:
             print(f"Config.: Dsa Terminal v{__version__} not was started sucefully")
             print('Config.: Dsa Terminal only started in Windows 10, sorry!')
