@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-__version__ = "1.9.0"
+__version__ = "1.9.1"
 __license__ = "(C) 2020 Dsa Software Fundation [MIT LICENSE]"
 # Prompt de commando
 def main():
     try:
         import pygame, asyncio, sqlite3, sys, platform, socket
+        import json
         from os import system, startfile, mkdir, listdir, remove, path, chdir
         from random import randint, choice
         from time import strftime, sleep
