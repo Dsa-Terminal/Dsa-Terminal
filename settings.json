@@ -1,0 +1,11 @@
+{
+    "version": "1.9.1",
+    "settings": [
+        {
+            // Configurações de inicialização
+            "Startswith": "Terminal.exe --login -i",
+            "UserProfile": "usr\\bin\\bash",
+            
+        }
+    ]
+}
