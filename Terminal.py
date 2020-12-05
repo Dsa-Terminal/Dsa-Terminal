@@ -543,10 +543,9 @@ def main():
                                 cmd = cmd.replace('pip3', '')
                                 system(rf'Python3\Scripts\pip.exe {cmd}')
                             elif cmd == 'sudo su':
-                                password = getpass('[sudo] Palavra-passe do Dsa Terminal: ').strip()
+                                password = getpass('[sudo] Password: ').strip()
                                 if key == password:
                                     system('cls')
-                                    system('title SUDO: /usr/bin/bash.exe')
                                     system(r'usr\bin\bash.exe')
                                     system('cls')
                                 else:
