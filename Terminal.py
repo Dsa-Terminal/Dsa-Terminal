@@ -318,7 +318,7 @@ def main():
                 with open(r'boot\drivers\pass.exc', 'rt') as key:
                     key = key.read()
                 system('cls')
-                pygame.mixer.music.load(fr'sample\rootfs\Starting.mp3')
+                pygame.mixer.music.load(fr'sample\rootfs\Startup.mp3')
                 pygame.mixer.music.play()
                 system('title Dsa Terminal')
                 protocol = "MINGW64"
