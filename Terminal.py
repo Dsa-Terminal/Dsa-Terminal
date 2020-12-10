@@ -91,7 +91,7 @@ def main():
                     print(f'9 - Bash                                    10 - Restaur Dsa Terminal')
                     print(f'11 - Shell                                  12 - Sair')
                 elif cmd == '9':
-                    system(r'bin\bash.exe')
+                    system(r'usr\bin\bash.exe')
                     continue
                 elif cmd == '10':
                     print('Forcing Exit. . .'), sleep(4)
