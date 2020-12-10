@@ -334,8 +334,7 @@ def main():
                     ftp.files.Write('tmp\Boted.log', timeout)
                 while True:
                     try:
-                        println(
-                            f'┌─────────[\033[32m%username%@{ftp.host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
+                        println(f'┌─────────[\033[32m%username%@{ftp.host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
                         cmd: str = input(f'└─$ ').strip()
                         if protocol == 'MSYS':
                             if cmd == 'mingw64':
