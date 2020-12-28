@@ -28,3 +28,5 @@ $AV_AVG/$VAULT/vault.db
 sample/rootfs/Uninstall.exe
 tmp/Boted.log
 boot/drivers/pass.exc
+img_bash64.html
+img_bash64_files
