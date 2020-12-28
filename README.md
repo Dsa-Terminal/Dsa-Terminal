@@ -1,4 +1,4 @@
-# Dsa Terminal v1.8.2
+# Dsa Terminal v1.9.1
 ![](https://img.shields.io/github/license/Dsa-Terminal/Dsa-Terminal)
 ![](https://img.shields.io/github/repo-size/Dsa-Terminal/Dsa-Terminal)
 ![](https://img.shields.io/github/languages/top/Dsa-Terminal/Dsa-Terminal)
