@@ -129,4 +129,4 @@ O Dsa Terminal tem a Arduino IDE ja pre-instalada, você poder inicia-la digitan
 - Qualquer poblema ou duvida [envie um email!](mailto:dsaterminal@gmail.com)
 
            Dsa Terminal | dsaterminal@gmail.com | Dsa Software Fundation
-                        Copyright (C) 2020 MIT LICENSE
+                        Copyright (C) 2021 MIT LICENSE
