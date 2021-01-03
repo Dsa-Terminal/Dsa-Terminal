@@ -335,7 +335,7 @@ def main():
                 while True:
                     try:
                         println(f'┌─────────[\033[32m%username%@{ftp.host()}\033[m] \033[35m{protocol}\033[m \033[34m{pwd}\033[m')
-                        cmd: str = input(f'└─$ ').strip()
+                        cmd = str(input(f'└─$\033[m ')).strip()
                         if protocol == 'MSYS':
                             if cmd == 'mingw64':
                                 protocol = 'MINGW64'
@@ -502,21 +502,6 @@ def main():
                                 protocol = 'MSYS'
                                 print('')
                                 continue
-                            elif cmd.startswith('marketplace'):
-                                cmd = cmd.replace('marketplace ', '')
-                                cmd = cmd.replace('marketplace', '')
-                                if cmd == '':
-                                    print('')
-                                else:
-                                    system('bin\git.exe clone {}'.format(cmd))
-                            elif cmd.startswith('install'):
-                                cmd = cmd.replace('install ', '')
-                                cmd = cmd.replace('install', '')
-                                if cmd == '':
-                                    print('')
-                                else:
-                                    system('move {} lib'.format(cmd))
-                                    ftp.auto_get_ProgressBar(0.001, description="Instalando...")
                             elif cmd.startswith('ftp'):
                                 print(bias1, '\n', conn2, '\n', conn1)
                                 print(ftp.host(), ' ** ', route, '\n', bias3)
